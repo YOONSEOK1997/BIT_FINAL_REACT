@@ -1,0 +1,58 @@
+[
+  {
+    "id": 40,
+    "title": "보니보니와 함께하는 고강도 기능성 운동",
+    "category": "피트니스",
+    "profile": "/images/tutor/tutor_1.png",
+    "tutor": "보니보니",
+    "video": "/video/vod_1.mp4"
+  },
+  {
+    "id": 13,
+    "title": "미국 with 뿌잉민수",
+    "category": "미국",
+    "profile": "/images/tutor/tutor_2.png",
+    "tutor": "뿌잉민수",
+    "video": "/video/vod_7.mp4"
+  },
+  {
+    "id": 6,
+    "title": "유진 쌤과 떠나는 신나는 일본여행",
+    "category": "일본",
+    "profile": "/images/tutor/tutor_3.png",
+    "tutor": "유진쌤",
+    "video": "/video/vod_2.mp4"
+  },
+  {
+    "id": 48,
+    "title": "어인 정수정수의 아가미 호흡법",
+    "category": "수영",
+    "profile": "/images/tutor/tutor_4.png",
+    "tutor": "정수정수",
+    "video": "/video/vod_4.mp4"
+  },
+  {
+    "id": 38,
+    "title": "러너 보니보니의 달리기 클래스!",
+    "category": "러닝",
+    "profile": "/images/tutor/tutor_1.png",
+    "tutor": "보니보니",
+    "video": "/video/vod_3.mp4"
+  },
+  {
+    "id": 42,
+    "title": "잠실 메이웨더 재혁재혁과 함께 뿌수는 복싱 클래스!",
+    "category": "복싱",
+    "profile": "/images/tutor/tutor_5.png",
+    "tutor": "재혁재혁",
+    "video": "/video/vod_5.mp4"
+  },
+  {
+    "id": 45,
+    "title": "대관령 산신령 정수정수의 설산 비박 클래스 (입돌아가지 않아요~!)",
+    "category": "등산",
+    "profile": "/images/tutor/tutor_4.png",
+    "tutor": "정수정수",
+    "video": "/video/vod_6.mp4"
+  }
+]
