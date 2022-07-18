@@ -1,0 +1,543 @@
+/* Editor */
+body {
+    font-family: sans-serif;
+}
+
+#root {
+margin: 1rem 4rem;
+}
+
+#root .ql-container {
+border-bottom-left-radius: 0.5em;
+border-bottom-right-radius: 0.5em;
+background: #fefcfc;
+}
+
+/* Snow Theme */
+#root .ql-snow.ql-toolbar {
+display: block;
+background: #eaecec;
+border-top-left-radius: 0.5em;
+border-top-right-radius: 0.5em;
+}
+
+#root .ql-editor {
+min-height: 18em;
+}
+
+/* ====================== Class detail ======================*/
+.content_container {
+    width: 1290px;
+    border: 1px solid white ;
+    padding: 41px 0 0;
+    /* flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+.class_title_div{
+    width: 885px;
+    height: 113px;
+    margin: 0 405px 10px 0;
+    padding: 39px 0 24px;
+    border: 1px solid gray;
+}
+
+.class_title{
+    width: 885px;
+    height: 50px;
+    font-family: Inter;
+    font-size: 36px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+/* tutor */
+.tutor_info{
+    width: 388px;
+    height: 68px;
+    margin: 10px 462px 20px 0;
+    padding: 5px 164px 11px 0;
+}
+
+.tutor_image{
+    width: 53px;
+    height: 52px;
+    margin: 0 11px 0 0;
+    background-color: #d9d9d9;
+    border-radius: 30px;
+}
+
+.tutor_name{
+    width: 160px;
+    height: 32px;
+    margin: 13px 0 7px 11px;
+    font-family: Inter;
+    font-size: 25px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 48px;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+
+}
+
+/* .class_image */
+.class_image1{
+    width: 650px;
+    height: 468px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 10px;
+    margin: 0 18px 0 0;
+    padding: 10px;
+    border-radius: 15px;
+    border: solid 1px #000;
+    float: left;
+}
+.imagemap{
+    float: left;
+}
+.class_image{
+    width: 159px;
+    height: 105px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 10px;
+    margin: 0 0 16px 5px;
+    padding: 10px;
+    border-radius: 15px;
+    border: solid 1px #000;
+    
+}
+
+/* .class_info */
+
+div .class_info{
+    width: 440px;
+    height: 468px;
+    border: solid 1px gray;
+}
+
+div .class_plan{
+    width: 410px;
+    height: 44px;
+    margin: 10px 0 0px 10px;
+    border: solid 1px #000;
+}
+
+div .class_plann{
+    font-size: 24px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+
+.plan{
+    width: 410px;
+    height: 44px;
+    margin: 10px 0 0px 10px;
+    border: solid 1px #000;
+    font-size: 20px;
+}
+
+.class_plan_row{
+    width: 410px;
+    height: 127px;
+    border: solid 1px #000;
+    margin: 20px 0 59px 10px;
+    padding: 19px 2px 6px 31px;
+}
+
+.selectplan{
+    width: 297px;
+    height: 29px;
+    margin: 0 0 32px 1px;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+
+.perselect{
+    width: 110px;
+    height: 24px;
+    float: left;
+    /* margin: 39px 24px 10px 0; */
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+
+.percnt{
+    width: 122px;
+    height: 41px;
+    margin: 0px 3px 0 0px;
+    padding: 0px 12px 0 15px;
+    border: solid 1px #000;
+}
+.totcnt{
+    width: 410px;
+    height: 77px;
+    margin: 59px 0 0;
+    padding: 14px 0 5px 0px;
+    border: solid 1px #000;
+}
+
+.money1{
+    width: 381px;
+    height: 58px;
+    font-family: Inter;
+    font-size: 22px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #000;
+
+}
+
+.money2{
+    font-weight: 500;
+}
+
+.classbtn{
+    width: 410px;
+}
+.class_signbtn{
+    width: 340px;
+    height: 58px;
+    margin: 15px 9px 0 0;
+    border-radius: 10px;
+    border: solid 1px #000;
+    font-size: 24px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+}
+
+.class_likebtn{
+    width: 60px;
+    height: 58px;
+    border-radius: 10px;
+    border: solid 1px #000;
+    font-size: 30px;
+}
+
+/* class_summ */
+.class_summ{
+    width: 1290px;
+    height: 225px;
+    margin: 20px 0 40px;
+    padding: 26px 0px 26px 160px;
+    border: solid 1px #000;
+    /* div겹침 */
+    clear:both
+}
+
+.box{
+    float: left;
+    width: 166px;
+    height: 172px;
+    margin: 1px 39px 0 0;
+    /* padding: 14px 34px 24px 36px; */
+    border: solid 1px #000;
+}
+
+.boxtext{
+    width: 166px;
+    margin: 9px 7px 0 0;
+    font-size: 24px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000;
+}
+.class_tab{
+    float: left;
+    width: 219px;
+    height: 80px;
+    border: solid 1px #000;
+    font-size: 24px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 79px;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000;
+}
+
+.class_notice1{
+    width: 1290px;
+    height: 361px;
+    border: solid 1px #000;
+    margin-top: 50px;
+    /* div겹침 */
+    clear:both
+}
+
+.class_notice2{
+    width: 1290px;
+    height: 361px;
+    border: solid 1px #000;
+    margin-top: 50px;
+    /* div겹침 */
+    clear:both
+}
+.class_notice3{
+    width: 1290px;
+    height: 961px;
+    border: solid 1px #000;
+    margin-top: 50px;
+    /* div겹침 */
+    clear:both
+}
+.class_notice4{
+    width: 1290px;
+    height: 761px;
+    border: solid 1px #000;
+    margin-top: 50px;
+    /* div겹침 */
+    clear:both
+}
+
+.class_subtitle{
+    width: 1000px;
+    height: 72px;
+    font-size: 32px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+    float: left;
+    
+}
+
+.class_noticecircle{
+    width: 113px;
+    height: 46px;
+    border-radius: 20px;
+    border: solid 1px #000;
+    float: right;
+    margin-top: 10px;
+    margin-right: 50px;
+    vertical-align: middle;
+    font-size: 20px;
+    line-height: 50px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000;
+}
+
+/* 리뷰임니둥 */
+.class_review{
+    width: 1290px;
+    height: 1361px;
+    border: solid 1px #000;
+    margin-top: 50px;
+    /* div겹침 */
+    clear:both
+}
+
+.class_reviewtitle{
+    width: 1063px;
+    height: 58px;
+    margin: 16px 0 0 79px;
+    border: solid 1px #000;
+    /* div겹침 */
+    clear:both
+}
+.class_reviewrow{
+    width: 1063px;
+    height: 370px;
+    margin: 16px 0 0 79px;
+    border: solid 1px #000;
+    /* div겹침 */
+    clear:both
+}
+
+.class_reviewcnt{
+    width: 700px;
+    height: 58px;
+    border: solid 1px #000;
+    float: left;
+    font-family: not;
+    font-size: 24px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 58px;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+
+.class_reviewbtn{
+    width: 292px;
+    height: 58px;
+    border-radius: 10px;
+    border: solid 1px #000;
+    font-size: 24px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    float: right;
+}
+
+.class_reviewerinfo{
+    width: 608px;
+    height: 68px;
+    margin: 10px 2px 20px 0;
+    padding: 5px 164px 11px 0;
+}
+.class_reviewerphoto{
+    width: 53px;
+    height: 52px;
+    margin: 0 11px 0 0;
+    background-color: #d9d9d9;
+    border-radius: 30px;
+    float: left;
+}
+
+.class_reviewername{
+    width: 160px;
+    height: 32px;
+    margin: 1px 0 7px 1px;
+    font-family: Inter;
+    font-size: 25px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 35px;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+
+.class_reviewertime{
+    margin-left: 5px;
+}
+
+.class_review_star{
+    width: 165px;
+    height: 40px;
+    font-size: 25px;
+    font-weight: bold;
+    border: solid 1px #000;
+    /* div겹침 */
+    clear:both;
+    margin-left: 80px;
+    margin-top: 10px;
+}
+
+.class_reviewcontent{
+    width: 659px;
+    height: 161px;
+    margin-left: 80px;
+    
+    border: solid 1px #000;
+    float: left;
+}
+
+.class_reviewphoto{
+    width: 218px;
+    height: 162px;
+    border-radius: 10px;
+    border: solid 1px #000;
+    margin-left: 760px;
+}
+
+.commentlike{
+    width: 248px;
+    height: 44px;
+    margin: 13px 245px 40px 83px;
+    border: solid 1px #000;
+    font-size: 20px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 44px;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+.class_reviewcomment{
+    width: 1062px;
+    height: 235px;
+    padding: 22px 35px 19px 110px;
+    border: solid 1px #000;
+}
+
+.class_commentbody{
+    width: 917px;
+    height: 100px;
+    margin: 3px 0 0;
+    padding: 15px 22px 15px 21px;
+    border: solid 1px #000;
+}
+
+.class_commentdell{
+    width: 917px;
+    height: 40px;
+    float: right;
+    border: solid 1px #000;
+}
+
+.tyu{
+    /* div겹침 */
+    clear:both
+}
+
+.btn4{
+    width: 80px;
+    height: 28px;
+    font-size: 18px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal; 
+    background-color: #fff;
+}

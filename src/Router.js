@@ -9,6 +9,15 @@ import LectureDetail from './pages/LectureDetail/LectureDetail';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 import Review from './components/Review/Review';
+import {
+  ClassList,
+  ClassForm,
+  ClassDetail,
+  ClassUpdateForm,
+  ClassGuide,
+  ClassIntroGuide,
+} from './pages/class';
+
 const Router = () => {
   return (
     <BrowserRouter>
@@ -21,6 +30,14 @@ const Router = () => {
         <Route path="/lectures/:id" element={<LectureDetail />} />
         <Route path="/wish-list" element={<WishList />} />
         <Route path="/review" element={<Review />} />
+
+        {/* Class */}
+        <Route path="/class/list" element={<ClassList />} />
+        <Route path="/class/form" element={<ClassForm />} />
+        <Route path="/class/detail/:num" element={<ClassDetail />} />
+        <Route path="/class/updateform/:num" element={<ClassUpdateForm />} />
+        <Route path="/class/guide" element={<ClassGuide />} />
+        <Route path="/class/introguide" element={<ClassIntroGuide />} />
       </Routes>
       <Footer />
     </BrowserRouter>

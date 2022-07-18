@@ -1,0 +1,22 @@
+.admin{
+    clear:both;
+    border-color: white;
+    width: 1300px;
+    margin-left: 150px;
+    margin-top: 30px;
+    font-size: 25px;
+    text-align: center;
+}
+
+.admin tr{
+    height: 110px;
+}
+
+.admin tr th{
+    border-bottom: 3px solid black;
+    text-align: center;
+}
+
+.tyty{
+    font-family: 'Jua';
+}

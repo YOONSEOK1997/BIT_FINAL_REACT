@@ -48,13 +48,13 @@ const Nav = () => {
       </Link>
       <div>
         <GnbHome to="/">홈HOME</GnbHome>
-        <GnbVod to="/vod">브오디VOD</GnbVod>
+        <GnbVod to="/vod">클래스CLASS</GnbVod>
       </div>
       <SearchArea>
         <form name="search" onSubmit={searchTerm}>
           <SearchInput
             type="text"
-            placeholder="배우고 싶은 재능을 찾아 보세요."
+            placeholder="배우고 싶은 수업을 찾아 보세요."
             value={term}
             onChange={e => setTerm(e.target.value)}
           />
