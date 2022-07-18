@@ -44,11 +44,12 @@ const Nav = () => {
   return (
     <WrapperHead>
       <Link to="/">
-        <LogoImg alt="로고" src="/images/logo.svg" />
+        <LogoImg alt="로고" src="/images/로고4.png" />
       </Link>
       <div>
         <GnbHome to="/">홈HOME</GnbHome>
-        <GnbVod to="/vod">클래스CLASS</GnbVod>
+        <GnbVod to="/vod">브오디VOD</GnbVod>
+        <GnbClass to="/class/list">클래스Class</GnbClass>
       </div>
       <SearchArea>
         <form name="search" onSubmit={searchTerm}>
@@ -99,12 +100,19 @@ const LogoImg = styled.img`
 `;
 
 const GnbHome = styled(Link)`
-  color: ${props => props.theme.red};
+  color: ${props => props.theme.green};
   font-weight: ${props => props.theme.weightBold};
   text-decoration: none;
 `;
 
 const GnbVod = styled(Link)`
+  margin-left: 20px;
+  color: ${({ theme }) => theme.black};
+  font-weight: ${({ theme }) => theme.weightBold};
+  text-decoration: none;
+`;
+
+const GnbClass = styled(Link)`
   margin-left: 20px;
   color: ${({ theme }) => theme.black};
   font-weight: ${({ theme }) => theme.weightBold};

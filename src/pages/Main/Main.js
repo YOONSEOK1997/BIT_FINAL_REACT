@@ -96,7 +96,7 @@ const Main = () => {
                   <LoginDescribe>
                     로그인 하시고 뿌잉의 다양한 튜터를 만나보세요.
                   </LoginDescribe>
-                  <MainLoginBtn to="/login">뿌잉 로그인</MainLoginBtn>
+                  <MainLoginBtn to="/login">🌊오늘,한강 로그인</MainLoginBtn>
                 </>
               ) : (
                 <prifileWrap>
@@ -226,7 +226,7 @@ const SubList = styled.li`
     margin-right: 8px;
     margin-bottom: 15px;
     font-size: ${theme.fontMedium};
-    color: ${theme.red};
+    color: ${theme.green};
   }
 `;
 
@@ -259,7 +259,7 @@ const Profile = styled.div`
     cursor: pointer;
 
     i {
-      color: ${theme.red};
+      color: ${theme.green};
     }
   }
 
@@ -315,7 +315,7 @@ const MainLoginBtn = styled(Link)`
   color: #ffffff;
   font-size: 15px;
   line-height: 24px;
-  background-color: #ff0045;
+  background-color: #03d85e;
 `;
 
 const ProfileImg = styled.img`

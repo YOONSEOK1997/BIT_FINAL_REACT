@@ -19,11 +19,11 @@ const Footer = () => {
           })}
           <li>
             <FooterPtag>TALING CENTER</FooterPtag>
-            <FooterBboing>😊 뿌잉에게 문의하기</FooterBboing>
+            <FooterBboing>😊 오늘,한강팀에게 문의하기</FooterBboing>
             <li>
               <FooterMarginTopPtag>운영시간</FooterMarginTopPtag>
               <FooterMarginTopPtag>
-                평일 10:00 ~ 17:00 점심 13:00 ~14:00
+                평일 10:00 ~ 17:00 점심 13:00 ~ 14:00
               </FooterMarginTopPtag>
             </li>
             <SnsImg alt="sns" src="/images/free-icon-network-7185719.png" />
@@ -34,11 +34,11 @@ const Footer = () => {
         </GlobalUl>
         <FooterBottom>
           <FooterInfo>
-            상호 : 뿌잉 | 주소 : 서울시 강남구 테헤란로 427 We Work tower 427
+            상호 : 오늘,한강 | 주소 : 서울시 강남구 강남대로94길 20 삼오빌딩 9층
             Ganamgu, Seoul, Korea
           </FooterInfo>
           <FooterInfo>
-            대표자명 : 김효정, 임재혁, 구본희, 이강호, 류미류, 김정수
+            대표자명 : 김준영, 이경주, 홍대한, 한별, 김정하, 최윤석
           </FooterInfo>
         </FooterBottom>
       </Container>
@@ -117,7 +117,7 @@ const FOOTER_DATA = [
     footerTitle: 'SUPPORT',
     footerInfo: [
       { id: 1, data: 'FAQ' },
-      { id: 2, data: '뿌잉센터' },
+      { id: 2, data: '오늘한강센터' },
     ],
   },
   {
