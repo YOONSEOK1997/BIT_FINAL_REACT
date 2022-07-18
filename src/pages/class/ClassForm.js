@@ -323,8 +323,6 @@ const ClassForm = passData => {
 
   return (
     <div>
-      <Weather />
-
       <div
         className="content_container"
         style={{ marginLeft: '310px', borderColor: 'white' }}
