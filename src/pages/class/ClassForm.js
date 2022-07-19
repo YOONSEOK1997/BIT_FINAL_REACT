@@ -325,7 +325,7 @@ const ClassForm = passData => {
     <div>
       <div
         className="content_container"
-        style={{ marginLeft: '310px', borderColor: 'white' }}
+        style={{ marginLeft: '25%', borderColor: 'white' }}
       >
         <div className="class_subtitle">
           홍대한님의 클래스에 대한 기본정보를 입력해주세요!
