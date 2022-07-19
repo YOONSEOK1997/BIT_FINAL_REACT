@@ -25,6 +25,7 @@ const MainSlider = () => {
         <Promotion id="0" />
         <Promotion id="1" />
         <Promotion id="2" />
+        <Promotion id="3" />
       </StyledSlide>
     </Wrapper>
   );

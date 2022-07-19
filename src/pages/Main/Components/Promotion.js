@@ -22,7 +22,8 @@ const Wrapper = styled.div`
 `;
 
 const PROMOTIONS = [
-  '/images/promotion/promotion1.png',
-  '/images/promotion/promotion2.png',
-  '/images/promotion/promotion3.png',
+  '/images/promotion/promotion4.png',
+  '/images/promotion/promotion5.png',
+  '/images/promotion/promotion6.png',
+  '/images/promotion/promotion7.png',
 ];
