@@ -39,17 +39,6 @@ const ClassList = () => {
     <div>
       <div className="content_container" style={{ marginLeft: '310px' }}>
         <div className="row">
-          <select className="select1">
-            <option key="apple" value="apple">
-              클래스
-            </option>
-            <option key="orange" value="orange">
-              챌린지
-            </option>
-            <option key="orange" value="orange">
-              모임
-            </option>
-          </select>
           <select className="select1" style={{ width: '150px' }}>
             -
             <option key="orange" value="orange">
@@ -148,10 +137,6 @@ const ClassList = () => {
             />
             <div className="boxtext1">펫</div>
           </div>
-        </div>
-        <div className="category3">
-          <input type="text" className="search" />
-          <button className="searchbtn">검색</button>
         </div>
         <div className="category4" style={{ float: 'right' }}>
           <label>

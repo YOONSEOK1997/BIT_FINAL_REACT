@@ -9,6 +9,8 @@ import LectureDetail from './pages/LectureDetail/LectureDetail';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 import Review from './components/Review/Review';
+import About from './pages/About/About';
+
 import {
   ClassList,
   ClassForm,
@@ -38,6 +40,8 @@ const Router = () => {
         <Route path="/class/updateform/:num" element={<ClassUpdateForm />} />
         <Route path="/class/guide" element={<ClassGuide />} />
         <Route path="/class/introguide" element={<ClassIntroGuide />} />
+
+        <Route path="/about" element={<About />} />
       </Routes>
       <Footer />
     </BrowserRouter>

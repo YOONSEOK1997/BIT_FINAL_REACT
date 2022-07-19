@@ -50,6 +50,7 @@ const Nav = () => {
         <GnbHome to="/">홈HOME</GnbHome>
         <GnbVod to="/vod">브오디VOD</GnbVod>
         <GnbClass to="/class/list">클래스Class</GnbClass>
+        <GnbAbout to="/about">About</GnbAbout>
       </div>
       <SearchArea>
         <form name="search" onSubmit={searchTerm}>
@@ -114,6 +115,12 @@ const GnbVod = styled(Link)`
 
 const GnbClass = styled(Link)`
   margin-left: 20px;
+  color: ${({ theme }) => theme.black};
+  font-weight: ${({ theme }) => theme.weightBold};
+  text-decoration: none;
+`;
+
+const GnbAbout = styled(Link)`
   color: ${({ theme }) => theme.black};
   font-weight: ${({ theme }) => theme.weightBold};
   text-decoration: none;
