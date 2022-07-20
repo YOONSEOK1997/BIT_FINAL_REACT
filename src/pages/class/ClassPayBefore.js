@@ -1,15 +1,12 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
-import img1 from './classImage/8.jpg';
 import img2 from './classImage/rkfk1.JPG';
 //import { useHistory } from 'react-router-dom';
 const ClassPaybefore = props => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-  const { open, close, header } = props;
+  const { open, close, header, paydata } = props;
   const navi = useNavigate();
-  //const history = useHistory();
-  const [data, setData] = useState('');
 
   const handleClick = e => {
     navi('/class/payment/after', {
@@ -35,9 +32,15 @@ const ClassPaybefore = props => {
             {props.children}
             <div style={{ marginTop: '20px', marginLeft: '70px' }}>
               <div style={{ fontWeight: '600', fontSize: '23px' }}>
-                캐포머와 리포머를 활용한 필라테스
+                {paydata.class_name + '되나?'}
               </div>
-
+              <button
+                onClick={e => {
+                  console.log(paydata);
+                }}
+              >
+                z
+              </button>
               <div
                 style={{ float: 'left', marginTop: '25px', marginLeft: '15px' }}
               >

@@ -80,26 +80,9 @@ const ClassDetail = () => {
   };
 
   //결제정보
-  const [payData, setPayData] = useState([options, data]);
+  const payData = useState({ options, data, percnt, totpay });
 
-  const [likeColor, setLikeColor] = useState([
-    'pink',
-    'yellow',
-    'tomato',
-    'green',
-  ]);
-  //2-(1)
-  //색상추가(버튼)
-  const addColorEvent = co => {
-    //배열
-    setLikeColor(likeColor.concat(co));
-  };
-  //색상삭제(더블클릭)
-  const deleteLikeColor = idx => {
-    //배열
-    setLikeColor(likeColor.filter((a, i) => i !== idx));
-  };
-  //삭제시 호출 할 함수
+  //클래스 삭제시 호출 할 함수
   const onDelete = () => {
     axios.delete(deletelUrl).then(res => {
       //삭제 후 목록으로 이동
@@ -216,6 +199,7 @@ const ClassDetail = () => {
                   open={modalOpen}
                   close={closeModal}
                   header="결제 정보"
+                  paydata={payData}
                 >
                   {/* // Modal.js <main> {props.children} </main>에 내용이 입력 */}
                 </ClassPaybefore>
