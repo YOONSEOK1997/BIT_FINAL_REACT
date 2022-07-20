@@ -18,8 +18,8 @@ const ClassDetail = () => {
   const [data, setData] = useState('');
   const [options, setOptions] = useState([]);
   const percnt = useRef(1);
-  const [totpay, setTotpay] = useState(1);
   const [class_price, setClass_price] = useState(0);
+  const totpay = useRef(0);
   const navi = useNavigate();
 
   // alert MUI (삭제 다이얼로그 코드 추가)
@@ -181,11 +181,12 @@ const ClassDetail = () => {
                       type="number"
                       className="percnt"
                       onChange={e => {
-                        percnt.current = e.target.value;
-                        setTotpay(Number(percnt * class_price));
+                        percnt.current = parseInt(e.target.value);
+
+                        totpay.current = percnt.current * class_price;
                         console.log('금액' + class_price);
                         console.log('총인원' + percnt.current);
-                        console.log('총금액' + totpay);
+                        console.log('총금액' + totpay.current);
                       }}
                     ></input>
                   </div>
