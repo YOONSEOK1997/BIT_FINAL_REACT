@@ -79,6 +79,7 @@ const ClassForm = passData => {
 
   const [showImages, setShowImages] = useState([]);
   const [photos, setPhotos] = useState([]);
+  const [photos2, setPhotos2] = useState([]);
 
   // 이미지 추가
   // 이미지 상대경로 저장
@@ -94,22 +95,27 @@ const ClassForm = passData => {
       console.log(imageUrlLists[i]); //찍히고
       //`setClass_photo${i+1}`(imageUrlLists[i]);
 
-      // const uploadFile = imageLists[i];
-      // const imageFile = new FormData();
-      // imageFile.append("uploadFile",uploadFile); //uploadFile = spring에서 MultipartFile에서 받아주는 이름
+      const uploadFile = imageLists[i];
+      const imageFile = new FormData();
+      imageFile.append('uploadFiles', uploadFile); //uploadFile = spring에서 MultipartFile에서 받아주는 이름
 
-      // axios({
-      //     method: 'post',
-      //     url: uploadUrl,
-      //     data: imageFile,
-      //     headers:{'Content-Type':'multipart/form-data'}
-      // }).then(res=>{
-      //     //setClass_photo1(res.data); //백엔드에서 보낸 변경된 이미지명을 photo 변수에 넣는다
-      // }).catch(err=>{
-      //     alert(err);
-      // });
+      axios({
+        method: 'post',
+        url: uploadUrl,
+        data: imageFile,
+        headers: { 'Content-Type': 'multipart/form-data' },
+      })
+        .then(res => {
+          console.log('axios2 : ' + res.data);
+          photos.push(res.data);
+          console.log(photos);
+          //setPhotos(photos.concat(res.data));
+        })
+        .catch(err => {
+          alert(err);
+        });
 
-      setPhotos(photos.concat(imageUrlLists));
+      setPhotos2(photos2.concat(imageUrlLists));
     }
 
     if (imageUrlLists.length > 5) {
@@ -118,24 +124,13 @@ const ClassForm = passData => {
       return false;
     }
     console.log('setphoto : ' + imageUrlLists);
-    setShowImages(imageUrlLists); //안담겨
-
-    //우겨넣기_한박자 늦음
-    const asd1 = imageUrlLists[0];
-    class_photo1.current = asd1;
-    const asd2 = imageUrlLists[1];
-    class_photo2.current = asd2;
-    const asd3 = imageUrlLists[2];
-    class_photo3.current = asd3;
-    const asd4 = imageUrlLists[3];
-    class_photo4.current = asd4;
-    const asd5 = imageUrlLists[4];
-    class_photo5.current = asd5;
   };
 
   // X버튼 클릭 시 이미지 삭제
   const handleDeleteImage = id => {
     setPhotos(photos.filter((_, index) => index !== id));
+    setPhotos2(photos2.filter((_, index) => index !== id));
+    console.log(photos);
   };
 
   //추가하는 #############################33
@@ -448,7 +443,7 @@ const ClassForm = passData => {
 
           <div style={{ marginLeft: '60px' }}>
             {/* // 저장해둔 이미지들을 순회하면서 화면에 이미지 출력 */}
-            {photos.map((image, id) => (
+            {photos2.map((image, id) => (
               <div className="smphotod" key={id}>
                 <img src={image} alt={`${image}-${id}`} className="smphoto" />
                 <div className="xbtn" onClick={() => handleDeleteImage(id)}>
