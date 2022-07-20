@@ -7,9 +7,26 @@ import { setToken, setProfile, setNickname } from '../../utils';
 import styled from 'styled-components';
 import './css/register.css';
 import img1 from './image/profile.jpg';
-import { useForm } from 'react-hook-form';
+import { appendErrors, useForm } from 'react-hook-form';
 
 const Register = () => {
+  const navi = useNavigate();
+  const [data, setData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    emailok: false,
+  });
+  //데이터 전송
+  const onDataChange = e => {
+    const { name, value } = e.target;
+    //이벤트 발생 name이 pass일 경우 무조건 passOk는 false
+    if (name === 'pass') setPassOk(false);
+    setData({
+      ...data,
+      [name]: value,
+    });
+  };
   //HOOK FORM
   const {
     register,
@@ -19,8 +36,10 @@ const Register = () => {
     mode: 'onChange',
   });
 
-  const onSubmit = data => {
-    console.log(data);
+  const onSubmit = async data => {
+    await new Promise(r => setTimeout(r, 1000));
+    alert(JSON.stringify(data));
+    console.log(data, errors);
   };
 
   //프로필 사진 관련
@@ -28,6 +47,14 @@ const Register = () => {
   const photoInput = useRef();
   const imgChange = () => {
     photoInput.current.click();
+  };
+
+  //비밀번호 확인
+  const [passOk, setPassOk] = useState(false);
+  const onPassChange = e => {
+    const { value } = e.target;
+    if (value === data.password) setPassOk(true);
+    else setPassOk(false);
   };
 
   const [username, setUsername] = useState('');
@@ -69,19 +96,21 @@ const Register = () => {
                 aria-invalid={
                   !isDirty ? undefined : errors.username ? 'true' : 'false'
                 }
-                onChange={e => {
-                  setUsername(e.target.value);
-                }}
+                onChange={onDataChange}
                 {...register('username', {
                   minLength: {
                     value: 5,
                     message: '5글자 이상 입력해주세요',
                   },
+                  pattern: {
+                    value: /^[A-za-z0-9가-힣]{3,10}$/,
+                    message: '가능한 문자: 영문 대소문자, 글자 단위 한글, 숫자',
+                  },
                 })}
               />
               <label>USER NAME</label>
             </div>
-            {errors.email && (
+            {errors.username && (
               <div className="regis-error">{errors.username.message}</div>
             )}
             <div className="int-area1">
@@ -94,9 +123,7 @@ const Register = () => {
                 aria-invalid={
                   !isDirty ? undefined : errors.email ? 'true' : 'false'
                 }
-                onChange={e => {
-                  setEmail(e.target.value);
-                }}
+                onChange={onDataChange}
                 {...register('email', {
                   pattern: {
                     value: /\S+@\S+\.\S+/,
@@ -116,24 +143,21 @@ const Register = () => {
                 id="password"
                 autoComplete="off"
                 required
-                onChange={e => {
-                  setPassword(e.target.value);
-                }}
+                onChange={onDataChange}
               />
               <label>PASSWORD</label>
             </div>
             <div className="int-area1">
               <input
                 type="password"
-                name="password"
-                id="password"
                 autoComplete="off"
                 required
-                onChange={e => {
-                  setPassword(e.target.value);
-                }}
+                onChange={onPassChange}
               />
               <label>PASSWORD</label>
+              <span style={{ marginLeft: '5px', color: 'red' }}>
+                {passOk ? '일치합니다' : ''}
+              </span>
             </div>
             <div className="btn-area1">
               <button type="submit" disabled={isSubmitting}>
