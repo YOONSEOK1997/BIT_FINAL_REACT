@@ -3,16 +3,16 @@
     "id": 40,
     "title": "경주와 함께하는 고강도 기능성 운동",
     "category": "피트니스",
-    "profile": "/images/tutor/tutor_1.png",
+    "profile": "/images/tutor/이경주.jpeg",
     "tutor": "이경주",
     "video": "/video/vod_1.mp4"
   },
   {
     "id": 13,
-    "title": "미국 with 뿌잉민수",
+    "title": "미국 with 한별",
     "category": "미국",
-    "profile": "/images/tutor/tutor_2.png",
-    "tutor": "뿌잉민수",
+    "profile": "/images/tutor/한별.jpg",
+    "tutor": "한별",
     "video": "/video/vod_7.mp4"
   },
   {
@@ -41,7 +41,7 @@
   },
   {
     "id": 42,
-    "title": "잠실 메이웨더 재혁재혁과 함께 뿌수는 복싱 클래스!",
+    "title": "노량진 메이웨더 재혁재혁과 함께 뿌수는 복싱 클래스!",
     "category": "복싱",
     "profile": "/images/tutor/tutor_5.png",
     "tutor": "재혁재혁",
