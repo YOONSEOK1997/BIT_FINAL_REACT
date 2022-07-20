@@ -61,7 +61,7 @@ const VodMain = () => {
           <Slider
             infinite={true}
             lazyLoad={true}
-            slidesToShow={6}
+            slidesToShow={5}
             centerMode={true}
             centerPadding={30}
             swipeToSlide={true}

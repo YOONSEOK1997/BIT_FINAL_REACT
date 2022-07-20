@@ -46,7 +46,7 @@ const Nav = () => {
       <Link to="/">
         <LogoImg alt="로고" src="/images/로고4.png" />
       </Link>
-      <div>
+      <div style={{ width: '380px' }}>
         <GnbHome to="/">홈HOME</GnbHome>
         <GnbVod to="/vod">브오디VOD</GnbVod>
         <GnbClass to="/class/list">클래스Class</GnbClass>
@@ -124,12 +124,13 @@ const GnbAbout = styled(Link)`
   color: ${({ theme }) => theme.black};
   font-weight: ${({ theme }) => theme.weightBold};
   text-decoration: none;
+  margin-left: 20px;
 `;
 
 const SearchArea = styled.div`
   position: relative;
   width: 280px;
-  margin-left: 230px;
+  margin-left: 150px;
 `;
 
 const SearchInput = styled.input`

@@ -39,7 +39,7 @@ const VodNav = () => {
       <Wrapper>
         <Left>
           <LinkMain to="/">
-            <Logo src="/images/logo.svg" />
+            <Logo src="/images/로고4.png" />
           </LinkMain>
           <PageMenu to="/">홈HOME</PageMenu>
           <PageMenu to="/vod">브오디VOD</PageMenu>
@@ -96,8 +96,9 @@ const LinkMain = styled.a`
   cursor: pointer;
 `;
 const Logo = styled.img`
-  filter: invert(100%);
+  // filter: invert(100%);
   margin-right: 40px;
+  width: 100px;
 `;
 const PageMenu = styled(Link)`
   color: #fff;
