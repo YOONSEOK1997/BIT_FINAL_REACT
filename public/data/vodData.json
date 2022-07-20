@@ -17,42 +17,34 @@
   },
   {
     "id": 6,
-    "title": "유진 쌤과 떠나는 신나는 일본여행",
+    "title": "정하와 떠나는 신나는 일본여행",
     "category": "일본",
-    "profile": "/images/tutor/tutor_3.png",
-    "tutor": "유진쌤",
+    "profile": "/images/tutor/김정하.jpg",
+    "tutor": "김정하",
     "video": "/video/vod_2.mp4"
   },
   {
     "id": 48,
-    "title": "어인 정수정수의 아가미 호흡법",
+    "title": "윤석의 수영 교실",
     "category": "수영",
-    "profile": "/images/tutor/tutor_4.png",
-    "tutor": "정수정수",
+    "profile": "/images/tutor/최윤석.jpg",
+    "tutor": "최윤석",
     "video": "/video/vod_4.mp4"
   },
   {
     "id": 38,
-    "title": "러너 보니보니의 달리기 클래스!",
+    "title": "러너 대한의 달리기 클래스!",
     "category": "러닝",
-    "profile": "/images/tutor/tutor_1.png",
-    "tutor": "보니보니",
+    "profile": "/images/tutor/홍대한.jpg",
+    "tutor": "홍대한",
     "video": "/video/vod_3.mp4"
   },
   {
     "id": 42,
-    "title": "노량진 메이웨더 재혁재혁과 함께 뿌수는 복싱 클래스!",
+    "title": "노량진 메이웨더 준영의 복싱 클래스!",
     "category": "복싱",
-    "profile": "/images/tutor/tutor_5.png",
-    "tutor": "재혁재혁",
+    "profile": "/images/tutor/김준영.jpg",
+    "tutor": "김준영",
     "video": "/video/vod_5.mp4"
-  },
-  {
-    "id": 45,
-    "title": "대관령 산신령 정수정수의 설산 비박 클래스 (입돌아가지 않아요~!)",
-    "category": "등산",
-    "profile": "/images/tutor/tutor_4.png",
-    "tutor": "정수정수",
-    "video": "/video/vod_6.mp4"
   }
 ]
