@@ -199,7 +199,8 @@ const ClassDetail = () => {
                   open={modalOpen}
                   close={closeModal}
                   header="결제 정보"
-                  paydata={payData}
+                  data={data}
+                  changeoptions={changeoptions.current}
                 >
                   {/* // Modal.js <main> {props.children} </main>에 내용이 입력 */}
                 </ClassPaybefore>

@@ -5,7 +5,7 @@ import img2 from './classImage/rkfk1.JPG';
 //import { useHistory } from 'react-router-dom';
 const ClassPaybefore = props => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-  const { open, close, header, paydata } = props;
+  const { open, close, header, data, changeoptions } = props;
   const navi = useNavigate();
 
   const handleClick = e => {
@@ -18,6 +18,10 @@ const ClassPaybefore = props => {
       },
     });
   };
+
+  useEffect(() => {
+    console.log(props);
+  }, []);
   return (
     <div className={open ? 'openModal modal' : 'modal'}>
       {open ? (
@@ -32,11 +36,11 @@ const ClassPaybefore = props => {
             {props.children}
             <div style={{ marginTop: '20px', marginLeft: '70px' }}>
               <div style={{ fontWeight: '600', fontSize: '23px' }}>
-                {paydata.class_name + '되나?'}
+                {props.data.class_name + '되나?'}
               </div>
               <button
                 onClick={e => {
-                  console.log(paydata);
+                  console.log();
                 }}
               >
                 z
@@ -67,7 +71,7 @@ const ClassPaybefore = props => {
                   marginTop: '15px',
                 }}
               >
-                2022-10-17
+                {props.changeoptions.classoption_day}
               </div>
               <div
                 style={{ float: 'left', marginTop: '15px', marginLeft: '15px' }}
