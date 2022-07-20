@@ -118,19 +118,6 @@ const ClassForm = passData => {
       return false;
     }
     console.log('setphoto : ' + imageUrlLists);
-    setShowImages(imageUrlLists); //안담겨
-
-    //우겨넣기_한박자 늦음
-    const asd1 = imageUrlLists[0];
-    class_photo1.current = asd1;
-    const asd2 = imageUrlLists[1];
-    class_photo2.current = asd2;
-    const asd3 = imageUrlLists[2];
-    class_photo3.current = asd3;
-    const asd4 = imageUrlLists[3];
-    class_photo4.current = asd4;
-    const asd5 = imageUrlLists[4];
-    class_photo5.current = asd5;
   };
 
   // X버튼 클릭 시 이미지 삭제
