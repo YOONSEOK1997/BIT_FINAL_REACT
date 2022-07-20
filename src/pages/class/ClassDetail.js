@@ -17,6 +17,9 @@ const ClassDetail = () => {
   const { class_num } = useParams();
   const [data, setData] = useState('');
   const [options, setOptions] = useState([]);
+  const percnt = useRef(1);
+  const [totpay, setTotpay] = useState(1);
+  const [class_price, setClass_price] = useState(0);
   const navi = useNavigate();
 
   // alert MUI (삭제 다이얼로그 코드 추가)
@@ -39,7 +42,7 @@ const ClassDetail = () => {
   let detailUrl2 = SPRING_URL + 'class/detailoption?class_num=' + class_num;
   let deletelUrl = SPRING_URL + 'class/delete?class_num=' + class_num;
 
-  //popup modal (ClassGuide, ClassIntroGuide)
+  //popup modal (ClassGuide, 클래스신청)
   // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
@@ -63,6 +66,7 @@ const ClassDetail = () => {
       //res에 dto가 들어있음
       //console.log(res.data.sangpum); 상품명 출력 확인
       setData(res.data);
+      setClass_price(res.data.class_price);
       console.log(res.data);
     });
   };
@@ -74,6 +78,26 @@ const ClassDetail = () => {
     });
   };
 
+  //결제정보
+  const [payData, setPayData] = useState([options, data]);
+
+  const [likeColor, setLikeColor] = useState([
+    'pink',
+    'yellow',
+    'tomato',
+    'green',
+  ]);
+  //2-(1)
+  //색상추가(버튼)
+  const addColorEvent = co => {
+    //배열
+    setLikeColor(likeColor.concat(co));
+  };
+  //색상삭제(더블클릭)
+  const deleteLikeColor = idx => {
+    //배열
+    setLikeColor(likeColor.filter((a, i) => i !== idx));
+  };
   //삭제시 호출 할 함수
   const onDelete = () => {
     axios.delete(deletelUrl).then(res => {
@@ -146,11 +170,21 @@ const ClassDetail = () => {
                   </span>
                   <br />
                   <div style={{ marginTop: '15px' }}>
-                    {/* 인워선택 + / - */}
                     <div className="perselect" style={{ marginTop: '5px' }}>
                       인원 선택
                     </div>
-                    <input type="number" className="percnt"></input>
+                    <input
+                      defaultValue={percnt}
+                      type="number"
+                      className="percnt"
+                      onChange={e => {
+                        percnt.current = e.target.value;
+                        setTotpay(Number(percnt * class_price));
+                        console.log('금액' + class_price);
+                        console.log('총인원' + percnt.current);
+                        console.log('총금액' + totpay);
+                      }}
+                    ></input>
                   </div>
                 </div>
                 {/* class_plan_row */}
