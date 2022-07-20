@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import LoupeIcon from '@mui/icons-material/Loupe';
 import Editor from './EditorWithUseQuill';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import Weather from '../../components/Weather';
 import ClassGuide from './ClassGuide';
 import GuideModal from './GuideModal';
 // import moment from 'moment';
@@ -13,15 +14,21 @@ import GuideModal from './GuideModal';
 const ClassForm = passData => {
   const navi = useNavigate();
 
+  let url = process.env.REACT_APP_SPRING_URL + 'class/reivewsave';
+
   //url 등록
-  let uploadUrl = 'http://localhost:9009/class/upload';
+  let uploadUrl = process.env.REACT_APP_SPRING_URL + 'class/upload';
   let photoUrl = 'http://localhost:9009/save/';
-  let insertUrl = 'http://localhost:9009/class/insert';
+  let insertUrl = process.env.REACT_APP_SPRING_URL + 'class/insert';
+  let insertUrl2 = process.env.REACT_APP_SPRING_URL + 'class/insert2';
+  let numUrl = process.env.REACT_APP_SPRING_URL + 'class/maxnum';
 
   //class table < optionnum
   const [class_category, setClass_category] = useState('스냅사진');
   const [class_location, setClass_location] = useState('반포');
   const [class_name, setClass_name] = useState('');
+  const [class_num, setClass_num] = useState('');
+  const [class_anounok, setClass_anounok] = useState(false);
 
   const class_photo1 = useRef('');
   const class_photo2 = useRef('');
@@ -44,29 +51,25 @@ const ClassForm = passData => {
   //const [classoption_endtime, setClassoption_endtime] = useState(0); 밑에서 사용
   //const [classoption_totalperson, setClassoption_totalperson] = useState(1); 밑에서 사용
 
-  //file change 시 호출 이벤트
-  const uploadImage = e => {
-    const uploadFile = e.target.files[0];
-    const imageFile = new FormData();
-    imageFile.append('uploadFile', uploadFile); //uploadFile = spring에서 MultipartFile에서 받아주는 이름
-
-    axios({
-      method: 'post',
-      url: uploadUrl,
-      data: imageFile,
-      headers: { 'Content-Type': 'multipart/form-data' },
-    })
-      .then(res => {
-        //setClass_photo1(res.data); //백엔드에서 보낸 변경된 이미지명을 photo 변수에 넣는다
-      })
-      .catch(err => {
-        alert(err);
-      });
-  };
-
   function upload() {
     const url = 'http://localhost:9009/class/insert3';
-    axios.post(url, showImages).then(res => {
+    axios.post(url, { class_photo1: showImages }).then(res => {
+      alert('insert 성공');
+      //navi("/login")
+    });
+  }
+
+  function maxnum() {
+    axios.post(numUrl).then(res => {
+      setClass_num(res.data + 1);
+      console.log(class_num);
+      //navi("/login")
+    });
+  }
+
+  //옵션 일정추가후 DB전송
+  function uploadOptions() {
+    axios.post(insertUrl2, options).then(res => {
       alert('insert 성공');
       //navi("/login")
     });
@@ -75,19 +78,38 @@ const ClassForm = passData => {
   //0712#################################################3
 
   const [showImages, setShowImages] = useState([]);
+  const [photos, setPhotos] = useState([]);
 
   // 이미지 추가
   // 이미지 상대경로 저장
   const handleAddImages = event => {
     const imageLists = event.target.files;
-    let imageUrlLists = [...showImages];
+    let imageUrlLists = [];
 
     for (let i = 0; i < imageLists.length; i++) {
       const currentImageUrl = URL.createObjectURL(imageLists[i]);
       imageUrlLists.push(currentImageUrl);
 
+      console.log(imageLists[i]); //찍히고
       console.log(imageUrlLists[i]); //찍히고
       //`setClass_photo${i+1}`(imageUrlLists[i]);
+
+      // const uploadFile = imageLists[i];
+      // const imageFile = new FormData();
+      // imageFile.append("uploadFile",uploadFile); //uploadFile = spring에서 MultipartFile에서 받아주는 이름
+
+      // axios({
+      //     method: 'post',
+      //     url: uploadUrl,
+      //     data: imageFile,
+      //     headers:{'Content-Type':'multipart/form-data'}
+      // }).then(res=>{
+      //     //setClass_photo1(res.data); //백엔드에서 보낸 변경된 이미지명을 photo 변수에 넣는다
+      // }).catch(err=>{
+      //     alert(err);
+      // });
+
+      setPhotos(photos.concat(imageUrlLists));
     }
 
     if (imageUrlLists.length > 5) {
@@ -95,6 +117,7 @@ const ClassForm = passData => {
       alert('이미지는 최대 5장입니다!');
       return false;
     }
+    console.log('setphoto : ' + imageUrlLists);
     setShowImages(imageUrlLists); //안담겨
 
     //우겨넣기_한박자 늦음
@@ -108,41 +131,30 @@ const ClassForm = passData => {
     class_photo4.current = asd4;
     const asd5 = imageUrlLists[4];
     class_photo5.current = asd5;
-
-    console.log('값1은 :' + class_photo1.current);
-    console.log('값2은 :' + class_photo2.current);
-    console.log('값3은 :' + class_photo3.current);
-    console.log('값4은 :' + class_photo4.current);
-    console.log('값5은 :' + class_photo5.current);
-
-    console.log(`값은 : ${imageUrlLists[0]}`);
   };
+
   // X버튼 클릭 시 이미지 삭제
   const handleDeleteImage = id => {
-    setShowImages(showImages.filter((_, index) => index !== id));
-    console.log('삭제 후');
-    for (let i = 0; i < showImages.length; i++) {
-      console.log(showImages[i]);
-    }
+    setPhotos(photos.filter((_, index) => index !== id));
   };
 
   //추가하는 #############################33
-  const onInsert = e => {
+  function onInsert() {
     //axios.post(insertUrl, {sangpum:sangpum, su:su, dan:dan}) // a : b - a는 spring dto의 필드 명, b는 여기서 보내주는 필드명 같을 때는 생략 가능
     axios
       .post(insertUrl, {
         class_category,
         class_location,
         class_name,
-        class_photo1,
-        class_photo2,
-        class_photo3,
-        class_photo4,
-        class_photo5,
+        class_photo1: photos[0],
+        class_photo2: photos[1],
+        class_photo3: photos[2],
+        class_photo4: photos[3],
+        class_photo5: photos[4],
         class_target,
         class_price,
         class_hour,
-        class_intro,
+        class_intro: class_intro.current,
         class_curri,
         class_anoun,
         class_confirm,
@@ -150,40 +162,18 @@ const ClassForm = passData => {
         classoption_starttime,
         classoption_endtime,
         classoption_totalperson,
+        class_anounok,
       })
       .then(res => {
-        //insert 성공 후처리 코드
-        setClass_category('');
-        setClass_location('');
-        setClass_name('');
-
-        // setClass_photo1('');//ref
-        // setClass_photo2('');//ref
-        // setClass_photo3('');//ref
-        // setClass_photo4('');//ref
-        // setClass_photo5('');//ref
-
-        setClass_target('');
-        setClass_price(0);
-        setClass_hour(0);
-
-        //setClass_intro('');//ref(Editor1)
-        setClass_curri(''); //ref(Editor2)
-        setClass_anoun('');
-        setClass_confirm('');
-
-        setClassoption_day('');
-        setClassoption_starttime('');
-        setClassoption_endtime('');
-        setClassoption_totalperson('');
-
+        uploadOptions();
+        console.log('쩐송');
         //목록으로 이동
         navi('/class/list');
       })
       .catch(err => {
         alert(err);
       });
-  };
+  }
 
   //클래스옵션 저장할 배열객체
   const [options, setOptions] = useState([]);
@@ -196,6 +186,7 @@ const ClassForm = passData => {
         classoption_starttime,
         classoption_endtime,
         classoption_totalperson,
+        class_num,
       })
     );
   };
@@ -206,8 +197,10 @@ const ClassForm = passData => {
   };
 
   useEffect(() => {
-    console.log(options);
-  }, [options]);
+    // console.log("진짜로"+photos);
+    // console.log(options)
+    maxnum();
+  }, [options, photos]);
 
   //popup modal (ClassGuide, ClassIntroGuide)
   // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
@@ -246,7 +239,7 @@ const ClassForm = passData => {
   const date = `${current.getDate()}/${
     current.getMonth() + 1
   }/${current.getFullYear()}`;
-  console.log('date' + date);
+  // console.log('date'+date);
   //2)
   //const nowTime = moment().format('YYYY-MM-DD');
   //console.log('nowTime'+nowTime);
@@ -323,9 +316,11 @@ const ClassForm = passData => {
 
   return (
     <div>
+      <Weather />
+
       <div
         className="content_container"
-        style={{ marginLeft: '25%', borderColor: 'white' }}
+        style={{ marginLeft: '310px', borderColor: 'white' }}
       >
         <div className="class_subtitle">
           홍대한님의 클래스에 대한 기본정보를 입력해주세요!
@@ -376,21 +371,11 @@ const ClassForm = passData => {
               setClass_category(e.target.value);
             }}
           >
-            <option key="apple" value="스냅사진">
-              스냅사진
-            </option>
-            <option key="orange" value="스포츠">
-              스포츠
-            </option>
-            <option key="orange1" value="댄스">
-              댄스
-            </option>
-            <option key="orange2" value="뮤직">
-              뮤직
-            </option>
-            <option key="orange3" value="드로잉">
-              드로잉
-            </option>
+            <option value="스냅사진">스냅사진</option>
+            <option value="스포츠">스포츠</option>
+            <option value="댄스">댄스</option>
+            <option value="뮤직">뮤직</option>
+            <option value="드로잉">드로잉</option>
           </select>
         </div>
 
@@ -403,24 +388,12 @@ const ClassForm = passData => {
               setClass_location(e.target.value);
             }}
           >
-            <option key="apple4" value="반포">
-              반포 한강공원
-            </option>
-            <option key="orange4" value="잠실">
-              잠실 한강공원
-            </option>
-            <option key="orange5" value="이촌">
-              이촌 한강공원
-            </option>
-            <option key="orange6" value="여의도">
-              여의도 한강공원
-            </option>
-            <option key="orange7" value="난지">
-              난지 한강공원
-            </option>
-            <option key="orange8" value="뚝섬">
-              뚝섬 한강공원
-            </option>
+            <option value="반포">반포 한강공원</option>
+            <option value="잠실">잠실 한강공원</option>
+            <option value="이촌">이촌 한강공원</option>
+            <option value="여의도">여의도 한강공원</option>
+            <option value="난지">난지 한강공원</option>
+            <option value="뚝섬">뚝섬 한강공원</option>
           </select>
         </div>
 
@@ -453,7 +426,7 @@ const ClassForm = passData => {
                 className="que"
                 style={{ fontSize: '35px', float: 'left' }}
               />
-              <span className="asd" style={{ top: '533px' }}>
+              <span className="asd" style={{ top: '413px', left: '970px' }}>
                 Tip!
                 <br />
                 클래스의 주제를 연상시키는 제목을 작성해주세요.
@@ -475,7 +448,7 @@ const ClassForm = passData => {
 
           <div style={{ marginLeft: '22px' }}>
             {/* // 저장해둔 이미지들을 순회하면서 화면에 이미지 출력 */}
-            {showImages.map((image, id) => (
+            {photos.map((image, id) => (
               <div className="smphotod" key={id}>
                 <img src={image} alt={`${image}-${id}`} className="smphoto" />
                 <div
@@ -500,18 +473,10 @@ const ClassForm = passData => {
             }}
             value={class_target}
           >
-            <option key="apple5" value="apple">
-              입문
-            </option>
-            <option key="orangea" value="orange">
-              초급
-            </option>
-            <option key="oranges" value="orange">
-              중급
-            </option>
-            <option key="oranged" value="orange">
-              고급
-            </option>
+            <option value="입문">입문</option>
+            <option value="초급">초급</option>
+            <option value="중급">중급</option>
+            <option value="고급">고급</option>
           </select>
         </div>
         <div className="row">
@@ -643,18 +608,20 @@ const ClassForm = passData => {
           >
             👉
           </span>
-          <button onClick={openModal2} className="btn1">
-            클래스 소개 가이드 &gt;
-          </button>
-          {/* //header 부분에 텍스트를 입력한다. */}
-          <GuideModal
-            open={modalOpen2}
-            close={closeModal2}
-            header="클래스가이드"
-          >
-            {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달
+          <React.Fragment>
+            <button onClick={openModal2} className="btn1">
+              클래스 소개 가이드 &gt;
+            </button>
+            {/* //header 부분에 텍스트를 입력한다. */}
+            <GuideModal
+              open={modalOpen2}
+              close={closeModal2}
+              header="클래스가이드"
+            >
+              {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달
                             팝업창입니다. 쉽게 만들 수 있어요. 같이 만들어봐요! */}
-          </GuideModal>
+            </GuideModal>
+          </React.Fragment>
           {/* <button className="btn1"
                     onClick={()=>{
                         navi("/class/introguide")
@@ -683,19 +650,14 @@ const ClassForm = passData => {
         <div className="row">
           <div className="editor" style={{ marginLeft: '50px' }}>
             <span className="class_minititle">클래스 커리큘럼</span>
-            <span className="tulp">
-              <HelpOutlineIcon
-                style={{ fontSize: '20px', marginLeft: '10px' }}
-              />
-              <span className="tulc">
-                커리큘럼 내용이 구체적일수록 클래스 선택에 도움이 됩니다~!
-              </span>
-            </span>
-            <Editor
+            <textarea
+              className="textarea1"
+              placeholder="클래스의 '기본정보'를 포함하여 상세히 작성해주세요.
+                            > 기본정보 : 클래스 진행방식, 클래스 목표, 클래스 결과물, 차별점"
               onChange={e => {
-                class_intro(e.target.value);
+                setClass_curri(e.target.value);
               }}
-            />
+            ></textarea>
           </div>
         </div>
 
@@ -710,12 +672,23 @@ const ClassForm = passData => {
               onChange={e => {
                 setClass_anoun(e.target.value);
               }}
-            />
+            ></textarea>
           </div>
           <div style={{ marginLeft: '610px', marginTop: '1px' }}>
             <label>
               <span className="anou">공지사항을 노출하시겠습니까?</span> &nbsp;
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={e => {
+                  if (class_anounok == true) {
+                    setClass_anounok(false);
+                    console.log(class_anounok);
+                  } else {
+                    setClass_anounok(true);
+                    console.log(class_anounok);
+                  }
+                }}
+              ></input>
             </label>
           </div>
         </div>
@@ -729,7 +702,7 @@ const ClassForm = passData => {
               onChange={e => {
                 setClass_confirm(e.target.value);
               }}
-            />
+            ></textarea>
           </div>
         </div>
 
@@ -739,7 +712,7 @@ const ClassForm = passData => {
         <button
           class="w-btn w-btn-gra3 w-btn-gra-anim"
           type="button"
-          onClick={upload}
+          onClick={onInsert}
         >
           클래스 등록
         </button>

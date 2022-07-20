@@ -12,7 +12,6 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import PetsIcon from '@mui/icons-material/Pets';
-
 import img1 from '../../image/2.PNG';
 
 const ClassList = () => {
@@ -35,10 +34,22 @@ const ClassList = () => {
     //console.log("list");
     list();
   }, []);
+
   return (
     <div>
       <div className="content_container" style={{ marginLeft: '310px' }}>
         <div className="row">
+          <select className="select1">
+            <option key="apple" value="apple">
+              클래스
+            </option>
+            <option key="orange" value="orange">
+              챌린지
+            </option>
+            <option key="orange" value="orange">
+              모임
+            </option>
+          </select>
           <select className="select1" style={{ width: '150px' }}>
             -
             <option key="orange" value="orange">
@@ -137,6 +148,10 @@ const ClassList = () => {
             />
             <div className="boxtext1">펫</div>
           </div>
+        </div>
+        <div className="category3">
+          <input type="text" className="search" />
+          <button className="searchbtn">검색</button>
         </div>
         <div className="category4" style={{ float: 'right' }}>
           <label>
