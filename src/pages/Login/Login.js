@@ -6,6 +6,7 @@ import API from '../../config';
 import { setToken, setProfile, setNickname } from '../../utils';
 import styled from 'styled-components';
 import './css/login.css';
+import duckimg from './image/duck.png';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -75,6 +76,7 @@ const Login = () => {
         <div className="login-form">
           <br />
           <form onSubmit={onSubmit}>
+            <img alt="" src={duckimg} style={{ width: '80px' }} />
             <div className="int-area">
               <input
                 type="text"
