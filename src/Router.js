@@ -10,13 +10,19 @@ import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 import Review from './components/Review/Review';
 import About from './pages/About/About';
-import ClassList from './pages/class/ClassList';
-import ClassForm from './pages/class/ClassForm';
-import ClassDetail from './pages/class/ClassDetail';
-import ClassUpdateForm from './pages/class/ClassUpdateForm';
-import ClassGuide from './pages/class/ClassGuide';
-import ClassIntroGuide from './pages/class/ClassIntroGuide';
 
+import {
+  ClassList,
+  ClassForm,
+  ClassDetail,
+  ClassUpdateForm,
+  ClassGuide,
+  ClassIntroGuide,
+} from './pages/class';
+
+import PayMent from './pages/class/PayMent';
+import ClassPayBefore from './pages/class/ClassPayBefore';
+import ClassPayAfter from './pages/class/ClassPayAfter';
 const Router = () => {
   return (
     <BrowserRouter>
@@ -40,6 +46,9 @@ const Router = () => {
         />
         <Route path="/class/guide" element={<ClassGuide />} />
         <Route path="/class/introguide" element={<ClassIntroGuide />} />
+        <Route path="/test2/payment" element={<PayMent />} />
+        <Route path="/class/payment/before" element={<ClassPayBefore />} />
+        <Route path="/class/payment/after" element={<ClassPayAfter />} />
 
         <Route path="/about" element={<About />} />
       </Routes>

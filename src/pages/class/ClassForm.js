@@ -118,6 +118,19 @@ const ClassForm = passData => {
       return false;
     }
     console.log('setphoto : ' + imageUrlLists);
+    setShowImages(imageUrlLists); //안담겨
+
+    //우겨넣기_한박자 늦음
+    const asd1 = imageUrlLists[0];
+    class_photo1.current = asd1;
+    const asd2 = imageUrlLists[1];
+    class_photo2.current = asd2;
+    const asd3 = imageUrlLists[2];
+    class_photo3.current = asd3;
+    const asd4 = imageUrlLists[3];
+    class_photo4.current = asd4;
+    const asd5 = imageUrlLists[4];
+    class_photo5.current = asd5;
   };
 
   // X버튼 클릭 시 이미지 삭제
@@ -413,7 +426,7 @@ const ClassForm = passData => {
                 className="que"
                 style={{ fontSize: '35px', float: 'left' }}
               />
-              <span className="asd" style={{ top: '413px', left: '970px' }}>
+              <span className="asd" style={{ top: '633px', left: '1350px' }}>
                 Tip!
                 <br />
                 클래스의 주제를 연상시키는 제목을 작성해주세요.
@@ -433,16 +446,12 @@ const ClassForm = passData => {
             <input type="file" id="input-file" multiple className="label2" />
           </label>
 
-          <div style={{ marginLeft: '22px' }}>
+          <div style={{ marginLeft: '60px' }}>
             {/* // 저장해둔 이미지들을 순회하면서 화면에 이미지 출력 */}
             {photos.map((image, id) => (
               <div className="smphotod" key={id}>
                 <img src={image} alt={`${image}-${id}`} className="smphoto" />
-                <div
-                  className="xbtn"
-                  style={{ marginLeft: '130px' }}
-                  onClick={() => handleDeleteImage(id)}
-                >
+                <div className="xbtn" onClick={() => handleDeleteImage(id)}>
                   &nbsp;x&nbsp;
                 </div>
               </div>
