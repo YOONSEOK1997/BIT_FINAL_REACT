@@ -1,22 +1,20 @@
-.login-form {
+.regis_title {
+  font-size: 30px;
+  font-weight: 200;
+  margin-bottom: 20px;
+}
+.regis-form {
   margin: auto;
 }
-.login-form h1 {
-  font-size: 32px;
-  color: black;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.int-area {
+.int-area1 {
   width: 350px;
   position: relative;
   margin-top: 20px;
 }
-.int-area:first-child {
+.int-area1:first-child {
   margin-top: 0;
 }
-.int-area input {
+.int-area1 input {
   width: 100%;
   padding: 20px 10px 10px;
   background-color: transparent;
@@ -26,21 +24,21 @@
   color: black;
   outline: none;
 }
-.int-area label {
+.int-area1 label {
   position: absolute;
   left: 10px;
-  top: 15px;
-  font-size: 18px;
+  top: 20px;
+  font-size: 15px;
   color: #999;
   transition: all 0.5s ease;
 }
-.int-area label.warning {
+.int-area1 label.warning {
   color: red !important;
   animation: warning 0.3 ease;
   animation-iteration-count: 3;
 }
-.int-area input:focus + label,
-.int-area input:valid + label {
+.int-area1 input:focus + label,
+.int-area1 input:valid + label {
   top: 0;
   font-size: 13px;
   color: #03d85e;
@@ -48,10 +46,10 @@
 
 /* -------버 튼--------- */
 
-.btn-area {
+.btn-area1 {
   margin-top: 30px;
 }
-.btn-area button {
+.btn-area1 button {
   color: white;
   width: 100%;
   height: 50px;
@@ -61,10 +59,10 @@
   border-radius: 25px;
   cursor: pointer;
 }
-.btn-area button:focus {
+.btn-area1 button:focus {
   outline: 0;
 }
-.btn-area button:active {
+.btn-area1 button:active {
   transform: scale(0.99);
 }
 
@@ -78,4 +76,10 @@
   font-size: 15px;
   color: #999;
   text-decoration: none;
+}
+
+/* ---------에  러--------- */
+.regis-error {
+  font-size: 15px;
+  color: #f20e43b9;
 }

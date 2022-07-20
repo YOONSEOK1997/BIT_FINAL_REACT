@@ -51,8 +51,6 @@ const Login = () => {
   const onSubmit = e => {
     e.preventDefault();
 
-    const url = 'api/authenticate';
-
     AuthService.login(username, password, { withCredentials: true }).then(
       res => {
         console.log(res);
@@ -73,7 +71,7 @@ const Login = () => {
   return (
     <LoginSection>
       <LoginBox>
-        <div className="login-form">
+        <div className="regis-form">
           <br />
           <form onSubmit={onSubmit}>
             <img alt="" src={duckimg} style={{ width: '80px' }} />
@@ -106,9 +104,12 @@ const Login = () => {
             <div className="btn-area">
               <button type="submit">LOGIN</button>
             </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div className="caption">
-              <a href="/">Forgot Password?</a>
+              <a href="/">Forgot Password?</a> /{' '}
+              <a href="http://localhost:3000/register">Register</a>
             </div>
+            <br />
             <br />
             <br />
           </form>

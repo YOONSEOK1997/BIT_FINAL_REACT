@@ -10,6 +10,7 @@ import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 import Review from './components/Review/Review';
 import About from './pages/About/About';
+import Register from './pages/Register/Register';
 
 import {
   ClassList,
@@ -31,6 +32,7 @@ const Router = () => {
         <Route path="/" element={<Main />} />
         <Route path="/vod" element={<VodMain />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/lectures" element={<LectureList />} />
         <Route path="/lectures/:id" element={<LectureDetail />} />
         <Route path="/wish-list" element={<WishList />} />
