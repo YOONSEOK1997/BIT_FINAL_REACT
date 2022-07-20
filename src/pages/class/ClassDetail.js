@@ -38,6 +38,7 @@ const ClassDetail = () => {
   let detailUrl = SPRING_URL + 'class/detail?class_num=' + class_num;
   let detailUrl2 = SPRING_URL + 'class/detailoption?class_num=' + class_num;
   let deletelUrl = SPRING_URL + 'class/delete?class_num=' + class_num;
+  let photoUrl = process.env.REACT_APP_SPRING_URL + 'save/';
 
   //popup modal (ClassGuide, ClassIntroGuide)
   // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
@@ -113,9 +114,11 @@ const ClassDetail = () => {
           <div className="class_image1"></div>
           <div className="imagemap">
             <div className="class_image">
-              <img src={data.class_photo1} />
+              <img src={`${photoUrl}${data.class_photo1}`} />
             </div>
-            <div className="class_image"></div>
+            <div className="class_image">
+              <img src={`${photoUrl}${data.class_photo2}`} />
+            </div>
             <div className="class_image"></div>
             <div className="class_image"></div>
           </div>
