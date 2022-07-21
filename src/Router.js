@@ -50,7 +50,7 @@ const Router = () => {
         />
         <Route path="/class/guide" element={<ClassGuide />} />
         <Route path="/class/introguide" element={<ClassIntroGuide />} />
-        <Route path="/test2/payment" element={<PayMent />} />
+        <Route path="/class/payment" element={<PayMent />} />
         <Route path="/class/payment/before" element={<ClassPayBefore />} />
         <Route path="/class/payment/after" element={<ClassPayAfter />} />
 
