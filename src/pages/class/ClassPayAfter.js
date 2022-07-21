@@ -5,7 +5,7 @@ import img1 from './classImage/pay.png';
 const ClassPayAfter = () => {
   const navi = useNavigate();
   const { state } = useLocation();
-  console.log(state.data);
+  console.log(state);
   return (
     <div>
       <div
@@ -27,7 +27,7 @@ const ClassPayAfter = () => {
         <div
           style={{ marginLeft: '450px', fontSize: '40px', fontWeight: '600' }}
         >
-          결제가 완료되었습니다!
+          결제가 완료되었습니다! {state.custom_data.classname}
         </div>
         <div
           style={{
@@ -39,14 +39,25 @@ const ClassPayAfter = () => {
             fontSize: '23px',
           }}
         >
-          <div style={{ marginTop: '13px' }}>주문번호 : hdh_202207190001</div>
-          <div style={{ marginTop: '15px' }}>주문자명 : 한별</div>
-          <div style={{ marginTop: '15px' }}>
-            클래스명 : [원데이] 한강에서 제트스키 체험하기
+          <div style={{ marginTop: '13px' }}>
+            주문번호 : {state.merchant_uid}
           </div>
-          <div style={{ marginTop: '15px' }}>신청일정 : 2022-10-17</div>
-          <div style={{ marginTop: '15px' }}>신청인원 : 3명</div>
-          <div style={{ marginTop: '15px' }}>결제금액 : 87000원</div>
+          <div style={{ marginTop: '15px' }}>주문자명 : {state.buyer_name}</div>
+          <div style={{ marginTop: '15px' }}>
+            클래스명 : {state.custom_data.classname}
+          </div>
+          <div style={{ marginTop: '15px' }}>
+            신청일정 : {state.custom_data.classoption_day}
+            &nbsp;&nbsp;&nbsp;
+            {state.custom_data.classoption_starttime}시 ~{' '}
+            {state.custom_data.classoption_endtime}시
+          </div>
+          <div style={{ marginTop: '15px' }}>
+            신청인원 : {state.custom_data.percnt}명
+          </div>
+          <div style={{ marginTop: '15px' }}>
+            결제금액 : {state.custom_data.amount}원
+          </div>
         </div>
         <br />
         <br />

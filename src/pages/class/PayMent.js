@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 const Payment = (effect, deps, props) => {
   const navi = useNavigate();
   const { state } = useLocation();
-  console.log(state.data);
+  //console.log(state.data);
 
   const payinfo = e => {
     navi('/class/payment/after', {
@@ -44,19 +44,25 @@ const Payment = (effect, deps, props) => {
     const data = {
       pg: 'html5_inicis',
       pay_method: 'card',
-      merchant_uid: `hdh_${new Date().getTime()}`, //주문번호보내줘야해~~~
+      merchant_uid: `hdh_${new Date().getTime()}`, //주문번호
       name: '오늘,한강',
       amount: `${state.data.totpay}`, //결제금액
       custom_data: {
-        name: '부가정보',
-        desc: '세부 부가정보',
+        classnum: `${state.data.classnum}`,
+        classname: `${state.data.classname}`, //클래스명
+        classoption_num: `${state.data.classoption_num}`,
+        classoption_day: `${state.data.classoption_day}`, //클래스일정1
+        classoption_starttime: `${state.data.classoption_starttime}`, //클래스일정2
+        classoption_endtime: `${state.data.classoption_endtime}`, //클래스일정3
+        percnt: `${state.data.percnt}`, //신청인원
+        amount: `${state.data.totpay}`, //결제금액
       },
       //주문자정보
       buyer_name: '홍대한', //바꿔야해 USER_NAME
       buyer_tel: '01012345678',
       buyer_email: 'gksquf5012@gmail.com',
       buyer_addr: '강남구 역삼동 178-8',
-      buyer_postalcode: '01234', //우편
+      buyer_postalcode: '01234',
     };
 
     IMP.request_pay(data, callback);
@@ -83,8 +89,7 @@ const Payment = (effect, deps, props) => {
 
     if (success) {
       alert('결제 성공');
-      payinfo();
-      navi('/class/payment/after');
+      navi('/class/payment/after', { state: response });
     } else {
       alert(`결제 실패: ${error_msg}`);
       navi(-1);
