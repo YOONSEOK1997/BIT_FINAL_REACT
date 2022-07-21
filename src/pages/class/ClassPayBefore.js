@@ -9,11 +9,36 @@ const ClassPaybefore = props => {
   const navi = useNavigate();
 
   const handleClick = e => {
+    navi('/class/payment', {
+      state: {
+        data: {
+          user_id: 'anyang',
+          classnum: `${props.data.class_num}`,
+          classname: `${props.data.class_name}`,
+          classoption_num: `${props.changeoptions.classoption_num}`,
+          classoption_day: `${props.changeoptions.classoption_day}`,
+          classoption_starttime: `${props.changeoptions.classoption_starttime}`,
+          classoption_endtime: `${props.changeoptions.classoption_endtime}`,
+          percnt: `${props.percnt}`,
+          totpay: `${props.totpay}`,
+        },
+      },
+    });
+  };
+
+  const Test = e => {
     navi('/class/payment/after', {
       state: {
         data: {
-          pay_price: '한',
           user_id: 'anyang',
+          classnum: `${props.data.class_num}`,
+          classname: `${props.data.class_name}`,
+          classoption_num: `${props.changeoptions.classoption_num}`,
+          classoption_day: `${props.changeoptions.classoption_day}`,
+          classoption_starttime: `${props.changeoptions.classoption_starttime}`,
+          classoption_endtime: `${props.changeoptions.classoption_endtime}`,
+          percnt: `${props.percnt}`,
+          totpay: `${props.totpay}`,
         },
       },
     });
@@ -22,6 +47,7 @@ const ClassPaybefore = props => {
   useEffect(() => {
     console.log(props);
   }, []);
+
   return (
     <div className={open ? 'openModal modal' : 'modal'}>
       {open ? (
@@ -36,15 +62,8 @@ const ClassPaybefore = props => {
             {props.children}
             <div style={{ marginTop: '20px', marginLeft: '70px' }}>
               <div style={{ fontWeight: '600', fontSize: '23px' }}>
-                {props.data.class_name + '되나?'}
+                {props.data.class_name}
               </div>
-              <button
-                onClick={e => {
-                  console.log();
-                }}
-              >
-                z
-              </button>
               <div
                 style={{ float: 'left', marginTop: '25px', marginLeft: '15px' }}
               >
@@ -57,7 +76,7 @@ const ClassPaybefore = props => {
                   marginTop: '25px',
                 }}
               >
-                25,000원
+                {props.data.class_price}원
               </div>
               <div
                 style={{ float: 'left', marginTop: '15px', marginLeft: '15px' }}
@@ -69,9 +88,12 @@ const ClassPaybefore = props => {
                   textAlign: 'right',
                   marginRight: '100px',
                   marginTop: '15px',
+                  fontSize: '20px',
                 }}
               >
-                {props.changeoptions.classoption_day}
+                {props.changeoptions.classoption_day}&nbsp;
+                {props.changeoptions.classoption_starttime}시~
+                {props.changeoptions.classoption_endtime}시
               </div>
               <div
                 style={{ float: 'left', marginTop: '15px', marginLeft: '15px' }}
@@ -85,7 +107,7 @@ const ClassPaybefore = props => {
                   marginTop: '15px',
                 }}
               >
-                3명
+                {props.percnt}명
               </div>
               <div
                 style={{ float: 'left', marginTop: '15px', marginLeft: '15px' }}
@@ -100,10 +122,10 @@ const ClassPaybefore = props => {
                   marginBottom: '20px',
                 }}
               >
-                75,000원
+                {props.totpay}원
               </div>
 
-              <button onClick={handleClick}>전송</button>
+              <button onClick={Test}>전송</button>
 
               <br />
               <img
@@ -125,7 +147,7 @@ const ClassPaybefore = props => {
             <button onClick={close}>취소</button>
             <button
               onClick={() => {
-                navi('/test2/payment');
+                handleClick();
               }}
               style={{ marginLeft: '10px' }}
             >
