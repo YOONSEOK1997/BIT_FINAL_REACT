@@ -33,6 +33,7 @@ const ClassDetail = () => {
 
   const [change, setChange] = useState(false);
   const changeoptions = useRef('');
+  const [main, setMain] = useState(1);
 
   //전역변수등록
   const SPRING_URL = process.env.REACT_APP_SPRING_URL;
@@ -97,12 +98,15 @@ const ClassDetail = () => {
     setChange(true);
   };
 
+  let mainChange = e => {
+    setMain(e.target.value);
+  };
+
   //처음 랜더링시 위의 함수 호출
   useEffect(() => {
     onDataReceive();
     onOptionReceive();
   }, []);
-
   return (
     <div>
       <div className="content_container" style={{ marginLeft: '310px' }}>
@@ -118,13 +122,35 @@ const ClassDetail = () => {
             <span className="tutor_name">한별 튜터</span>
           </div>
           {/* 이거 map으로 돌릴 수 있을거같은데 일단 */}
-          <div className="class_image1"></div>
+          <div className="class_image1">
+            {main == 1 ? (
+              <img src={photoUrl + data.class_photo1} />
+            ) : main == 2 ? (
+              <img src={photoUrl + data.class_photo2} />
+            ) : main == 3 ? (
+              <img src={photoUrl + data.class_photo3} />
+            ) : main == 4 ? (
+              <img src={photoUrl + data.class_photo4} />
+            ) : (
+              <img src={photoUrl + data.class_photo5} />
+            )}
+          </div>
           <div className="imagemap">
             <div className="class_image">
-              <img src={`${photoUrl}${data.class_photo1}`} />
+              <img
+                src={photoUrl + data.class_photo1}
+                onClick={() => {
+                  setMain(1);
+                }}
+              />
             </div>
             <div className="class_image">
-              <img src={`${photoUrl}${data.class_photo2}`} />
+              <img
+                src={photoUrl + data.class_photo2}
+                onClick={() => {
+                  setMain(2);
+                }}
+              />
             </div>
             <div className="class_image"></div>
             <div className="class_image"></div>
@@ -175,19 +201,18 @@ const ClassDetail = () => {
                   </div>
                 </div>
                 {/* class_plan_row */}
-
-                <div className="totcnt">
-                  <div className="money1">
-                    {data.class_price / data.class_hour}원 / 시간 (인당)
-                    <div className="money2">
-                      {data.class_price}원 / 총 {data.class_hour}시간
-                    </div>
-                  </div>
-                </div>
               </div>
             ) : (
               ''
             )}
+            <div className="totcnt">
+              <div className="money1">
+                {data.class_price / data.class_hour}원 / 시간 (인당)
+                <div className="money2">
+                  {data.class_price}원 / 총 {data.class_hour}시간
+                </div>
+              </div>
+            </div>
 
             <div className="classbtn">
               <React.Fragment>
