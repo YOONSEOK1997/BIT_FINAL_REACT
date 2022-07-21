@@ -1,5 +1,5 @@
 .regis_title {
-  font-size: 30px;
+  font-size: 27px;
   font-weight: 200;
   margin-bottom: 20px;
 }
@@ -82,4 +82,27 @@
 .regis-error {
   font-size: 15px;
   color: #f20e43b9;
+}
+
+/*-- 프로필 --*/
+div.profileimg {
+  margin: auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 160px;
+  overflow: hidden;
+  background-image: url(../profile.jpg);
+}
+
+img.user_profile {
+  margin: auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 160px;
+  overflow: hidden;
+  background-color: #ffffff00;
+}
+
+div.photo_icon {
+  margin-top: -0px;
 }

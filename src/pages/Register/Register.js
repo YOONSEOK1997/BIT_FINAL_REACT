@@ -7,6 +7,10 @@ import { setToken, setProfile, setNickname } from '../../utils';
 import styled from 'styled-components';
 import './css/register.css';
 import img1 from './image/profile.jpg';
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import Button from '@mui/material/Button';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { appendErrors, useForm } from 'react-hook-form';
 
 const Register = () => {
@@ -40,21 +44,65 @@ const Register = () => {
     await new Promise(r => setTimeout(r, 1000));
     alert(JSON.stringify(data));
     console.log(data, errors);
+
+    if (!btnOk) {
+      alert('아이디 중복체크를 해주세요');
+      return;
+    }
   };
 
-  //프로필 사진 관련
-  const [profile, setProfile] = useState(img1);
+  //---------프로필 사진 관련
+  const [profile, setProfile] = useState(''); //img1
   const photoInput = useRef();
   const imgChange = () => {
     photoInput.current.click();
   };
 
-  //비밀번호 확인
+  let uploadUrl = 'http://localhost:9009/api/upload';
+  let photoUrl = 'http://localhost:9009/save/';
+
+  //이미지 업로드
+  const imageUpload = e => {
+    const uploadFile = e.target.files[0];
+    const imageFile = new FormData();
+    imageFile.append('uploadFile', uploadFile);
+
+    axios({
+      method: 'post',
+      url: uploadUrl,
+      data: imageFile,
+      headers: { 'content-Type': 'multipart/form-data' },
+    })
+      .then(res => {
+        setProfile(res.data);
+      })
+      .catch(err => {
+        alert(err);
+      });
+  };
+
+  //-----비밀번호 확인
   const [passOk, setPassOk] = useState(false);
   const onPassChange = e => {
     const { value } = e.target;
     if (value === data.password) setPassOk(true);
     else setPassOk(false);
+  };
+
+  //-----Username 중복체크
+  const [btnOk, setBtnOk] = useState(false);
+  const onIdJungbok = () => {
+    const url =
+      'http://localhost:9009/api/usernamecheck?username=' + data.username;
+    axios.get(url).then(res => {
+      if (res.data === 0) {
+        setBtnOk(true);
+        alert('가입 가능한 아이디입니다.');
+      } else {
+        setBtnOk(false);
+        alert('이미 가입되어있는아이디 입니다.');
+      }
+    });
   };
 
   const [username, setUsername] = useState('');
@@ -72,19 +120,26 @@ const Register = () => {
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <br />
-            <div className="profile" onClick={imgChange}>
-              <img
-                src={profile}
-                alt=""
-                style={{ display: 'block', margin: 'auto', width: '150px' }}
-              />
+            <div className="profileimg">
+              <img alt="" src={photoUrl + profile} className="user_profile" />
             </div>
-            <input
-              type="file"
-              multiple
-              ref={photoInput}
-              style={{ display: 'none' }}
-            />
+            <div className="photo_icon">
+              <IconButton
+                color="primary"
+                aria-label="upload picture"
+                component="label"
+                style={{ color: '#03d85e' }}
+              >
+                <input
+                  hidden
+                  accept="image/*"
+                  type="file"
+                  multiple
+                  onChange={imageUpload}
+                />
+                <PhotoCamera />
+              </IconButton>
+            </div>
             <br />
             <div className="int-area1">
               <input
@@ -113,6 +168,15 @@ const Register = () => {
             {errors.username && (
               <div className="regis-error">{errors.username.message}</div>
             )}
+            <Button
+              size="small"
+              onClick={onIdJungbok}
+              className="jungbok-button"
+              style={{ color: 'gray', marginLeft: '270px' }}
+              startIcon={<CheckCircleOutlineIcon />}
+            >
+              중복확인
+            </Button>
             <div className="int-area1">
               <input
                 type="text"
@@ -155,9 +219,7 @@ const Register = () => {
                 onChange={onPassChange}
               />
               <label>PASSWORD</label>
-              <span style={{ marginLeft: '5px', color: 'red' }}>
-                {passOk ? '일치합니다' : ''}
-              </span>
+              <span className="regis-error">{passOk ? '일치합니다' : ''}</span>
             </div>
             <div className="btn-area1">
               <button type="submit" disabled={isSubmitting}>
@@ -181,7 +243,7 @@ const LoginSection = styled.section`
 `;
 
 const LoginBox = styled.div`
-  width: 500px;
+  width: 400px;
   margin: 0 auto;
   padding: 30px 20px;
   border: 1px solid #eee;
