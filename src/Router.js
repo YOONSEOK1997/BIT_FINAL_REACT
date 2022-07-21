@@ -11,6 +11,8 @@ import Footer from './components/Footer/Footer';
 import Review from './components/Review/Review';
 import About from './pages/About/About';
 import Register from './pages/Register/Register';
+import ClassList2 from './pages/class/ClassList2';
+import ClassList3 from './pages/class/ClassList3';
 
 import {
   ClassList,
