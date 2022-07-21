@@ -186,6 +186,7 @@ const ClassDetail = () => {
                       인원 선택
                     </div>
                     <input
+                      placeholder="1"
                       defaultValue={percnt}
                       type="number"
                       className="percnt"

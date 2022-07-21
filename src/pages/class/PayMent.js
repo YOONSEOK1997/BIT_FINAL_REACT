@@ -1,10 +1,28 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-const Payment = (effect, deps) => {
+const Payment = (effect, deps, props) => {
   const navi = useNavigate();
   const { state } = useLocation();
   console.log(state.data);
+
+  const payinfo = e => {
+    navi('/class/payment/after', {
+      state2: {
+        data2: {
+          user_id: 'anyang',
+          classnum: `${props.data.class_num}`,
+          classname: `${props.data.class_name}`,
+          classoption_num: `${props.changeoptions.classoption_num}`,
+          classoption_day: `${props.changeoptions.classoption_day}`,
+          classoption_starttime: `${props.changeoptions.classoption_starttime}`,
+          classoption_endtime: `${props.changeoptions.classoption_endtime}`,
+          percnt: `${props.percnt}`,
+          totpay: `${props.totpay}`,
+        },
+      },
+    });
+  };
 
   useEffect(() => {
     const jquery = document.createElement('script');
@@ -65,6 +83,7 @@ const Payment = (effect, deps) => {
 
     if (success) {
       alert('결제 성공');
+      payinfo();
       navi('/class/payment/after');
     } else {
       alert(`결제 실패: ${error_msg}`);

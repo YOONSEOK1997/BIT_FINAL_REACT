@@ -20,29 +20,29 @@ const ClassPaybefore = props => {
           classoption_starttime: `${props.changeoptions.classoption_starttime}`,
           classoption_endtime: `${props.changeoptions.classoption_endtime}`,
           percnt: `${props.percnt}`,
-          totpay: `${props.totpay}`,
+          totpay: `${props.percnt * props.data.class_price}`,
         },
       },
     });
   };
 
-  const Test = e => {
-    navi('/class/payment/after', {
-      state: {
-        data: {
-          user_id: 'anyang',
-          classnum: `${props.data.class_num}`,
-          classname: `${props.data.class_name}`,
-          classoption_num: `${props.changeoptions.classoption_num}`,
-          classoption_day: `${props.changeoptions.classoption_day}`,
-          classoption_starttime: `${props.changeoptions.classoption_starttime}`,
-          classoption_endtime: `${props.changeoptions.classoption_endtime}`,
-          percnt: `${props.percnt}`,
-          totpay: `${props.totpay}`,
-        },
-      },
-    });
-  };
+  // const Test = e => {
+  //   navi('/class/payment/after', {
+  //     state: {
+  //       data: {
+  //         user_id: 'anyang',
+  //         classnum: `${props.data.class_num}`,
+  //         classname: `${props.data.class_name}`,
+  //         classoption_num: `${props.changeoptions.classoption_num}`,
+  //         classoption_day: `${props.changeoptions.classoption_day}`,
+  //         classoption_starttime: `${props.changeoptions.classoption_starttime}`,
+  //         classoption_endtime: `${props.changeoptions.classoption_endtime}`,
+  //         percnt: `${props.percnt}`,
+  //         totpay: `${props.totpay}`,
+  //       },
+  //     },
+  //   });
+  // };
 
   useEffect(() => {
     console.log(props);
@@ -122,10 +122,10 @@ const ClassPaybefore = props => {
                   marginBottom: '20px',
                 }}
               >
-                {props.totpay}원
+                {props.percnt * props.data.class_price}원
               </div>
 
-              <button onClick={Test}>전송</button>
+              {/* <button onClick={Test}>전송</button> */}
 
               <br />
               <img
