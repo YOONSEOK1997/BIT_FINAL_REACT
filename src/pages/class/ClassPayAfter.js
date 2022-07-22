@@ -27,7 +27,7 @@ const ClassPayAfter = () => {
         <div
           style={{ marginLeft: '450px', fontSize: '40px', fontWeight: '600' }}
         >
-          결제가 완료되었습니다! {state.custom_data.classname}
+          결제가 완료되었습니다!
         </div>
         <div
           style={{

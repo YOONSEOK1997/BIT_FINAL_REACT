@@ -23,6 +23,7 @@ import {
   ClassUpdateForm,
   ClassGuide,
   ClassIntroGuide,
+  ClassAdmin,
 } from './pages/class';
 
 import PayMent from './pages/class/PayMent';
@@ -62,6 +63,7 @@ const Router = () => {
         <Route path="/class/payment" element={<PayMent />} />
         <Route path="/class/payment/before" element={<ClassPayBefore />} />
         <Route path="/class/payment/after" element={<ClassPayAfter />} />
+        <Route path="/class/admin" element={<ClassAdmin />} />
 
         <Route path="/about" element={<About />} />
         <Route path="/about/1" element={<Detailp />} />

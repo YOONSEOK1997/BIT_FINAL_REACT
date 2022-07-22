@@ -13,6 +13,12 @@ import ClassReview from './ClassReview';
 import ReviewModal from './ReviewModal';
 import ClassPaybefore from './ClassPayBefore';
 import ChatRoom from '../chatting/ChatRoom';
+//iconimg
+import target from './classImage/target2.jpg';
+import like from './classImage/like.JPG';
+import cnt from './classImage/cnt.JPG';
+import location from './classImage/location.JPG';
+import time from './classImage/money.JPG';
 
 const ClassDetail = () => {
   const { class_num } = useParams();
@@ -107,10 +113,17 @@ const ClassDetail = () => {
       <div className="content_container" style={{ marginLeft: '310px' }}>
         <div className="class_top">
           <div className="class_title_div">
-            <span className="class_title">
-              {data.class_name}
-              {options.classoption_day}
-            </span>
+            <div
+              style={{
+                fontSize: '20px',
+                color: '#0000FF',
+                fontWeight: 500,
+                marginBottom: '5px',
+              }}
+            >
+              오늘, 한강과 함께하는
+            </div>
+            <span className="class_title">{data.class_name}</span>
           </div>
           <div className="tutor_info">
             <div class="tutor_image" style={{ float: 'left' }}></div>
@@ -227,7 +240,7 @@ const ClassDetail = () => {
             <div className="classbtn">
               <React.Fragment>
                 <button onClick={openModal} className="class_signbtn">
-                  클래스 신청하기 &gt;
+                  클래스 신청하기
                 </button>
                 {/* //header 부분에 텍스트를 입력한다. */}
                 <ClassPaybefore
@@ -250,29 +263,65 @@ const ClassDetail = () => {
         </div>
         {/* top */}
 
-        <div className="class_summ">
+        {/* <div className="class_summ">
           <div className="box">
             <div className="boxtext">{data.class_location}</div>
+            <img
+              alt=""
+              src={location}
+              style={{ width: '125px', marginLeft: '20px', marginTop: '5px' }}
+            />
           </div>
           <div className="box">
             <div className="boxtext">{data.class_target}</div>
+            <img
+              alt=""
+              src={target}
+              style={{ width: '125px', marginLeft: '20px', marginTop: '5px' }}
+            />
           </div>
           <div className="box">
             <div className="boxtext">198개</div>
+            <img
+              alt=""
+              src={like}
+              style={{ width: '125px', marginLeft: '20px', marginTop: '10px' }}
+            />
           </div>
           <div className="box">
-            <div className="boxtext">
+            <div className="boxtext" style={{ fontSize: '20px' }}>
               시간당
               <br />
               {data.class_price / data.class_hour}원
+              <img
+                alt=""
+                src={time}
+                style={{ width: '125px', marginLeft: '10px', marginTop: '5px' }}
+              />
             </div>
           </div>
           <div className="box">
-            <div className="boxtext">정원 {data.class_}명</div>
+            <div className="boxtext">
+              정원
+              {options[0].classoption_totalperson} 명
+            </div>
+            <img
+              alt=""
+              src={cnt}
+              style={{ width: '125px', marginLeft: '20px' }}
+            />
           </div>
-        </div>
+        </div> */}
+        <br />
+        <br />
+        <br />
 
-        <div className="class_tabsum">
+        <div
+          className="class_tabsum"
+          style={{ width: '1000px', marginTop: '200px' }}
+        >
+          <br />
+          <br />
           <div
             className="class_tab"
             onClick={() => {
@@ -305,26 +354,26 @@ const ClassDetail = () => {
               <div className="class_notice1">
                 <div className="class_subtitle" style={{ width: '600px' }}>
                   클래스 전 숙지해주세요!
-                  {data.class_anoun}
                 </div>
                 <div className="class_noticecircle">튜터공지</div>
+                <div className="minicontent">{data.class_anoun}</div>
               </div>
             ) : (
               ''
             )}
 
             <div className="class_notice3">
-              <div className="class_subtitle">
-                클래스 소개
-                {data.class_intro}
+              <div className="class_subtitle">클래스 소개</div>
+              <div className="minicontent">
+                <div
+                  dangerouslySetInnerHTML={{ __html: data.class_intro }}
+                ></div>
               </div>
             </div>
 
             <div className="class_notice4">
-              <div className="class_subtitle">
-                클래스 커리큘럼
-                {data.class_curri}
-              </div>
+              <div className="class_subtitle">클래스 커리큘럼</div>
+              <div className="minicontent">{data.class_curri}</div>
             </div>
           </div>
         ) : tab === 2 ? (
@@ -354,12 +403,71 @@ const ClassDetail = () => {
           </div>
         )}
         {/* class detail info */}
+        {/* TABTAB */}
+        <br />
+        <br />
+        <div className="site-wrapper">
+          <section className="tabs-wrapper">
+            <div className="tabs-block">
+              <div className="tabs " style={{ width: '1290px' }}>
+                <input type="radio" name="tabs" id="tab1" checked="checked" />
+                <label for="tab1">클래스소개</label>
+                <div className="tab">
+                  <h2>Angular</h2>
+                  <p>
+                    One of the most powerful, efficient, and open-source
+                    JavaScript frameworks is{' '}
+                    <a href="https://angularjs.org/">Angular</a>. Google
+                    operates this framework and is implemented to use for
+                    developing a Single Page Application (SPA). It extends the
+                    HTML into the application and interprets the attributes to
+                    perform data binding.
+                  </p>
+                </div>
+
+                <input type="radio" name="tabs" id="tab2" />
+                <label for="tab2">채팅룸</label>
+                <div className="tab">
+                  <h2>React</h2>
+                  <p>
+                    Created by Facebook, the{' '}
+                    <a href="https://reactjs.org/">React framework</a> has
+                    earned popularity within a short period. It is used to
+                    develop and operate the dynamic User Interface of the web
+                    pages with high incoming traffic. It makes the use of a
+                    virtual DOM, and hence, the integration of the same with any
+                    application is more straightforward.
+                  </p>
+                </div>
+
+                <input type="radio" name="tabs" id="tab3" />
+                <label for="tab3">클래스 리뷰</label>
+                <div className="tab">
+                  <h2>Vue</h2>
+                  <p>
+                    Though developed in the year 2016, this{' '}
+                    <a href="https://vuejs.org/">JavaScript framework</a> has
+                    already made its way into the market and has proven its
+                    worth by offering various features. Its dual integration
+                    mode is one of the most attractive features for creating
+                    high-end SPA or Single Page Application.It is a much
+                    reliable platform for developing cross-platform.
+                  </p>
+                </div>
+
+                <input type="radio" name="tabs" id="tab4" />
+              </div>
+            </div>
+          </section>
+        </div>
+        {/* TABTAB */}
         <div>
           <br />
           <br />
           <br />
           <br />
           <br />
+
           <div className="tyu">
             <button
               type="button"
@@ -408,6 +516,7 @@ const ClassDetail = () => {
               </DialogActions>
             </Dialog>
           </div>
+
           <br />
           <br />
           <br />
