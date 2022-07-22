@@ -41,7 +41,6 @@ const Login = () => {
     });
   }
   const goToMain = () => {
-    alert('로그인에 성공하였습니다.');
     navigate('/');
   };
 
@@ -56,7 +55,7 @@ const Login = () => {
         console.log(res);
         localStorage.loginok = 'yes';
         localStorage.username = username;
-        window.location.reload(); //새로고침
+        //window.location.reload(); //새로고침
         const jwttoken = res.token;
         const profile = res.profile;
         const nickname = res.username;

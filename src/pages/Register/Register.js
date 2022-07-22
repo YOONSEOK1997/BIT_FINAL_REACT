@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import AuthService from '../../service/auth-service';
 import API from '../../config';
@@ -39,14 +39,21 @@ const Register = () => {
       return;
     }
 
+    //회원가입 axios
     const signupurl = 'http://localhost:9009/api/signup';
     axios.post(signupurl, data).then(res => {
       console.log(data);
     });
+    //프로필사진 넣기 axios
+    const username = setValue('username');
+    const insertProfileUrl = 'http://localhost:9009/api/instprf';
+    axios.post(insertProfileUrl, { username, profile }).then(res => {
+      navi('/login');
+    });
   };
 
   //---------프로필 사진 관련
-  const [profile1, setProfile1] = useState(); //img1
+  const [profile, setProfile] = useState(); //img1
   const photoInput = useRef();
   const imgChange = () => {
     photoInput.current.click();
@@ -68,7 +75,7 @@ const Register = () => {
       headers: { 'content-Type': 'multipart/form-data' },
     })
       .then(res => {
-        setProfile1(res.data);
+        setProfile(res.data);
       })
       .catch(err => {
         alert(err);
@@ -110,10 +117,7 @@ const Register = () => {
 
             <div className="profileimg">
               {/* 이미지출력 */}
-              <img alt="" src={photoUrl + profile1} className="user_profile" />
-              {/* <input type="hidden" {...register('profile')}>
-                {profile1}
-              </input> */}
+              <img alt="" src={photoUrl + profile} className="user_profile" />
             </div>
             <div className="photo_icon">
               <IconButton
@@ -128,13 +132,6 @@ const Register = () => {
                   type="file"
                   multiple
                   onChange={imageUpload}
-                />
-                <input
-                  hidden
-                  accept="image/*"
-                  type="file"
-                  multiple
-                  {...register('profile')}
                 />
                 <PhotoCamera />
               </IconButton>
