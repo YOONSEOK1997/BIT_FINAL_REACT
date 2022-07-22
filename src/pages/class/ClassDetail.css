@@ -98,11 +98,11 @@ body {
   align-items: stretch;
   gap: 10px;
   margin: 0 18px 0 0;
-  padding: 10px;
   border-radius: 15px;
-  border: solid 1px #000;
+  border: solid 1px gray;
   float: left;
 }
+
 .imagemap {
   float: left;
 }
@@ -115,11 +115,23 @@ body {
   align-items: stretch;
   gap: 10px;
   margin: 0 0 16px 5px;
-  padding: 10px;
   border-radius: 15px;
-  border: solid 1px #000;
+  border: solid 1px gray;
 }
 
+.class_image_ck {
+  width: 159px;
+  height: 105px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 10px;
+  margin: 0 0 16px 5px;
+  border-radius: 15px;
+  border: solid 3px rgb(8, 21, 206);
+  box-shadow: 0 10px 10px rgba(95, 95, 95, 0.3);
+}
 /* .class_info */
 
 div .class_info {
@@ -310,30 +322,30 @@ div .class_plann {
 }
 
 .class_notice1 {
-  width: 1290px;
-  border: solid 1px #000;
+  width: 1200px;
+  border: solid 0px #000;
   margin-top: 50px;
   /* div겹침 */
   clear: both;
 }
 
 .class_notice2 {
-  width: 1290px;
-  border: solid 1px #000;
+  width: 1200px;
+  border: solid 0px #000;
   margin-top: 50px;
   /* div겹침 */
   clear: both;
 }
 .class_notice3 {
-  width: 1290px;
-  border: solid 1px #000;
+  width: 1200px;
+  border: solid 0px #000;
   margin-top: 50px;
   /* div겹침 */
   clear: both;
 }
 .class_notice4 {
-  width: 1290px;
-  border: solid 1px #000;
+  width: 1200px;
+  border: solid 0px #000;
   margin-top: 50px;
   /* div겹침 */
   clear: both;
@@ -602,6 +614,9 @@ footer .credits {
 /**
  * Tabs
  */
+.tabs-wrapper {
+  clear: both;
+}
 .tabs {
   display: flex;
   flex-wrap: wrap;
