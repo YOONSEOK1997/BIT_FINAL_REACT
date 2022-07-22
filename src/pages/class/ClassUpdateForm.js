@@ -102,7 +102,7 @@ const ClassUpdateForm = () => {
                 onChange={uploadImage}
               />
             </td>
-            <th />
+            <th></th>
           </tr>
           <tr>
             <th width="100" style={{ backgroundColor: '#d5bbdd' }}>

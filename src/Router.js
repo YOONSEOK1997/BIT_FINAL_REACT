@@ -10,6 +10,7 @@ import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 import Review from './components/Review/Review';
 import About from './pages/About/About';
+import Register from './pages/Register/Register';
 
 import {
   ClassList,
@@ -20,6 +21,9 @@ import {
   ClassIntroGuide,
 } from './pages/class';
 
+import PayMent from './pages/class/PayMent';
+import ClassPayBefore from './pages/class/ClassPayBefore';
+import ClassPayAfter from './pages/class/ClassPayAfter';
 const Router = () => {
   return (
     <BrowserRouter>
@@ -28,6 +32,7 @@ const Router = () => {
         <Route path="/" element={<Main />} />
         <Route path="/vod" element={<VodMain />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/lectures" element={<LectureList />} />
         <Route path="/lectures/:id" element={<LectureDetail />} />
         <Route path="/wish-list" element={<WishList />} />
@@ -36,10 +41,16 @@ const Router = () => {
         {/* Class */}
         <Route path="/class/list" element={<ClassList />} />
         <Route path="/class/form" element={<ClassForm />} />
-        <Route path="/class/detail/:num" element={<ClassDetail />} />
-        <Route path="/class/updateform/:num" element={<ClassUpdateForm />} />
+        <Route path="/class/detail/:class_num" element={<ClassDetail />} />
+        <Route
+          path="/class/updateform/:class_num"
+          element={<ClassUpdateForm />}
+        />
         <Route path="/class/guide" element={<ClassGuide />} />
         <Route path="/class/introguide" element={<ClassIntroGuide />} />
+        <Route path="/class/payment" element={<PayMent />} />
+        <Route path="/class/payment/before" element={<ClassPayBefore />} />
+        <Route path="/class/payment/after" element={<ClassPayAfter />} />
 
         <Route path="/about" element={<About />} />
       </Routes>
