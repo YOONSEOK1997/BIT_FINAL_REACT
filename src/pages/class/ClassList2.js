@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './ClassList.css';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
@@ -20,25 +20,25 @@ import { LeftCircleFilled } from '@ant-design/icons';
 
 const ClassList = () => {
   const navigate = useNavigate();
+  const { search } = useLocation();
+  const filterDom = useRef();
 
   //백엔드에서 받아올 리스트 데이터변수
   const [data, setData] = useState([]);
 
-  //필터링한거에 해당하는 데이터
-  const [filterData, setFilterData] = useState([]);
-
   //카테고리
   const [category, setCategory] = useState();
 
-  const filterDom = useRef();
   const [clickedCategory, setClickedCategory] = useState();
   const [clickedCheckList, setClickedCheckList] = useState([]);
+
   const [isContentsShowed, setIsContentsShowed] = useState(false);
 
   //url 선언
   let class_alllistUrl = 'http://localhost:9009/class/list';
   let class_photoUrl = 'http://localhost:9009/save/';
 
+  //처음에 불러오는 url
   const list = () => {
     axios.get(class_alllistUrl).then(res => {
       setData(res.data);
@@ -50,10 +50,11 @@ const ClassList = () => {
     list();
   }, []);
 
+  //filter 체크한대로 url 만들어줌
   const makeQueryString = () => {
     const queryString = clickedCheckList
       .map(({ id, content, sortType }) => {
-        return sortType === 'category' || sortType === 'types'
+        return sortType === 'regions' || sortType === 'category'
           ? `${sortType}_id=${parseInt(id) + 1}`
           : `${sortType}=${content}`;
       })
@@ -65,6 +66,7 @@ const ClassList = () => {
     navigate(`?${queryString}`);
   };
 
+  //체크한대로 filter 기능
   const handleCheckList = (e, content, idx, sort_type) => {
     e.target.checked
       ? setClickedCheckList([
@@ -76,7 +78,10 @@ const ClassList = () => {
         );
   };
 
+  //custom hook
+  //카테고리 부분 바깥을 눌렀을 때 체크리스트가 보이지 않게끔 기능 구현
   useOutsideClick(filterDom, () => setIsContentsShowed(false));
+
   return (
     <Wrapper>
       {/* 필터 부분 */}
@@ -215,14 +220,7 @@ const FILTER_CATEGORYS = [
   {
     sort_type: 'regions',
     title: '한강, 어디?',
-    contents: [
-      '반포 한강공원',
-      '잠실 한강공원',
-      '이촌 한강공원',
-      '여의도 한강공원',
-      '난지 한강공원',
-      '뚝섬 한강공원',
-    ],
+    contents: ['반포', '잠실', '이촌', '여의도', '난지', '뚝섬'],
   },
   {
     sort_type: 'category',

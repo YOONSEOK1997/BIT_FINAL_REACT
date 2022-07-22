@@ -69,6 +69,7 @@
   margin-top: 20px;
   float: left;
   border: 0.3px solid gray;
+  cursor: pointer;
 }
 
 .listdiv {

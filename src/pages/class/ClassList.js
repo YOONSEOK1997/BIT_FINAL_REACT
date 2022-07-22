@@ -124,7 +124,13 @@ const ClassList = () => {
         {/* 하나의 카드 반복문 */}
         {data &&
           data.map((data, index) => (
-            <div className="each_class" key={index}>
+            <div
+              className="each_class"
+              key={index}
+              onClick={() => {
+                navi(`/class/detail/${data.class_num}`);
+              }}
+            >
               <img
                 alt=""
                 src={class_photoUrl + data.class_photo1}
