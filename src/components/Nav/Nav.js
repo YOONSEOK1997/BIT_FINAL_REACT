@@ -10,6 +10,8 @@ import {
 import backgroundimg from '../../assets/premium-icon-magnifier-2311526.png';
 import styled from 'styled-components';
 import Weather from './Weather';
+import AuthService from '../../service/auth-service';
+
 const Nav = () => {
   const navigate = useNavigate();
   const [term, setTerm] = useState('');
@@ -28,6 +30,7 @@ const Nav = () => {
   };
 
   const kakaoLog = () => {
+    AuthService.logout();
     if (!window.Kakao.Auth.getAccessToken()) {
       alert('Not logged in.');
       return;
