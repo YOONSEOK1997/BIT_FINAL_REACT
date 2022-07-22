@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const SPRING_URL = 'http://localhost:9009/';
 
-//POST {사용자 이름, 이메일, 비밀번호}
+//POST {사용자 이름, 이메일, 비밀번호} // 사용안함
 const register = (username, password) => {
   return axios.post(SPRING_URL + 'api/signup', { username, password });
 };
@@ -32,6 +32,9 @@ const logout = () => {
   localStorage.removeItem('user');
   localStorage.removeItem('loginok');
   localStorage.removeItem('username');
+  localStorage.removeItem('token');
+  localStorage.removeItem('nickname');
+  localStorage.removeItem('profile');
   window.location.reload();
 };
 

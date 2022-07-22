@@ -16,12 +16,6 @@ import { getValue } from '@testing-library/user-event/dist/utils';
 
 const Register = () => {
   const navi = useNavigate();
-  // const [data, setData] = useState({
-  //   username: '',
-  //   email: '',
-  //   password: '',
-  //   profile: '',
-  // });
 
   //HOOK FORM
   const {
@@ -37,7 +31,7 @@ const Register = () => {
   });
 
   const onSubmit = async data => {
-    //await new Promise(r => setTimeout(r, 1000));
+    await new Promise(r => setTimeout(r, 1000));
     console.log(data, errors);
 
     if (!btnOk) {
@@ -52,7 +46,7 @@ const Register = () => {
   };
 
   //---------프로필 사진 관련
-  const [profile, setProfile] = useState(); //img1
+  const [profile1, setProfile1] = useState(); //img1
   const photoInput = useRef();
   const imgChange = () => {
     photoInput.current.click();
@@ -74,7 +68,7 @@ const Register = () => {
       headers: { 'content-Type': 'multipart/form-data' },
     })
       .then(res => {
-        setProfile(res.data);
+        setProfile1(res.data);
       })
       .catch(err => {
         alert(err);
@@ -84,8 +78,9 @@ const Register = () => {
   // 비밀번호 확인
   const password = useRef();
   password.current = watch('password');
-  const userName = getValues('username');
+
   //-----Username 중복체크
+  const userName = getValues('username');
   const [btnOk, setBtnOk] = useState(false);
   const onIdJungbok = () => {
     console.log(userName);
@@ -112,11 +107,13 @@ const Register = () => {
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <br />
+
             <div className="profileimg">
-              <img alt="" src={photoUrl + profile} className="user_profile" />
-              <input type="hidden" {...register('profile')}>
-                {profile}
-              </input>
+              {/* 이미지출력 */}
+              <img alt="" src={photoUrl + profile1} className="user_profile" />
+              {/* <input type="hidden" {...register('profile')}>
+                {profile1}
+              </input> */}
             </div>
             <div className="photo_icon">
               <IconButton
@@ -132,10 +129,18 @@ const Register = () => {
                   multiple
                   onChange={imageUpload}
                 />
+                <input
+                  hidden
+                  accept="image/*"
+                  type="file"
+                  multiple
+                  {...register('profile')}
+                />
                 <PhotoCamera />
               </IconButton>
             </div>
             <br />
+
             <div className="int-area1">
               <input
                 type="text"
