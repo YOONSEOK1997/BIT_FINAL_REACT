@@ -35,3 +35,9 @@
   font-weight: 500;
   margin-bottom: 50px;
 }
+
+.about_texx {
+  text-align: center;
+  font-size: 20px;
+  color: rgb(70, 70, 70);
+}

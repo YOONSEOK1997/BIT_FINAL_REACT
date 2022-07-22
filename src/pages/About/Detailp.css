@@ -1,0 +1,21 @@
+.detail_first {
+  font-size: 41px;
+  text-align: center;
+}
+
+.detail_private {
+  font-size: 40px;
+}
+
+.detail_privatename {
+  font-size: 25px;
+  text-align: center;
+}
+
+.detail_energy {
+  font-size: 40px;
+}
+.detail_energyname {
+  font-size: 25px;
+  text-align: center;
+}

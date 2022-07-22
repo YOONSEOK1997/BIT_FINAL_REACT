@@ -28,28 +28,28 @@ export default () => {
       onSwiper={swiper => console.log(swiper)}
     >
       <SwiperSlide>
-        <img src={m6} alt="" style={{ width: '340px', height: '300px' }} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={m1} alt="" style={{ width: '340px', height: '300px' }} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={m2} alt="" style={{ width: '340px', height: '300px' }} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={m3} alt="" style={{ width: '340px', height: '300px' }} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={m4} alt="" style={{ width: '340px', height: '300px' }} />
-      </SwiperSlide>
-      <SwiperSlide>
         <img src={m7} alt="" style={{ width: '340px', height: '300px' }} />
       </SwiperSlide>
       <SwiperSlide>
         <img src={m11} alt="" style={{ width: '340px', height: '300px' }} />
       </SwiperSlide>
       <SwiperSlide>
+        <img src={m2} alt="" style={{ width: '340px', height: '300px' }} />
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src={m6} alt="" style={{ width: '340px', height: '300px' }} />
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src={m1} alt="" style={{ width: '340px', height: '300px' }} />
+      </SwiperSlide>
+      <SwiperSlide>
         <img src={m9} alt="" style={{ width: '340px', height: '300px' }} />
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src={m3} alt="" style={{ width: '340px', height: '300px' }} />
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src={m4} alt="" style={{ width: '340px', height: '300px' }} />
       </SwiperSlide>
     </Swiper>
   );

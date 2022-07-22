@@ -11,6 +11,7 @@ import Footer from './components/Footer/Footer';
 import Review from './components/Review/Review';
 import About from './pages/About/About';
 import Register from './pages/Register/Register';
+import Detailp from './pages/About/Detailp';
 
 import {
   ClassList,
@@ -25,6 +26,7 @@ import PayMent from './pages/class/PayMent';
 import ClassPayBefore from './pages/class/ClassPayBefore';
 import ClassPayAfter from './pages/class/ClassPayAfter';
 import ChatRoom from './pages/chatting/ChatRoom';
+
 const Router = () => {
   return (
     <BrowserRouter>
@@ -54,6 +56,7 @@ const Router = () => {
         <Route path="/class/payment/after" element={<ClassPayAfter />} />
 
         <Route path="/about" element={<About />} />
+        <Route path="/about/1" element={<Detailp />} />
         <Route path="/chat" element={<ChatRoom />} />
       </Routes>
       <Footer />
