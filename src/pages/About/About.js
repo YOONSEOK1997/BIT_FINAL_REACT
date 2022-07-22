@@ -114,7 +114,11 @@ export default class about extends Component {
             </a>
           </div>
           <br />
-          오늘, 한강의 팀원은 어떻게 일해요?
+          <div className="about_plus1">
+            <a href="http://localhost:3000/about/2">
+              오늘, 한강의 팀원은 어떻게 일해요?
+            </a>
+          </div>
           <br />
           <br />
           오늘, 한강을 만들어 가는 사람은 누구인가요?

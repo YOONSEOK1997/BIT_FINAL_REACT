@@ -19,3 +19,21 @@
   font-size: 25px;
   text-align: center;
 }
+
+.detail_reasonable {
+  font-size: 40px;
+}
+
+.detail_reasonablename {
+  font-size: 25px;
+  text-align: center;
+}
+
+.detail_change {
+  font-size: 40px;
+}
+
+.detail_changename {
+  font-size: 25px;
+  text-align: center;
+}
