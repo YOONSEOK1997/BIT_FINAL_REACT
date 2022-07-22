@@ -31,6 +31,7 @@ import ClassPayBefore from './pages/class/ClassPayBefore';
 import ClassPayAfter from './pages/class/ClassPayAfter';
 import ChatRoom from './pages/chatting/ChatRoom';
 import Detailu from './pages/About/Detailu';
+import Detailz from './pages/About/Detailz';
 
 const Router = () => {
   return (
@@ -68,6 +69,7 @@ const Router = () => {
         <Route path="/about" element={<About />} />
         <Route path="/about/1" element={<Detailp />} />
         <Route path="/about/2" element={<Detailu />} />
+        <Route path="/about/3" element={<Detailz />} />
         <Route path="/chat" element={<ChatRoom />} />
         <Route path="/mypage" element={<MypageMain />} />
 
