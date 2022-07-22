@@ -24,6 +24,7 @@ import {
 import PayMent from './pages/class/PayMent';
 import ClassPayBefore from './pages/class/ClassPayBefore';
 import ClassPayAfter from './pages/class/ClassPayAfter';
+import ChatRoom from './pages/chatting/ChatRoom';
 const Router = () => {
   return (
     <BrowserRouter>
@@ -53,6 +54,16 @@ const Router = () => {
         <Route path="/class/payment/after" element={<ClassPayAfter />} />
 
         <Route path="/about" element={<About />} />
+        <Route path="/chat" element={<ChatRoom />} />
+        <Route
+          path="*"
+          element={
+            <div>
+              {/* <img src={errimg} alt="" /> */}
+              <h1>잘못된 URL주소입니다</h1>
+            </div>
+          }
+        />
       </Routes>
       <Footer />
     </BrowserRouter>
