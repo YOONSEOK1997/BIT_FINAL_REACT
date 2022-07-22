@@ -91,8 +91,8 @@ const VodMain = () => {
 
 const VodContain = styled.div`
   position: relative;
-  margin-top: -80px;
-  min-width: 1200px;
+  margin-top: -100px;
+  min-width: 1290px;
   height: 100vh;
   background-color: #fff;
   z-index: 100;
@@ -103,13 +103,13 @@ const VodContain = styled.div`
     object-fit: cover;
     top: 0;
     left: 0;
-    min-width: 1200px;
+    min-width: 1290px;
     height: 100vh;
   }
 `;
 const Wrapper = styled.div`
   position: relative;
-  ${({ theme }) => theme.wrapper('1200px', '0')};
+  ${({ theme }) => theme.wrapper('1290px', '0')};
   height: 100%;
 `;
 const VideoList = styled.div`
@@ -122,7 +122,7 @@ const VideoList = styled.div`
   overflow: hidden;
   .slick-slider {
     width: auto !important;
-    min-width: 1200px !important;
+    min-width: 1290px !important;
     height: 100vh;
   }
   .slick-slide {

@@ -9,9 +9,7 @@ import {
 } from '../../utils';
 import backgroundimg from '../../assets/premium-icon-magnifier-2311526.png';
 import styled from 'styled-components';
-
-import AuthService from '../../service/auth-service';
-
+import Weather from './Weather';
 const Nav = () => {
   const navigate = useNavigate();
   const [term, setTerm] = useState('');
@@ -29,9 +27,7 @@ const Nav = () => {
     setTerm('');
   };
 
-  //----로그아웃 관련---
   const kakaoLog = () => {
-    AuthService.logout();
     if (!window.Kakao.Auth.getAccessToken()) {
       alert('Not logged in.');
       return;
@@ -51,11 +47,12 @@ const Nav = () => {
         <LogoImg alt="로고" src="/images/로고4.png" />
       </Link>
       <div style={{ width: '380px' }}>
-        <GnbHome to="/">홈HOME</GnbHome>
-        <GnbVod to="/vod">브오디VOD</GnbVod>
-        <GnbClass to="/class/list">클래스Class</GnbClass>
+        <GnbHome to="/">HOME</GnbHome>
+        <GnbVod to="/vod">VOD</GnbVod>
+        <GnbClass to="/class/list">Class</GnbClass>
         <GnbAbout to="/about">About</GnbAbout>
       </div>
+      <Weather />
       <SearchArea>
         <form name="search" onSubmit={searchTerm}>
           <SearchInput
