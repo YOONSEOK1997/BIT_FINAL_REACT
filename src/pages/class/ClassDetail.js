@@ -82,9 +82,6 @@ const ClassDetail = () => {
     });
   };
 
-  //결제정보
-  const payData = useState({ options, data, percnt, totpay });
-
   //클래스 삭제시 호출 할 함수
   const onDelete = () => {
     axios.delete(deletelUrl).then(res => {
@@ -98,10 +95,6 @@ const ClassDetail = () => {
     changeoptions.current = options[e.target.value];
     console.log(changeoptions);
     setChange(true);
-  };
-
-  let mainChange = e => {
-    setMain(e.target.value);
   };
 
   //처음 랜더링시 위의 함수 호출
@@ -154,8 +147,22 @@ const ClassDetail = () => {
                 }}
               />
             </div>
-            <div className="class_image"></div>
-            <div className="class_image"></div>
+            <div className="class_image">
+              <img
+                src={photoUrl + data.class_photo3}
+                onClick={() => {
+                  setMain(3);
+                }}
+              />
+            </div>
+            <div className="class_image">
+              <img
+                src={photoUrl + data.class_photo4}
+                onClick={() => {
+                  setMain(4);
+                }}
+              />
+            </div>
           </div>
           <div className="class_info" style={{ float: 'right' }}>
             <div className="class_plan" style={{ float: 'left' }}>
