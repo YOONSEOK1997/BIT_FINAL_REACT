@@ -7,6 +7,7 @@ import { setToken, setProfile, setNickname } from '../../utils';
 import styled from 'styled-components';
 import './css/register.css';
 import img1 from './image/profile.jpg';
+import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Button from '@mui/material/Button';
@@ -148,10 +149,6 @@ const Register = () => {
                 aria-invalid={
                   !isDirty ? undefined : errors.username ? 'true' : 'false'
                 }
-                // onChange={e => {
-                //   //setUsername(e.target.value);
-                //   console.log(data.username);
-                // }}
                 {...register('username', {
                   minLength: {
                     value: 5,
@@ -163,10 +160,13 @@ const Register = () => {
                   },
                 })}
               />
-              <label>USER NAME</label>
+              <label>USER ID</label>
             </div>
             {errors.username && (
-              <div className="regis-error">{errors.username.message}</div>
+              <div className="regis-error1">
+                <WarningAmberIcon style={{ fontSize: 'small' }} />
+                {errors.username.message}
+              </div>
             )}
             <Button
               size="small"
@@ -180,6 +180,23 @@ const Register = () => {
             <div className="int-area1">
               <input
                 type="text"
+                name="realname"
+                id="realname"
+                autoComplete="off"
+                required
+                aria-invalid={
+                  !isDirty ? undefined : errors.realname ? 'true' : 'false'
+                }
+                {...register('realname')}
+              />
+              <label>USER NAME</label>
+            </div>
+            {errors.realname && (
+              <div className="regis-error">{errors.realname.message}</div>
+            )}
+            <div className="int-area1">
+              <input
+                type="text"
                 name="email"
                 id="email"
                 autoComplete="off"
@@ -187,9 +204,6 @@ const Register = () => {
                 aria-invalid={
                   !isDirty ? undefined : errors.email ? 'true' : 'false'
                 }
-                // onChange={e => {
-                //   //setEmail(e.target.value);
-                // }}
                 {...register('email', {
                   pattern: {
                     value: /\S+@\S+\.\S+/,
@@ -200,7 +214,10 @@ const Register = () => {
               <label>E-MAIL</label>
             </div>
             {errors.email && (
-              <div className="regis-error">{errors.email.message}</div>
+              <div className="regis-error">
+                <WarningAmberIcon style={{ fontSize: 'small' }} />
+                {errors.email.message}
+              </div>
             )}
             <div className="int-area1">
               <input
@@ -219,7 +236,12 @@ const Register = () => {
                 autoComplete="off"
                 required
                 {...register('password_confirm', {
-                  required: '비밀번호를 한번 더해주세요',
+                  required: (
+                    <div className="regis-error">
+                      <WarningAmberIcon style={{ fontSize: 'small' }} />
+                      비밀번호를 한번 더 입력해주세요
+                    </div>
+                  ),
                   validate: value => value === password.current,
                   onChange: () => {
                     trigger('password_confirm');
@@ -234,7 +256,10 @@ const Register = () => {
               )}
               {errors.password_confirm &&
                 errors.password_confirm.type === 'validate' && (
-                  <p>비밀번호가 일치하지 않습니다.</p>
+                  <div className="regis-error">
+                    <WarningAmberIcon style={{ fontSize: 'small' }} />
+                    비밀번호가 일치하지 않습니다.
+                  </div>
                 )}
               <label>PASSWORD</label>
             </div>

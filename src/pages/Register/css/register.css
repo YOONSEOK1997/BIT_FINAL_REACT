@@ -82,6 +82,12 @@
 .regis-error {
   font-size: 15px;
   color: #f20e43b9;
+  margin-right: 120px;
+}
+.regis-error1 {
+  font-size: 15px;
+  color: #f20e43b9;
+  margin-right: 160px;
 }
 
 /*-- 프로필 --*/
