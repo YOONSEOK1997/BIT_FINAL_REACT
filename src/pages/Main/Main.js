@@ -33,6 +33,8 @@ const Main = () => {
     navigate(`/lectures/${id}`);
   };
 
+  const navi = useNavigate();
+
   return (
     <Wrapper>
       <div>
@@ -104,12 +106,17 @@ const Main = () => {
                 <prifileWrap>
                   <ProfileImg src={getProfile()} />
                   <h3 className="userId">{getNickName()} 님</h3>
-                  <h3>반가워요</h3>
-                  <p>
-                    포인트 <span>0</span>p
-                  </p>
-                  <button>
-                    <StyledFaHeart /> 찜
+                  <h4>반가워요!😄🍀 </h4>
+
+                  <button
+                    onClick={() => {
+                      navi(`/mypage`);
+                    }}
+                  >
+                    <StyledFaHeart />
+                    <span style={{ fontSize: '14px', fontWeight: '400' }}>
+                      Mypage
+                    </span>
                   </button>
                 </prifileWrap>
               )}
@@ -279,7 +286,7 @@ const Profile = styled.div`
 `;
 
 const StyledFaHeart = styled(FaHeart)`
-  color: ${theme.red};
+  color: ${theme.green};
 `;
 
 const Search = styled.div`
