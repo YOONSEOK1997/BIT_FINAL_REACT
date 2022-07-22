@@ -11,7 +11,7 @@ import Footer from './components/Footer/Footer';
 import Review from './components/Review/Review';
 import About from './pages/About/About';
 import Register from './pages/Register/Register';
-import MyPageMain from './pages/MyPage/MypageMain';
+import errimg from './errimg.jpg';
 
 import {
   ClassList,
@@ -55,8 +55,17 @@ const Router = () => {
         <Route path="/class/payment/after" element={<ClassPayAfter />} />
 
         <Route path="/about" element={<About />} />
-        <Route path="/mypage" element={<MyPageMain />} />
         <Route path="/chat" element={<ChatRoom />} />
+
+        <Route
+          path="*"
+          element={
+            <div>
+              <img src={errimg} alt="" />
+              <h1>잘못된 URL주소입니다</h1>
+            </div>
+          }
+        />
       </Routes>
       <Footer />
     </BrowserRouter>
