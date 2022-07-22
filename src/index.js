@@ -7,7 +7,8 @@ import { theme } from './styles/theme';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './styles/GlobalStyle';
 
-// window.Kakao.init(process.env.REACT_APP_KAKAO);
+//process.env.REACT_APP_KAKAO
+window.Kakao.init('045e5cdfda71848f679f20270c996545');
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

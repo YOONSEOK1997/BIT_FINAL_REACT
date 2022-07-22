@@ -138,52 +138,47 @@ const ClassDetail = () => {
             <span className="tutor_name">한별 튜터</span>
           </div>
           {/* 이거 map으로 돌릴 수 있을거같은데 일단 */}
-          <div className="class_image1">
-            {main == 1 ? (
-              <img src={photoUrl + data.class_photo1} />
-            ) : main == 2 ? (
-              <img src={photoUrl + data.class_photo2} />
-            ) : main == 3 ? (
-              <img src={photoUrl + data.class_photo3} />
-            ) : main == 4 ? (
-              <img src={photoUrl + data.class_photo4} />
-            ) : (
-              <img src={photoUrl + data.class_photo5} />
-            )}
-          </div>
+          {main == 1 ? (
+            <img src={photoUrl + data.class_photo1} className="class_image1" />
+          ) : main == 2 ? (
+            <img src={photoUrl + data.class_photo2} className="class_image1" />
+          ) : main == 3 ? (
+            <img src={photoUrl + data.class_photo3} className="class_image1" />
+          ) : main == 4 ? (
+            <img src={photoUrl + data.class_photo4} className="class_image1" />
+          ) : (
+            <img src={photoUrl + data.class_photo5} className="class_image1" />
+          )}
           <div className="imagemap">
-            <div className="class_image">
-              <img
-                src={photoUrl + data.class_photo1}
-                onClick={() => {
-                  setMain(1);
-                }}
-              />
-            </div>
-            <div className="class_image">
-              <img
-                src={photoUrl + data.class_photo2}
-                onClick={() => {
-                  setMain(2);
-                }}
-              />
-            </div>
-            <div className="class_image">
-              <img
-                src={photoUrl + data.class_photo3}
-                onClick={() => {
-                  setMain(3);
-                }}
-              />
-            </div>
-            <div className="class_image">
-              <img
-                src={photoUrl + data.class_photo4}
-                onClick={() => {
-                  setMain(4);
-                }}
-              />
-            </div>
+            <img
+              className="class_image"
+              src={photoUrl + data.class_photo1}
+              onClick={() => {
+                setMain(1);
+              }}
+            />
+            <img
+              className="class_image"
+              src={photoUrl + data.class_photo2}
+              onClick={() => {
+                setMain(2);
+              }}
+            />
+            <img
+              className="class_image"
+              src={photoUrl + data.class_photo3}
+              onClick={() => {
+                setMain(3);
+              }}
+            />
+
+            <img
+              className="class_image"
+              src={photoUrl + data.class_photo4}
+              onClick={() => {
+                setMain(4);
+              }}
+            />
           </div>
           <div className="class_info" style={{ float: 'right' }}>
             <div className="class_plan" style={{ float: 'left' }}>
@@ -437,46 +432,88 @@ const ClassDetail = () => {
                 <input type="radio" name="tabs" id="tab1" checked="checked" />
                 <label for="tab1">클래스소개</label>
                 <div className="tab">
-                  <h2>Angular</h2>
-                  <p>
-                    One of the most powerful, efficient, and open-source
-                    JavaScript frameworks is{' '}
-                    <a href="https://angularjs.org/">Angular</a>. Google
-                    operates this framework and is implemented to use for
-                    developing a Single Page Application (SPA). It extends the
-                    HTML into the application and interprets the attributes to
-                    perform data binding.
-                  </p>
+                  <div>
+                    {data.class_anounok === true ? (
+                      <div className="class_notice1">
+                        <div
+                          className="class_subtitle"
+                          style={{ width: '600px' }}
+                        >
+                          클래스 전 숙지해주세요!
+                        </div>
+                        <div className="class_noticecircle">튜터공지</div>
+                        <div className="minicontent">{data.class_anoun}</div>
+                      </div>
+                    ) : (
+                      ''
+                    )}
+
+                    <div className="class_notice3">
+                      <div className="class_subtitle">클래스 소개</div>
+                      <div className="minicontent">
+                        <div
+                          dangerouslySetInnerHTML={{ __html: data.class_intro }}
+                        ></div>
+                      </div>
+                    </div>
+
+                    <div className="class_notice4">
+                      <div className="class_subtitle">클래스 커리큘럼</div>
+                      <div className="minicontent">{data.class_curri}</div>
+                    </div>
+                  </div>
                 </div>
 
                 <input type="radio" name="tabs" id="tab2" />
                 <label for="tab2">채팅룸</label>
                 <div className="tab">
-                  <h2>React</h2>
-                  <p>
-                    Created by Facebook, the{' '}
-                    <a href="https://reactjs.org/">React framework</a> has
-                    earned popularity within a short period. It is used to
-                    develop and operate the dynamic User Interface of the web
-                    pages with high incoming traffic. It makes the use of a
-                    virtual DOM, and hence, the integration of the same with any
-                    application is more straightforward.
-                  </p>
+                  <div className="class_review">
+                    <React.Fragment>
+                      <button className="class_reviewbtn" onClick={openModal3}>
+                        채팅방 입장
+                      </button>
+                      {/* //header 부분에 텍스트를 입력한다. */}
+                      <ChatRoom
+                        open={modalOpen3}
+                        close={closeModal3}
+                        header="채팅방"
+                        data={data}
+                        class_num={data.class_num}
+                      />
+                      {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달
+                      팝업창입니다. 쉽게 만들 수 있어요. 같이 만들어봐요! */}
+                    </React.Fragment>
+                  </div>
                 </div>
 
                 <input type="radio" name="tabs" id="tab3" />
                 <label for="tab3">클래스 리뷰</label>
                 <div className="tab">
-                  <h2>Vue</h2>
-                  <p>
-                    Though developed in the year 2016, this{' '}
-                    <a href="https://vuejs.org/">JavaScript framework</a> has
-                    already made its way into the market and has proven its
-                    worth by offering various features. Its dual integration
-                    mode is one of the most attractive features for creating
-                    high-end SPA or Single Page Application.It is a much
-                    reliable platform for developing cross-platform.
-                  </p>
+                  <div className="class_review">
+                    <div className="class_subtitle">실제 수강생 리뷰</div>
+
+                    <div className="class_reviewtitle">
+                      <div className="class_reviewcnt">★★★★★ 4.9 (180개)</div>
+
+                      <React.Fragment>
+                        <button
+                          className="class_reviewbtn"
+                          onClick={openModal2}
+                        >
+                          리뷰 작성하기
+                        </button>
+                        {/* //header 부분에 텍스트를 입력한다. */}
+                        <ReviewModal
+                          open={modalOpen2}
+                          close={closeModal2}
+                          header="리뷰 작성"
+                        />
+                        {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달
+                            팝업창입니다. 쉽게 만들 수 있어요. 같이 만들어봐요! */}
+                      </React.Fragment>
+                    </div>
+                    <ClassReview />
+                  </div>
                 </div>
 
                 <input type="radio" name="tabs" id="tab4" />

@@ -19,7 +19,7 @@ const Main = () => {
 
   const goToCategoryList = e => {
     const { id } = e.target;
-    navigate(`/lectures?category_id=${id}`);
+    navigate(`/class/list2/?category_id=${id}`);
   };
 
   const goToTypeList = e => {
@@ -122,7 +122,7 @@ const Main = () => {
               )}
             </Profile>
             <Search>
-              <h3>핫 트렌드</h3>
+              <h3>🔥핫 트렌드</h3>
 
               {TREND_LIST.map(({ lectureId, title }) => {
                 return (
@@ -142,13 +142,22 @@ const Main = () => {
 export default Main;
 
 const CATEGORY_CONTENTS = {
-  1: ['국내', '일본', '유럽', '미국'],
-  2: ['한식', '양식', '일식', '커피 · 디저트'],
-  3: ['드로잉', '미술', '글쓰기', '사진'],
-  4: ['러닝', '피트니스', '등산', '수영'],
+  1: ['스냅사진', '스포츠', '댄스/뮤직', '드로잉', '펫'],
+  2: ['스냅사진', '스포츠', '댄스/뮤직', '드로잉', '펫'],
+  3: ['스냅사진', '스포츠', '댄스/뮤직', '드로잉', '펫'],
+  4: ['스냅사진', '스포츠', '댄스/뮤직', '드로잉', '펫'],
+  5: ['스냅사진', '스포츠', '댄스/뮤직', '드로잉', '펫'],
+  6: ['스냅사진', '스포츠', '댄스/뮤직', '드로잉', '펫'],
 };
 
-const CATEGORY_TITLES = ['여행', '요리', '드로잉 · 사진', '피트니스'];
+const CATEGORY_TITLES = [
+  '반포 🌉  ',
+  '잠실 🏟️',
+  '이촌 🚲',
+  '여의도 🎆',
+  '난지 🪁',
+  '뚝섬 🍻',
+];
 
 const TYPES = [
   { icon: <FaLocationArrow id="1" />, title: '오프라인' },

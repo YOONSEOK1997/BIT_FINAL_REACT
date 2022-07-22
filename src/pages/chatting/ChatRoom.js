@@ -16,6 +16,7 @@ const ChatRoom = props => {
     connected: true,
     message: '',
     class_num: '',
+    class_name: '',
   });
   useEffect(() => {
     console.log(userData);
@@ -46,6 +47,7 @@ const ChatRoom = props => {
       senderName: userData.username,
       status: 'JOIN',
       class_num: class_num2,
+      class_name: props.data.class_name,
     };
     stompClient.send(
       '/app/message/' + class_num2,
@@ -99,6 +101,7 @@ const ChatRoom = props => {
         message: userData.message,
         status: 'MESSAGE',
         class_num: class_num2,
+        class_name: props.data.class_name,
       };
       console.log(chatMessage);
       stompClient.send(
