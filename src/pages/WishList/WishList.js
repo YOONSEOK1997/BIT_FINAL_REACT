@@ -27,7 +27,7 @@ const WishList = () => {
     <Wrapper>
       <WishContainer>
         <TitleBox>
-          <h2>나의 뿌잉</h2>
+          <h2>찜한 클래스</h2>
           <p>찜</p>
         </TitleBox>
 
