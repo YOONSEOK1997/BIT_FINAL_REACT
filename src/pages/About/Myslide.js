@@ -8,6 +8,8 @@ import m2 from './images/m2.jpg';
 import m3 from './images/m3.jpg';
 import m4 from './images/m4.jpg';
 import m7 from './images/m7.jpg';
+import m11 from './images/m11.jpg';
+import m9 from './images/m9.jpg';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -42,6 +44,12 @@ export default () => {
       </SwiperSlide>
       <SwiperSlide>
         <img src={m7} alt="" style={{ width: '560px', height: '450px' }} />
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src={m11} alt="" style={{ width: '560px', height: '450px' }} />
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src={m9} alt="" style={{ width: '560px', height: '450px' }} />
       </SwiperSlide>
     </Swiper>
   );
