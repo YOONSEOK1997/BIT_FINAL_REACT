@@ -41,8 +41,10 @@ const VodNav = () => {
           <LinkMain to="/">
             <Logo src="/images/로고4.png" />
           </LinkMain>
-          <PageMenu to="/">홈HOME</PageMenu>
-          <PageMenu to="/vod">브오디VOD</PageMenu>
+          <PageMenu to="/">HOME</PageMenu>
+          <PageMenu to="/vod">VOD</PageMenu>
+          <PageMenu to="/class/list">CLASS</PageMenu>
+          <PageMenu to="/About">ABOUT</PageMenu>
         </Left>
         <Right>
           <SearchBar>
@@ -107,10 +109,10 @@ const PageMenu = styled(Link)`
   font-size: 16px;
   text-decoration: none;
   cursor: pointer;
-  &:last-child {
-    font-weight: bold;
-    opacity: 1;
-  }
+  // &:last-child {
+  //   font-weight: bold;
+  //   opacity: 1;
+  // }
 `;
 const Right = styled.div`
   ${({ theme }) => theme.flexMixin('row', 'center', 'flex-start')};
