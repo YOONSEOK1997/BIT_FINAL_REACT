@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
+
 import d1 from './images/d1.jpg';
 import d2 from './images/d2.jpg';
 
+import { Divider } from '@mui/material';
 import './Detailp.css';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';

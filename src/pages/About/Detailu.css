@@ -5,6 +5,7 @@
 .detail_proname {
   font-size: 25px;
   text-align: center;
+  color: rgb(70, 70, 70);
 }
 
 .detail_priority {
@@ -15,4 +16,5 @@
 .detail_priorityname {
   font-size: 25px;
   text-align: center;
+  color: rgb(70, 70, 70);
 }
