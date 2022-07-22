@@ -14,11 +14,18 @@ const Login = () => {
   function kakaLogin() {
     window.Kakao.Auth.login({
       //받아오고 싶은 정보
-      scope: 'profile_nickname, profile_image',
+      scope: 'profile_nickname, profile_image, account_email, gender',
       //로그인 후 실행되는 코드(res=받아온데이터)
       success: function (res) {
         console.log(res);
-
+        //동영상
+        // window.Kakao.API.request({
+        //   url: '/v2/user/me',
+        //   success: res => {
+        //     const kakao_acount = res.kakao_acount;
+        //     console.log(kakao_acount);
+        //   },
+        // });
         fetch(`${API.join}`, {
           method: 'POST',
           headers: {
