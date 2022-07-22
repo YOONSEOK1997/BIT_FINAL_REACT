@@ -226,10 +226,24 @@ const Register = () => {
                 id="password"
                 autoComplete="off"
                 required
-                {...register('password')}
+                aria-invalid={
+                  !isDirty ? undefined : errors.password ? 'true' : 'false'
+                }
+                {...register('password', {
+                  pattern: {
+                    value: /^(?=.*\d)(?=.*[a-zA-Zs]).{8,}/,
+                    message: '8자이상, 영문, 숫자를 혼용하여 주세요.',
+                  },
+                })}
               />
               <label>PASSWORD</label>
             </div>
+            {errors.password && (
+              <div className="regis-error3">
+                <WarningAmberIcon style={{ fontSize: 'small' }} />
+                {errors.password.message}
+              </div>
+            )}
             <div className="int-area1">
               <input
                 type="password"

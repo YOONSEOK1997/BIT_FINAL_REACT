@@ -18,8 +18,8 @@ const Footer = () => {
             );
           })}
           <li>
-            <FooterPtag>TALING CENTER</FooterPtag>
-            <FooterBboing>😊 오늘,한강팀에게 문의하기</FooterBboing>
+            <FooterPtag>Moraess CENTER</FooterPtag>
+            <FooterBboing>😊 오늘,한강팀에게 문희하기</FooterBboing>
             <li>
               <FooterMarginTopPtag>운영시간</FooterMarginTopPtag>
               <FooterMarginTopPtag>

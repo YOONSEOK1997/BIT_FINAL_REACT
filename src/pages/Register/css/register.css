@@ -90,6 +90,12 @@
   margin-right: 160px;
 }
 
+.regis-error3 {
+  font-size: 15px;
+  color: #f20e43b9;
+  margin-right: 95px;
+}
+
 /*-- 프로필 --*/
 div.profileimg {
   margin: auto;
