@@ -70,6 +70,14 @@ const ClassDetail = () => {
     setModalOpen2(false);
   };
 
+  const [modalOpen3, setModalOpen3] = useState(false);
+  const openModal3 = () => {
+    setModalOpen3(true);
+  };
+  const closeModal3 = () => {
+    setModalOpen3(false);
+  };
+
   //스프링으로부터 num에 해당하는 data받기
   const onDataReceive = () => {
     axios.get(detailUrl).then(res => {
@@ -377,7 +385,23 @@ const ClassDetail = () => {
             </div>
           </div>
         ) : tab === 2 ? (
-          <ChatRoom></ChatRoom>
+          <div className="class_review">
+            <React.Fragment>
+              <button className="class_reviewbtn" onClick={openModal3}>
+                채팅방 입장
+              </button>
+              {/* //header 부분에 텍스트를 입력한다. */}
+              <ChatRoom
+                open={modalOpen3}
+                close={closeModal3}
+                header="채팅방"
+                data={data}
+                class_num={data.class_num}
+              />
+              {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달
+                      팝업창입니다. 쉽게 만들 수 있어요. 같이 만들어봐요! */}
+            </React.Fragment>
+          </div>
         ) : (
           <div className="class_review">
             <div className="class_subtitle">실제 수강생 리뷰</div>
