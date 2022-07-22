@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './ClassList.css';
 import styled from 'styled-components';
+import { theme } from '../../styles/theme';
 
 import ClassListRowItem from './ClassListRowItem';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
@@ -18,7 +19,7 @@ import img1 from '../../image/2.PNG';
 import { LeftCircleFilled } from '@ant-design/icons';
 
 const ClassList = () => {
-  const navi = useNavigate();
+  const navigate = useNavigate();
 
   //백엔드에서 받아올 리스트 데이터변수
   const [data, setData] = useState([]);
@@ -29,10 +30,10 @@ const ClassList = () => {
   //카테고리
   const [category, setCategory] = useState();
 
-  //필터 기능
-  const onChangeCategory = ({ currentTarget }) => {
-    setCategory(currentTarget.value);
-  };
+  const filterDom = useRef();
+  const [clickedCategory, setClickedCategory] = useState();
+  const [clickedCheckList, setClickedCheckList] = useState([]);
+  const [isContentsShowed, setIsContentsShowed] = useState(false);
 
   //url 선언
   let class_alllistUrl = 'http://localhost:9009/class/list';
@@ -41,7 +42,6 @@ const ClassList = () => {
   const list = () => {
     axios.get(class_alllistUrl).then(res => {
       setData(res.data);
-      // setFilterData(res.data.list);
       console.log(res.data);
     });
   };
@@ -50,59 +50,83 @@ const ClassList = () => {
     list();
   }, []);
 
-  //   useEffect(() => {
-  // const newData = data.filter(a => a.class_category === category);
-  // setFilterData(newData);
-  // }, [category]);
+  const makeQueryString = () => {
+    const queryString = clickedCheckList
+      .map(({ id, content, sortType }) => {
+        return sortType === 'category' || sortType === 'types'
+          ? `${sortType}_id=${parseInt(id) + 1}`
+          : `${sortType}=${content}`;
+      })
+      .map((item, idx) => {
+        return idx === 0 ? item : '&' + item;
+      })
+      .join('');
 
+    navigate(`?${queryString}`);
+  };
+
+  const handleCheckList = (e, content, idx, sort_type) => {
+    e.target.checked
+      ? setClickedCheckList([
+          ...clickedCheckList,
+          { id: idx, content, sortType: sort_type },
+        ])
+      : setClickedCheckList(
+          clickedCheckList.filter(list => list.content !== content)
+        );
+  };
+
+  useOutsideClick(filterDom, () => setIsContentsShowed(false));
   return (
     <Wrapper>
+      {/* 필터 부분 */}
       <div className="row">
-        <select className="select1" style={{ width: '150px' }}>
-          <option key="class_location" value="장소" disabled>
-            장소
-          </option>
-          <option key="반포 한강공원" value="반포 한강공원">
-            반포 한강공원
-          </option>
-          <option key="잠실 한강공원" value="잠실 한강공원">
-            잠실 한강공원
-          </option>
-          <option key="이촌 한강공원" value="이촌 한강공원">
-            이촌 한강공원
-          </option>
-          <option key="여의도 한강공원" value="여의도 한강공원">
-            여의도 한강공원
-          </option>
-          <option key="난지 한강공원" value="난지 한강공원">
-            난지 한강공원
-          </option>
-          <option key="뚝섬 한강공원" value="뚝섬 한강공원">
-            뚝섬 한강공원
-          </option>
-        </select>
-        <select className="select1" style={{ width: '150px' }}>
-          -
-          <option key="class_category" value="전체">
-            전체
-          </option>
-          <option key="스냅사진" value="스냅사진">
-            스냅사진
-          </option>
-          <option key="스포츠" value="스포츠">
-            스포츠
-          </option>
-          <option key="댄스/뮤직" value="댄스/뮤직">
-            댄스/뮤직
-          </option>
-          <option key="드로잉" value="드로잉">
-            드로잉
-          </option>
-          <option key="펫" value="펫">
-            펫
-          </option>
-        </select>
+        <FilterList ref={filterDom}>
+          {FILTER_CATEGORYS.map(({ sort_type, title, contents }, idx) => {
+            return (
+              <Filter key={idx}>
+                <Category
+                  className={clickedCategory === idx && 'show'}
+                  onClick={() => {
+                    setClickedCategory(idx);
+                    setIsContentsShowed(true);
+                  }}
+                >
+                  {title}
+                </Category>
+                <Contents
+                  className={
+                    clickedCategory === idx && isContentsShowed && 'show'
+                  }
+                >
+                  {contents.map((content, idx) => (
+                    <Content
+                      key={idx}
+                      onClick={e => handleCheckList(e, content, idx, sort_type)}
+                    >
+                      <input type="checkbox" />
+                      {content}
+                    </Content>
+                  ))}
+
+                  <Btns>
+                    <Button
+                      bgColor={theme.green}
+                      onClick={() => {
+                        makeQueryString();
+                        setIsContentsShowed(false);
+                      }}
+                    >
+                      필터 적용
+                    </Button>
+                  </Btns>
+                </Contents>
+              </Filter>
+            );
+          })}
+        </FilterList>
       </div>
+
       <div className="ClassHeader">클래스입니다 헤더 이미지는 수정예정</div>
 
       <div className="radiofilter" style={{ float: 'right' }}>
@@ -185,4 +209,99 @@ const Wrapper = styled.div`
   position: relative;
   padding-bottom: 20px;
   height: 2000px;
+`;
+
+const FILTER_CATEGORYS = [
+  {
+    sort_type: 'regions',
+    title: '한강, 어디?',
+    contents: [
+      '반포 한강공원',
+      '잠실 한강공원',
+      '이촌 한강공원',
+      '여의도 한강공원',
+      '난지 한강공원',
+      '뚝섬 한강공원',
+    ],
+  },
+  {
+    sort_type: 'category',
+    title: '카테고리',
+    contents: ['스냅사진', '스포츠', '댄스', '뮤직', '드로잉'],
+  },
+];
+
+const useOutsideClick = (ref, handler) => {
+  useEffect(() => {
+    const listener = event => {
+      if (!ref.current || ref.current.contains(event.target)) {
+        return;
+      }
+      handler(event);
+    };
+
+    document.addEventListener('mousedown', listener);
+    return () => {
+      document.removeEventListener('mousedown', listener);
+    };
+  }, [ref, handler]);
+};
+
+const FilterList = styled.ul`
+  display: flex;
+`;
+
+const Filter = styled.li`
+  position: relative;
+`;
+
+const Category = styled.div`
+  padding: 10px;
+  margin: 0 5px;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  cursor: pointer;
+
+  &:hover,
+  &.show {
+    background-color: #e6e9ed;
+  }
+`;
+
+const Contents = styled.div`
+  position: absolute;
+  display: none;
+  padding: 20px;
+  top: 37px;
+  left: 5px;
+  width: 240px;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  background-color: white;
+  z-index: 200;
+
+  &.show {
+    display: block;
+  }
+`;
+
+const Content = styled.div`
+  margin: 10px 0;
+  cursor: pointer;
+`;
+
+const Btns = styled.div`
+  padding-top: 20px;
+  text-align: right;
+  border-top: 1px solid #dbdbdb;
+`;
+
+const Button = styled.button`
+  background-color: ${props => props.bgColor};
+  margin: 2px;
+  padding: 5px 10px;
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
 `;
