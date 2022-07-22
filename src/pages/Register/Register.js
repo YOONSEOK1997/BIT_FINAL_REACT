@@ -12,47 +12,47 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Button from '@mui/material/Button';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { appendErrors, useForm } from 'react-hook-form';
+import { getValue } from '@testing-library/user-event/dist/utils';
 
 const Register = () => {
   const navi = useNavigate();
-  const [data, setData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    emailok: false,
-  });
-  //데이터 전송
-  const onDataChange = e => {
-    const { name, value } = e.target;
-    //이벤트 발생 name이 pass일 경우 무조건 passOk는 false
-    if (name === 'pass') setPassOk(false);
-    setData({
-      ...data,
-      [name]: value,
-    });
-  };
+  // const [data, setData] = useState({
+  //   username: '',
+  //   email: '',
+  //   password: '',
+  //   profile: '',
+  // });
+
   //HOOK FORM
   const {
     register,
     handleSubmit,
+    watch,
+    trigger,
+    setValue,
+    getValues,
     formState: { isSubmitting, isDirty, errors },
   } = useForm({
     mode: 'onChange',
   });
 
   const onSubmit = async data => {
-    await new Promise(r => setTimeout(r, 1000));
-    alert(JSON.stringify(data));
+    //await new Promise(r => setTimeout(r, 1000));
     console.log(data, errors);
 
     if (!btnOk) {
       alert('아이디 중복체크를 해주세요');
       return;
     }
+
+    const signupurl = 'http://localhost:9009/api/signup';
+    axios.post(signupurl, data).then(res => {
+      console.log(data);
+    });
   };
 
   //---------프로필 사진 관련
-  const [profile, setProfile] = useState(''); //img1
+  const [profile, setProfile] = useState(); //img1
   const photoInput = useRef();
   const imgChange = () => {
     photoInput.current.click();
@@ -81,19 +81,15 @@ const Register = () => {
       });
   };
 
-  //-----비밀번호 확인
-  const [passOk, setPassOk] = useState(false);
-  const onPassChange = e => {
-    const { value } = e.target;
-    if (value === data.password) setPassOk(true);
-    else setPassOk(false);
-  };
-
+  // 비밀번호 확인
+  const password = useRef();
+  password.current = watch('password');
+  const userName = getValues('username');
   //-----Username 중복체크
   const [btnOk, setBtnOk] = useState(false);
   const onIdJungbok = () => {
-    const url =
-      'http://localhost:9009/api/usernamecheck?username=' + data.username;
+    console.log(userName);
+    const url = 'http://localhost:9009/api/usernamecheck?username=' + userName;
     axios.get(url).then(res => {
       if (res.data === 0) {
         setBtnOk(true);
@@ -104,10 +100,6 @@ const Register = () => {
       }
     });
   };
-
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
 
   return (
     <LoginSection>
@@ -122,6 +114,9 @@ const Register = () => {
             <br />
             <div className="profileimg">
               <img alt="" src={photoUrl + profile} className="user_profile" />
+              <input type="hidden" {...register('profile')}>
+                {profile}
+              </input>
             </div>
             <div className="photo_icon">
               <IconButton
@@ -151,7 +146,10 @@ const Register = () => {
                 aria-invalid={
                   !isDirty ? undefined : errors.username ? 'true' : 'false'
                 }
-                onChange={onDataChange}
+                // onChange={e => {
+                //   //setUsername(e.target.value);
+                //   console.log(data.username);
+                // }}
                 {...register('username', {
                   minLength: {
                     value: 5,
@@ -187,7 +185,9 @@ const Register = () => {
                 aria-invalid={
                   !isDirty ? undefined : errors.email ? 'true' : 'false'
                 }
-                onChange={onDataChange}
+                // onChange={e => {
+                //   //setEmail(e.target.value);
+                // }}
                 {...register('email', {
                   pattern: {
                     value: /\S+@\S+\.\S+/,
@@ -207,7 +207,7 @@ const Register = () => {
                 id="password"
                 autoComplete="off"
                 required
-                onChange={onDataChange}
+                {...register('password')}
               />
               <label>PASSWORD</label>
             </div>
@@ -216,10 +216,25 @@ const Register = () => {
                 type="password"
                 autoComplete="off"
                 required
-                onChange={onPassChange}
+                {...register('password_confirm', {
+                  required: '비밀번호를 한번 더해주세요',
+                  validate: value => value === password.current,
+                  onChange: () => {
+                    trigger('password_confirm');
+                  },
+                  onBlur: () => {
+                    trigger('password_confirm');
+                  },
+                })}
               />
+              {errors.password_confirm && (
+                <p>{errors.password_confirm.message}</p>
+              )}
+              {errors.password_confirm &&
+                errors.password_confirm.type === 'validate' && (
+                  <p>비밀번호가 일치하지 않습니다.</p>
+                )}
               <label>PASSWORD</label>
-              <span className="regis-error">{passOk ? '일치합니다' : ''}</span>
             </div>
             <div className="btn-area1">
               <button type="submit" disabled={isSubmitting}>
