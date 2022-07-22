@@ -11,6 +11,7 @@ import Footer from './components/Footer/Footer';
 import Review from './components/Review/Review';
 import About from './pages/About/About';
 import Register from './pages/Register/Register';
+import MyPageMain from './pages/MyPage/MypageMain';
 
 import {
   ClassList,
@@ -54,6 +55,7 @@ const Router = () => {
         <Route path="/class/payment/after" element={<ClassPayAfter />} />
 
         <Route path="/about" element={<About />} />
+        <Route path="/mypage" element={<MyPageMain />} />
         <Route path="/chat" element={<ChatRoom />} />
       </Routes>
       <Footer />

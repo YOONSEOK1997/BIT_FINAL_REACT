@@ -1,0 +1,121 @@
+.mypage_container {
+  font-family: 'Noto Sans KR';
+}
+
+.mypage_container {
+  width: 1040px;
+  height: 2000px;
+  border: 1px solid gray;
+  margin-left: 315px;
+  margin-top: 70px;
+}
+
+.mypage_header {
+  border: 1px solid gray;
+  width: 1040px;
+  height: 50px;
+}
+
+.mypage {
+  font-size: 28px;
+  text-align: center;
+  height: 80px;
+  background-color: #03d85e;
+}
+
+.mypage_sidebar {
+  border: 1px solid gray;
+  width: 170px;
+  height: 1700px;
+  display: inline-block;
+}
+
+.mypage_sidebar li {
+  font-size: 18px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  margin-top: 30px;
+  text-align: center;
+  list-style: none;
+}
+
+.mypage_profile {
+  border: 1px solid gray;
+  margin-top: 50px;
+  width: 830px;
+  height: 380px;
+  float: right;
+  display: inline-block;
+}
+
+.profile_pic {
+  border: 1px solid gray;
+  width: 200px;
+  height: 200px;
+  float: left;
+  display: inline-block;
+}
+
+.profile_info {
+  border: 1px solid gray;
+  width: 500px;
+  height: 200px;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.profile_buttons {
+  border: 1px solid gray;
+  height: 100px;
+}
+
+.mypage_lists {
+  border: 1px solid gray;
+  width: 800px;
+  height: 1300px;
+  margin-left: 30px;
+  display: inline-block;
+  position: absolute;
+  top: 550px;
+}
+
+/* 여기까지 전체 틀 */
+.profile_labels {
+  margin-top: 40px;
+}
+
+.profile_label1 {
+  margin-left: 50px;
+  width: 100px;
+  height: 60px;
+  border: solid 2.5px #03d85e;
+  /* div겹침 */
+  clear: both;
+  line-height: 60px;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  background-color: #03d85e;
+  color: white;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.profile_label2 {
+  margin-left: 20px;
+  width: 200px;
+  height: 60px;
+  border: solid 1px gray;
+  border-radius: 10px;
+  /* div겹침 */
+  clear: both;
+  font-style: normal;
+  line-height: 60px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+}
