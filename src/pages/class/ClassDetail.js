@@ -12,6 +12,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import ClassReview from './ClassReview';
 import ReviewModal from './ReviewModal';
 import ClassPaybefore from './ClassPayBefore';
+import ChatRoom from '../chatting/ChatRoom';
 
 const ClassDetail = () => {
   const { class_num } = useParams();
@@ -21,6 +22,7 @@ const ClassDetail = () => {
   const [class_price, setClass_price] = useState(0);
   const totpay = useRef(0);
   const navi = useNavigate();
+  const [tab, setTab] = useState(1);
 
   // alert MUI (삭제 다이얼로그 코드 추가)
   const [open, setOpen] = React.useState(false);
@@ -80,9 +82,6 @@ const ClassDetail = () => {
     });
   };
 
-  //결제정보
-  const payData = useState({ options, data, percnt, totpay });
-
   //클래스 삭제시 호출 할 함수
   const onDelete = () => {
     axios.delete(deletelUrl).then(res => {
@@ -96,10 +95,6 @@ const ClassDetail = () => {
     changeoptions.current = options[e.target.value];
     console.log(changeoptions);
     setChange(true);
-  };
-
-  let mainChange = e => {
-    setMain(e.target.value);
   };
 
   //처음 랜더링시 위의 함수 호출
@@ -152,8 +147,22 @@ const ClassDetail = () => {
                 }}
               />
             </div>
-            <div className="class_image"></div>
-            <div className="class_image"></div>
+            <div className="class_image">
+              <img
+                src={photoUrl + data.class_photo3}
+                onClick={() => {
+                  setMain(3);
+                }}
+              />
+            </div>
+            <div className="class_image">
+              <img
+                src={photoUrl + data.class_photo4}
+                onClick={() => {
+                  setMain(4);
+                }}
+              />
+            </div>
           </div>
           <div className="class_info" style={{ float: 'right' }}>
             <div className="class_plan" style={{ float: 'left' }}>
@@ -264,40 +273,63 @@ const ClassDetail = () => {
         </div>
 
         <div className="class_tabsum">
-          <div className="class_tab">클래스 소개</div>
-          <div className="class_tab">클래스 커리큘럼</div>
-          <div className="class_tab">클래스 리뷰</div>
+          <div
+            className="class_tab"
+            onClick={() => {
+              setTab(1);
+            }}
+          >
+            클래스 소개
+          </div>
+          <div
+            className="class_tab"
+            onClick={() => {
+              setTab(2);
+            }}
+          >
+            채팅방
+          </div>
+          <div
+            className="class_tab"
+            onClick={() => {
+              setTab(3);
+            }}
+          >
+            클래스 리뷰
+          </div>
         </div>
 
-        {/* class detail info */}
-        <div>
-          {data.class_anounok === true ? (
-            <div className="class_notice1">
-              <div className="class_subtitle" style={{ width: '600px' }}>
-                클래스 전 숙지해주세요!
-                {data.class_anoun}
+        {tab === 1 ? (
+          <div>
+            {data.class_anounok === true ? (
+              <div className="class_notice1">
+                <div className="class_subtitle" style={{ width: '600px' }}>
+                  클래스 전 숙지해주세요!
+                  {data.class_anoun}
+                </div>
+                <div className="class_noticecircle">튜터공지</div>
               </div>
-              <div className="class_noticecircle">튜터공지</div>
-            </div>
-          ) : (
-            ''
-          )}
+            ) : (
+              ''
+            )}
 
-          <div className="class_notice3">
-            <div className="class_subtitle">
-              클래스 소개
-              {data.class_intro}
+            <div className="class_notice3">
+              <div className="class_subtitle">
+                클래스 소개
+                {data.class_intro}
+              </div>
+            </div>
+
+            <div className="class_notice4">
+              <div className="class_subtitle">
+                클래스 커리큘럼
+                {data.class_curri}
+              </div>
             </div>
           </div>
-
-          <div className="class_notice4">
-            <div className="class_subtitle">
-              클래스 커리큘럼
-              {data.class_curri}
-            </div>
-          </div>
-
-          {/* review */}
+        ) : tab === 2 ? (
+          <ChatRoom></ChatRoom>
+        ) : (
           <div className="class_review">
             <div className="class_subtitle">실제 수강생 리뷰</div>
 
@@ -320,6 +352,9 @@ const ClassDetail = () => {
             </div>
             <ClassReview />
           </div>
+        )}
+        {/* class detail info */}
+        <div>
           <br />
           <br />
           <br />

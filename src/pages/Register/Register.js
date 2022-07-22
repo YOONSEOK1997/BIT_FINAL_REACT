@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import AuthService from '../../service/auth-service';
 import API from '../../config';
@@ -16,12 +16,6 @@ import { getValue } from '@testing-library/user-event/dist/utils';
 
 const Register = () => {
   const navi = useNavigate();
-  // const [data, setData] = useState({
-  //   username: '',
-  //   email: '',
-  //   password: '',
-  //   profile: '',
-  // });
 
   //HOOK FORM
   const {
@@ -37,7 +31,7 @@ const Register = () => {
   });
 
   const onSubmit = async data => {
-    //await new Promise(r => setTimeout(r, 1000));
+    await new Promise(r => setTimeout(r, 1000));
     console.log(data, errors);
 
     if (!btnOk) {
@@ -45,9 +39,16 @@ const Register = () => {
       return;
     }
 
+    //회원가입 axios
     const signupurl = 'http://localhost:9009/api/signup';
     axios.post(signupurl, data).then(res => {
       console.log(data);
+    });
+    //프로필사진 넣기 axios
+    const username = setValue('username');
+    const insertProfileUrl = 'http://localhost:9009/api/instprf';
+    axios.post(insertProfileUrl, { username, profile }).then(res => {
+      navi('/login');
     });
   };
 
@@ -84,8 +85,9 @@ const Register = () => {
   // 비밀번호 확인
   const password = useRef();
   password.current = watch('password');
-  const userName = getValues('username');
+
   //-----Username 중복체크
+  const userName = getValues('username');
   const [btnOk, setBtnOk] = useState(false);
   const onIdJungbok = () => {
     console.log(userName);
@@ -112,11 +114,10 @@ const Register = () => {
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <br />
+
             <div className="profileimg">
+              {/* 이미지출력 */}
               <img alt="" src={photoUrl + profile} className="user_profile" />
-              <input type="hidden" {...register('profile')}>
-                {profile}
-              </input>
             </div>
             <div className="photo_icon">
               <IconButton
@@ -136,6 +137,7 @@ const Register = () => {
               </IconButton>
             </div>
             <br />
+
             <div className="int-area1">
               <input
                 type="text"

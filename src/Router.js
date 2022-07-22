@@ -11,7 +11,13 @@ import Footer from './components/Footer/Footer';
 import Review from './components/Review/Review';
 import About from './pages/About/About';
 import Register from './pages/Register/Register';
+<<<<<<< HEAD
 import Detailp from './pages/About/Detailp';
+=======
+import errimg from './errimg.jpg';
+import MypageMain from './pages/MyPage/MypageMain';
+import ClassList2 from './pages/class/ClassList2';
+>>>>>>> 67db184cea1cee8116bdaa39a9e76a785563fa57
 
 import {
   ClassList,
@@ -43,6 +49,10 @@ const Router = () => {
 
         {/* Class */}
         <Route path="/class/list" element={<ClassList />} />
+
+        {/* 이사간 필터 실험터 */}
+        <Route path="/class/list2" element={<ClassList2 />} />
+
         <Route path="/class/form" element={<ClassForm />} />
         <Route path="/class/detail/:class_num" element={<ClassDetail />} />
         <Route
@@ -58,6 +68,16 @@ const Router = () => {
         <Route path="/about" element={<About />} />
         <Route path="/about/1" element={<Detailp />} />
         <Route path="/chat" element={<ChatRoom />} />
+        <Route path="/mypage" element={<MypageMain />} />
+
+        <Route
+          path="*"
+          element={
+            <div>
+              <img src={errimg} alt="" style={{ width: '1520px' }} />
+            </div>
+          }
+        />
       </Routes>
       <Footer />
     </BrowserRouter>

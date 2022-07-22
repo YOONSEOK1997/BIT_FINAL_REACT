@@ -86,7 +86,7 @@ const Main = () => {
             <LectureSlide typesId="3" />
             <h3>당장 들어야 할 오프라인 클래스</h3>
             <LectureSlide typesId="1" />
-            <h3>뿌잉 VOD, 같이하면 더 쉬우니까</h3>
+            <h3>오늘,한강 VOD, 같이하면 더 쉬우니까</h3>
             <LectureSlide typesId="2" />
           </LectureContainer>
           <ProfileContainer>
@@ -94,7 +94,9 @@ const Main = () => {
               {!validtoken ? (
                 <>
                   <LoginDescribe>
-                    로그인 하시고 뿌잉의 다양한 튜터를 만나보세요.
+                    로그인 하시고 오늘,한강의
+                    <br />
+                    다양한 튜터를 만나보세요.
                   </LoginDescribe>
                   <MainLoginBtn to="/login">🌊오늘,한강 로그인</MainLoginBtn>
                 </>
