@@ -34,11 +34,12 @@ const ClassList = () => {
     setCategory(currentTarget.value);
   };
 
-  //데이터 가져오는 함수
-  const list = () => {
-    let class_alllisturl = 'http://localhost:9009/class/list';
+  //url 선언
+  let class_alllistUrl = 'http://localhost:9009/class/list';
+  let class_photoUrl = 'http://localhost:9009/save/';
 
-    axios.get(class_alllisturl).then(res => {
+  const list = () => {
+    axios.get(class_alllistUrl).then(res => {
       setData(res.data);
       // setFilterData(res.data.list);
       console.log(res.data);
@@ -49,10 +50,10 @@ const ClassList = () => {
     list();
   }, []);
 
-  useEffect(() => {
-    const newData = data.filter(a => a.class_category === category);
-    setFilterData(newData);
-  }, [category]);
+  //   useEffect(() => {
+  // const newData = data.filter(a => a.class_category === category);
+  // setFilterData(newData);
+  // }, [category]);
 
   return (
     <Wrapper>
@@ -103,146 +104,74 @@ const ClassList = () => {
         </select>
       </div>
       <div className="ClassHeader">클래스</div>
-      <div className="class_cate">
-        <div className="box1" onClick={onChangeCategory}>
-          <CameraAltIcon
-            style={{
-              fontSize: '48px',
-              marginLeft: '45px',
-              marginTop: '23px',
-            }}
-          />
-          <div className="boxtext1">스냅사진</div>
-        </div>
-        <div className="box1" onClick={onChangeCategory}>
-          <SportsHandballIcon
-            style={{
-              fontSize: '48px',
-              marginLeft: '45px',
-              marginTop: '23px',
-            }}
-          />
-          <div className="boxtext1">스포츠</div>
-        </div>
-        <div className="box1" onClick={onChangeCategory}>
-          <KitesurfingIcon
-            style={{
-              fontSize: '48px',
-              marginLeft: '45px',
-              marginTop: '23px',
-            }}
-          />
-          <div className="boxtext1">댄스/뮤직</div>
-        </div>
-        <div className="box1" onClick={onChangeCategory}>
-          <BrushIcon
-            style={{
-              fontSize: '48px',
-              marginLeft: '45px',
-              marginTop: '23px',
-            }}
-          />
-          <div className="boxtext1">드로잉</div>
-        </div>
-        <div className="box1" onClick={onChangeCategory}>
-          <PetsIcon
-            style={{
-              fontSize: '48px',
-              marginLeft: '45px',
-              marginTop: '23px',
-            }}
-          />
-          <div className="boxtext1">펫</div>
-        </div>
-      </div>
+
       <div className="radiofilter" style={{ float: 'right' }}>
         <label>
           <input type="radio" className="radio1" name="theme" />
-          최신순
+          ✨최신순
         </label>
-        <label style={{ marginLeft: '15px' }}>
+        <label style={{ marginLeft: '8px' }}>
           <input type="radio" className="radio1" name="theme" />
-          인기순
+          🔥인기순
         </label>
-        <label style={{ marginLeft: '15px' }}>
+        <label style={{ marginLeft: '8px' }}>
           <input type="radio" className="radio1" name="theme" />
-          평점순
+          ⭐평점순
         </label>
       </div>
+
       <div className="listdiv">
         {/* 하나의 카드 반복문 */}
-        {data.list &&
-          data.list.map((div, idx) => (
-            <div className="classlist">
-              <img alt="" src={img1} className="listimg" />
+        {data &&
+          data.map((data, index) => (
+            <div className="each_class" key={index}>
+              <img
+                alt=""
+                src={class_photoUrl + data.class_photo1}
+                className="listimg"
+              />
+
               <div className="class_location">
                 <div style={{ display: 'inline-block' }}>
                   <LocationOnIcon
                     style={{ fontSize: '20px', height: '20px' }}
                   />
                 </div>
-                <span className="class_location_name">
-                  {div.class_location}
-                </span>
+                <data className="class_location_name">
+                  {data.class_location} 한강공원
+                </data>
               </div>
+
               <div className="class_title1">
-                <span className="class_title_name" style={{ float: 'right' }}>
-                  수업제목이요
-                </span>
+                <data className="class_title_name" style={{ float: 'right' }}>
+                  {data.class_name}
+                </data>
               </div>
-              <div className="tutor_name">
-                <span>강사이름이요</span>
+
+              <div className="list_tutor_name">
+                <data>{data.tutor_id} 튜터</data>
               </div>
-              <div className="class_price">
-                <span className="qweqwe">가격입니다</span>
-                <span>총 7시간</span>
+
+              <div className="class_numbers">
+                <data className="class_price">{data.class_price} 원</data>
+                <data className="class_hour">(총 {data.class_hour}시간)</data>
               </div>
+
               <div className="class_like">
-                <div>
-                  <FavoriteBorderIcon
-                    style={{ fontSize: '20px', color: 'red', height: '20px' }}
-                  />
-                </div>
-                <span className="qweqwe">162</span>
+                <FavoriteBorderIcon
+                  style={{
+                    fontSize: '20px',
+                    color: 'red',
+                    height: '20px',
+                    display: 'inline-block',
+                  }}
+                />
+                <data className="heart" style={{ display: 'inline-block' }}>
+                  162
+                </data>
               </div>
             </div>
           ))}
-      </div>
-      <div className="classlist">
-        <img alt="" src={img1} className="listimg" />
-        <div className="class_location">
-          <div style={{ display: 'inline-block' }}>
-            <LocationOnIcon style={{ fontSize: '20px', height: '20px' }} />
-          </div>
-          <span
-            className="class_location_name"
-            style={{ display: 'inline-block' }}
-          >
-            뚝섬유원지
-          </span>
-        </div>
-        <div className="class_title1">
-          <span className="class_title_name">프로젝트 2주만에 끝내버리기</span>
-        </div>
-        <div className="list_tutor_name">
-          <span>김정하 강사님</span>
-        </div>
-        <div className="class_price">
-          <span className="qweqwe">가격입니다</span>
-        </div>
-        <div className="class_hour" style={{ display: 'inline-block' }}>
-          <span>총 7시간</span>
-        </div>
-        <div className="class_like">
-          <div style={{ display: 'inline-block' }}>
-            <FavoriteBorderIcon
-              style={{ fontSize: '20px', color: 'red', height: '20px' }}
-            />
-          </div>
-          <span className="class_like_num" style={{ display: 'inline-block' }}>
-            162
-          </span>
-        </div>
       </div>
     </Wrapper>
   );
@@ -252,7 +181,8 @@ export default ClassList;
 
 const Wrapper = styled.div`
   ${({ theme }) => theme.wrapper()}
-  position : relative;
+  margin-top: 40px;
+  position: relative;
   padding-bottom: 20px;
   height: 2000px;
   border: 1px solid gray;
