@@ -12,6 +12,7 @@ import Review from './components/Review/Review';
 import About from './pages/About/About';
 import Register from './pages/Register/Register';
 import errimg from './errimg.jpg';
+import MypageMain from './pages/MyPage/MypageMain';
 
 import {
   ClassList,
@@ -56,6 +57,7 @@ const Router = () => {
 
         <Route path="/about" element={<About />} />
         <Route path="/chat" element={<ChatRoom />} />
+        <Route path="/mypage" element={<MypageMain />} />
 
         <Route
           path="*"
