@@ -21,35 +21,35 @@ export default () => {
     <Swiper
       modules={[Pagination, Navigation]}
       pagination={{ clickable: true }}
-      spaceBetween={50}
+      spaceBetween={40}
       slidesPerView={3}
       navigation
       onSlideChange={() => console.log('slide change')}
       onSwiper={swiper => console.log(swiper)}
     >
       <SwiperSlide>
-        <img src={m6} alt="" style={{ width: '560px', height: '450px' }} />
+        <img src={m6} alt="" style={{ width: '340px', height: '300px' }} />
       </SwiperSlide>
       <SwiperSlide>
-        <img src={m1} alt="" style={{ width: '560px', height: '450px' }} />
+        <img src={m1} alt="" style={{ width: '340px', height: '300px' }} />
       </SwiperSlide>
       <SwiperSlide>
-        <img src={m2} alt="" style={{ width: '560px', height: '450px' }} />
+        <img src={m2} alt="" style={{ width: '340px', height: '300px' }} />
       </SwiperSlide>
       <SwiperSlide>
-        <img src={m3} alt="" style={{ width: '560px', height: '450px' }} />
+        <img src={m3} alt="" style={{ width: '340px', height: '300px' }} />
       </SwiperSlide>
       <SwiperSlide>
-        <img src={m4} alt="" style={{ width: '560px', height: '450px' }} />
+        <img src={m4} alt="" style={{ width: '340px', height: '300px' }} />
       </SwiperSlide>
       <SwiperSlide>
-        <img src={m7} alt="" style={{ width: '560px', height: '450px' }} />
+        <img src={m7} alt="" style={{ width: '340px', height: '300px' }} />
       </SwiperSlide>
       <SwiperSlide>
-        <img src={m11} alt="" style={{ width: '560px', height: '450px' }} />
+        <img src={m11} alt="" style={{ width: '340px', height: '300px' }} />
       </SwiperSlide>
       <SwiperSlide>
-        <img src={m9} alt="" style={{ width: '560px', height: '450px' }} />
+        <img src={m9} alt="" style={{ width: '340px', height: '300px' }} />
       </SwiperSlide>
     </Swiper>
   );
