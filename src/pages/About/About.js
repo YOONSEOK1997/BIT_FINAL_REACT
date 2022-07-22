@@ -86,8 +86,6 @@ export default class about extends Component {
             <br />
             <br />
             <br />
-            <br />
-            <br />
             누구나 하나쯤 남들보다 몰입해서 성과를 이뤄낸 분야가 있고, 그 생생한
             스토리와 지식의 가치는
             <br />

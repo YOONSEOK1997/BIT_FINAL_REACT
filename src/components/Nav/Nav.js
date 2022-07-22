@@ -73,7 +73,6 @@ const Nav = () => {
         ) : (
           <LoginWrap>
             <LogoutBtn onClick={kakaoLog}>로그아웃</LogoutBtn>
-            <LoginMenu to="/wish-list">찜</LoginMenu>
             <ProfileImg src={getProfile()} alt="카카오프로필임시" />
           </LoginWrap>
         )}
