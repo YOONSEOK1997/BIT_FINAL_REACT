@@ -103,7 +103,7 @@ const ClassList = () => {
           </option>
         </select>
       </div>
-      <div className="ClassHeader">클래스</div>
+      <div className="ClassHeader">클래스입니다 헤더 이미지는 수정예정</div>
 
       <div className="radiofilter" style={{ float: 'right' }}>
         <label>
@@ -185,5 +185,4 @@ const Wrapper = styled.div`
   position: relative;
   padding-bottom: 20px;
   height: 2000px;
-  border: 1px solid gray;
 `;

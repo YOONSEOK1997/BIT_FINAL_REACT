@@ -20,19 +20,18 @@
 .ClassHeader {
   width: 1040px;
   height: 100px;
-  border: solid 1px #000;
   /* div겹침 */
   clear: both;
   line-height: 100px;
   font-size: 28px;
   font-weight: bold;
   text-align: center;
+  background-image: url('./classImage/001.png');
 }
 
 .category2 {
   width: 1040px;
   height: 203px;
-  border: solid 1px #000;
   /* div겹침 */
   clear: both;
 }
@@ -51,14 +50,13 @@
   line-height: 80px;
   width: 1040px;
   height: 80px;
-  border: solid 1px #000;
   /* div겹침 */
   clear: both;
   font-size: 18px;
 }
 
 .radio1 {
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .each_class {
