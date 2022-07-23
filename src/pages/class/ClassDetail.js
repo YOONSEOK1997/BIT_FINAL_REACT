@@ -20,6 +20,8 @@ import cnt from './classImage/cnt.JPG';
 import location from './classImage/location.JPG';
 import time from './classImage/money.JPG';
 
+import banner from './classImage/배너.png';
+
 const ClassDetail = () => {
   const { class_num } = useParams();
   const [data, setData] = useState('');
@@ -56,7 +58,11 @@ const ClassDetail = () => {
   // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
-    setModalOpen(true);
+    if (changeoptions.current == 0) {
+      alert('일정을 선택해주세요~');
+    } else {
+      setModalOpen(true);
+    }
   };
   const closeModal = () => {
     setModalOpen(false);
@@ -346,6 +352,7 @@ const ClassDetail = () => {
         >
           <br />
           <br />
+
           <div
             className="class_tab"
             onClick={() => {
@@ -373,13 +380,14 @@ const ClassDetail = () => {
         </div>
 
         {tab === 1 ? (
-          <div>
+          <div className="class_tabb1">
             {data.class_anounok === true ? (
               <div className="class_notice1">
                 <div className="class_subtitle" style={{ width: '600px' }}>
                   클래스 전 숙지해주세요!
                 </div>
                 <div className="class_noticecircle">튜터공지</div>
+                <br />
                 <div className="minicontent">{data.class_anoun}</div>
               </div>
             ) : (
@@ -396,12 +404,17 @@ const ClassDetail = () => {
             </div>
 
             <div className="class_notice4">
-              <div className="class_subtitle">클래스 커리큘럼</div>
+              <div className="class_subtitle" style={{ marginBottom: '10px' }}>
+                클래스 커리큘럼
+              </div>
               <div className="minicontent">{data.class_curri}</div>
             </div>
+            <br />
+            <br />
+            <br />
           </div>
         ) : tab === 2 ? (
-          <div className="class_review">
+          <div className="class_tabb1">
             <React.Fragment>
               <button className="class_reviewbtn" onClick={openModal3}>
                 채팅방 입장
@@ -419,137 +432,35 @@ const ClassDetail = () => {
             </React.Fragment>
           </div>
         ) : (
-          <div className="class_review">
-            <div className="class_subtitle">실제 수강생 리뷰</div>
+          <div className="class_tabb1">
+            <div className="class_review">
+              <div className="class_subtitle">실제 수강생 리뷰</div>
 
-            <div className="class_reviewtitle">
-              <div className="class_reviewcnt">★★★★★ 4.9 (180개)</div>
+              <div className="class_reviewtitle">
+                <div className="class_reviewcnt">★★★★★ 4.9 (180개)</div>
 
-              <React.Fragment>
-                <button className="class_reviewbtn" onClick={openModal2}>
-                  리뷰 작성하기
-                </button>
-                {/* //header 부분에 텍스트를 입력한다. */}
-                <ReviewModal
-                  open={modalOpen2}
-                  close={closeModal2}
-                  header="리뷰 작성"
-                />
-                {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달
+                <React.Fragment>
+                  <button className="class_reviewbtn" onClick={openModal2}>
+                    리뷰 작성하기
+                  </button>
+                  {/* //header 부분에 텍스트를 입력한다. */}
+                  <ReviewModal
+                    open={modalOpen2}
+                    close={closeModal2}
+                    header="리뷰 작성"
+                  />
+                  {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달
                             팝업창입니다. 쉽게 만들 수 있어요. 같이 만들어봐요! */}
-              </React.Fragment>
+                </React.Fragment>
+              </div>
+              <ClassReview />
             </div>
-            <ClassReview />
           </div>
         )}
         {/* class detail info */}
-        {/* TABTAB */}
-        <br />
-        <br />
-        <div className="site-wrapper">
-          <section className="tabs-wrapper">
-            <div className="tabs-block">
-              <div className="tabs " style={{ width: '1290px' }}>
-                <input type="radio" name="tabs" id="tab1" checked="checked" />
-                <label for="tab1">클래스소개</label>
-                <div className="tab">
-                  <div>
-                    {data.class_anounok === true ? (
-                      <div className="class_notice1">
-                        <div
-                          className="class_subtitle"
-                          style={{ width: '600px' }}
-                        >
-                          클래스 전 숙지해주세요!
-                        </div>
-                        <div className="class_noticecircle">튜터공지</div>
-                        <div className="minicontent">{data.class_anoun}</div>
-                      </div>
-                    ) : (
-                      ''
-                    )}
 
-                    <div className="class_notice3">
-                      <div className="class_subtitle">클래스 소개</div>
-                      <div className="minicontent">
-                        <div
-                          dangerouslySetInnerHTML={{ __html: data.class_intro }}
-                        ></div>
-                      </div>
-                    </div>
-
-                    <div className="class_notice4">
-                      <div className="class_subtitle">클래스 커리큘럼</div>
-                      <div className="minicontent">{data.class_curri}</div>
-                    </div>
-                  </div>
-                </div>
-
-                <input type="radio" name="tabs" id="tab2" />
-                <label for="tab2">채팅룸</label>
-                <div className="tab">
-                  <div className="class_review">
-                    <React.Fragment>
-                      <button className="class_reviewbtn" onClick={openModal3}>
-                        채팅방 입장
-                      </button>
-                      {/* //header 부분에 텍스트를 입력한다. */}
-                      <ChatRoom
-                        open={modalOpen3}
-                        close={closeModal3}
-                        header="채팅방"
-                        data={data}
-                        class_num={data.class_num}
-                      />
-                      {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달
-                      팝업창입니다. 쉽게 만들 수 있어요. 같이 만들어봐요! */}
-                    </React.Fragment>
-                  </div>
-                </div>
-
-                <input type="radio" name="tabs" id="tab3" />
-                <label for="tab3">클래스 리뷰</label>
-                <div className="tab">
-                  <div className="class_review">
-                    <div className="class_subtitle">실제 수강생 리뷰</div>
-
-                    <div className="class_reviewtitle">
-                      <div className="class_reviewcnt">★★★★★ 4.9 (180개)</div>
-
-                      <React.Fragment>
-                        <button
-                          className="class_reviewbtn"
-                          onClick={openModal2}
-                        >
-                          리뷰 작성하기
-                        </button>
-                        {/* //header 부분에 텍스트를 입력한다. */}
-                        <ReviewModal
-                          open={modalOpen2}
-                          close={closeModal2}
-                          header="리뷰 작성"
-                        />
-                        {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달
-                            팝업창입니다. 쉽게 만들 수 있어요. 같이 만들어봐요! */}
-                      </React.Fragment>
-                    </div>
-                    <ClassReview />
-                  </div>
-                </div>
-
-                <input type="radio" name="tabs" id="tab4" />
-              </div>
-            </div>
-          </section>
-        </div>
-        {/* TABTAB */}
         <div>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-
+          <img src={banner} alt="" width="1290px" />
           <div className="tyu">
             <button
               type="button"
