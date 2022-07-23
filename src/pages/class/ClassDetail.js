@@ -145,7 +145,7 @@ const ClassDetail = () => {
           </div>
           <div className="tutor_info">
             <div class="tutor_image" style={{ float: 'left' }}></div>
-            <span className="tutor_name">한별 튜터</span>
+            <span className="tutor_name">{data.tutor_id} 튜터</span>
           </div>
           {/* 이거 map으로 돌릴 수 있을거같은데 일단 */}
           {main == 1 ? (

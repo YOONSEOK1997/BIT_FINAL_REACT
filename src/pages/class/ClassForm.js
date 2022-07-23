@@ -24,6 +24,7 @@ const ClassForm = passData => {
   let numUrl = process.env.REACT_APP_SPRING_URL + 'class/maxnum';
 
   //class table < optionnum
+  const tutor_id = localStorage.username;
   const [class_category, setClass_category] = useState('스냅사진');
   const [class_location, setClass_location] = useState('반포');
   const [class_name, setClass_name] = useState('');
@@ -41,7 +42,7 @@ const ClassForm = passData => {
   // const [class_hour, setClass_hour] = useState(0); 밑에서 사용
 
   //const class_intro = useRef(''); 밑에서 사용
-  const [class_curri, setClass_curri] = useState(''); //Ref_Editor
+  const [class_curri, setClass_curri] = useState('');
   const [class_anoun, setClass_anoun] = useState('');
   const [class_confirm, setClass_confirm] = useState('');
 
@@ -128,12 +129,29 @@ const ClassForm = passData => {
   //추가하는 #############################33
   function onInsert() {
     //axios.post(insertUrl, {sangpum:sangpum, su:su, dan:dan}) // a : b - a는 spring dto의 필드 명, b는 여기서 보내주는 필드명 같을 때는 생략 가능
+    if (class_name == '') {
+      alert('클래스명을 입력해주세용');
+      return;
+    }
+    if (class_hour == 0) {
+      alert('클래스시간을 정확히 입력해주세요!');
+      return;
+    }
+    if (class_curri == 0) {
+      alert('커리큘럼을 입력해주세용');
+      return;
+    }
+    if (class_confirm == '') {
+      alert('승인메세지를 입력해주세용');
+      return;
+    }
+
     axios
       .post(insertUrl, {
         class_category,
         class_location,
         class_name,
-        tutor_id: localStorage.username,
+        tutor_id: tutor_id,
         class_photo1: photos[0],
         class_photo2: photos[1],
         class_photo3: photos[2],
@@ -311,7 +329,7 @@ const ClassForm = passData => {
         style={{ marginLeft: '310px', borderColor: 'white' }}
       >
         <div className="class_subtitle">
-          {localStorage.username}님의 클래스에 대한 기본정보를 입력해주세요!
+          {tutor_id}님의 클래스에 대한 기본정보를 입력해주세요!
         </div>
         <div className="class_subtitle2">
           <div style={{ width: '455px', float: 'left', marginTop: '15px' }}>
@@ -693,7 +711,7 @@ const ClassForm = passData => {
         <br />
         <button
           class="w-btn w-btn-gra3 w-btn-gra-anim"
-          type="button"
+          type="submit"
           onClick={onInsert}
         >
           클래스 등록
