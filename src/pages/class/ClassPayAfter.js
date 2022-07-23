@@ -25,7 +25,12 @@ const ClassPayAfter = () => {
           }}
         />
         <div
-          style={{ marginLeft: '450px', fontSize: '40px', fontWeight: '600' }}
+          style={{
+            marginLeft: '450px',
+            fontSize: '40px',
+            fontWeight: '600',
+            color: '#7814dc',
+          }}
         >
           결제가 완료되었습니다!
         </div>
@@ -60,8 +65,12 @@ const ClassPayAfter = () => {
           </div>
         </div>
         <br />
-        <div>튜터 메시지를 확인하세요!</div>
-        <div>{state.custom_data.classconfirm}</div>
+        <div
+          style={{ color: '#7814DC', fontSize: '20px', marginLeft: '400px' }}
+        >
+          <div>📢 튜터 메시지</div>
+          <div> : {state.custom_data.classconfirm}</div>
+        </div>
         <br />
         <button
           className="btn1"

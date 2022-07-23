@@ -311,7 +311,7 @@ const ClassForm = passData => {
         style={{ marginLeft: '310px', borderColor: 'white' }}
       >
         <div className="class_subtitle">
-          홍대한님의 클래스에 대한 기본정보를 입력해주세요!
+          {localStorage.username}님의 클래스에 대한 기본정보를 입력해주세요!
         </div>
         <div className="class_subtitle2">
           <div style={{ width: '455px', float: 'left', marginTop: '15px' }}>

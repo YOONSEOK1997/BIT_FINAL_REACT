@@ -243,9 +243,9 @@ div .class_plann {
   width: 410px;
 }
 .class_signbtn {
-  width: 340px;
+  width: 338px;
   height: 58px;
-  margin: 15px 9px 0 0;
+  margin: 3px 9px 0 3px;
   border-radius: 10px;
   border: solid 0px #000;
   font-size: 24px;
@@ -263,9 +263,10 @@ div .class_plann {
   height: 58px;
   border-radius: 10px;
   border: solid 1px gray;
-  font-size: 38px;
+  font-size: 26px;
   background-color: white;
   color: #e83434;
+  margin-top: 15px;
 }
 
 /* class_summ */

@@ -5,18 +5,7 @@ import axios from 'axios'; //백엔드와 통신
 const Payment = (effect, deps, props) => {
   const navi = useNavigate();
   const { state } = useLocation();
-  //console.log(state.data);
-
-  //url 등록
-  let insertUrl = process.env.REACT_APP_SPRING_URL + 'class/insert';
-  const onInsert = () => {
-    // key(dto):value 같다면 key만 가능
-    axios
-      .post(insertUrl, {}) //photo는 backend에서
-      .then(res => {
-        alert('insert 성공@');
-      });
-  };
+  console.log('pay : ' + state);
 
   useEffect(() => {
     const jquery = document.createElement('script');
@@ -71,6 +60,29 @@ const Payment = (effect, deps, props) => {
     });
   };
 
+  //url 등록
+  let insertUrl = process.env.REACT_APP_SPRING_URL + 'pay/insert';
+  const onInsert = () => {
+    // key(dto):value 같다면 key만 가능
+    axios
+      .post(insertUrl, {
+        pay_order_num: `hdh_${new Date().getTime()}`,
+        pay_user_id: state.data.classnum,
+        pay_user_name: state.data.classnum, //
+        pay_class_num: state.data.classnum,
+        pay_class_name: state.data.classname,
+        pay_classoption_num: state.data.classoption_num,
+        pay_classoption_day: state.data.classoption_day,
+        pay_classoption_starttime: state.data.classoption_starttime,
+        pay_classoption_endtime: state.data.classoption_endtime,
+        pay_classoption_percnt: state.data.percnt,
+        pay_price: state.data.totpay,
+      })
+      .then(res => {
+        alert('insert 성공@');
+      });
+  };
+
   const callback = response => {
     const {
       success,
@@ -83,7 +95,9 @@ const Payment = (effect, deps, props) => {
     } = response;
 
     if (success) {
+      onInsert();
       alert('결제 성공');
+
       navi('/class/payment/after', { state: response });
     } else {
       alert(`결제 실패: ${error_msg}`);

@@ -111,6 +111,14 @@ const ClassDetail = () => {
     setChange(true);
   };
 
+  //찜
+  const [like, setLike] = useState(false);
+  const likeChange = e => {
+    changeoptions.current = options[e.target.value];
+    console.log(changeoptions);
+    setChange(true);
+  };
+
   //처음 랜더링시 위의 함수 호출
   useEffect(() => {
     onDataReceive();
@@ -259,7 +267,10 @@ const ClassDetail = () => {
                   {/* // Modal.js <main> {props.children} </main>에 내용이 입력 */}
                 </ClassPaybefore>
               </React.Fragment>
-              <button className="class_likebtn">♥</button>
+              <button className="class_likebtn" onClick={likeChange}>
+                ❤️
+              </button>
+              {/* 클릭시 <button className="class_likebtn">🤍</button> */}
             </div>
           </div>{' '}
           {/* info */} <br />
