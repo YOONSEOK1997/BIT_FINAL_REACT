@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { over } from 'stompjs';
 import SockJS from 'sockjs-client';
 import './ChatRoom.css';
+import axios from 'axios';
 
 var stompClient = null;
 const ChatRoom = props => {
@@ -18,8 +19,18 @@ const ChatRoom = props => {
     class_num: '',
     class_name: '',
   });
+
+  const SPRING_URL = process.env.REACT_APP_SPRING_URL;
+  let dataUrl = SPRING_URL + 'message/get?class_num=' + props.data.class_num;
+
+  const getMessage = () => {
+    axios.get(dataUrl, { class_num: props.data.class_num }).then(res => {
+      console.log(res.data);
+    });
+  };
   useEffect(() => {
     console.log(userData);
+    getMessage();
     connect();
   }, []);
 
