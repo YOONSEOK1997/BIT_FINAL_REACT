@@ -1,11 +1,11 @@
 import React from 'react';
-import './Detailz.css';
-
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
+import Myslide2 from './Myslide2';
+import './Detailz.css';
 
 import d6 from './images/d6.jpg';
-import { positions } from '@mui/system';
+import d13 from './images/d13.jpg';
 
 const Wrapper = styled.div`
   ${({ theme }) => theme.wrapper()}
@@ -14,31 +14,43 @@ const Wrapper = styled.div`
 const Detailz = () => {
   return (
     <Wrapper>
+      <br />
+      <br />
       <div>
+        <h2>오늘, 한강 을 만들어 가는 사람은 누구인가요?</h2>
+        <img
+          src={d6}
+          alt=""
+          style={{ width: '1035px', height: '550px', marginTop: '100px' }}
+        />
         <br />
         <br />
-        <div>오늘, 한강을 만들어 가는 사람은 누구인가요?</div>
-        <div className="woori">
-          <img
-            className="woori_photo"
-            src={d6}
-            alt=""
-            style={{
-              width: '800px',
-              height: '350px',
-              marginTop: '100px',
-              position: 'relative',
-              left: '150px',
-              marginBottom: '100px',
-            }}
-          />
+        <div className="routine">
+          일상에서는 쉽게 발견하지 못했을 각자의 재능을 발견해 다른 사람들과
+          <br />
+          나누는 곳. 그 과정에서 튜터와 수강생 모두가 함께 성장하는 곳. 저희가
+          <br />
+          생각하는 오늘, 한강 은 이런 곳이에요. 저 또한 한 명의 열렬한 유저로서
+          이
+          <br />
+          경험이 얼마나 소중한지 알기에, 더욱 많은 분들이 재능 공유와 성장의
+          <br />
+          즐거움을 누리실 수 있도록 오늘, 한강을 가꾸어가는 일에 저희 재능을
+          <br />
+          활용하기로 결심했습니다.
         </div>
-        <h1 style={{ position: 'relative', left: '330px', fontSize: 'medium' }}>
-          김준영 이경주 홍대한 한별 김정하 최윤석
-        </h1>
+        <br />
+        <div className="swiper-slide2">
+          <Myslide2></Myslide2>
+        </div>
         <br />
         <br />
-        <div></div>
+        <br />
+        <img
+          src={d13}
+          alt=""
+          style={{ width: '1035px', height: '550px', marginTop: '100px' }}
+        />
       </div>
     </Wrapper>
   );

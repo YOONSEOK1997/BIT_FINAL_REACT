@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Comment from './Comment';
 import { BASE_URL } from '../../config';
 import { getToken } from '../../utils';
+import Detailz from '../../pages/About/Detailz';
 
 const Review = ({ id }) => {
   const [newReview, setNewReview] = useState({ comment: '', image: '' });
@@ -42,6 +43,14 @@ const Review = ({ id }) => {
       }
     });
   };
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
   return (
     <ReviewContainer>
       <ReviewBox>
@@ -79,6 +88,16 @@ const Review = ({ id }) => {
           />
         ))}
       </div>
+
+      <React.Fragment>
+        <button onClick={openModal} className="class_signbtn">
+          모달시작
+        </button>
+        {/* //header 부분에 텍스트를 입력한다. */}
+        <Detailz open={modalOpen} close={closeModal}>
+          {/* // Modal.js <main> {props.children} </main>에 내용이 입력 */}
+        </Detailz>
+      </React.Fragment>
     </ReviewContainer>
   );
 };

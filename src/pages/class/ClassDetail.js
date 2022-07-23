@@ -52,7 +52,7 @@ const ClassDetail = () => {
   let deletelUrl = SPRING_URL + 'class/delete?class_num=' + class_num;
   let photoUrl = process.env.REACT_APP_SPRING_URL + 'save/';
 
-  //popup modal (ClassGuide, 클래스신청)
+  //popup modal (ClassGuide, 신청)
   // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
