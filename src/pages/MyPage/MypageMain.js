@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './MypageMain.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import profile_image from '../../image/3.PNG';
 import styled from 'styled-components';
 
@@ -14,11 +14,10 @@ const MypageMain = () => {
 
       <div className="mypage_sidebar">
         <div className="mypage">My Page</div>
+        <li>수강중인 클래스</li>
         <li>결제 내역</li>
         <li>나의 찜</li>
-        <li>모임</li>
-        <li>챌린지</li>
-        <li>클래스</li>
+        <li>튜터 페이지</li>
 
         {/* {show===1?<MypageMain/>:show===2?<MypagePayment/>:show===3?<MypageLikes/>
                     :show===4?<MypageMoim/>:show===5?<MypageChallenge/>

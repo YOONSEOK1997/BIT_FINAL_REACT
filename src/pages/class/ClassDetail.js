@@ -134,7 +134,7 @@ const ClassDetail = () => {
   }, []);
   return (
     <div>
-      <div className="content_container" style={{ marginLeft: '310px' }}>
+      <div className="content_container" style={{ marginLeft: '150px' }}>
         <div className="class_top">
           <div className="class_title_div">
             <div
