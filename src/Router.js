@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import Main from './pages/Main/Main';
 import VodMain from './pages/VodMain/VodMain';
 import Login from './pages/Login/Login';
@@ -39,6 +40,7 @@ import ClassPayAfter from './pages/class/ClassPayAfter';
 import ChatRoom from './pages/chatting/ChatRoom';
 import Detailu from './pages/About/Detailu';
 import Detailz from './pages/About/Detailz';
+import Sidebar from './pages/MyPage/Sidebar';
 
 const Router = () => {
   return (
