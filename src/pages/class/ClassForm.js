@@ -131,14 +131,24 @@ const ClassForm = passData => {
     //axios.post(insertUrl, {sangpum:sangpum, su:su, dan:dan}) // a : b - a는 spring dto의 필드 명, b는 여기서 보내주는 필드명 같을 때는 생략 가능
     if (class_name == '') {
       alert('클래스명을 입력해주세용');
+      class_intro.focus();
       return;
     }
     if (class_hour == 0) {
       alert('클래스시간을 정확히 입력해주세요!');
       return;
     }
-    if (class_curri == 0) {
-      alert('커리큘럼을 입력해주세용');
+    if (options.length == 0) {
+      alert('일정을 추가해주세요!');
+      return;
+    }
+    if (class_intro.current == '') {
+      alert('클래스 소개 영역을 입력해주세용');
+      class_intro.current.focus();
+      return;
+    }
+    if (class_curri == '') {
+      alert('클래스 커리큘럼 영역을 입력해주세용');
       return;
     }
     if (class_confirm == '') {
@@ -326,7 +336,7 @@ const ClassForm = passData => {
 
       <div
         className="content_container"
-        style={{ marginLeft: '310px', borderColor: 'white' }}
+        style={{ marginLeft: '210px', borderColor: 'white' }}
       >
         <div className="class_subtitle">
           {tutor_id}님의 클래스에 대한 기본정보를 입력해주세요!
