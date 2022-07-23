@@ -59,7 +59,7 @@ const ClassDetail = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
     if (changeoptions.current == 0) {
-      alert('일정을 선택해주세요~');
+      alert('일정을 선택해주세요옹~?');
     } else {
       setModalOpen(true);
     }
