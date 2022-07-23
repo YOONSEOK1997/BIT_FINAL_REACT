@@ -17,33 +17,43 @@ const Login = () => {
       scope: 'profile_nickname, profile_image, account_email, gender',
       //로그인 후 실행되는 코드(res=받아온데이터)
       success: function (res) {
-        console.log(res);
+        //console.log(res);
         //동영상
-        // window.Kakao.API.request({
-        //   url: '/v2/user/me',
-        //   success: res => {
-        //     const kakao_acount = res.kakao_acount;
-        //     console.log(kakao_acount);
-        //   },
-        // });
-        fetch(`${API.join}`, {
-          method: 'POST',
-          headers: {
-            Authorization: res.access_token,
-          },
-        })
-          .then(res => {
-            return res.json();
-          })
-          .then(res => {
+        window.Kakao.API.request({
+          url: '/v2/user/me',
+          success: res => {
+            console.log('1');
+            console.log(JSON.stringify(res));
             const restoken = res.access_token;
-            const profile = res.profile_image;
-            const nickname = res.kakao_nickname;
+            const profile = res.properties.profile_image;
+            const nickname = res.properties.nickname;
             setToken(restoken);
             setProfile(profile);
             setNickname(nickname);
             goToMain();
-          });
+          },
+          fail: function (error) {
+            console.log(error);
+          },
+        });
+        // fetch(`${API.join}`, {
+        //   method: 'POST',
+        //   headers: {
+        //     Authorization: res.access_token,
+        //   },
+        // })
+        //   .then(res => {
+        //     return res.json();
+        //   })
+        //   .then(res => {
+        //     const restoken = res.access_token;
+        //     const profile = res.profile_image;
+        //     const nickname = res.kakao_nickname;
+        //     setToken(restoken);
+        //     setProfile(profile);
+        //     setNickname(nickname);
+        //     goToMain();
+        //   });
       },
     });
   }
