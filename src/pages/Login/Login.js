@@ -18,19 +18,47 @@ const Login = () => {
       //로그인 후 실행되는 코드(res=받아온데이터)
       success: function (res) {
         //console.log(res);
-        //동영상
         window.Kakao.API.request({
           url: '/v2/user/me',
           success: res => {
-            console.log('1');
             console.log(JSON.stringify(res));
+
+            //이메일 중복확인
+            //-----Username 중복체크
+            const username = res.id;
+            const email = res.kakao_account.email;
             const restoken = res.access_token;
             const profile = res.properties.profile_image;
             const nickname = res.properties.nickname;
-            setToken(restoken);
-            setProfile(profile);
-            setNickname(nickname);
-            goToMain();
+            const emailChkUrl =
+              'http://localhost:9009/api/emailcheck?email=' + email;
+
+            axios.get(emailChkUrl).then(res => {
+              if (res.data === 0) {
+                //IF, 이메일이 USER TABLE에 없으면 회원가입
+                const signupurl = 'http://localhost:9009/api/signup';
+                axios
+                  .post(signupurl, {
+                    username: username,
+                    password: username,
+                    email: email,
+                    profile: profile,
+                    realname: nickname,
+                  })
+                  .then(res => {
+                    setToken(restoken);
+                    setProfile(profile);
+                    setNickname(nickname);
+                    goToMain();
+                  });
+              } else {
+                //로컬스토리지에 저장
+                setToken(restoken);
+                setProfile(profile);
+                setNickname(nickname);
+                goToMain();
+              }
+            });
           },
           fail: function (error) {
             console.log(error);
