@@ -3,6 +3,7 @@ import { over } from 'stompjs';
 import SockJS from 'sockjs-client';
 import './ChatRoom.css';
 import axios from 'axios';
+import duck from './파비콘.png';
 
 var stompClient = null;
 const ChatRoom = props => {
@@ -197,11 +198,8 @@ const ChatRoom = props => {
                     <div className="chat-content">
                       <ul
                         className="chat-messages"
-                        style={{ overflow: 'auto' }}
+                        style={{ overflowY: 'auto' }}
                       >
-                        {/* {mesData.current.map((chat, index) => (
-                          <li>d</li>
-                        ))} */}
                         {mesData.current &&
                           mesData.current.map((chat, index) => (
                             <li
@@ -246,7 +244,7 @@ const ChatRoom = props => {
                         <input
                           type="text"
                           className="input-message"
-                          placeholder="enter the message"
+                          placeholder="메세지를 입력해 주세요"
                           value={userData.message}
                           onChange={handleMessage}
                           onKeyUp={e => {
@@ -255,13 +253,21 @@ const ChatRoom = props => {
                             }
                           }}
                         />
-                        <button
+                        {/* <button
                           type="button"
                           className="send-button"
                           onClick={sendValue}
-                        >
-                          send
-                        </button>
+                          >
+                            </button> */}
+                        <img
+                          src={duck}
+                          style={{
+                            width: '50px',
+                            height: '50px',
+                            borderRadius: '50px',
+                          }}
+                          onClick={sendValue}
+                        />
                       </div>
                     </div>
                   )}
