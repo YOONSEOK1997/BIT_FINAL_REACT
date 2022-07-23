@@ -14,7 +14,7 @@ code {
 
 input {
   padding: 10px;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 .send-button {
   border: none;
@@ -69,8 +69,10 @@ input {
 }
 
 .input-message {
-  width: 90%;
-  border-radius: 50px;
+  width: 85%;
+  border-radius: 10px;
+  margin-right: 10px;
+  border: 0.5px solid darkgray;
 }
 
 ul {

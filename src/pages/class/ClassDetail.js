@@ -54,7 +54,7 @@ const ClassDetail = () => {
   let deletelUrl = SPRING_URL + 'class/delete?class_num=' + class_num;
   let photoUrl = process.env.REACT_APP_SPRING_URL + 'save/';
 
-  //popup modal (ClassGuide, 신청)
+  //popup modal (ClassGuide, 클래스신청)
   // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
@@ -204,13 +204,32 @@ const ClassDetail = () => {
               <option selected disabled>
                 일정을 선택해 주세요
               </option>
-              {options.map((row, idx) => (
-                <option value={idx}>
-                  {row.classoption_day} &nbsp;{row.classoption_starttime}시 ~{' '}
-                  {row.classoption_endtime}시 (정원 :{' '}
-                  {row.classoption_presentperson}/{row.classoption_totalperson}){' '}
-                </option>
-              ))}
+
+              {/* 정원 꾸와아아아아아악!!찰시? disabled */}
+              {options.map((row, idx) => {
+                if (
+                  `${row.classoption_presentperson}` ===
+                  `${row.classoption_totalperson}`
+                ) {
+                  return (
+                    <option value={idx} disabled>
+                      {row.classoption_day} &nbsp;{row.classoption_starttime}시
+                      ~ {row.classoption_endtime}시 (정원 :{' '}
+                      {row.classoption_presentperson}/
+                      {row.classoption_totalperson}) (마감)
+                    </option>
+                  );
+                } else {
+                  return (
+                    <option value={idx}>
+                      {row.classoption_day} &nbsp;{row.classoption_starttime}시
+                      ~ {row.classoption_endtime}시 (정원 :{' '}
+                      {row.classoption_presentperson}/
+                      {row.classoption_totalperson}){' '}
+                    </option>
+                  );
+                }
+              })}
             </select>
 
             {change === true ? (
