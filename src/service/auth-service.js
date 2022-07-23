@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setToken, setProfile, setNickname } from '../utils';
 
 const SPRING_URL = 'http://localhost:9009/';
 
@@ -27,6 +28,18 @@ const executeHelloService = () => {
   return axios.get(SPRING_URL + '/hello');
 };
 
+//USER정보 불러오기
+const getProfile = username => {
+  return axios
+    .get(SPRING_URL + 'api/getprofile?username=' + username)
+    .then(response => {
+      let photoUrl = 'http://localhost:9009/save/';
+
+      setNickname(response.data.realname);
+      setProfile(photoUrl + response.data.profile);
+    });
+};
+
 //JWT로컬 저장소에서 제거
 const logout = () => {
   localStorage.removeItem('user');
@@ -49,5 +62,6 @@ const AuthService = {
   logout,
   getCurrentUser,
   executeHelloService,
+  getProfile,
 };
 export default AuthService;

@@ -46,6 +46,7 @@ const Login = () => {
                     realname: nickname,
                   })
                   .then(res => {
+                    // 회원가입 후 프로필, 기타 정보를 박아넣음.  여기서 authenticate url 호출하면 될 것 같기는 함..
                     setToken(restoken);
                     setProfile(profile);
                     setNickname(nickname);
@@ -64,24 +65,6 @@ const Login = () => {
             console.log(error);
           },
         });
-        // fetch(`${API.join}`, {
-        //   method: 'POST',
-        //   headers: {
-        //     Authorization: res.access_token,
-        //   },
-        // })
-        //   .then(res => {
-        //     return res.json();
-        //   })
-        //   .then(res => {
-        //     const restoken = res.access_token;
-        //     const profile = res.profile_image;
-        //     const nickname = res.kakao_nickname;
-        //     setToken(restoken);
-        //     setProfile(profile);
-        //     setNickname(nickname);
-        //     goToMain();
-        //   });
       },
     });
   }
@@ -92,6 +75,7 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  //일반 로그인
   const onSubmit = e => {
     e.preventDefault();
 
@@ -100,14 +84,15 @@ const Login = () => {
         console.log(res);
         localStorage.loginok = 'yes';
         localStorage.username = username;
-        //window.location.reload(); //새로고침
         const jwttoken = res.token;
         const profile = res.profile;
-        const nickname = res.username;
-        setToken(jwttoken);
-        setProfile(profile);
-        setNickname(username);
-        goToMain();
+        //window.location.reload(); //새로고침
+
+        //USER정보 불러오기
+        AuthService.getProfile(username).then(res => {
+          setToken(jwttoken);
+          goToMain();
+        });
       }
     );
   };
