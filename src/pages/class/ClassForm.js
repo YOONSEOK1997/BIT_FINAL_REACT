@@ -51,14 +51,6 @@ const ClassForm = passData => {
   //const [classoption_endtime, setClassoption_endtime] = useState(0); 밑에서 사용
   //const [classoption_totalperson, setClassoption_totalperson] = useState(1); 밑에서 사용
 
-  function upload() {
-    const url = 'http://localhost:9009/class/insert3';
-    axios.post(url, { class_photo1: showImages }).then(res => {
-      alert('insert 성공');
-      //navi("/login")
-    });
-  }
-
   function maxnum() {
     axios.post(numUrl).then(res => {
       setClass_num(res.data + 1);

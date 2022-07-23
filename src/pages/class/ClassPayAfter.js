@@ -10,7 +10,7 @@ const ClassPayAfter = () => {
     <div>
       <div
         className="content_container"
-        style={{ marginLeft: '310px', borderColor: 'white' }}
+        style={{ marginLeft: '310px', borderColor: 'black', width: '1000px' }}
       >
         <img
           alt=""
@@ -60,6 +60,8 @@ const ClassPayAfter = () => {
           </div>
         </div>
         <br />
+        <div>튜터 메시지를 확인하세요!</div>
+        <div>{state.custom_data.classconfirm}</div>
         <br />
         <button
           className="btn1"
