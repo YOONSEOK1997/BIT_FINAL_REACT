@@ -666,10 +666,8 @@ const ClassForm = passData => {
                 onChange={e => {
                   if (class_anounok == true) {
                     setClass_anounok(false);
-                    console.log(class_anounok);
                   } else {
                     setClass_anounok(true);
-                    console.log(class_anounok);
                   }
                 }}
               ></input>

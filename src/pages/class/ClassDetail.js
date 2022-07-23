@@ -112,11 +112,13 @@ const ClassDetail = () => {
   };
 
   //찜
-  const [like, setLike] = useState(false);
+  const [like, setLike] = useState('🤍');
   const likeChange = e => {
-    changeoptions.current = options[e.target.value];
-    console.log(changeoptions);
-    setChange(true);
+    if (like === '🤍') {
+      setLike(true);
+    } else {
+      setLike('❤️');
+    }
   };
 
   //처음 랜더링시 위의 함수 호출
@@ -268,7 +270,7 @@ const ClassDetail = () => {
                 </ClassPaybefore>
               </React.Fragment>
               <button className="class_likebtn" onClick={likeChange}>
-                ❤️
+                {like}
               </button>
               {/* 클릭시 <button className="class_likebtn">🤍</button> */}
             </div>
