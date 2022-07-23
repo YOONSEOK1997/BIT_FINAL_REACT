@@ -133,6 +133,7 @@ const ClassForm = passData => {
         class_category,
         class_location,
         class_name,
+        tutor_id: localStorage.username,
         class_photo1: photos[0],
         class_photo2: photos[1],
         class_photo3: photos[2],
