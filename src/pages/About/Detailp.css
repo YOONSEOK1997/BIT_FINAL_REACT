@@ -9,7 +9,7 @@
 }
 
 .detail_privatename {
-  font-size: 25px;
+  font-size: 23px;
   text-align: center;
   margin-bottom: 40px;
   color: rgb(70, 70, 70);
@@ -20,7 +20,7 @@
   margin-bottom: 40px;
 }
 .detail_energyname {
-  font-size: 25px;
+  font-size: 23px;
   text-align: center;
   margin-bottom: 40px;
   color: rgb(70, 70, 70);
@@ -32,7 +32,7 @@
 }
 
 .detail_reasonablename {
-  font-size: 25px;
+  font-size: 23px;
   text-align: center;
   color: rgb(70, 70, 70);
 }
@@ -42,7 +42,7 @@
 }
 
 .detail_changename {
-  font-size: 25px;
+  font-size: 23px;
   text-align: center;
   color: rgb(70, 70, 70);
 }

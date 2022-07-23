@@ -108,20 +108,23 @@ export default class about extends Component {
           <br />
           <div className="about_plus1">
             <a href="http://localhost:3000/about/1">
+              <FavoriteIcon style={{ fontSize: '25px', color: '#ffc338' }} />
               오늘, 한강이 가장 중요하게 생각하는 가치는?
             </a>
           </div>
           <br />
           <br />
-          <div className="about_plus1">
+          <div className="about_plus2">
             <a href="http://localhost:3000/about/2">
+              <FavoriteIcon style={{ fontSize: '25px', color: '#ffc338' }} />
               오늘, 한강의 팀원은 어떻게 일해요?
             </a>
           </div>
           <br />
           <br />
-          <div className="about_plus1">
+          <div className="about_plus3">
             <a href="http://localhost:3000/about/3">
+              <FavoriteIcon style={{ fontSize: '25px', color: '#ffc338' }} />
               오늘, 한강을 만들어 가는 사람은 누구인가요?
             </a>
           </div>
