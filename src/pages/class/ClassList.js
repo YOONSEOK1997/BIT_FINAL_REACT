@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link, useParams } from 'react-router-dom';
 import './ClassList.css';
 import styled from 'styled-components';
+import { theme } from '../../styles/theme';
+import Pagination from 'react-js-pagination';
+import Paging from '../../components/Pagination/Paging';
 
 import ClassListRowItem from './ClassListRowItem';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
@@ -21,7 +24,7 @@ const ClassList = () => {
   const navi = useNavigate();
 
   //백엔드에서 받아올 리스트 데이터변수
-  const [data, setData] = useState([]);
+  const [data, setData] = React.useState([]);
 
   //필터링한거에 해당하는 데이터
   const [filterData, setFilterData] = useState([]);
@@ -33,6 +36,19 @@ const ClassList = () => {
   const onChangeCategory = ({ currentTarget }) => {
     setCategory(currentTarget.value);
   };
+
+  // 현재 페이지번호 읽어오기
+  const { currentPage } = useParams();
+
+  //페이지네이션
+
+  const [count, setCount] = React.useState(0); //아이템 총 개수
+  const [currentpage, setCurrentpage] = React.useState(1); //현재페이지
+  const [postPerPage] = React.useState(7); //페이지당 아이템 개수
+
+  const [indexOfLastPost, setIndexOfLastPost] = React.useState(0);
+  const [indexOfFirstPost, setIndexOfFirstPost] = React.useState(0);
+  const [currentPosts, setCurrentPosts] = React.useState(0);
 
   //url 선언
   let class_alllistUrl = 'http://localhost:9009/class/list';
@@ -49,6 +65,18 @@ const ClassList = () => {
   useEffect(() => {
     list();
   }, []);
+
+  //페이지네이션
+  React.useEffect(() => {
+    setCount(data.length);
+    setIndexOfLastPost(currentpage * postPerPage);
+    setIndexOfFirstPost(indexOfLastPost - postPerPage);
+    setCurrentPosts(data.slice(indexOfFirstPost, indexOfLastPost));
+  }, [currentpage, indexOfFirstPost, indexOfLastPost, data, postPerPage]);
+
+  const setPage = e => {
+    setCurrentpage(e);
+  };
 
   //   useEffect(() => {
   // const newData = data.filter(a => a.class_category === category);
@@ -179,10 +207,59 @@ const ClassList = () => {
             </div>
           ))}
       </div>
+      {currentPosts && data.length > 0 ? (
+        currentPosts.map(data => <div>{data.class_num}</div>)
+      ) : (
+        <div>게시물이 없습니다.</div>
+      )}
+
+      <Paging page={currentpage} count={count} setPage={setPage} />
+
+      {/* 페이징 처리 */}
+      <div
+        className="ch_list_pagination"
+        style={{ width: '700px', textAlign: 'center' }}
+      >
+        <ul className="pagination">
+          {data.startPage > 1 ? (
+            <li>
+              <Link to={`/class/list/${data.startPage - 1}`}>이전</Link>
+            </li>
+          ) : (
+            ''
+          )}
+          {data.parr &&
+            data.parr.map(n => {
+              const url = '/challenge/list/' + n;
+              return (
+                <li>
+                  <Link to={url}>
+                    <b style={{ color: n == currentPage ? 'red' : 'black' }}>
+                      {n}
+                    </b>
+                  </Link>
+                </li>
+              );
+            })}
+          {data.endPage < data.totalPage ? (
+            <li>
+              <Link to={`/class/list/${data.endPage + 1}`}>다음</Link>
+            </li>
+          ) : (
+            ''
+          )}
+        </ul>
+      </div>
+      <ClassFormButton
+        onClick={() => {
+          navi(`/class/form`);
+        }}
+      >
+        클래스 등록하기
+      </ClassFormButton>
     </Wrapper>
   );
 };
-
 export default ClassList;
 
 const Wrapper = styled.div`
@@ -191,4 +268,11 @@ const Wrapper = styled.div`
   position: relative;
   padding-bottom: 20px;
   height: 2000px;
+`;
+
+const ClassFormButton = styled.button`
+  font-size: 45px;
+  font-weight: ${theme.weightBold};
+  color: ${theme.green};
+  cursor: pointer;
 `;

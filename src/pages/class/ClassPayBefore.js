@@ -21,6 +21,9 @@ const ClassPaybefore = props => {
           classoption_endtime: `${props.changeoptions.classoption_endtime}`,
           percnt: `${props.percnt}`,
           totpay: `${props.percnt * props.data.class_price}`,
+          classconfirm: `${props.data.class_confirm}`,
+
+          // classper
         },
       },
     });

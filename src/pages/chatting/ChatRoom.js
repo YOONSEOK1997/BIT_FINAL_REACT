@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { over } from 'stompjs';
 import SockJS from 'sockjs-client';
 import './ChatRoom.css';
+import axios from 'axios';
+import duck from './파비콘.png';
 
 var stompClient = null;
 const ChatRoom = props => {
@@ -18,6 +20,19 @@ const ChatRoom = props => {
     class_num: '',
     class_name: '',
   });
+
+  const mesData = useRef([]);
+
+  const SPRING_URL = process.env.REACT_APP_SPRING_URL;
+  let dataUrl = SPRING_URL + 'message/get?class_num=' + props.data.class_num;
+
+  const getMessage = () => {
+    axios.get(dataUrl, { class_num: props.data.class_num }).then(res => {
+      console.log(res.data);
+      mesData.current = res.data;
+      console.log(mesData);
+    });
+  };
   useEffect(() => {
     console.log(userData);
     connect();
@@ -40,6 +55,7 @@ const ChatRoom = props => {
       onPrivateMessage
     );
     userJoin();
+    getMessage();
   };
 
   const userJoin = () => {
@@ -180,32 +196,55 @@ const ChatRoom = props => {
                   </div>
                   {tab === 'CHATROOM' && (
                     <div className="chat-content">
-                      <ul className="chat-messages">
-                        {publicChats.map((chat, index) => (
-                          <li
-                            className={`message ${
-                              chat.senderName === userData.username && 'self'
-                            }`}
-                            key={index}
-                          >
-                            {chat.senderName !== userData.username && (
-                              <div className="avatar">{chat.senderName}</div>
-                            )}
-                            <div className="message-data">{chat.message}</div>
-                            {chat.senderName === userData.username && (
-                              <div className="avatar self">
-                                {chat.senderName}
-                              </div>
-                            )}
-                          </li>
-                        ))}
+                      <ul
+                        className="chat-messages"
+                        style={{ overflowY: 'auto' }}
+                      >
+                        {mesData.current &&
+                          mesData.current.map((chat, index) => (
+                            <li
+                              className={`message ${
+                                chat.senderName === userData.username && 'self'
+                              }`}
+                              key={index}
+                            >
+                              {chat.senderName !== userData.username && (
+                                <div className="avatar">{chat.senderName}</div>
+                              )}
+                              <div className="message-data">{chat.message}</div>
+                              {chat.senderName === userData.username && (
+                                <div className="avatar self">
+                                  {chat.senderName}
+                                </div>
+                              )}
+                            </li>
+                          ))}
+                        {publicChats &&
+                          publicChats.map((chat, index) => (
+                            <li
+                              className={`message ${
+                                chat.senderName === userData.username && 'self'
+                              }`}
+                              key={index}
+                            >
+                              {chat.senderName !== userData.username && (
+                                <div className="avatar">{chat.senderName}</div>
+                              )}
+                              <div className="message-data">{chat.message}</div>
+                              {chat.senderName === userData.username && (
+                                <div className="avatar self">
+                                  {chat.senderName}
+                                </div>
+                              )}
+                            </li>
+                          ))}
                       </ul>
 
                       <div className="send-message">
                         <input
                           type="text"
                           className="input-message"
-                          placeholder="enter the message"
+                          placeholder="메세지를 입력해 주세요"
                           value={userData.message}
                           onChange={handleMessage}
                           onKeyUp={e => {
@@ -214,13 +253,21 @@ const ChatRoom = props => {
                             }
                           }}
                         />
-                        <button
+                        {/* <button
                           type="button"
                           className="send-button"
                           onClick={sendValue}
-                        >
-                          send
-                        </button>
+                          >
+                            </button> */}
+                        <img
+                          src={duck}
+                          style={{
+                            width: '50px',
+                            height: '50px',
+                            borderRadius: '50px',
+                          }}
+                          onClick={sendValue}
+                        />
                       </div>
                     </div>
                   )}

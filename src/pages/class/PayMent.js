@@ -1,28 +1,11 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios'; //백엔드와 통신
 
 const Payment = (effect, deps, props) => {
   const navi = useNavigate();
   const { state } = useLocation();
-  //console.log(state.data);
-
-  const payinfo = e => {
-    navi('/class/payment/after', {
-      state2: {
-        data2: {
-          user_id: 'anyang',
-          classnum: `${props.data.class_num}`,
-          classname: `${props.data.class_name}`,
-          classoption_num: `${props.changeoptions.classoption_num}`,
-          classoption_day: `${props.changeoptions.classoption_day}`,
-          classoption_starttime: `${props.changeoptions.classoption_starttime}`,
-          classoption_endtime: `${props.changeoptions.classoption_endtime}`,
-          percnt: `${props.percnt}`,
-          totpay: `${props.totpay}`,
-        },
-      },
-    });
-  };
+  console.log('pay : ' + state);
 
   useEffect(() => {
     const jquery = document.createElement('script');
@@ -56,6 +39,7 @@ const Payment = (effect, deps, props) => {
         classoption_endtime: `${state.data.classoption_endtime}`, //클래스일정3
         percnt: `${state.data.percnt}`, //신청인원
         amount: `${state.data.totpay}`, //결제금액
+        classconfirm: `${state.data.classconfirm}`, //컨펌 메세지
       },
       //주문자정보
       buyer_name: '홍대한', //바꿔야해 USER_NAME
@@ -76,6 +60,29 @@ const Payment = (effect, deps, props) => {
     });
   };
 
+  //url 등록
+  let insertUrl = process.env.REACT_APP_SPRING_URL + 'pay/insert';
+  const onInsert = () => {
+    // key(dto):value 같다면 key만 가능
+    axios
+      .post(insertUrl, {
+        pay_order_num: `hdh_${new Date().getTime()}`,
+        pay_user_id: state.data.classnum,
+        pay_user_name: state.data.classnum, //
+        pay_class_num: state.data.classnum,
+        pay_class_name: state.data.classname,
+        pay_classoption_num: state.data.classoption_num,
+        pay_classoption_day: state.data.classoption_day,
+        pay_classoption_starttime: state.data.classoption_starttime,
+        pay_classoption_endtime: state.data.classoption_endtime,
+        pay_classoption_percnt: state.data.percnt,
+        pay_price: state.data.totpay,
+      })
+      .then(res => {
+        alert('insert 성공@');
+      });
+  };
+
   const callback = response => {
     const {
       success,
@@ -88,7 +95,9 @@ const Payment = (effect, deps, props) => {
     } = response;
 
     if (success) {
+      onInsert();
       alert('결제 성공');
+
       navi('/class/payment/after', { state: response });
     } else {
       alert(`결제 실패: ${error_msg}`);
