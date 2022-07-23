@@ -252,7 +252,11 @@ const ClassDetail = () => {
 
             <div className="classbtn">
               <React.Fragment>
-                <button onClick={openModal} className="class_signbtn">
+                <button
+                  onClick={openModal}
+                  className="class_signbtn"
+                  style={{ cursor: 'pointer' }}
+                >
                   클래스 신청하기
                 </button>
                 {/* //header 부분에 텍스트를 입력한다. */}
@@ -269,7 +273,11 @@ const ClassDetail = () => {
                   {/* // Modal.js <main> {props.children} </main>에 내용이 입력 */}
                 </ClassPaybefore>
               </React.Fragment>
-              <button className="class_likebtn" onClick={likeChange}>
+              <button
+                className="class_likebtn"
+                onClick={likeChange}
+                style={{ cursor: 'pointer' }}
+              >
                 {like}
               </button>
               {/* 클릭시 <button className="class_likebtn">🤍</button> */}
