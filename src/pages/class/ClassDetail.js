@@ -115,9 +115,9 @@ const ClassDetail = () => {
   const [like, setLike] = useState('🤍');
   const likeChange = e => {
     if (like === '🤍') {
-      setLike(true);
-    } else {
       setLike('❤️');
+    } else {
+      setLike('🤍');
     }
   };
 
