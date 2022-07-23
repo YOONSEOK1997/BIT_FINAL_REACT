@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import './ClassList.css';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
+import { BASE_URL } from '../../config';
 
 import ClassListRowItem from './ClassListRowItem';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
@@ -26,10 +27,12 @@ const ClassList = () => {
   //백엔드에서 받아올 리스트 데이터변수
   const [data, setData] = useState([]);
 
-  //카테고리
-  const [category, setCategory] = useState();
+  //필터된거 해당하는 데이터변수
+  const [cardList, setCardList] = useState([]);
 
   const [clickedCategory, setClickedCategory] = useState();
+
+  //체크됨 => url
   const [clickedCheckList, setClickedCheckList] = useState([]);
 
   const [isContentsShowed, setIsContentsShowed] = useState(false);
@@ -42,19 +45,28 @@ const ClassList = () => {
   const list = () => {
     axios.get(class_alllistUrl).then(res => {
       setData(res.data);
-      console.log(res.data);
+      getCardListData(res.data);
     });
   };
 
+  // 필터된 정보 + cardList state에 저장
+  const getCardListData = useCallback(async () => {
+    const res = await fetch(`${BASE_URL}/main/search${search}`);
+    const data = await res.json();
+
+    setCardList(data.result);
+  }, [search]);
+
   useEffect(() => {
     list();
-  }, []);
+    getCardListData();
+  }, [getCardListData]);
 
   //filter 체크한대로 url 만들어줌
   const makeQueryString = () => {
     const queryString = clickedCheckList
       .map(({ id, content, sortType }) => {
-        return sortType === 'regions' || sortType === 'category'
+        return sortType === 'class_location' || sortType === 'class_category'
           ? `${sortType}_id=${parseInt(id) + 1}`
           : `${sortType}=${content}`;
       })
@@ -66,7 +78,7 @@ const ClassList = () => {
     navigate(`?${queryString}`);
   };
 
-  //체크한대로 filter 기능
+  //클릭된 체크리스트 정보 clickedCheckList에 저장
   const handleCheckList = (e, content, idx, sort_type) => {
     e.target.checked
       ? setClickedCheckList([
@@ -218,12 +230,12 @@ const Wrapper = styled.div`
 
 const FILTER_CATEGORYS = [
   {
-    sort_type: 'regions',
+    sort_type: 'class_location',
     title: '한강, 어디?',
     contents: ['반포', '잠실', '이촌', '여의도', '난지', '뚝섬'],
   },
   {
-    sort_type: 'category',
+    sort_type: 'class_category',
     title: '카테고리',
     contents: ['스냅사진', '스포츠', '댄스', '뮤직', '드로잉'],
   },
