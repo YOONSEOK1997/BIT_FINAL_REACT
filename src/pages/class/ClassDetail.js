@@ -60,6 +60,12 @@ const ClassDetail = () => {
   const openModal = () => {
     if (changeoptions.current == 0) {
       alert('일정을 선택해주세요옹~?');
+    } else if (
+      percnt.current >
+      changeoptions.current.classoption_totalperson -
+        changeoptions.current.classoption_presentperson
+    ) {
+      alert('정원을 초과하였습니다');
     } else {
       setModalOpen(true);
     }
@@ -154,13 +160,13 @@ const ClassDetail = () => {
             <span className="tutor_name">{data.tutor_id} 튜터</span>
           </div>
           {/* 이거 map으로 돌릴 수 있을거같은데 일단 */}
-          {main == 1 ? (
+          {main === 1 ? (
             <img src={photoUrl + data.class_photo1} className="class_image1" />
-          ) : main == 2 ? (
+          ) : main === 2 ? (
             <img src={photoUrl + data.class_photo2} className="class_image1" />
-          ) : main == 3 ? (
+          ) : main === 3 ? (
             <img src={photoUrl + data.class_photo3} className="class_image1" />
-          ) : main == 4 ? (
+          ) : main === 4 ? (
             <img src={photoUrl + data.class_photo4} className="class_image1" />
           ) : (
             <img src={photoUrl + data.class_photo5} className="class_image1" />
