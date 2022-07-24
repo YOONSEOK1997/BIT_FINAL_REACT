@@ -13,10 +13,10 @@
 
 .mypage_profile {
   border: 1px solid gray;
-  margin-top: -200px;
+  margin-top: -230px;
   margin-left: 30px;
   width: 800px;
-  height: 380px;
+  height: 230px;
   float: right;
   display: inline-block;
 }
@@ -39,17 +39,17 @@
 
 .profile_buttons {
   border: 1px solid gray;
-  height: 100px;
+  height: 50px;
 }
 
 .mypage_lists {
   border: 1px solid gray;
   width: 800px;
-  height: 1300px;
+  height: 600px;
   margin-left: 230px;
   display: inline-block;
   position: absolute;
-  margin-top: 200px;
+  margin-top: 50px;
 }
 
 /* 여기까지 전체 틀 */

@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import profile_image from '../../image/3.PNG';
 import styled from 'styled-components';
 import Sidebar from './Sidebar';
+import '../Register/css/register.css';
 
 const MypageMain = () => {
   const navi = useNavigate();
@@ -34,9 +35,40 @@ const MypageMain = () => {
       {/* mypage_profile 닫힘 */}
 
       <div className="mypage_lists">
-        <div className="mypage_moim_list"></div>
-        <div className="mypage_chal_list">하하</div>
-        <div className="mypage_class_list">호호</div>
+        {/* 유저 아이디 */}
+        <div className="int-area1">
+          <input type="text" name="username" id="username" required />
+          <label>USER ID</label>
+        </div>
+
+        {/* 유저 네임 */}
+        <div className="int-area1">
+          <input type="text" name="realname" id="realname" required />
+          <label>USER NAME</label>
+        </div>
+
+        {/* 이메일 */}
+        <div className="int-area1">
+          <input
+            type="text"
+            name="email"
+            id="email"
+            autoComplete="off"
+            required
+          />
+          <label>E-MAIL</label>
+        </div>
+        {/* 비밀번호 */}
+        <div className="int-area1">
+          <input
+            type="password"
+            name="password"
+            id="password"
+            autoComplete="off"
+            required
+          />
+          <label>PASSWORD</label>
+        </div>
       </div>
       {/* 진행중/완료 목록 div */}
     </Wrapper>
@@ -51,6 +83,6 @@ const Wrapper = styled.div`
   margin-top: 40px;
   position: relative;
   padding-bottom: 20px;
-  height: 2000px;
+  height: 1000px;
   border: 1px solid gray;
 `;
