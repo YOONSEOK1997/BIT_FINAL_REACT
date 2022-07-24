@@ -12,7 +12,6 @@
 }
 
 .mypage_profile {
-  border: 1px solid gray;
   margin-top: -230px;
   margin-left: 30px;
   width: 800px;
@@ -27,14 +26,6 @@
   height: 200px;
   float: left;
   display: inline-block;
-}
-
-.profile_info {
-  border: 1px solid gray;
-  width: 500px;
-  height: 200px;
-  display: inline-block;
-  margin-left: 20px;
 }
 
 .profile_buttons {
@@ -52,40 +43,61 @@
   margin-top: 50px;
 }
 
-/* 여기까지 전체 틀 */
-.profile_labels {
-  margin-top: 40px;
-}
-
 .profile_label1 {
-  margin-left: 50px;
-  width: 100px;
+  width: 80px;
   height: 60px;
-  border: solid 2.5px #03d85e;
   /* div겹침 */
   clear: both;
   line-height: 60px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
-  text-align: center;
-  background-color: #03d85e;
-  color: white;
-  border-radius: 10px;
-  display: inline-block;
+  color: rgb(44, 44, 44);
 }
 
 .profile_label2 {
   margin-left: 20px;
   width: 200px;
   height: 60px;
-  border: solid 1px gray;
-  border-radius: 10px;
   /* div겹침 */
   clear: both;
-  font-style: normal;
   line-height: 60px;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  display: inline-block;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(95, 95, 95);
+}
+
+.profile_lable_bottom {
+  border-bottom: 1px solid rgba(149, 148, 148, 0.771);
+  width: 400px;
+}
+
+/*-- 프로필 --*/
+.profile_info {
+  position: absolute;
+  left: 500px;
+  top: 130px;
+  width: 500px;
+  height: 200px;
+}
+
+div.profileimg2 {
+  margin-top: 20px;
+  margin-left: 70px;
+  width: 150px;
+  height: 150px;
+  border-radius: 160px;
+  overflow: hidden;
+}
+
+img.user_profile {
+  margin: auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 160px;
+  overflow: hidden;
+  background-color: #ffffff00;
+}
+
+div.photo_icon {
+  margin-left: 120px;
 }
