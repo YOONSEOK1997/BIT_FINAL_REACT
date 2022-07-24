@@ -112,6 +112,10 @@ const Ment = styled.div`
   text-align: center;
   margin-top: 15px;
   margin-bottom: 15px;
+  border-bottom: 0.5px solid #999999;
+  padding-bottom: 20px;
+  width: 700px;
+  margin-left: 45px;
 `;
 
 const LikedClasses = styled.div`

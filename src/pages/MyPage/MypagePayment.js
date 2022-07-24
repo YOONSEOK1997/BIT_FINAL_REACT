@@ -30,6 +30,10 @@ const MypagePayment = () => {
       <Sidebar />
       <MypageContent>
         <Title>결제 내역</Title>
+        <Ment>
+          결제내역 관련 문의사항은 <b style={{ color: '#03d85e' }}>오늘,한강</b>
+          팀에 문의 부탁드립니다😉🗯️
+        </Ment>
         <OneReceipt>
           {/* OneRecipt : 하나의 결제내역 */}
           <PayStatus>
@@ -204,6 +208,7 @@ const HMBtn = styled.div`
   text-align: center;
   line-height: 30px;
   font-weight: 600;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
 `;
 
 const PWBtn = styled.div`
@@ -217,6 +222,7 @@ const PWBtn = styled.div`
   text-align: center;
   line-height: 30px;
   font-weight: 600;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
 `;
 
 const TPBtn = styled.div`
@@ -230,6 +236,7 @@ const TPBtn = styled.div`
   text-align: center;
   line-height: 30px;
   font-weight: 600;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
 `;
 
 const HowMuch = styled.div`
@@ -252,4 +259,18 @@ const Title = styled.div`
   font-weight: 600;
   margin-top: 10px;
   margin-bottom: 10px;
+`;
+
+const Ment = styled.div`
+  font-size: 18px;
+  width: 500px;
+  margin-left: 150px;
+  color: #999999;
+  font-family: Noto Sans KR;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 35px;
+  font-weight: 500;
+  border-bottom: 0.5px solid #999999;
+  padding-bottom: 20px;
 `;
