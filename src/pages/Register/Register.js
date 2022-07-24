@@ -50,7 +50,7 @@ const Register = () => {
       axios
         .post(insertProfileUrl, { username: userName, profile })
         .then(res => {
-          console.log(userName, profile);
+          //console.log(userName, profile);
           navi('/login');
         });
     });

@@ -12,6 +12,7 @@ import Footer from './components/Footer/Footer';
 import Review from './components/Review/Review';
 import About from './pages/About/About';
 import Register from './pages/Register/Register';
+import Register_re from './pages/Register/Register_re';
 import Detailp from './pages/About/Detailp';
 import errimg from './errimg.jpg';
 import ClassList2 from './pages/class/ClassList2';
@@ -51,6 +52,7 @@ const Router = () => {
         <Route path="/vod" element={<VodMain />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/register_re" element={<Register_re />} />
         <Route path="/lectures" element={<LectureList />} />
         <Route path="/lectures/:id" element={<LectureDetail />} />
         <Route path="/wish-list" element={<WishList />} />

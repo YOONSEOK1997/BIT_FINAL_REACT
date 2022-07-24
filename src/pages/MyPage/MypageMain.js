@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './MypageMain.css';
 import { Link, useNavigate } from 'react-router-dom';
 import profile_image from '../../image/3.PNG';
@@ -10,23 +11,44 @@ const MypageMain = () => {
   const navi = useNavigate();
   const [show, setShow] = useState(1);
 
+  const [data, setData] = useState('');
+  const getprofileurl = 'http://localhost:9009/api/getprofile';
+
+  const username = localStorage.getItem('username');
+  const profile = localStorage.getItem('profile');
+
+  const onProfileReceive = () => {
+    axios.get(getprofileurl + '?username=' + username).then(response => {
+      console.log(response.data);
+      setData(response.data);
+    });
+  };
+
+  useEffect(() => {
+    onProfileReceive();
+  }, []);
+
   return (
     <Wrapper>
       <div className="mypage_header"></div>
       <Sidebar />
       <div className="mypage_profile">
         <div className="profile_pic">
-          <img src={profile_image} alt="" />
+          <img src={profile} alt="" />
         </div>
         <div className="profile_info">
           <div className="profile_labels">
             <div className="profile_label1">이름</div>
-            <div className="profile_label2">김정하</div>
+            <div className="profile_label2">{data.realname}</div>
+            <div className="profile_label1">이메일</div>
+            <div className="profile_label2">{data.email}</div>
             <br />
           </div>
         </div>
         <div className="profile_buttons">
-          <button>수정</button>
+          <button>
+            <a href="/register_re">수정</a>
+          </button>
           <button>탈퇴</button>
         </div>
       </div>
