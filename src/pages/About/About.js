@@ -4,7 +4,7 @@ import './About.css';
 import { Divider } from '@mui/material';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
-
+import { useState } from 'react';
 import m10 from './images/m10.jpg';
 import m12 from './images/m12.jpg';
 import FavoriteIcon from '@mui/icons-material/Favorite';

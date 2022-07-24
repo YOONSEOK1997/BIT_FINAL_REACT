@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './ClassForm.css';
 import axios from 'axios';
+import styled from 'styled-components';
+import { theme } from '../../styles/theme';
 import { useNavigate } from 'react-router-dom';
 import LoupeIcon from '@mui/icons-material/Loupe';
 import Editor from './EditorWithUseQuill';
@@ -331,410 +333,392 @@ const ClassForm = passData => {
   };
 
   return (
-    <div>
-      <Weather />
-
-      <div
-        className="content_container"
-        style={{ marginLeft: '210px', borderColor: 'white' }}
-      >
-        <div className="class_subtitle">
-          {tutor_id}님의 클래스에 대한 기본정보를 입력해주세요!
+    <Wrapper>
+      <div className="class_subtitle">
+        {tutor_id}님의 클래스에 대한 기본정보를 입력해주세요!
+      </div>
+      <div className="class_subtitle2">
+        <div style={{ width: '455px', float: 'left', marginTop: '15px' }}>
+          클래스 제목과 커버 이미지가 고민된다면
         </div>
-        <div className="class_subtitle2">
-          <div style={{ width: '455px', float: 'left', marginTop: '15px' }}>
-            클래스 제목과 커버 이미지가 고민된다면
+        <span
+          style={{
+            fontSize: '32px',
+            color: '#fea948',
+            width: '55px',
+            float: 'left',
+            height: '32px',
+            marginLeft: '5px',
+          }}
+        >
+          👉
+        </span>
+
+        <a
+          href="/class/guide"
+          target="_blank"
+          rel="noreferrer"
+          style={{
+            float: 'right',
+            alignItems: 'center',
+            textAlign: 'center',
+            marginRight: '540px',
+          }}
+        >
+          <div className="btn1">클래스 가이드 &gt;</div>
+        </a>
+      </div>
+      <br />
+      <hr className="hr" />
+      <br />
+      <br />
+      <div className="row">
+        <div className="label1">카테고리</div>
+        <select
+          className="label2"
+          value={class_category}
+          onChange={e => {
+            setClass_category(e.target.value);
+          }}
+        >
+          <option value="스냅사진">스냅사진</option>
+          <option value="스포츠">스포츠</option>
+          <option value="댄스">댄스</option>
+          <option value="뮤직">뮤직</option>
+          <option value="드로잉">드로잉</option>
+        </select>
+      </div>
+      <div className="row">
+        <div className="label1">위치선택</div>
+        <select
+          className="label2"
+          value={class_location}
+          onChange={e => {
+            setClass_location(e.target.value);
+          }}
+        >
+          <option value="반포">반포 한강공원</option>
+          <option value="잠실">잠실 한강공원</option>
+          <option value="이촌">이촌 한강공원</option>
+          <option value="여의도">여의도 한강공원</option>
+          <option value="난지">난지 한강공원</option>
+          <option value="뚝섬">뚝섬 한강공원</option>
+        </select>
+      </div>
+      <div className="row">
+        <div className="label1" style={{ float: 'left' }}>
+          클래스명
+        </div>
+        <input
+          type="text"
+          className="label2"
+          placeholder="클래스명을 입력해주세요"
+          style={{ width: '490px', marginLeft: '20px' }}
+          onChange={e => {
+            setClass_name(e.target.value);
+          }}
+        />
+        <span
+          style={{
+            fontSize: '35px',
+            color: 'gray',
+            width: '55px',
+            height: '68px',
+            marginRight: '470px',
+            marginTop: '15px',
+            float: 'right',
+          }}
+        >
+          <div className="sdf" style={{ width: '90px' }}>
+            <LoupeIcon
+              className="que"
+              style={{ fontSize: '35px', float: 'left' }}
+            />
+            <span className="asd" style={{ top: '633px', left: '1350px' }}>
+              Tip!
+              <br />
+              클래스의 주제를 연상시키는 제목을 작성해주세요.
+              <br />
+              튜터님의 전문성을 드러내면 좋습니다.
+              <br />
+              미사여구, 부사, 형용사는 최대한 지양해주세요.
+            </span>
           </div>
-          <span
-            style={{
-              fontSize: '32px',
-              color: '#fea948',
-              width: '55px',
-              float: 'left',
-              height: '32px',
-              marginLeft: '5px',
-            }}
-          >
-            👉
-          </span>
+        </span>
+      </div>
+      <div className="row">
+        <div className="label1">대표사진</div>
 
-          <a
-            href="/class/guide"
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              float: 'right',
-              alignItems: 'center',
-              textAlign: 'center',
-              marginRight: '540px',
-            }}
-          >
-            <div className="btn1">클래스 가이드 &gt;</div>
-          </a>
-        </div>
+        <label htmlFor="input-file" onChange={handleAddImages}>
+          <input type="file" id="input-file" multiple className="label2" />
+        </label>
 
-        <br />
-        <hr className="hr" />
-        <br />
-        <br />
-
-        <div className="row">
-          <div className="label1">카테고리</div>
-          <select
-            className="label2"
-            value={class_category}
-            onChange={e => {
-              setClass_category(e.target.value);
-            }}
-          >
-            <option value="스냅사진">스냅사진</option>
-            <option value="스포츠">스포츠</option>
-            <option value="댄스">댄스</option>
-            <option value="뮤직">뮤직</option>
-            <option value="드로잉">드로잉</option>
-          </select>
-        </div>
-
-        <div className="row">
-          <div className="label1">위치선택</div>
-          <select
-            className="label2"
-            value={class_location}
-            onChange={e => {
-              setClass_location(e.target.value);
-            }}
-          >
-            <option value="반포">반포 한강공원</option>
-            <option value="잠실">잠실 한강공원</option>
-            <option value="이촌">이촌 한강공원</option>
-            <option value="여의도">여의도 한강공원</option>
-            <option value="난지">난지 한강공원</option>
-            <option value="뚝섬">뚝섬 한강공원</option>
-          </select>
-        </div>
-
-        <div className="row">
-          <div className="label1" style={{ float: 'left' }}>
-            클래스명
-          </div>
-          <input
-            type="text"
-            className="label2"
-            placeholder="클래스명을 입력해주세요"
-            style={{ width: '490px', marginLeft: '20px' }}
-            onChange={e => {
-              setClass_name(e.target.value);
-            }}
-          />
-          <span
-            style={{
-              fontSize: '35px',
-              color: 'gray',
-              width: '55px',
-              height: '68px',
-              marginRight: '470px',
-              marginTop: '15px',
-              float: 'right',
-            }}
-          >
-            <div className="sdf" style={{ width: '90px' }}>
-              <LoupeIcon
-                className="que"
-                style={{ fontSize: '35px', float: 'left' }}
-              />
-              <span className="asd" style={{ top: '633px', left: '1350px' }}>
-                Tip!
-                <br />
-                클래스의 주제를 연상시키는 제목을 작성해주세요.
-                <br />
-                튜터님의 전문성을 드러내면 좋습니다.
-                <br />
-                미사여구, 부사, 형용사는 최대한 지양해주세요.
-              </span>
+        <div style={{ marginLeft: '60px' }}>
+          {/* // 저장해둔 이미지들을 순회하면서 화면에 이미지 출력 */}
+          {photos2.map((image, id) => (
+            <div className="smphotod" key={id}>
+              <img src={image} alt={`${image}-${id}`} className="smphoto" />
+              <div className="xbtn" onClick={() => handleDeleteImage(id)}>
+                &nbsp;x&nbsp;
+              </div>
             </div>
-          </span>
+          ))}
         </div>
-
-        <div className="row">
-          <div className="label1">대표사진</div>
-
-          <label htmlFor="input-file" onChange={handleAddImages}>
-            <input type="file" id="input-file" multiple className="label2" />
-          </label>
-
-          <div style={{ marginLeft: '60px' }}>
-            {/* // 저장해둔 이미지들을 순회하면서 화면에 이미지 출력 */}
-            {photos2.map((image, id) => (
-              <div className="smphotod" key={id}>
-                <img src={image} alt={`${image}-${id}`} className="smphoto" />
-                <div className="xbtn" onClick={() => handleDeleteImage(id)}>
-                  &nbsp;x&nbsp;
-                </div>
-              </div>
-            ))}
-          </div>
-          <br />
+        <br />
+      </div>
+      <div className="row">
+        <div className="label1">수강대상</div>
+        <select
+          className="label2"
+          onChange={e => {
+            setClass_target(e.target.value);
+          }}
+          value={class_target}
+        >
+          <option value="입문">입문</option>
+          <option value="초급">초급</option>
+          <option value="중급">중급</option>
+          <option value="고급">고급</option>
+        </select>
+      </div>
+      <div className="row">
+        <div className="label1">총 가격</div>
+        <input
+          type="number"
+          className="label2"
+          defaultValue="0"
+          style={{ width: '490px' }}
+          step="10"
+          onChange={moneyChange}
+          value={class_price}
+        />
+        <span style={{ fontSize: '20px', marginLeft: '20px' }}>원</span>
+      </div>
+      <div className="row">
+        <div className="label1">수강시간</div>
+        <input
+          type="number"
+          className="label2"
+          style={{ width: '330px' }}
+          onChange={classtimeChange}
+          value={class_hour}
+        />
+        <span style={{ fontSize: '20px', marginLeft: '20px' }}>
+          시간 (
+          {`시간당 ${
+            isNaN(class_price / class_hour)
+              ? '0원'
+              : class_price / class_hour === Infinity
+              ? '0원'
+              : Math.floor(class_price / class_hour) + '원'
+          }`}
+          )
+        </span>
+      </div>
+      {/* 일정 ROW추가*/}
+      <div className="row">
+        <div className="label1">일정 및 정원</div>
+        <input
+          type="date"
+          className="label2"
+          name="classoption_day"
+          defaultValue={date}
+          style={{ width: '200px' }}
+          onChange={e => {
+            setClassoption_day(e.target.value);
+          }}
+        />
+        <input
+          type="number"
+          className="label2"
+          defaultValue="0"
+          style={{ width: '60px' }}
+          name="classoption_starttime"
+          onChange={time1Change}
+        />
+        <span style={{ fontSize: '20px', marginLeft: '2px' }}>시</span>
+        <span style={{ fontSize: '20px', marginLeft: '20px' }}>~</span>
+        <input
+          type="number"
+          className="label2"
+          defaultValue="24"
+          style={{ width: '60px' }}
+          onChange={time2Change}
+          name="classoption_endtime"
+        />
+        <span style={{ fontSize: '20px', marginLeft: '2px' }}>시</span>
+        <input
+          type="number"
+          className="label2"
+          defaultValue="1"
+          style={{ width: '60px' }}
+          name="classoption_totalperson"
+          onChange={perChange}
+        />
+        <span style={{ fontSize: '20px', marginLeft: '2px' }}>명</span>
+        <br />
+        <div>
+          {options.map((row, idx) => (
+            <div className="class_planrow">
+              {row.classoption_day} &nbsp;&nbsp;{row.classoption_starttime}시 ~{' '}
+              {row.classoption_endtime}시 &nbsp;&nbsp;
+              {row.classoption_totalperson}
+              명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <button
+                type="button"
+                onClick={() => onDelete(idx)}
+                className="xbtn"
+              >
+                {' '}
+                X{' '}
+              </button>
+            </div>
+          ))}
         </div>
-
-        <div className="row">
-          <div className="label1">수강대상</div>
-          <select
-            className="label2"
-            onChange={e => {
-              setClass_target(e.target.value);
-            }}
-            value={class_target}
+        <div style={{ width: '760px', marginLeft: '50px' }}>
+          <button className="btn2" onClick={optionsave}>
+            + 일정추가
+          </button>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <div className="class_subtitle">
+        수강생들에게 클래스에 대해 상세하게 소개해주세요!
+      </div>
+      <div className="class_subtitle2">
+        <div style={{ width: '455px', float: 'left', marginTop: '15px' }}>
+          인기 클래스가 되는 노하우가 궁금하다면?
+        </div>
+        <span
+          style={{
+            fontSize: '32px',
+            color: '#fea948',
+            width: '55px',
+            float: 'left',
+            height: '32px',
+            marginLeft: '5px',
+          }}
+        >
+          👉
+        </span>
+        <React.Fragment>
+          <button onClick={openModal2} className="btn1">
+            클래스 소개 가이드 &gt;
+          </button>
+          {/* //header 부분에 텍스트를 입력한다. */}
+          <GuideModal
+            open={modalOpen2}
+            close={closeModal2}
+            header="클래스가이드"
           >
-            <option value="입문">입문</option>
-            <option value="초급">초급</option>
-            <option value="중급">중급</option>
-            <option value="고급">고급</option>
-          </select>
-        </div>
-        <div className="row">
-          <div className="label1">총 가격</div>
-          <input
-            type="number"
-            className="label2"
-            defaultValue="0"
-            style={{ width: '490px' }}
-            step="10"
-            onChange={moneyChange}
-            value={class_price}
-          />
-          <span style={{ fontSize: '20px', marginLeft: '20px' }}>원</span>
-        </div>
-
-        <div className="row">
-          <div className="label1">수강시간</div>
-          <input
-            type="number"
-            className="label2"
-            style={{ width: '330px' }}
-            onChange={classtimeChange}
-            value={class_hour}
-          />
-          <span style={{ fontSize: '20px', marginLeft: '20px' }}>
-            시간 (
-            {`시간당 ${
-              isNaN(class_price / class_hour)
-                ? '0원'
-                : class_price / class_hour === Infinity
-                ? '0원'
-                : Math.floor(class_price / class_hour) + '원'
-            }`}
-            )
-          </span>
-        </div>
-
-        {/* 일정 ROW추가*/}
-        <div className="row">
-          <div className="label1">일정 및 정원</div>
-          <input
-            type="date"
-            className="label2"
-            name="classoption_day"
-            defaultValue={date}
-            style={{ width: '200px' }}
-            onChange={e => {
-              setClassoption_day(e.target.value);
-            }}
-          />
-          <input
-            type="number"
-            className="label2"
-            defaultValue="0"
-            style={{ width: '60px' }}
-            name="classoption_starttime"
-            onChange={time1Change}
-          />
-          <span style={{ fontSize: '20px', marginLeft: '2px' }}>시</span>
-          <span style={{ fontSize: '20px', marginLeft: '20px' }}>~</span>
-          <input
-            type="number"
-            className="label2"
-            defaultValue="24"
-            style={{ width: '60px' }}
-            onChange={time2Change}
-            name="classoption_endtime"
-          />
-          <span style={{ fontSize: '20px', marginLeft: '2px' }}>시</span>
-          <input
-            type="number"
-            className="label2"
-            defaultValue="1"
-            style={{ width: '60px' }}
-            name="classoption_totalperson"
-            onChange={perChange}
-          />
-          <span style={{ fontSize: '20px', marginLeft: '2px' }}>명</span>
-          <br />
-          <div>
-            {options.map((row, idx) => (
-              <div className="class_planrow">
-                {row.classoption_day} &nbsp;&nbsp;{row.classoption_starttime}시
-                ~ {row.classoption_endtime}시 &nbsp;&nbsp;
-                {row.classoption_totalperson}
-                명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button
-                  type="button"
-                  onClick={() => onDelete(idx)}
-                  className="xbtn"
-                >
-                  {' '}
-                  X{' '}
-                </button>
-              </div>
-            ))}
-          </div>
-          <div style={{ width: '760px', marginLeft: '50px' }}>
-            <button className="btn2" onClick={optionsave}>
-              + 일정추가
-            </button>
-          </div>
-        </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
-        <div className="class_subtitle">
-          수강생들에게 클래스에 대해 상세하게 소개해주세요!
-        </div>
-        <div className="class_subtitle2">
-          <div style={{ width: '455px', float: 'left', marginTop: '15px' }}>
-            인기 클래스가 되는 노하우가 궁금하다면?
-          </div>
-          <span
-            style={{
-              fontSize: '32px',
-              color: '#fea948',
-              width: '55px',
-              float: 'left',
-              height: '32px',
-              marginLeft: '5px',
-            }}
-          >
-            👉
-          </span>
-          <React.Fragment>
-            <button onClick={openModal2} className="btn1">
-              클래스 소개 가이드 &gt;
-            </button>
-            {/* //header 부분에 텍스트를 입력한다. */}
-            <GuideModal
-              open={modalOpen2}
-              close={closeModal2}
-              header="클래스가이드"
-            >
-              {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달
+            {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달
                             팝업창입니다. 쉽게 만들 수 있어요. 같이 만들어봐요! */}
-            </GuideModal>
-          </React.Fragment>
-          {/* <button className="btn1"
+          </GuideModal>
+        </React.Fragment>
+        {/* <button className="btn1"
                     onClick={()=>{
                         navi("/class/introguide")
                     }}>클래스 소개 가이드 &gt; </button> */}
-        </div>
-
-        <br />
-        <hr className="hr" />
-
-        <div className="row">
-          <div className="editor" style={{ marginLeft: '50px' }}>
-            <span className="class_minititle">클래스 소개</span>
-            <span className="tulp">
-              <HelpOutlineIcon
-                style={{ fontSize: '20px', marginLeft: '10px' }}
-              />
-              <span className="tulc">
-                튜티들이 가장 먼저 확인하는 부분입니다! 클래스를 선택해야 하는
-                이유, 차별점을 중심으로 소개해주세요~
-              </span>
+      </div>
+      <br />
+      <hr className="hr" />
+      <div className="row">
+        <div className="editor" style={{ marginLeft: '50px' }}>
+          <span className="class_minititle">클래스 소개</span>
+          <span className="tulp">
+            <HelpOutlineIcon style={{ fontSize: '20px', marginLeft: '10px' }} />
+            <span className="tulc">
+              튜티들이 가장 먼저 확인하는 부분입니다! 클래스를 선택해야 하는
+              이유, 차별점을 중심으로 소개해주세요~
             </span>
-            <Editor onMessage={changeMessage} />
-          </div>
+          </span>
+          <Editor onMessage={changeMessage} />
         </div>
-
-        <div className="row">
-          <div className="editor" style={{ marginLeft: '50px' }}>
-            <span className="class_minititle">클래스 커리큘럼</span>
-            <textarea
-              className="textarea1"
-              placeholder="클래스의 '기본정보'를 포함하여 상세히 작성해주세요.
+      </div>
+      <div className="row">
+        <div className="editor" style={{ marginLeft: '50px' }}>
+          <span className="class_minititle">클래스 커리큘럼</span>
+          <textarea
+            className="textarea1"
+            placeholder="클래스의 '기본정보'를 포함하여 상세히 작성해주세요.
                             > 기본정보 : 클래스 진행방식, 클래스 목표, 클래스 결과물, 차별점"
-              onChange={e => {
-                setClass_curri(e.target.value);
-              }}
-            ></textarea>
-          </div>
+            onChange={e => {
+              setClass_curri(e.target.value);
+            }}
+          ></textarea>
         </div>
-
-        <div className="row">
-          <div className="editor" style={{ marginLeft: '50px' }}>
-            <span className="class_minititle">클래스 공지</span>
-            <textarea
-              className="textarea1"
-              placeholder="클래스 전 숙지해야할 사항을 적어주세요.
+      </div>
+      <div className="row">
+        <div className="editor" style={{ marginLeft: '50px' }}>
+          <span className="class_minititle">클래스 공지</span>
+          <textarea
+            className="textarea1"
+            placeholder="클래스 전 숙지해야할 사항을 적어주세요.
                             대여비, 준비물 등 추가 비용이 있는 경우 반드시 적어주세요
                             (ex.시간당 1,000원~1,500원 정도의 장소대여비는 별도입니다.)"
-              onChange={e => {
-                setClass_anoun(e.target.value);
-              }}
-            ></textarea>
-          </div>
-          <div style={{ marginLeft: '610px', marginTop: '1px' }}>
-            <label>
-              <span className="anou">공지사항을 노출하시겠습니까?</span> &nbsp;
-              <input
-                type="checkbox"
-                onChange={e => {
-                  if (class_anounok == true) {
-                    setClass_anounok(false);
-                  } else {
-                    setClass_anounok(true);
-                  }
-                }}
-              ></input>
-            </label>
-          </div>
+            onChange={e => {
+              setClass_anoun(e.target.value);
+            }}
+          ></textarea>
         </div>
-
-        <div className="row">
-          <div className="editor" style={{ marginLeft: '50px' }}>
-            <span className="class_minititle">튜터 승인 메세지</span>
-            <textarea
-              className="textarea1"
-              placeholder="튜티와 클래스 연결 시에 해당 메세지가 전달됩니다"
+        <div style={{ marginLeft: '610px', marginTop: '1px' }}>
+          <label>
+            <span className="anou">공지사항을 노출하시겠습니까?</span> &nbsp;
+            <input
+              type="checkbox"
               onChange={e => {
-                setClass_confirm(e.target.value);
+                if (class_anounok == true) {
+                  setClass_anounok(false);
+                } else {
+                  setClass_anounok(true);
+                }
               }}
-            ></textarea>
-          </div>
+            ></input>
+          </label>
         </div>
-
-        <br />
-        <br />
-        <br />
-        <button
-          class="w-btn w-btn-gra3 w-btn-gra-anim"
-          type="submit"
-          onClick={onInsert}
-        >
-          클래스 등록
-        </button>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
       </div>
-      {/* classcontainer */}
-    </div>
+      <div className="row">
+        <div className="editor" style={{ marginLeft: '50px' }}>
+          <span className="class_minititle">튜터 승인 메세지</span>
+          <textarea
+            className="textarea1"
+            placeholder="튜티와 클래스 연결 시에 해당 메세지가 전달됩니다"
+            onChange={e => {
+              setClass_confirm(e.target.value);
+            }}
+          ></textarea>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <button
+        class="w-btn w-btn-gra3 w-btn-gra-anim"
+        type="submit"
+        onClick={onInsert}
+      >
+        클래스 등록
+      </button>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />\
+    </Wrapper>
   );
 };
 
 export default ClassForm;
+
+const Wrapper = styled.div`
+  ${({ theme }) => theme.wrapper()}
+  margin-top: 80px;
+  position: relative;
+  padding-bottom: 20px;
+  height: 3000px;
+`;

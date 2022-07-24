@@ -38,7 +38,7 @@ const ClassList = () => {
   const [isContentsShowed, setIsContentsShowed] = useState(false);
 
   //url 선언
-  let class_alllistUrl = 'http://localhost:9009/class/list';
+  let class_alllistUrl = 'http://localhost:9009/class/alllist';
   let class_photoUrl = 'http://localhost:9009/save/';
 
   //처음에 불러오는 url

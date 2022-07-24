@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './MypageMain.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import profile_image from '../../image/3.PNG';
 import styled from 'styled-components';
+import Sidebar from './Sidebar';
 
 const MypageMain = () => {
   const navi = useNavigate();
@@ -11,19 +12,7 @@ const MypageMain = () => {
   return (
     <Wrapper>
       <div className="mypage_header"></div>
-
-      <div className="mypage_sidebar">
-        <div className="mypage">My Page</div>
-        <li>결제 내역</li>
-        <li>나의 찜</li>
-        <li>모임</li>
-        <li>챌린지</li>
-        <li>클래스</li>
-
-        {/* {show===1?<MypageMain/>:show===2?<MypagePayment/>:show===3?<MypageLikes/>
-                    :show===4?<MypageMoim/>:show===5?<MypageChallenge/>
-                    :<MypageClass/>} */}
-      </div>
+      <Sidebar />
       <div className="mypage_profile">
         <div className="profile_pic">
           <img src={profile_image} alt="" />

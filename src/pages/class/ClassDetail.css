@@ -301,16 +301,25 @@ div .class_plann {
   text-align: center;
   color: #000;
 }
+.class_tabb1 {
+  border: solid 0px rgb(125, 125, 125);
+  width: 1290px;
+  clear: both;
+  padding-left: 30px;
+  padding-top: 2px;
+  padding-bottom: 80px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
+}
 .class_tab {
   float: left;
-  width: 219px;
-  height: 80px;
-  border: solid 1px #76769e;
-  font-size: 24px;
+  width: 150px;
+  height: 60px;
+  border: solid 1px #8f769e;
+  font-size: 20px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  line-height: 79px;
+  line-height: 59px;
   letter-spacing: normal;
   text-align: center;
   color: #000099;
@@ -325,7 +334,7 @@ div .class_plann {
 .class_notice1 {
   width: 1200px;
   border: solid 0px #000;
-  margin-top: 50px;
+  margin-top: 30px;
   /* div겹침 */
   clear: both;
 }
@@ -392,13 +401,20 @@ div .class_plann {
   margin-right: 50px;
   margin-top: 80px;
   font-size: 20px;
-  line-height: 28px;
+  line-height: 35px;
 }
-
+.minicontent2 {
+  border: 0px solid gray;
+  /* div겹침 */
+  clear: both;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 80px;
+  font-size: 20px;
+}
 /* 리뷰 */
 .class_review {
-  width: 1290px;
-  height: 1361px;
+  width: 1190px;
   border: solid 1px #000;
   margin-top: 50px;
   /* div겹침 */

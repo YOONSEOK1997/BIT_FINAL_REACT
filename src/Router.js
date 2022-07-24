@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import Main from './pages/Main/Main';
 import VodMain from './pages/VodMain/VodMain';
 import Login from './pages/Login/Login';
@@ -13,8 +14,15 @@ import About from './pages/About/About';
 import Register from './pages/Register/Register';
 import Detailp from './pages/About/Detailp';
 import errimg from './errimg.jpg';
-import MypageMain from './pages/MyPage/MypageMain';
 import ClassList2 from './pages/class/ClassList2';
+
+import {
+  MypageMain,
+  MypageLiked,
+  MypagePayment,
+  MypageClasses,
+  TutorAdmin,
+} from './pages/MyPage';
 
 import {
   ClassList,
@@ -32,6 +40,7 @@ import ClassPayAfter from './pages/class/ClassPayAfter';
 import ChatRoom from './pages/chatting/ChatRoom';
 import Detailu from './pages/About/Detailu';
 import Detailz from './pages/About/Detailz';
+import Sidebar from './pages/MyPage/Sidebar';
 
 const Router = () => {
   return (
@@ -48,13 +57,14 @@ const Router = () => {
         <Route path="/review" element={<Review />} />
 
         {/* Class */}
-        <Route path="/class/list" element={<ClassList />} />
+        <Route path="/class/list/:currentPage" element={<ClassList />} />
 
         {/* 이사간 필터 실험터 */}
         <Route path="/class/list2" element={<ClassList2 />} />
 
         <Route path="/class/form" element={<ClassForm />} />
         <Route path="/class/detail/:class_num" element={<ClassDetail />} />
+        <Route path="/chat" element={<ChatRoom />} />
         <Route
           path="/class/updateform/:class_num"
           element={<ClassUpdateForm />}
@@ -66,12 +76,18 @@ const Router = () => {
         <Route path="/class/payment/after" element={<ClassPayAfter />} />
         <Route path="/class/admin" element={<ClassAdmin />} />
 
+        {/* About */}
         <Route path="/about" element={<About />} />
         <Route path="/about/1" element={<Detailp />} />
         <Route path="/about/2" element={<Detailu />} />
         <Route path="/about/3" element={<Detailz />} />
-        <Route path="/chat" element={<ChatRoom />} />
+
+        {/* Mypage */}
         <Route path="/mypage" element={<MypageMain />} />
+        <Route path="/mypage/payment" element={<MypagePayment />} />
+        <Route path="/mypage/liked" element={<MypageLiked />} />
+        <Route path="/mypage/classes" element={<MypageClasses />} />
+        <Route path="/mypage/tutor" element={<TutorAdmin />} />
 
         <Route
           path="*"

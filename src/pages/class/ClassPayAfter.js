@@ -1,3 +1,4 @@
+import { purple } from '@mui/material/colors';
 import React from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import img1 from './classImage/pay.png';
@@ -10,7 +11,7 @@ const ClassPayAfter = () => {
     <div>
       <div
         className="content_container"
-        style={{ marginLeft: '310px', borderColor: 'black', width: '1000px' }}
+        style={{ marginLeft: '310px', width: '950px' }}
       >
         <img
           alt=""
@@ -63,13 +64,24 @@ const ClassPayAfter = () => {
           <div style={{ marginTop: '15px' }}>
             결제금액 : {state.custom_data.amount}원
           </div>
+          <br />
         </div>
         <br />
         <div
-          style={{ color: '#7814DC', fontSize: '20px', marginLeft: '400px' }}
+          style={{
+            color: '#7814DC',
+            fontSize: '20px',
+            marginLeft: '400px',
+            lineHeight: '30px',
+            backgroundColor: '#ebc8ff',
+            padding: '10px',
+            borderRadius: '10px',
+          }}
         >
-          <div>📢 튜터 메시지</div>
-          <div> : {state.custom_data.classconfirm}</div>
+          <div style={{ fontWeight: '500', marginBottom: '5px' }}>
+            📢 튜터 메시지
+          </div>
+          <div style={{ padding: '5px' }}>{state.custom_data.classconfirm}</div>
         </div>
         <br />
         <button

@@ -24,59 +24,26 @@ const ClassList = () => {
   const navi = useNavigate();
 
   //백엔드에서 받아올 리스트 데이터변수
-  const [data, setData] = React.useState([]);
-
-  //필터링한거에 해당하는 데이터
-  const [filterData, setFilterData] = useState([]);
-
-  //카테고리
-  const [category, setCategory] = useState();
-
-  //필터 기능
-  const onChangeCategory = ({ currentTarget }) => {
-    setCategory(currentTarget.value);
-  };
+  const [data, setData] = useState('');
 
   // 현재 페이지번호 읽어오기
   const { currentPage } = useParams();
 
-  //페이지네이션
-
-  const [count, setCount] = React.useState(0); //아이템 총 개수
-  const [currentpage, setCurrentpage] = React.useState(1); //현재페이지
-  const [postPerPage] = React.useState(7); //페이지당 아이템 개수
-
-  const [indexOfLastPost, setIndexOfLastPost] = React.useState(0);
-  const [indexOfFirstPost, setIndexOfFirstPost] = React.useState(0);
-  const [currentPosts, setCurrentPosts] = React.useState(0);
-
   //url 선언
-  let class_alllistUrl = 'http://localhost:9009/class/list';
+  let pagelistUrl =
+    'http://localhost:9009/class/list?currentPage=' + currentPage;
   let class_photoUrl = 'http://localhost:9009/save/';
 
-  const list = () => {
-    axios.get(class_alllistUrl).then(res => {
+  const pageList = () => {
+    axios.get(pagelistUrl).then(res => {
       setData(res.data);
       // setFilterData(res.data.list);
-      console.log(res.data);
     });
   };
 
   useEffect(() => {
-    list();
-  }, []);
-
-  //페이지네이션
-  React.useEffect(() => {
-    setCount(data.length);
-    setIndexOfLastPost(currentpage * postPerPage);
-    setIndexOfFirstPost(indexOfLastPost - postPerPage);
-    setCurrentPosts(data.slice(indexOfFirstPost, indexOfLastPost));
-  }, [currentpage, indexOfFirstPost, indexOfLastPost, data, postPerPage]);
-
-  const setPage = e => {
-    setCurrentpage(e);
-  };
+    pageList();
+  }, [currentPage]);
 
   //   useEffect(() => {
   // const newData = data.filter(a => a.class_category === category);
@@ -207,13 +174,6 @@ const ClassList = () => {
             </div>
           ))}
       </div>
-      {currentPosts && data.length > 0 ? (
-        currentPosts.map(data => <div>{data.class_num}</div>)
-      ) : (
-        <div>게시물이 없습니다.</div>
-      )}
-
-      <Paging page={currentpage} count={count} setPage={setPage} />
 
       {/* 페이징 처리 */}
       <div
@@ -230,11 +190,11 @@ const ClassList = () => {
           )}
           {data.parr &&
             data.parr.map(n => {
-              const url = '/challenge/list/' + n;
+              const url = '/class/list/' + n;
               return (
                 <li>
                   <Link to={url}>
-                    <b style={{ color: n == currentPage ? 'red' : 'black' }}>
+                    <b style={{ color: n === currentPage ? 'red' : 'black' }}>
                       {n}
                     </b>
                   </Link>

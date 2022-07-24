@@ -25,7 +25,7 @@ const Nav = () => {
   const searchTerm = e => {
     e.preventDefault();
     setTerm(e.target.value);
-    navigate(`/lectures?title=${term}`);
+    navigate(`/class/list2?class_title=${term}`);
     setTerm('');
   };
 
