@@ -5,10 +5,11 @@ import SidebarItem from './SidebarItem';
 
 function Sidebar() {
   const menus = [
-    { name: '수강중인 클래스', path: '/mypage/classes' },
+    { name: '내 프로필', path: '/mypage' },
     { name: '결제 내역', path: '/mypage/payment' },
-    { name: '나의 찜', path: '/mypage/liked' },
-    { name: '튜터', path: '/mypage/tutor' },
+    { name: '찜한 클래스', path: '/mypage/liked' },
+    { name: '수강중인 클래스', path: '/mypage/classes' },
+    { name: '튜터 페이지', path: '/mypage/tutor' },
   ];
   return (
     <Side>
@@ -17,7 +18,10 @@ function Sidebar() {
           return (
             <NavLink
               exact
-              style={{ color: 'gray', textDecoration: 'none' }}
+              style={{
+                color: 'gray',
+                textDecoration: 'none',
+              }}
               to={menu.path}
               key={index}
               activeStyle={{ color: 'black' }}
@@ -41,11 +45,7 @@ const Side = styled.div`
   justify-content: center;
   width: 20%;
 `;
-const Profile = styled.img`
-  width: 150px;
-  height: 150px;
-  border-radius: 100%;
-`;
+
 const Menu = styled.div`
   margin-top: 30px;
   width: 200px;
