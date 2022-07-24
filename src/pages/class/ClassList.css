@@ -72,6 +72,20 @@
   cursor: pointer;
 }
 
+.each_class_end {
+  width: 250px;
+  height: 360px;
+  border-radius: 10px;
+  margin-right: 3px;
+  margin-left: 3px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  float: left;
+  border: 0.3px solid gray;
+  cursor: pointer;
+  background-color: #999999;
+}
+
 .listdiv {
   line-height: 100px;
   width: 1040px;
