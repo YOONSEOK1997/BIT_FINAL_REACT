@@ -1,7 +1,7 @@
 .mypage_header {
-  border: 1px solid gray;
   width: 1040px;
   height: 50px;
+  background-image: url('../class/classImage/002.png');
 }
 
 .mypage {

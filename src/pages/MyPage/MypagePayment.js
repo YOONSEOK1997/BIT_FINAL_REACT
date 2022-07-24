@@ -29,6 +29,7 @@ const MypagePayment = () => {
       <div className="mypage_header"></div>
       <Sidebar />
       <MypageContent>
+        <Title>결제 내역</Title>
         <OneReceipt>
           {/* OneRecipt : 하나의 결제내역 */}
           <PayStatus>
@@ -136,21 +137,23 @@ const Wrapper = styled.div`
 `;
 
 const MypageContent = styled.div`
-  border: 1px solid gray;
-  margin-top: -200px;
+  margin-top: -230px;
   margin-left: 30px;
   width: 800px;
-  height: 1000px;
+  height: 1500px;
   float: right;
   display: inline-block;
+  background-color: #f3f3f3;
 `;
 
 const OneReceipt = styled.div`
   width: 750px;
   height: 230px;
   border: 1px #dbdbdb solid;
-  border-radius: 3px;
+  border-radius: 5px;
   margin-left: 20px;
+  margin-top: 20px;
+  background-color: white;
 `;
 
 const PaidYes = styled.div`
@@ -238,4 +241,15 @@ const PayWith = styled.div``;
 const TotPrice = styled.div`
   float: right;
   margin-right: 18px;
+`;
+
+const Title = styled.div`
+  font-size: 28px;
+  width: 150px;
+  height: 50px;
+  margin-left: 40%;
+  line-height: 50px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;

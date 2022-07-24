@@ -45,6 +45,7 @@ const ClassList = () => {
   const list = () => {
     axios.get(class_alllistUrl).then(res => {
       setData(res.data);
+      console.log(res.data);
       // getCardListData(res.data);
     });
   };
@@ -66,7 +67,7 @@ const ClassList = () => {
   const makeQueryString = () => {
     const queryString = clickedCheckList
       .map(({ id, content, sortType }) => {
-        return sortType === 'class_location' || sortType === 'class_category'
+        return sortType === 'location' || sortType === 'category'
           ? `${sortType}_id=${parseInt(id) + 1}`
           : `${sortType}=${content}`;
       })
@@ -230,12 +231,12 @@ const Wrapper = styled.div`
 
 const FILTER_CATEGORYS = [
   {
-    sort_type: 'class_location',
+    sort_type: 'location',
     title: '한강, 어디?',
     contents: ['반포', '잠실', '이촌', '여의도', '난지', '뚝섬'],
   },
   {
-    sort_type: 'class_category',
+    sort_type: 'category',
     title: '카테고리',
     contents: ['스냅사진', '스포츠', '댄스', '뮤직', '드로잉'],
   },

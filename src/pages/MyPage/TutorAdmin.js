@@ -28,7 +28,7 @@ const Wrapper = styled.div`
 
 const MypageContent = styled.div`
   border: 1px solid gray;
-  margin-top: -200px;
+  margin-top: -230px;
   margin-left: 30px;
   width: 800px;
   height: 1000px;

@@ -23,8 +23,6 @@ const MypageMain = () => {
             <div className="profile_label1">이름</div>
             <div className="profile_label2">김정하</div>
             <br />
-            <div className="profile_label1">예치금</div>
-            <div className="profile_label2">50,000원</div>
           </div>
         </div>
         <div className="profile_buttons">

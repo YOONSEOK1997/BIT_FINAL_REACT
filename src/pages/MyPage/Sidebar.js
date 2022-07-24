@@ -11,6 +11,17 @@ function Sidebar() {
     { name: '수강중인 클래스', path: '/mypage/classes' },
     { name: '튜터 페이지', path: '/mypage/tutor' },
   ];
+
+  const normalStyle = {
+    color: 'gray',
+    textDecoration: 'none',
+  };
+
+  const activeStyle = {
+    color: '#03d85e',
+    textDecoration: 'none',
+  };
+
   return (
     <Side>
       <Menu>
@@ -18,13 +29,9 @@ function Sidebar() {
           return (
             <NavLink
               exact
-              style={{
-                color: 'gray',
-                textDecoration: 'none',
-              }}
+              style={({ isActive }) => (isActive ? activeStyle : normalStyle)}
               to={menu.path}
               key={index}
-              activeStyle={{ color: 'black' }}
             >
               <SidebarItem menu={menu} />
             </NavLink>
