@@ -44,12 +44,15 @@ const Register = () => {
     const signupurl = 'http://localhost:9009/api/signup';
     axios.post(signupurl, data).then(res => {
       console.log(data);
-    });
-    //프로필사진 넣기 axios
-    const username = setValue('username');
-    const insertProfileUrl = 'http://localhost:9009/api/instprf';
-    axios.post(insertProfileUrl, { username, profile }).then(res => {
-      navi('/login');
+      //프로필사진 넣기 axios
+      //const username = setValue('username');
+      const insertProfileUrl = 'http://localhost:9009/api/instprf';
+      axios
+        .post(insertProfileUrl, { username: userName, profile })
+        .then(res => {
+          console.log(userName, profile);
+          navi('/login');
+        });
     });
   };
 
@@ -91,7 +94,7 @@ const Register = () => {
   const userName = getValues('username');
   const [btnOk, setBtnOk] = useState(false);
   const onIdJungbok = () => {
-    console.log(userName);
+    //console.log(userName);
     const url = 'http://localhost:9009/api/usernamecheck?username=' + userName;
     axios.get(url).then(res => {
       if (res.data === 0) {
