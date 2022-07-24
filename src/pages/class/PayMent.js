@@ -67,8 +67,8 @@ const Payment = (effect, deps, props) => {
     axios
       .post(insertUrl, {
         pay_order_num: `hdh_${new Date().getTime()}`,
-        pay_user_id: state.data.classnum,
-        pay_user_name: state.data.classnum, //
+        pay_user_id: state.data.user_id,
+        pay_user_name: state.data.user_id, //
         pay_class_num: state.data.classnum,
         pay_class_name: state.data.classname,
         pay_classoption_num: state.data.classoption_num,
