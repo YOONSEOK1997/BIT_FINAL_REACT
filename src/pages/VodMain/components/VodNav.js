@@ -24,7 +24,7 @@ const VodNav = () => {
   const searchTerm = e => {
     e.preventDefault();
     setTerm(e.target.value);
-    navigate(`/lectures?title=${term}`);
+    navigate(`/list2?title=${term}`);
     setTerm('');
   };
 
@@ -34,6 +34,7 @@ const VodNav = () => {
     removeToken();
     goToMain();
   };
+
   return (
     <Container>
       <Wrapper>
@@ -65,8 +66,13 @@ const VodNav = () => {
           ) : (
             <LoginWrap>
               <LogoutButton onClick={kakaoLogout}>로그아웃</LogoutButton>
-              <LoginMenu to="/wish-list">찜</LoginMenu>
-              <ProfileImg src={getProfile()} alt="카카오프로필임시" />
+              <ProfileImg
+                src={getProfile()}
+                alt="카카오프로필임시"
+                onClick={() => {
+                  navigate(`/mypage`);
+                }}
+              />
             </LoginWrap>
           )}
         </Right>
@@ -103,6 +109,7 @@ const Logo = styled.img`
   width: 100px;
 `;
 const PageMenu = styled(Link)`
+  font-family: Noto Sans KR;
   color: #fff;
   opacity: 0.8;
   margin-right: 20px;
@@ -129,6 +136,8 @@ const SearchInput = styled.input`
   color: #ffffff;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 22px;
+  font-family: Noto Sans KR;
+  font-size: 16px;
 `;
 const SearchButton = styled.button`
   position: absolute;
@@ -142,6 +151,16 @@ const SearchButton = styled.button`
   font-size: 20px;
   cursor: pointer;
 `;
+
+const GnbTutor = styled(Link)`
+  color: #fff;
+  opacity: 0.8;
+  margin-right: 20px;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+`;
+
 const LoginMenu = styled(Link)`
   color: #fff;
   text-decoration: none;
@@ -171,6 +190,7 @@ const ProfileImg = styled.img`
   overflow: hidden;
   background-color: #fff;
   margin-left: 20px;
+  cursor: pointer;
 `;
 
 export default VodNav;

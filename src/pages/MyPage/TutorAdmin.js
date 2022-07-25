@@ -18,7 +18,7 @@ const TutorAdmin = () => {
           클래스의 튜터가 되어보세요!👩‍🏫
         </Ment>
         <AdminContent>
-          <Title2>내가 진행중인 클래스</Title2>
+          <Title2>🔥내가 진행중인 클래스</Title2>
           <ClassCard>
             {/* 하나의 카드 반복문 */}
             <div className="each_class1">
@@ -69,7 +69,7 @@ const TutorAdmin = () => {
             </div>
           </ClassCard>
           <WhoisAttending>
-            <Title3>수강생 목록</Title3>
+            <Title3>🙌수강생 목록</Title3>
             <PeopleList>
               <OneLine>
                 {/* 표 맨 윗줄 */}
@@ -104,12 +104,10 @@ const Wrapper = styled.div`
   position: relative;
   padding-bottom: 20px;
   height: 2000px;
-  border: 1px solid gray;
 `;
 
 const MypageContent = styled.div`
-  border: 1px solid gray;
-  margin-top: -230px;
+  margin-top: -250px;
   margin-left: 30px;
   width: 800px;
   height: auto;
@@ -130,9 +128,9 @@ const Title1 = styled.div`
 
 const Title2 = styled.div`
   font-size: 28px;
-  width: 250px;
+  width: 300px;
   height: 50px;
-  margin-left: 270px;
+  margin-left: 260px;
   line-height: 50px;
   font-weight: 500;
   margin-top: 10px;
@@ -141,9 +139,9 @@ const Title2 = styled.div`
 
 const Title3 = styled.div`
   font-size: 28px;
-  width: 150px;
+  width: 200px;
   height: 50px;
-  margin-left: 330px;
+  margin-left: 320px;
   line-height: 50px;
   font-weight: 500;
   margin-top: 10px;
@@ -166,41 +164,40 @@ const Ment = styled.div`
 const AdminContent = styled.div`
   width: 800px;
   height: 1000px;
-  border: 1px solid gray;
-  margin-top: 30px;
+  margin-top: 60px;
 `;
 
 const ClassCard = styled.div`
   width: 800px;
   height: 450px;
-  border: 1px solid gray;
+  background-color: white;
 `;
 
 const WhoisAttending = styled.div`
   width: 800px;
   height: 600px;
   border-top: 700px;
-  border: 1px solid gray;
+  margin-top: 20px;
 `;
 
 const PeopleList = styled.div`
   width: 800px;
   height: 500px;
-  border: 1px solid gray;
   margin-top: 20px;
 `;
 
 const OneLine = styled.div`
-  border: 1px solid gray;
+  border-bottom: 1px solid gray;
   width: 750px;
   height: 40px;
   margin-left: 20px;
   font-size: 20px;
+  font-weight: 600;
+  background-color: #eaf4d0;
 `;
 
 const Number = styled.div`
   display: inline-block;
-  border: 1px solid gray;
   width: 80px;
   line-height: 40px;
   height: 40px;
@@ -209,7 +206,6 @@ const Number = styled.div`
 
 const ClassName = styled.div`
   display: inline-block;
-  border: 1px solid gray;
   height: 40px;
   width: 330px;
   line-height: 40px;
@@ -218,7 +214,6 @@ const ClassName = styled.div`
 
 const UserName = styled.div`
   display: inline-block;
-  border: 1px solid gray;
   height: 40px;
   width: 100px;
   line-height: 40px;
@@ -227,7 +222,6 @@ const UserName = styled.div`
 
 const UserId = styled.div`
   display: inline-block;
-  border: 1px solid gray;
   height: 40px;
   width: 100px;
   line-height: 40px;
@@ -236,7 +230,6 @@ const UserId = styled.div`
 
 const Date = styled.div`
   display: inline-block;
-  border: 1px solid gray;
   height: 40px;
   line-height: 40px;
   width: 130px;
@@ -244,16 +237,15 @@ const Date = styled.div`
 `;
 
 const OneLine1 = styled.div`
-  border: 1px solid gray;
   width: 750px;
   height: 40px;
   margin-left: 20px;
   font-size: 20px;
+  font-weight: 400;
 `;
 
 const Number1 = styled.div`
   display: inline-block;
-  border: 1px solid gray;
   width: 80px;
   line-height: 40px;
   height: 40px;
@@ -262,7 +254,6 @@ const Number1 = styled.div`
 
 const ClassName1 = styled.div`
   display: inline-block;
-  border: 1px solid gray;
   height: 40px;
   width: 330px;
   line-height: 40px;
@@ -271,7 +262,6 @@ const ClassName1 = styled.div`
 
 const UserName1 = styled.div`
   display: inline-block;
-  border: 1px solid gray;
   height: 40px;
   width: 100px;
   line-height: 40px;
@@ -280,7 +270,6 @@ const UserName1 = styled.div`
 
 const UserId1 = styled.div`
   display: inline-block;
-  border: 1px solid gray;
   height: 40px;
   width: 100px;
   line-height: 40px;
@@ -289,7 +278,6 @@ const UserId1 = styled.div`
 
 const Date1 = styled.div`
   display: inline-block;
-  border: 1px solid gray;
   height: 40px;
   line-height: 40px;
   width: 130px;

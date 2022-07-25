@@ -47,7 +47,7 @@ const VodMain = () => {
                 </video>
                 <VideoInfo>
                   <VideoTitle>{vod.title}</VideoTitle>
-                  <DetailButton to={`/lectures/${vod.id}`}>
+                  <DetailButton to={`/class/detail/${vod.id}`}>
                     자세히보기
                   </DetailButton>
                 </VideoInfo>

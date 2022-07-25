@@ -1,6 +1,6 @@
 [
   {
-    "id": 40,
+    "id": 32,
     "title": "경주와 함께하는 고강도 기능성 운동",
     "category": "피트니스",
     "profile": "/images/tutor/이경주.jpeg",
@@ -8,7 +8,7 @@
     "video": "/video/vod_1.mp4"
   },
   {
-    "id": 13,
+    "id": 19,
     "title": "미국 with 한별",
     "category": "미국",
     "profile": "/images/tutor/한별.jpg",
@@ -16,7 +16,7 @@
     "video": "/video/vod_7.mp4"
   },
   {
-    "id": 6,
+    "id": 18,
     "title": "정하와 떠나는 신나는 일본여행",
     "category": "일본",
     "profile": "/images/tutor/김정하.jpg",
@@ -24,7 +24,7 @@
     "video": "/video/vod_2.mp4"
   },
   {
-    "id": 48,
+    "id": 13,
     "title": "윤석의 수영 교실",
     "category": "수영",
     "profile": "/images/tutor/최윤석.jpg",
