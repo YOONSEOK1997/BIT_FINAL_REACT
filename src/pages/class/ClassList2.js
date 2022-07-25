@@ -57,13 +57,13 @@ const ClassList = () => {
     axios.get(class_alllistUrl).then(res => {
       setData(res.data);
       console.log(res.data);
-      // getCardListData(res.data);
+      getCardListData(res.data);
     });
   };
 
   // 필터된 정보 + cardList state에 저장
   const getCardListData = useCallback(async () => {
-    const res = await fetch(`${BASE_URL}/main/search${search}`);
+    const res = await fetch(`http://localhost:9009/class/list/search${search}`);
     const data = await res.json();
 
     setCardList(data.result);

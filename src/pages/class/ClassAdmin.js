@@ -1,6 +1,8 @@
 import React from 'react';
 import './ClassAdmin.css';
 import './ClassGuide.css';
+import styled from 'styled-components';
+import { theme } from '../../styles/theme';
 import river from './classImage/aa캡처2.jpg';
 const ClassAdmin = () => {
   return (
@@ -10,22 +12,24 @@ const ClassAdmin = () => {
           alt=""
           src={river}
           className="classguideimg"
-          style={{ width: '1920px', height: '280px', fontFamily: 'Jua' }}
+          style={{
+            width: '1040px',
+            height: '130px',
+            marginLeft: '370px',
+            marginTop: '50px',
+          }}
         />
-        <div className="logoguide" style={{ width: '150px', height: '150px' }}>
-          <span
-            style={{ fontFamily: 'Jua', fontWeight: '600' }}
-            className="tyty"
+        <div
+          className="logoguide"
+          style={{ width: '150px', height: '150px' }}
+        ></div>
+        <Wrapper>
+          <div className="guidetitle1">👊 튜터를 승인해주세요! 🙌💖</div>
+          <br />
+          <table
+            className="admin table table-bordered"
+            style={{ width: '1040px', marginLeft: '280px' }}
           >
-            오늘,
-            <br />
-            한강
-          </span>
-        </div>
-
-        <div className="guidecontent">
-          <div className="guidetitle">👊 튜터를 승인해주세요! 🙌💖</div>
-          <table className="admin table table-bordered">
             <tr>
               <th>NO</th>
               <th>이름</th>
@@ -43,7 +47,7 @@ const ClassAdmin = () => {
               <td>2021-08-19</td>
               <td>2021-08-19</td>
               <td>
-                <select style={{ width: '100px', height: '30px' }}>
+                <select>
                   <option key="apple" value="승인">
                     승인
                   </option>
@@ -103,10 +107,20 @@ const ClassAdmin = () => {
           <br />
           <br />
           <br />
-        </div>
+        </Wrapper>
       </div>
     </div>
   );
 };
 
 export default ClassAdmin;
+
+const Wrapper = styled.div`
+  ${({ theme }) => theme.wrapper()}
+  margin-top: 150px;
+  width: 1040px;
+  position: relative;
+  padding-bottom: 20px;
+  height: 2000px;
+  margin-left: 100px;
+`;
