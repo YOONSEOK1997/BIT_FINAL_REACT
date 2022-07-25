@@ -1,0 +1,59 @@
+import React, { useState } from 'react';
+import './Modal.css';
+import duck from './duck.png';
+import axios from 'axios';
+
+const Tutorask = props => {
+  // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
+  const { open, close, header } = props;
+  //전역변수등록
+  const SPRING_URL = process.env.REACT_APP_SPRING_URL;
+  //url등록
+  let Url = SPRING_URL + 'tutor/ask';
+
+  const [data, setData] = useState({
+    username: localStorage.username,
+    state: true,
+  });
+
+  function ask() {
+    axios.post(Url, data).then(res => {
+      console.log(1);
+    });
+  }
+
+  return (
+    // 모달이 열릴때 openModal 클래스가 생성된다.
+    <div className={open ? 'openModal modal' : 'modal'}>
+      {open ? (
+        <section>
+          <header>
+            {header}
+            <button className="close" onClick={close}>
+              &times;
+            </button>
+          </header>
+          <main>
+            <img src={duck} style={{ width: '500px', marginBottom: '20px' }} />
+            <h2 style={{ marginBottom: '20px' }}>
+              {localStorage.username}님 튜터 신청을 하시겟습니꽉 ???
+            </h2>
+          </main>
+          <footer>
+            <button
+              className="close"
+              onClick={ask}
+              style={{ marginRight: '7px' }}
+            >
+              신청
+            </button>
+            <button className="close" onClick={close}>
+              닫기
+            </button>
+          </footer>
+        </section>
+      ) : null}
+    </div>
+  );
+};
+export default Tutorask;

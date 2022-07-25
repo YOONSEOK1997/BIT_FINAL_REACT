@@ -274,7 +274,7 @@ const ClassDetail = () => {
             )}
             <div className="totcnt">
               <div className="money1">
-                {data.class_price / data.class_hour}원 / 시간 (인당)
+                {Math.floor(data.class_price / data.class_hour)}원 / 시간 (인당)
                 <div className="money2">
                   {data.class_price}원 / 총 {data.class_hour}시간
                 </div>

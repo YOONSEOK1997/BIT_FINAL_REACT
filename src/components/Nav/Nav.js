@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   getToken,
@@ -11,6 +11,7 @@ import backgroundimg from '../../assets/premium-icon-magnifier-2311526.png';
 import styled from 'styled-components';
 import Weather from './Weather';
 import AuthService from '../../service/auth-service';
+import Tutorask from './Tutorask';
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -20,6 +21,14 @@ const Nav = () => {
 
   const goToMain = () => {
     navigate('/');
+  };
+
+  const [modalOpen2, setModalOpen2] = useState(false);
+  const openModal2 = () => {
+    setModalOpen2(true);
+  };
+  const closeModal2 = () => {
+    setModalOpen2(false);
   };
 
   const searchTerm = e => {
@@ -54,6 +63,21 @@ const Nav = () => {
         <GnbVod to="/vod">VOD</GnbVod>
         <GnbClass to="/class/list">Class</GnbClass>
         <GnbAbout to="/about">About</GnbAbout>
+
+        <React.Fragment>
+          {localStorage.loginok === 'yes' ? (
+            <GnbTutor to="/" onClick={openModal2}>
+              Tutor 신청
+            </GnbTutor>
+          ) : (
+            ''
+          )}
+          <Tutorask
+            open={modalOpen2}
+            close={closeModal2}
+            header="튜터 신청"
+          ></Tutorask>
+        </React.Fragment>
       </div>
       <Weather />
       <SearchArea>
@@ -79,7 +103,7 @@ const Nav = () => {
               onClick={() => {
                 navigate(`/mypage`);
               }}
-            />
+            />{' '}
           </LoginWrap>
         )}
       </GnbRight>
@@ -130,6 +154,13 @@ const GnbClass = styled(Link)`
 `;
 
 const GnbAbout = styled(Link)`
+  color: ${({ theme }) => theme.black};
+  font-weight: ${({ theme }) => theme.weightBold};
+  text-decoration: none;
+  margin-left: 20px;
+`;
+
+const GnbTutor = styled(Link)`
   color: ${({ theme }) => theme.black};
   font-weight: ${({ theme }) => theme.weightBold};
   text-decoration: none;
@@ -192,7 +223,4 @@ const ProfileImg = styled.img`
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  &:hover {
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
-  }
 `;
