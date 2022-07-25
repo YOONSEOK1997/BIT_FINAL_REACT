@@ -239,7 +239,7 @@ const Wrapper = styled.div`
   margin-top: 40px;
   position: relative;
   padding-bottom: 20px;
-  height: 2000px;
+  height: 3500px;
 `;
 
 const FILTER_CATEGORYS = [

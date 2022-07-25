@@ -24,13 +24,12 @@ const Main = () => {
 
   const goToTypeList = e => {
     const { id } = e.target;
-
-    navigate(`/lectures?types_id=${id}`);
+    e.target === 1 ? navigate(`/class/list2?`) : navigate(`/vod`);
   };
 
   const goToDetail = e => {
     const { id } = e.target;
-    navigate(`/lectures/${id}`);
+    navigate(`/class/detail/${id}`);
   };
 
   const navi = useNavigate();
@@ -162,7 +161,6 @@ const CATEGORY_TITLES = [
 const TYPES = [
   { icon: <FaLocationArrow id="1" />, title: '오프라인' },
   { icon: <FaVideo id="2" />, title: 'VOD' },
-  { icon: <FaBook id="3" />, title: '전자책' },
 ];
 
 const TREND_LIST = [
