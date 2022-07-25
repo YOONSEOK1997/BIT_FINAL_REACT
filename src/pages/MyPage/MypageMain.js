@@ -78,7 +78,7 @@ const MypageMain = () => {
         <div className="profileimg2">
           <img alt="" src={profile1} className="user_profile" />
         </div>
-        <div className="photo_icon">
+        <div className="photo_icon2">
           <IconButton
             color="primary"
             aria-label="upload picture"

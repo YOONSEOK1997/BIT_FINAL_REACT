@@ -1,0 +1,45 @@
+.passchange_wrapper {
+}
+.passchange_box {
+  width: 600px;
+  margin-top: 30px;
+  margin-left: 40px;
+}
+
+.int-area2 {
+  width: 350px;
+  position: relative;
+  margin-top: 20px;
+}
+.int-area2:first-child {
+  margin-top: 0;
+}
+.int-area2 input {
+  width: 100%;
+  padding: 20px 10px 10px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #999;
+  font-size: 18px;
+  color: black;
+  outline: none;
+}
+.int-area2 label {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  font-size: 15px;
+  color: #999;
+  transition: all 0.5s ease;
+}
+.int-area2 label.warning {
+  color: red !important;
+  animation: warning 0.3 ease;
+  animation-iteration-count: 3;
+}
+.int-area2 input:focus + label,
+.int-area2 input:valid + label {
+  top: 0;
+  font-size: 13px;
+  color: black;
+}
