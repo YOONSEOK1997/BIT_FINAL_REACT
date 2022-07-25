@@ -3,7 +3,7 @@ import axios from 'axios';
 import Rating from '@mui/material/Rating';
 import './ClassReview.css';
 import { textAlign } from '@mui/system';
-import StarRatings from 'react-star-ratings';
+//import StarRatings from 'react-star-ratings';
 
 const ClassReview = ({ class_num }) => {
   const [data, setData] = useState([]);
