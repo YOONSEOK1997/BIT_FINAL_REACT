@@ -270,7 +270,7 @@ const ClassDetail = () => {
                 {/* class_plan_row */}
               </div>
             ) : (
-              ''
+              <div style={{ height: '147px' }}></div>
             )}
             <div className="totcnt">
               <div className="money1">
