@@ -28,10 +28,11 @@ const ReviewModal = props => {
   const [classreview_photo, setClassreview_photo] = useState('');
   const [classreview_writer, setClassreview_writer] = useState('');
 
-  let url = process.env.REACT_APP_SPRING_URL + 'class/reivewsave';
-  let uploadUrl = process.env.REACT_APP_SPRING_URL + 'class/upload';
+  let url = process.env.REACT_APP_SPRING_URL + 'review/insert';
+  let uploadUrl = process.env.REACT_APP_SPRING_URL + 'review/upload';
 
   //file change시 호출 이벤트
+
   const uploadImage = e => {
     const uploadFile = e.target.files[0];
     const imageFile = new FormData();
@@ -55,6 +56,7 @@ const ReviewModal = props => {
     axios
       .post(url, {
         classreview_rate,
+        class_num,
         classreview_content,
         classreview_photo,
         classreview_writer,
@@ -95,7 +97,12 @@ const ReviewModal = props => {
                       작성자
                     </TableCell>
                     <TableCell align="left" style={{ width: '500px' }}>
-                      뭐시기
+                      <TextareaAutosize
+                        onChange={e => {
+                          setClassreview_writer(e.target.value);
+                          console.log(classreview_writer);
+                        }}
+                      />
                     </TableCell>
                   </TableRow>
                   <TableRow>
@@ -143,21 +150,21 @@ const ReviewModal = props => {
                       />
                     </TableCell>
                   </TableRow>
-                  <TableRow>
+                  {/* <TableRow>
                     <TableCell></TableCell>
                     <TableCell align="right">
                       <Button color="primary" align="rignt">
                         작성하기
                       </Button>
                     </TableCell>
-                  </TableRow>
+                  </TableRow> */}
                 </TableHead>
               </Table>
             </TableContainer>
           </main>
           <footer>
-            <button className="close" onClick={resetValues}>
-              닫기
+            <button className="close" onClick={saveReview}>
+              작성하기
             </button>
           </footer>
         </section>

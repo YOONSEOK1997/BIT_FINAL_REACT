@@ -478,7 +478,7 @@ const ClassDetail = () => {
                             팝업창입니다. 쉽게 만들 수 있어요. 같이 만들어봐요! */}
                 </React.Fragment>
               </div>
-              <ClassReview />
+              <ClassReview class_num={class_num} />
             </div>
           </div>
         )}
