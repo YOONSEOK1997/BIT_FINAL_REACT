@@ -25,6 +25,16 @@ const ClassList = () => {
   const filterDom = useRef();
   const navi = useNavigate();
 
+  //찜
+  const [like, setLike] = useState('🤍');
+  const likeChange = e => {
+    if (like === '🤍') {
+      setLike('❤️');
+    } else {
+      setLike('🤍');
+    }
+  };
+
   //백엔드에서 받아올 리스트 데이터변수
   const [data, setData] = useState([]);
 
@@ -167,32 +177,35 @@ const ClassList = () => {
         {/* 하나의 카드 반복문 */}
         {data &&
           data.map((data, index) => (
-            <div
-              className="each_class"
-              key={index}
-              onClick={() => {
-                navi(`/class/detail/${data.class_num}`);
-              }}
-            >
+            <div className="each_class" key={index}>
               <img
                 alt=""
                 src={class_photoUrl + data.class_photo1}
                 className="listimg"
+                onClick={() => {
+                  navi(`/class/detail/${data.class_num}`);
+                }}
               />
 
-              <div className="class_location">
-                <div style={{ display: 'inline-block' }}>
+              <div className="class_location" style={{ color: '#7814DC' }}>
+                <div style={{ display: 'inline-block', float: 'left' }}>
                   <LocationOnIcon
-                    style={{ fontSize: '20px', height: '20px' }}
+                    style={{ fontSize: '18px', height: '20px' }}
                   />
                 </div>
-                <data className="class_location_name">
-                  {data.class_location} 한강공원
-                </data>
+                <div className="class_location_name">
+                  <data>{data.class_location} 한강공원</data>
+                </div>
               </div>
 
               <div className="class_title1">
-                <data className="class_title_name" style={{ float: 'right' }}>
+                <data
+                  className="class_title_name"
+                  style={{ float: 'right' }}
+                  onClick={() => {
+                    navi(`/class/detail/${data.class_num}`);
+                  }}
+                >
                   {data.class_name}
                 </data>
               </div>
@@ -202,19 +215,12 @@ const ClassList = () => {
               </div>
 
               <div className="class_numbers">
-                <data className="class_price">{data.class_price} 원</data>
+                <data className="class_price">{data.class_price}원</data>
                 <data className="class_hour">(총 {data.class_hour}시간)</data>
               </div>
 
-              <div className="class_like">
-                <FavoriteBorderIcon
-                  style={{
-                    fontSize: '20px',
-                    color: 'red',
-                    height: '20px',
-                    display: 'inline-block',
-                  }}
-                />
+              <div className="class_like" onClick={likeChange}>
+                {like}
                 <data className="heart" style={{ display: 'inline-block' }}>
                   162
                 </data>

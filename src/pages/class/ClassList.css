@@ -60,18 +60,20 @@
 }
 
 .each_class {
-  width: 250px;
+  width: 245px;
   height: 360px;
   border-radius: 10px;
-  margin-right: 3px;
+  margin-right: 10px;
   margin-left: 3px;
   margin-bottom: 20px;
   margin-top: 20px;
   float: left;
-  border: 0.3px solid gray;
+  border: 0.3px solid rgb(172, 172, 172);
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .each_class:hover {
@@ -79,10 +81,10 @@
 }
 
 .each_class_end {
-  width: 250px;
+  width: 245px;
   height: 360px;
   border-radius: 10px;
-  margin-right: 3px;
+  margin-right: 10px;
   margin-left: 3px;
   margin-bottom: 20px;
   margin-top: 20px;
@@ -90,6 +92,8 @@
   border: 0.3px solid gray;
   cursor: pointer;
   background-color: #999999;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .listdiv {
@@ -98,18 +102,26 @@
 }
 
 .listimg {
-  width: 248px;
+  width: 243.5px;
   height: 180px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   position: relative;
 }
 .class_location {
-  line-height: 30px;
-  height: 30px;
-  font-size: 16px;
+  /* border: 1px solid gray; */
+  line-height: 15px;
+  height: 25px;
+  font-size: 14px;
   margin-top: -35px;
   margin-left: 5px;
+  width: 180px;
+}
+.class_location_name {
+  width: 150px;
+  float: left;
+  margin-top: 3px;
+  margin-left: 1px;
 }
 .class_title1 {
   line-height: 30px;
@@ -130,8 +142,10 @@
   height: 25px;
   font-size: 16px;
   font-weight: 500;
-  margin-top: 40px;
+  margin-left: 10px;
   float: left;
+  clear: both;
+  color: #999999;
 }
 
 .class_numbers {
@@ -147,7 +161,7 @@
   height: 25px;
   font-size: 18px;
   text-align: right;
-  margin-right: 10px;
+  margin-right: 20px;
   /* position: absolute;
     top: 750px;
     left: 560px; */
