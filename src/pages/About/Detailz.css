@@ -8,3 +8,15 @@
   width: 1000px;
   height: 300px;
 }
+
+.Modal9 {
+  margin-top: 20px;
+  padding: 20px;
+  background: #eee;
+}
+
+.class_reviewbtn {
+  width: 300px;
+  padding: 20px;
+  background-color: bisque;
+}

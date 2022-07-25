@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 import Myslide2 from './Myslide2';
@@ -6,12 +6,21 @@ import './Detailz.css';
 
 import d6 from './images/d6.jpg';
 import d13 from './images/d13.jpg';
+import Modalj from './Modalj';
 
 const Wrapper = styled.div`
   ${({ theme }) => theme.wrapper()}
 `;
 
-const Detailz = () => {
+function Detailz() {
+  const [modalOpen3, setModalOpen3] = useState(false);
+  const openModal3 = () => {
+    setModalOpen3(true);
+  };
+  const closeModal3 = () => {
+    setModalOpen3(false);
+  };
+
   return (
     <Wrapper>
       <br />
@@ -46,14 +55,18 @@ const Detailz = () => {
         <br />
         <br />
         <br />
-        <img
-          src={d13}
-          alt=""
-          style={{ width: '1035px', height: '550px', marginTop: '100px' }}
-        />
+        <br />
+        <div>
+          <React.Fragment>
+            <button className="class_reviewbtn" onClick={openModal3}>
+              모달창 입장
+            </button>
+            <Modalj open={modalOpen3} close={closeModal3} />
+          </React.Fragment>{' '}
+        </div>
       </div>
     </Wrapper>
   );
-};
+}
 
 export default Detailz;
