@@ -4,14 +4,21 @@ import './ClassGuide.css';
 import river from './classImage/aa캡처2.jpg';
 import axios from 'axios';
 import styled from 'styled-components';
+import { Location, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const ClassAdmin = () => {
   const [data, setData] = useState([]);
+  const [agree, setAgree] = useState('수락');
+  const [disagree, setDisagree] = useState('거부');
+  const navi = useNavigate();
+
   //전역변수등록
   const SPRING_URL = process.env.REACT_APP_SPRING_URL;
   //url등록
   let Url = SPRING_URL + 'tutor/list';
-  let agUrl = SPRING_URL + 'tutor/list';
+  let updateUrl = SPRING_URL + 'tutor/update';
+  let updateUrl2 = SPRING_URL + 'tutor/update2';
   let disUrl = SPRING_URL + 'tutor/list';
 
   const list = () => {
@@ -20,21 +27,9 @@ const ClassAdmin = () => {
     });
   };
 
-  const agree = () => {
-    axios.post(Url).then(res => {
-      setData(res.data);
-    });
-  };
-
-  const disagree = () => {
-    axios.post(disUrl).then(res => {
-      setData(res.data);
-    });
-  };
   useEffect(() => {
     list();
-    console.log(data);
-  }, []);
+  }, [data]);
   return (
     <div>
       <div className="TY">
@@ -75,8 +70,39 @@ const ClassAdmin = () => {
                   <td>{row.username}</td>
                   <td>{row.realname}</td>
                   <td>{row.ask_date}</td>
-                  <td style={{ cursor: 'pointer', width: '70px' }}>✔️</td>
-                  <td style={{ cursor: 'pointer', width: '50px' }}>❌</td>
+                  <td
+                    style={{ cursor: 'pointer', width: '70px' }}
+                    onClick={() => {
+                      if (window.confirm('정말 수락하시겟습니꽈아악?????')) {
+                        axios
+                          .post(updateUrl, {
+                            username: row.username,
+                            user_id: row.user_id,
+                            state: agree,
+                          })
+                          .then(res => {
+                            navi('/class/admin');
+                          });
+                      }
+                    }}
+                  >
+                    ✔️
+                  </td>
+                  <td
+                    style={{ cursor: 'pointer', width: '50px' }}
+                    onClick={() => {
+                      if (window.confirm('정말 거절하시겟습니꽈아악?')) {
+                        axios
+                          .post(updateUrl2, {
+                            username: row.username,
+                            state: disagree,
+                          })
+                          .then(res => {});
+                      }
+                    }}
+                  >
+                    ❌
+                  </td>
                 </tr>
               ))}
           </table>
