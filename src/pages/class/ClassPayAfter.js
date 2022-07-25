@@ -6,7 +6,7 @@ import img1 from './classImage/pay.png';
 const ClassPayAfter = () => {
   const navi = useNavigate();
   const { state } = useLocation();
-  console.log(state);
+  console.log(state); //
   return (
     <div>
       <div

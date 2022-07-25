@@ -13,12 +13,13 @@ const Tutorask = props => {
 
   const [data, setData] = useState({
     username: localStorage.username,
-    state: true,
+    state: '대기',
   });
 
   function ask() {
     axios.post(Url, data).then(res => {
-      console.log(1);
+      alert('신청이 완료되었습니다');
+      close();
     });
   }
 
