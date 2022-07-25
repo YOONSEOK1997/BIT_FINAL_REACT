@@ -73,7 +73,13 @@ const Nav = () => {
         ) : (
           <LoginWrap>
             <LogoutBtn onClick={kakaoLog}>로그아웃</LogoutBtn>
-            <ProfileImg src={getProfile()} alt="카카오프로필임시" />
+            <ProfileImg
+              src={getProfile()}
+              alt="카카오프로필임시"
+              onClick={() => {
+                navigate(`/mypage`);
+              }}
+            />
           </LoginWrap>
         )}
       </GnbRight>
@@ -186,4 +192,7 @@ const ProfileImg = styled.img`
   width: 36px;
   height: 36px;
   border-radius: 50%;
+  &:hover {
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+  }
 `;

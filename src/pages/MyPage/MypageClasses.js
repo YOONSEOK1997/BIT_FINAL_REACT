@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
+import MypageCard from './MypageCards.css';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -17,40 +18,39 @@ const MypageClasses = () => {
         <Cards1>
           {/* 하나의 카드 반복문 */}
           <Card1>
-            <div className="each_class">
+            <div className="each_class1">
               <img
                 alt=""
                 src={'../class/classImage/002.png'}
-                className="listimg"
+                className="listimg1"
               />
 
-              <div className="class_location">
+              <div className="class_location1">
                 <LocationOnIcon
                   style={{
                     fontSize: '20px',
                     height: '20px',
-                    display: 'inline-block',
                   }}
                 />
-                <div className="class_location_name">(잠원) 한강공원</div>
+                (잠원) 한강공원
               </div>
 
-              <div className="class_title1">
-                <div className="class_title_name" style={{ float: 'right' }}>
+              <div className="class_title2">
+                <div className="class_title_name1" style={{ float: 'right' }}>
                   (어차저차어기여차 클래스)
                 </div>
               </div>
 
-              <div className="list_tutor_name">
+              <div className="list_tutor_name1">
                 <div>(김정하) 튜터</div>
               </div>
 
-              <div className="class_numbers">
-                <div className="class_price">(35,000) 원</div>
-                <div className="class_hour">(총 (30) 시간)</div>
+              <div className="class_numbers1">
+                <div className="class_price1">(35,000) 원</div>
+                <div className="class_hour1">(총 (30) 시간)</div>
               </div>
 
-              <div className="class_like">
+              <div className="class_like1">
                 <FavoriteBorderIcon
                   style={{
                     fontSize: '20px',
@@ -59,106 +59,7 @@ const MypageClasses = () => {
                     display: 'inline-block',
                   }}
                 />
-                <div className="heart" style={{ display: 'inline-block' }}>
-                  162
-                </div>
-              </div>
-            </div>
-          </Card1>
-          {/* 하나의 반복문 끝.. 아래는 걍 박아넣은거*/}
-          <Card1>
-            <div className="each_class">
-              <img
-                alt=""
-                src={'../class/classImage/002.png'}
-                className="listimg"
-              />
-
-              <div className="class_location">
-                <LocationOnIcon
-                  style={{
-                    fontSize: '20px',
-                    height: '20px',
-                    display: 'inline-block',
-                  }}
-                />
-                <div className="class_location_name">(잠원) 한강공원</div>
-              </div>
-
-              <div className="class_title1">
-                <div className="class_title_name" style={{ float: 'right' }}>
-                  (어차저차어기여차 클래스)
-                </div>
-              </div>
-
-              <div className="list_tutor_name">
-                <div>(김정하) 튜터</div>
-              </div>
-
-              <div className="class_numbers">
-                <div className="class_price">(35,000) 원</div>
-                <div className="class_hour">(총 (30) 시간)</div>
-              </div>
-
-              <div className="class_like">
-                <FavoriteBorderIcon
-                  style={{
-                    fontSize: '20px',
-                    color: 'red',
-                    height: '20px',
-                    display: 'inline-block',
-                  }}
-                />
-                <div className="heart" style={{ display: 'inline-block' }}>
-                  162
-                </div>
-              </div>
-            </div>
-          </Card1>
-          <Card1>
-            <div className="each_class">
-              <img
-                alt=""
-                src={'../class/classImage/002.png'}
-                className="listimg"
-              />
-
-              <div className="class_location">
-                <LocationOnIcon
-                  style={{
-                    fontSize: '20px',
-                    height: '20px',
-                    display: 'inline-block',
-                  }}
-                />
-                <div className="class_location_name">(잠원) 한강공원</div>
-              </div>
-
-              <div className="class_title1">
-                <div className="class_title_name" style={{ float: 'right' }}>
-                  (어차저차어기여차 클래스)
-                </div>
-              </div>
-
-              <div className="list_tutor_name">
-                <div>(김정하) 튜터</div>
-              </div>
-
-              <div className="class_numbers">
-                <div className="class_price">(35,000) 원</div>
-                <div className="class_hour">(총 (30) 시간)</div>
-              </div>
-
-              <div className="class_like">
-                <FavoriteBorderIcon
-                  style={{
-                    fontSize: '20px',
-                    color: 'red',
-                    height: '20px',
-                    display: 'inline-block',
-                  }}
-                />
-                <div className="heart" style={{ display: 'inline-block' }}>
+                <div className="heart1" style={{ display: 'inline-block' }}>
                   162
                 </div>
               </div>
@@ -168,42 +69,41 @@ const MypageClasses = () => {
         <Title2>수강 종료된 클래스</Title2>
         <Ment2>내가 수강한 클래스들 입니다 🏁</Ment2>
         <Cards2>
+          {/* 하나의 카드 반복문 */}
           <Card2>
-            {/* 하나의 카드 반복문 */}
             <div className="each_class_end">
               <img
                 alt=""
                 src={'../class/classImage/002.png'}
-                className="listimg"
+                className="listimg1"
               />
 
-              <div className="class_location">
+              <div className="class_location1">
                 <LocationOnIcon
                   style={{
                     fontSize: '20px',
                     height: '20px',
-                    display: 'inline-block',
                   }}
                 />
-                <div className="class_location_name">(잠원) 한강공원</div>
+                (잠원) 한강공원
               </div>
 
-              <div className="class_title1">
-                <div className="class_title_name" style={{ float: 'right' }}>
+              <div className="class_title2">
+                <div className="class_title_name1" style={{ float: 'right' }}>
                   (어차저차어기여차 클래스)
                 </div>
               </div>
 
-              <div className="list_tutor_name">
+              <div className="list_tutor_name1">
                 <div>(김정하) 튜터</div>
               </div>
 
-              <div className="class_numbers">
-                <div className="class_price">(35,000) 원</div>
-                <div className="class_hour">(총 (30) 시간)</div>
+              <div className="class_numbers1">
+                <div className="class_price1">(35,000) 원</div>
+                <div className="class_hour1">(총 (30) 시간)</div>
               </div>
 
-              <div className="class_like">
+              <div className="class_like1">
                 <FavoriteBorderIcon
                   style={{
                     fontSize: '20px',
@@ -212,7 +112,7 @@ const MypageClasses = () => {
                     display: 'inline-block',
                   }}
                 />
-                <div className="heart" style={{ display: 'inline-block' }}>
+                <div className="heart1" style={{ display: 'inline-block' }}>
                   162
                 </div>
               </div>

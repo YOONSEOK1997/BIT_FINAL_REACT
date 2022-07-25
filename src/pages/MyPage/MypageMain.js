@@ -121,42 +121,6 @@ const MypageMain = () => {
       </div>
       {/* mypage_profile 닫힘 */}
 
-      <div className="mypage_lists">
-        {/* 유저 아이디 */}
-        <div className="int-area1">
-          <input type="text" name="username" id="username" required />
-          <label>USER ID</label>
-        </div>
-
-        {/* 유저 네임 */}
-        <div className="int-area1">
-          <input type="text" name="realname" id="realname" required />
-          <label>USER NAME</label>
-        </div>
-
-        {/* 이메일 */}
-        <div className="int-area1">
-          <input
-            type="text"
-            name="email"
-            id="email"
-            autoComplete="off"
-            required
-          />
-          <label>E-MAIL</label>
-        </div>
-        {/* 비밀번호 */}
-        <div className="int-area1">
-          <input
-            type="password"
-            name="password"
-            id="password"
-            autoComplete="off"
-            required
-          />
-          <label>PASSWORD</label>
-        </div>
-      </div>
       {/* 진행중/완료 목록 div */}
     </Wrapper>
     /* 전체 div 닫힘 */
