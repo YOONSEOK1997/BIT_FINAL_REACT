@@ -70,6 +70,25 @@ const TutorAdmin = () => {
           </ClassCard>
           <WhoisAttending>
             <Title3>수강생 목록</Title3>
+            <PeopleList>
+              <OneLine>
+                {/* 표 맨 윗줄 */}
+                <Number>🍀</Number>
+                <ClassName>클래스명</ClassName>
+                <UserName>이름</UserName>
+                <UserId>아이디</UserId>
+                <Date>신청 날짜</Date>
+              </OneLine>
+
+              <OneLine1>
+                {/* 하나의 반복문 : 한줄  */}
+                <Number1>1</Number1>
+                <ClassName1>[원데이] 비눗방울 불어제끼기</ClassName1>
+                <UserName1>한별</UserName1>
+                <UserId1>hanbyeol</UserId1>
+                <Date1>2022.07.25</Date1>
+              </OneLine1>
+            </PeopleList>
           </WhoisAttending>
         </AdminContent>
       </MypageContent>
@@ -93,7 +112,7 @@ const MypageContent = styled.div`
   margin-top: -230px;
   margin-left: 30px;
   width: 800px;
-  height: 1000px;
+  height: auto;
   float: right;
   display: inline-block;
 `;
@@ -122,9 +141,9 @@ const Title2 = styled.div`
 
 const Title3 = styled.div`
   font-size: 28px;
-  width: 250px;
+  width: 150px;
   height: 50px;
-  margin-left: 270px;
+  margin-left: 330px;
   line-height: 50px;
   font-weight: 500;
   margin-top: 10px;
@@ -153,13 +172,126 @@ const AdminContent = styled.div`
 
 const ClassCard = styled.div`
   width: 800px;
-  height: 500px;
+  height: 450px;
   border: 1px solid gray;
 `;
 
 const WhoisAttending = styled.div`
   width: 800px;
-  heigth: 600px;
+  height: 600px;
   border-top: 700px;
   border: 1px solid gray;
+`;
+
+const PeopleList = styled.div`
+  width: 800px;
+  height: 500px;
+  border: 1px solid gray;
+  margin-top: 20px;
+`;
+
+const OneLine = styled.div`
+  border: 1px solid gray;
+  width: 750px;
+  height: 40px;
+  margin-left: 20px;
+  font-size: 20px;
+`;
+
+const Number = styled.div`
+  display: inline-block;
+  border: 1px solid gray;
+  width: 80px;
+  line-height: 40px;
+  height: 40px;
+  text-align: center;
+`;
+
+const ClassName = styled.div`
+  display: inline-block;
+  border: 1px solid gray;
+  height: 40px;
+  width: 330px;
+  line-height: 40px;
+  text-align: center;
+`;
+
+const UserName = styled.div`
+  display: inline-block;
+  border: 1px solid gray;
+  height: 40px;
+  width: 100px;
+  line-height: 40px;
+  text-align: center;
+`;
+
+const UserId = styled.div`
+  display: inline-block;
+  border: 1px solid gray;
+  height: 40px;
+  width: 100px;
+  line-height: 40px;
+  text-align: center;
+`;
+
+const Date = styled.div`
+  display: inline-block;
+  border: 1px solid gray;
+  height: 40px;
+  line-height: 40px;
+  width: 130px;
+  text-align: center;
+`;
+
+const OneLine1 = styled.div`
+  border: 1px solid gray;
+  width: 750px;
+  height: 40px;
+  margin-left: 20px;
+  font-size: 20px;
+`;
+
+const Number1 = styled.div`
+  display: inline-block;
+  border: 1px solid gray;
+  width: 80px;
+  line-height: 40px;
+  height: 40px;
+  text-align: center;
+`;
+
+const ClassName1 = styled.div`
+  display: inline-block;
+  border: 1px solid gray;
+  height: 40px;
+  width: 330px;
+  line-height: 40px;
+  text-align: center;
+`;
+
+const UserName1 = styled.div`
+  display: inline-block;
+  border: 1px solid gray;
+  height: 40px;
+  width: 100px;
+  line-height: 40px;
+  text-align: center;
+`;
+
+const UserId1 = styled.div`
+  display: inline-block;
+  border: 1px solid gray;
+  height: 40px;
+  width: 100px;
+  line-height: 40px;
+  text-align: center;
+`;
+
+const Date1 = styled.div`
+  display: inline-block;
+  border: 1px solid gray;
+  height: 40px;
+  line-height: 40px;
+  width: 130px;
+  text-align: center;
 `;
