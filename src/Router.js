@@ -16,6 +16,7 @@ import Register_re from './pages/Register/Register_re';
 import Detailp from './pages/About/Detailp';
 import errimg from './errimg.jpg';
 import ClassList2 from './pages/class/ClassList2';
+import Map from './pages/Map/Map';
 
 import {
   MypageMain,
@@ -83,6 +84,8 @@ const Router = () => {
         <Route path="/about/1" element={<Detailp />} />
         <Route path="/about/2" element={<Detailu />} />
         <Route path="/about/3" element={<Detailz />} />
+
+        <Route path="/map" element={<Map />} />
 
         {/* Mypage */}
         <Route path="/mypage" element={<MypageMain />} />

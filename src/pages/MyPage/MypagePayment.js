@@ -145,7 +145,6 @@ const Wrapper = styled.div`
   position: relative;
   padding-bottom: 20px;
   height: 2000px;
-  border: 1px solid gray;
 `;
 
 const MypageContent = styled.div`
