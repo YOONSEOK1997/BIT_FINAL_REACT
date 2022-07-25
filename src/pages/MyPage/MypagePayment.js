@@ -114,7 +114,7 @@ const MypagePayment = () => {
                     <div
                       style={{ display: 'inline-block', marginLeft: '16px' }}
                     >
-                      {row.pay_method}
+                      {row.pay_method === null ? '카카오페이' : row.pay_method}
                     </div>
                   </PayWith>
                   <TotPrice>
