@@ -65,7 +65,8 @@ const Nav = () => {
         <GnbAbout to="/about">About</GnbAbout>
 
         <React.Fragment>
-          {localStorage.loginok === 'yes' ? (
+          {localStorage.loginok === 'yes' &&
+          localStorage.username !== 'admin' ? (
             <GnbTutor to="/" onClick={openModal2}>
               Tutor 신청
             </GnbTutor>
@@ -78,6 +79,12 @@ const Nav = () => {
             header="튜터 신청"
           ></Tutorask>
         </React.Fragment>
+
+        {localStorage.loginok === 'yes' && localStorage.username === 'admin' ? (
+          <GnbTutor to="/class/admin">Tutor 신청확인</GnbTutor>
+        ) : (
+          ''
+        )}
       </div>
       <Weather />
       <SearchArea>
