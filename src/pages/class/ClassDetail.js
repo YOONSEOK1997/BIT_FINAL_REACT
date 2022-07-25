@@ -31,6 +31,8 @@ const ClassDetail = () => {
   const totpay = useRef(0);
   const navi = useNavigate();
   const [tab, setTab] = useState(1);
+  const [likestate, setLikestate] = useState('');
+  const [likestate2, setLikestate2] = useState('');
 
   // alert MUI (삭제 다이얼로그 코드 추가)
   const [open, setOpen] = React.useState(false);
@@ -53,6 +55,8 @@ const ClassDetail = () => {
   let detailUrl2 = SPRING_URL + 'class/detailoption?class_num=' + class_num;
   let deletelUrl = SPRING_URL + 'class/delete?class_num=' + class_num;
   let photoUrl = process.env.REACT_APP_SPRING_URL + 'save/';
+  let likeUrl = process.env.REACT_APP_SPRING_URL + 'like/check';
+  let likeUrl2 = process.env.REACT_APP_SPRING_URL + 'like/chk';
 
   //popup modal (ClassGuide, 클래스신청)
   // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
@@ -108,6 +112,29 @@ const ClassDetail = () => {
     });
   };
 
+  //like
+
+  const likecheck = () => {
+    axios
+      .post(likeUrl, {
+        like_class_num: class_num,
+        like_user_name: localStorage.username,
+      })
+      .then(res => {
+        setLikestate2(res.data);
+      });
+  };
+
+  const chk = () => {
+    axios
+      .post(likeUrl2, {
+        like_class_num: class_num,
+        like_user_name: localStorage.username,
+      })
+      .then(res => {
+        setLikestate(res.data);
+      });
+  };
   //클래스 삭제시 호출 할 함수
   const onDelete = () => {
     axios.delete(deletelUrl).then(res => {
@@ -123,21 +150,22 @@ const ClassDetail = () => {
     setChange(true);
   };
 
-  //찜
-  const [like, setLike] = useState('🤍');
-  const likeChange = e => {
-    if (like === '🤍') {
-      setLike('❤️');
-    } else {
-      setLike('🤍');
-    }
-  };
+  // //찜
+  // const [like, setLike] = useState('🤍');
+  // const likeChange = e => {
+  //   if (like === '🤍') {
+  //     setLike('❤️');
+  //   } else {
+  //     setLike('🤍');
+  //   }
+  // };
 
   //처음 랜더링시 위의 함수 호출
   useEffect(() => {
     onDataReceive();
     onOptionReceive();
-  }, []);
+    chk();
+  }, [likestate2]);
   return (
     <div>
       <div className="content_container" style={{ marginLeft: '150px' }}>
@@ -306,10 +334,10 @@ const ClassDetail = () => {
               </React.Fragment>
               <button
                 className="class_likebtn"
-                onClick={likeChange}
+                onClick={likecheck}
                 style={{ cursor: 'pointer' }}
               >
-                {like}
+                {likestate === 0 ? '🤍' : '❤️'}
               </button>
               {/* 클릭시 <button className="class_likebtn">🤍</button> */}
             </div>
@@ -420,7 +448,9 @@ const ClassDetail = () => {
             )}
 
             <div className="class_notice3">
-              <div className="class_subtitle">클래스 소개</div>
+              <div className="class_subtitle" style={{ marginBottom: '30px' }}>
+                클래스 소개
+              </div>
               <div className="minicontent">
                 <div
                   dangerouslySetInnerHTML={{ __html: data.class_intro }}
@@ -429,7 +459,7 @@ const ClassDetail = () => {
             </div>
 
             <div className="class_notice4">
-              <div className="class_subtitle" style={{ marginBottom: '10px' }}>
+              <div className="class_subtitle" style={{ marginBottom: '30px' }}>
                 클래스 커리큘럼
               </div>
               <div className="minicontent">{data.class_curri}</div>

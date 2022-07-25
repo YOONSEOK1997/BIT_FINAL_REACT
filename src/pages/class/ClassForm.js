@@ -466,9 +466,7 @@ const ClassForm = passData => {
             {photos2.map((image, id) => (
               <div className="smphotod" key={id}>
                 <img src={image} alt={`${image}-${id}`} className="smphoto" />
-                <div className="xbtn" onClick={() => handleDeleteImage(id)}>
-                  &nbsp;x&nbsp;
-                </div>
+                <div onClick={() => handleDeleteImage(id)}>&nbsp; ❌&nbsp;</div>
               </div>
             ))}
           </div>
@@ -588,14 +586,18 @@ const ClassForm = passData => {
                 ~ {row.classoption_endtime}시 &nbsp;&nbsp;
                 {row.classoption_totalperson}
                 명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button
-                  type="button"
+                <div
                   onClick={() => onDelete(idx)}
                   className="xbtn"
+                  style={{
+                    border: '0px soild gray',
+                    backgroundColor: 'white',
+                    float: 'right',
+                  }}
                 >
                   {' '}
-                  X{' '}
-                </button>
+                  ❌{' '}
+                </div>
               </div>
             ))}
           </div>
