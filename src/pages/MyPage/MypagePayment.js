@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import Sidebar from './Sidebar';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 import axios from 'axios';
+import ReviewModal from '../class/ReviewModal';
 
 const MypagePayment = () => {
   const pay_user_id = localStorage.username;
@@ -10,15 +13,23 @@ const MypagePayment = () => {
     process.env.REACT_APP_SPRING_URL + 'pay/detail?pay_user_id=' + pay_user_id;
 
   const [data, setData] = useState([]);
+  const navi = useNavigate();
 
   const list = () => {
     axios.get(listurl).then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       setData(res.data);
-      console.log(data);
+      // console.log(data);
     });
   };
 
+  const [modalOpen, setModalOpen] = useState(false);
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
   useEffect(() => {
     list();
     console.log(data);
@@ -35,49 +46,6 @@ const MypagePayment = () => {
           팀에 문의 부탁드립니다😉🗯️
         </Ment>
         <Receipts>
-          <OneReceipt>
-            {/* OneRecipt : 하나의 결제내역 */}
-            <PayStatus>
-              <PaidYes>결제완료</PaidYes>
-              <PaidDate>2022.07.25 | 08:17 </PaidDate>
-            </PayStatus>
-            <ClassTitle>
-              <div style={{ display: 'inline-block', marginLeft: '18px' }}>
-                [원데이]한강에서 수건돌리기하기
-              </div>
-              <div
-                style={{
-                  display: 'inline-block',
-                  fontSize: '16px',
-                  float: 'right',
-                  marginRight: '18px',
-                }}
-              >
-                이지호 튜터
-              </div>
-            </ClassTitle>
-            <ClassInfo>
-              <HowMuch>
-                <HMBtn>가격</HMBtn>
-                <div style={{ display: 'inline-block', marginLeft: '16px' }}>
-                  150,000 원
-                </div>
-              </HowMuch>
-              <PayWith>
-                <PWBtn>결제 수단</PWBtn>
-                <div style={{ display: 'inline-block', marginLeft: '16px' }}>
-                  네이버페이
-                </div>
-              </PayWith>
-              <TotPrice>
-                <TPBtn>총 금액</TPBtn>
-                <div style={{ display: 'inline-block', marginLeft: '10px' }}>
-                  150,000원
-                </div>
-              </TotPrice>
-            </ClassInfo>
-          </OneReceipt>
-
           {data &&
             data.map((row, idx) => (
               <OneReceipt>
@@ -87,25 +55,54 @@ const MypagePayment = () => {
                   <PaidDate>
                     {row.pay_classoption_day} | 주문번호 : {row.pay_order_num}{' '}
                   </PaidDate>
+                  <React.Fragment>
+                    <div
+                      style={{
+                        width: '100px',
+                        float: 'right',
+                        color: '#F20E42',
+                        cursor: 'pointer',
+                        fontWeight: '600',
+                      }}
+                      onClick={openModal}
+                    >
+                      리뷰작성
+                    </div>
+                    {/* //header 부분에 텍스트를 입력한다. */}
+                    <ReviewModal
+                      open={modalOpen}
+                      close={closeModal}
+                      header="리뷰 작성"
+                    />
+                  </React.Fragment>
                 </PayStatus>
                 <ClassTitle>
-                  <div style={{ display: 'inline-block', marginLeft: '18px' }}>
-                    {row.pay_class_name}
-                  </div>
                   <div
                     style={{
                       display: 'inline-block',
-                      fontSize: '16px',
-                      float: 'right',
-                      marginRight: '18px',
+                      marginLeft: '18px',
+                      cursor: 'pointer',
+                    }}
+                    onClick={() => {
+                      navi(`/class/detail/${row.pay_class_num}`);
                     }}
                   >
-                    이지호 튜터
+                    {row.pay_class_name}
                   </div>
                 </ClassTitle>
                 <ClassInfo>
                   <HowMuch>
-                    <HMBtn>가격</HMBtn>
+                    <HMBtn>선택옵션</HMBtn>
+                    <div
+                      style={{ display: 'inline-block', marginLeft: '16px' }}
+                    >
+                      {row.pay_classoption_day} {row.pay_classoption_starttime}
+                      시~ {row.pay_classoption_endtime}시 (신청인원 :{' '}
+                      {row.pay_classoption_percnt}명)
+                    </div>
+                  </HowMuch>
+                  <HowMuch>
+                    <HMBtn>상품금액</HMBtn>
                     <div
                       style={{ display: 'inline-block', marginLeft: '16px' }}
                     >
@@ -117,15 +114,19 @@ const MypagePayment = () => {
                     <div
                       style={{ display: 'inline-block', marginLeft: '16px' }}
                     >
-                      네이버페이
+                      {row.pay_method}
                     </div>
                   </PayWith>
                   <TotPrice>
                     <TPBtn>총 금액</TPBtn>
                     <div
-                      style={{ display: 'inline-block', marginLeft: '10px' }}
+                      style={{
+                        display: 'inline-block',
+                        marginLeft: '10px',
+                        fontWeight: '600',
+                      }}
                     >
-                      {row.pay_price}원
+                      {row.pay_price}원 💛
                     </div>
                   </TotPrice>
                 </ClassInfo>
@@ -145,6 +146,7 @@ const Wrapper = styled.div`
   position: relative;
   padding-bottom: 20px;
   height: 2000px;
+  border: 1px solid gray;
 `;
 
 const MypageContent = styled.div`
@@ -162,12 +164,13 @@ const Receipts = styled.div`
 `;
 const OneReceipt = styled.div`
   width: 750px;
-  height: 230px;
+  height: 300px;
   border: 1px #dbdbdb solid;
   border-radius: 5px;
   margin-left: 20px;
   margin-top: 20px;
   background-color: white;
+  padding: 10px;
 `;
 
 const PaidYes = styled.div`
@@ -178,7 +181,7 @@ const PaidYes = styled.div`
   height: 30px;
   border-radius: 5px;
   text-align: center;
-  line-height: 30px;
+  line-height: 27px;
   font-weight: 600;
 `;
 
@@ -244,7 +247,7 @@ const TPBtn = styled.div`
   height: 30px;
   border-radius: 5px;
   text-align: center;
-  line-height: 30px;
+  line-height: 26px;
   font-weight: 600;
   box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
 `;
@@ -257,7 +260,7 @@ const PayWith = styled.div``;
 
 const TotPrice = styled.div`
   float: right;
-  margin-right: 18px;
+  margin-right: 30px;
 `;
 
 const Title = styled.div`
