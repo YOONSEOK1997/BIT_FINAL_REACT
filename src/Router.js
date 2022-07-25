@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Main from './pages/Main/Main';
 import VodMain from './pages/VodMain/VodMain';
 import Login from './pages/Login/Login';
+import ForgotPassword from './pages/Login/ForgotPassword';
 import WishList from './pages/WishList/WishList';
 import LectureList from './pages/LectureList/LectureList';
 import LectureDetail from './pages/LectureDetail/LectureDetail';
@@ -53,6 +54,7 @@ const Router = () => {
         <Route path="/vod" element={<VodMain />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/register_re" element={<Register_re />} />
         <Route path="/lectures" element={<LectureList />} />
         <Route path="/lectures/:id" element={<LectureDetail />} />

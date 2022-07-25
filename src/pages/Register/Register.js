@@ -43,7 +43,7 @@ const Register = () => {
     //회원가입 axios
     const signupurl = 'http://localhost:9009/api/signup';
     axios.post(signupurl, data).then(res => {
-      console.log(data);
+      //console.log(data);
       //프로필사진 넣기 axios
       //const username = setValue('username');
       const insertProfileUrl = 'http://localhost:9009/api/instprf';

@@ -145,7 +145,7 @@ const Login = () => {
             </div>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div className="caption">
-              <a href="/">Forgot Password?</a> /{' '}
+              <a href="/forgotPassword">Forgot Password?</a> /{' '}
               <a href="http://localhost:3000/register">Register</a>
             </div>
             <br />
