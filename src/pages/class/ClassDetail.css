@@ -119,7 +119,7 @@ body {
   border: solid 1px gray;
 }
 
-.class_image_ck {
+.class_image:hover {
   width: 159px;
   height: 105px;
   display: flex;
@@ -327,6 +327,26 @@ div .class_plann {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+
+.class_tab:hover {
+  float: left;
+  width: 150px;
+  height: 60px;
+  border: solid 1px #8f769e;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 59px;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  background-color: #000099;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
 .class_tabsum {
   clear: both;
 }
