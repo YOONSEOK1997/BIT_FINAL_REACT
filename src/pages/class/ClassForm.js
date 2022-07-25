@@ -13,9 +13,9 @@ import GuideModal from './GuideModal';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import './react-datepicker.css';
+import { ConsoleSqlOutlined } from '@ant-design/icons';
 
 const ClassForm = passData => {
-  const nowTime = moment().format('YYYY-MM-DD');
   const navi = useNavigate();
 
   let url = process.env.REACT_APP_SPRING_URL + 'class/reivewsave';
@@ -51,7 +51,10 @@ const ClassForm = passData => {
   const [class_confirm, setClass_confirm] = useState('');
 
   //classoption table <classnum 배열로 저장해야할듯?
-  const [classoption_day, setClassoption_day] = useState(new Date());
+  const [classoption_day, setClassoption_day] = useState(
+    new Date().toLocaleDateString('ko-KR')
+  );
+  const [dateinput, setDateinput] = useState(new Date());
   //const [classoption_starttime, setClassoption_starttime] = useState(0); 밑에서 사용
   //const [classoption_endtime, setClassoption_endtime] = useState(0); 밑에서 사용
   //const [classoption_totalperson, setClassoption_totalperson] = useState(1); 밑에서 사용
@@ -219,7 +222,6 @@ const ClassForm = passData => {
   useEffect(() => {
     // console.log("진짜로"+photos);
     // console.log(options)
-    console.log(nowTime);
     maxnum();
   }, [options, photos]);
 
@@ -337,9 +339,7 @@ const ClassForm = passData => {
 
   return (
     <div>
-      <div style={{ maxWidth: '40px', maxHeight: '60px' }}>
-        <DatePicker />
-      </div>
+      <div style={{ maxWidth: '40px', maxHeight: '60px' }}></div>
       <Wrapper>
         <div className="class_subtitle">
           {tutor_id}님의 클래스에 대한 기본정보를 입력해주세요!
@@ -525,8 +525,19 @@ const ClassForm = passData => {
         {/* 일정 ROW추가*/}
         <div className="row">
           <div className="label1">일정 및 정원</div>
-          <DatePicker />
-          <input
+          <DatePicker
+            dateFormat="dd/MM/yyyy"
+            selected={dateinput}
+            onChange={date => {
+              const d = new Date(date).toLocaleDateString('fr-FR');
+              setDateinput(date);
+              console.log(d);
+              setClassoption_day(d);
+            }}
+            minDate={new Date()}
+            showDisabledMonthNavigation
+          />
+          {/* <input
             type="date"
             className="label2"
             name="classoption_day"
@@ -536,7 +547,7 @@ const ClassForm = passData => {
               setClassoption_day(e.target.value);
               console.log(e.target.value);
             }}
-          />
+          /> */}
           <input
             type="number"
             className="label2"
