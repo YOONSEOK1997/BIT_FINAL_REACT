@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Modal.css';
 import duck from './duck.png';
 import axios from 'axios';
@@ -10,18 +10,33 @@ const Tutorask = props => {
   const SPRING_URL = process.env.REACT_APP_SPRING_URL;
   //url등록
   let Url = SPRING_URL + 'tutor/ask';
+  let detailUrl = SPRING_URL + 'tutor/detail?username=' + localStorage.username;
 
+  const [set, setSet] = useState([]);
   const [data, setData] = useState({
     username: localStorage.username,
     state: '대기',
   });
 
   function ask() {
+    for (let i = 0; i < set.length; i++) {
+      if (set[i] === '대기' || set[i] === '수락') {
+        alert('이미 신청중임^_^');
+        return;
+      }
+    }
     axios.post(Url, data).then(res => {
       alert('신청이 완료되었습니다');
       close();
     });
   }
+
+  useEffect(() => {
+    axios.get(detailUrl).then(res => {
+      setSet(res.data);
+    });
+    console.log(set);
+  }, []);
 
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
