@@ -14,6 +14,7 @@ import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import './react-datepicker.css';
 import { ConsoleSqlOutlined } from '@ant-design/icons';
+import { ko } from 'date-fns/esm/locale';
 
 const ClassForm = passData => {
   const navi = useNavigate();
@@ -526,10 +527,11 @@ const ClassForm = passData => {
         <div className="row">
           <div className="label1">일정 및 정원</div>
           <DatePicker
-            dateFormat="dd/MM/yyyy"
+            locale={ko}
+            dateFormat="yyyy년 MM월 dd일"
             selected={dateinput}
             onChange={date => {
-              const d = new Date(date).toLocaleDateString('fr-FR');
+              const d = new Date(date).toLocaleDateString('ko-KR');
               setDateinput(date);
               console.log(d);
               setClassoption_day(d);
