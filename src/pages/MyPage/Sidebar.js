@@ -5,7 +5,7 @@ import SidebarItem from './SidebarItem';
 
 function Sidebar() {
   const menus = [
-    { name: '내 프로필', path: '/mypage' },
+    { name: '내 프로필 ✨', path: '/mypage' },
     { name: '결제 내역', path: '/mypage/payment' },
     { name: '찜한 클래스', path: '/mypage/liked' },
     { name: '수강중인 클래스', path: '/mypage/classes' },
