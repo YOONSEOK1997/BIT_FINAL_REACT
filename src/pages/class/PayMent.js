@@ -42,7 +42,7 @@ const Payment = (effect, deps, props) => {
         classconfirm: `${state.data.classconfirm}`, //컨펌 메세지
       },
       //주문자정보
-      buyer_name: `${localStorage.nickname}`, //바꿔야해 USER_NAME
+      buyer_name: `${localStorage.nickname}`,
       buyer_tel: '01012345678',
       buyer_email: 'gksquf5012@gmail.com',
       buyer_addr: '강남구 역삼동 178-8',
@@ -79,8 +79,8 @@ const Payment = (effect, deps, props) => {
       axios
         .post(insertUrl, {
           pay_order_num: `hdh_${new Date().getTime()}`,
-          pay_user_id: state.data.user_id,
-          pay_user_name: state.data.user_id, //
+          pay_user_id: `${localStorage.username}`,
+          pay_user_name: `${localStorage.nickname}`, //
           pay_class_num: state.data.classnum,
           pay_class_name: state.data.classname,
           pay_method: response.card_name,
