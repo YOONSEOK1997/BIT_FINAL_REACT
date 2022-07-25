@@ -1,10 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './ClassAdmin.css';
 import './ClassGuide.css';
-import styled from 'styled-components';
-import { theme } from '../../styles/theme';
 import river from './classImage/aa캡처2.jpg';
+import axios from 'axios';
+import styled from 'styled-components';
+
 const ClassAdmin = () => {
+  const [data, setData] = useState([]);
+  //전역변수등록
+  const SPRING_URL = process.env.REACT_APP_SPRING_URL;
+  //url등록
+  let Url = SPRING_URL + 'tutor/list';
+  let agUrl = SPRING_URL + 'tutor/list';
+  let disUrl = SPRING_URL + 'tutor/list';
+
+  const list = () => {
+    axios.post(Url).then(res => {
+      setData(res.data);
+    });
+  };
+
+  const agree = () => {
+    axios.post(Url).then(res => {
+      setData(res.data);
+    });
+  };
+
+  const disagree = () => {
+    axios.post(disUrl).then(res => {
+      setData(res.data);
+    });
+  };
+  useEffect(() => {
+    list();
+    console.log(data);
+  }, []);
   return (
     <div>
       <div className="TY">
@@ -32,81 +62,24 @@ const ClassAdmin = () => {
           >
             <tr>
               <th>NO</th>
+              <th>아이디</th>
               <th>이름</th>
-              <th>닉네임</th>
-              <th>생년월일</th>
-              <th>가입일</th>
               <th>신청일</th>
-              <th>승인여부</th>
+              <th colSpan="2">승인여부</th>
+              <th></th>
             </tr>
-            <tr>
-              <td>1</td>
-              <td>홍대한</td>
-              <td>홍카이</td>
-              <td>940719</td>
-              <td>2021-08-19</td>
-              <td>2021-08-19</td>
-              <td>
-                <select>
-                  <option key="apple" value="승인">
-                    승인
-                  </option>
-                  <option key="orange" value="대기" selected>
-                    대기
-                  </option>
-                  <option key="grape" value="거부">
-                    거부
-                  </option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>강경애</td>
-              <td>강여사</td>
-              <td>690512</td>
-              <td>2021-08-19</td>
-              <td>2021-08-19</td>
-              <td>
-                <select>
-                  <option key="apple" value="승인">
-                    승인
-                  </option>
-                  <option key="orange" value="대기" selected>
-                    대기
-                  </option>
-                  <option key="orange" value="거부">
-                    거부
-                  </option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>최윤석</td>
-              <td>윤식</td>
-              <td>940719</td>
-              <td>2021-08-19</td>
-              <td>2021-08-19</td>
-              <td>
-                <select>
-                  <option key="apple" value="승인">
-                    승인
-                  </option>
-                  <option key="orange" value="대기">
-                    대기
-                  </option>
-                  <option key="orange" value="거부">
-                    거부
-                  </option>
-                </select>
-              </td>
-            </tr>
+            {data &&
+              data.map((row, idx) => (
+                <tr>
+                  <td>{idx + 1}</td>
+                  <td>{row.username}</td>
+                  <td>{row.realname}</td>
+                  <td>{row.ask_date}</td>
+                  <td style={{ cursor: 'pointer', width: '70px' }}>✔️</td>
+                  <td style={{ cursor: 'pointer', width: '50px' }}>❌</td>
+                </tr>
+              ))}
           </table>
-          <br />
-          <br />
-          <br />
-          <br />
         </Wrapper>
       </div>
     </div>
