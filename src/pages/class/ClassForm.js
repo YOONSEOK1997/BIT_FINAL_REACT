@@ -526,19 +526,21 @@ const ClassForm = passData => {
         {/* 일정 ROW추가*/}
         <div className="row">
           <div className="label1">일정 및 정원</div>
-          <DatePicker
-            locale={ko}
-            dateFormat="yyyy년 MM월 dd일"
-            selected={dateinput}
-            onChange={date => {
-              const d = new Date(date).toLocaleDateString('ko-KR');
-              setDateinput(date);
-              console.log(d);
-              setClassoption_day(d);
-            }}
-            minDate={new Date()}
-            showDisabledMonthNavigation
-          />
+          <div style={{ marginLeft: '20px', float: 'left' }}>
+            <DatePicker
+              locale={ko}
+              dateFormat="yyyy년 MM월 dd일"
+              selected={dateinput}
+              onChange={date => {
+                const d = new Date(date).toLocaleDateString('ko-KR');
+                setDateinput(date);
+                console.log(d);
+                setClassoption_day(d);
+              }}
+              minDate={new Date()}
+              showDisabledMonthNavigation
+            />
+          </div>
           {/* <input
             type="date"
             className="label2"

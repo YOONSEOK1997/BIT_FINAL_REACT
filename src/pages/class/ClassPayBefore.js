@@ -7,12 +7,12 @@ const ClassPaybefore = props => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header, data, changeoptions } = props;
   const navi = useNavigate();
-
+  const user_id = localStorage.nickname; //아직
   const handleClick = e => {
     navi('/class/payment', {
       state: {
         data: {
-          user_id: 'anyang',
+          user_id: `${localStorage.nickname}`,
           classnum: `${props.data.class_num}`,
           classname: `${props.data.class_name}`,
           classoption_num: `${props.changeoptions.classoption_num}`,

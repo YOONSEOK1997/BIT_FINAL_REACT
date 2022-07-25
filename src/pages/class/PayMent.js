@@ -42,7 +42,7 @@ const Payment = (effect, deps, props) => {
         classconfirm: `${state.data.classconfirm}`, //컨펌 메세지
       },
       //주문자정보
-      buyer_name: '홍대한', //바꿔야해 USER_NAME
+      buyer_name: `${localStorage.nickname}`, //바꿔야해 USER_NAME
       buyer_tel: '01012345678',
       buyer_email: 'gksquf5012@gmail.com',
       buyer_addr: '강남구 역삼동 178-8',
