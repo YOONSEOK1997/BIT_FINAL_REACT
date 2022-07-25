@@ -132,11 +132,9 @@ const Wrapper = styled.div`
   position: relative;
   padding-bottom: 20px;
   height: 2000px;
-  border: 1px solid gray;
 `;
 
 const MypageContent = styled.div`
-  border: 1px solid gray;
   margin-top: -230px;
   margin-left: 30px;
   width: 800px;
@@ -154,17 +152,17 @@ const Title1 = styled.div`
   font-weight: 600;
   margin-top: 10px;
   margin-bottom: 10px;
-  border: 1px solid gray;
 `;
 
 const Ment1 = styled.div`
   font-size: 18px;
-  color: #dbdbdb;
+  color: #999999;
   font-family: Noto Sans KR;
   text-align: center;
   margin-top: 15px;
   margin-bottom: 15px;
-  border: 1px solid gray;
+  border-bottom: 0.5px solid #999999;
+  padding-bottom: 20px;
 `;
 
 const Title2 = styled.div`
@@ -176,29 +174,33 @@ const Title2 = styled.div`
   font-weight: 600;
   margin-top: 100px;
   margin-bottom: 10px;
-  border: 1px solid gray;
 `;
 
 const Ment2 = styled.div`
   font-size: 18px;
-  color: #dbdbdb;
+  color: #999999;
   font-family: Noto Sans KR;
   text-align: center;
   margin-top: 15px;
   margin-bottom: 15px;
-  border: 1px solid gray;
+  border-bottom: 0.5px solid #999999;
+  padding-bottom: 20px;
 `;
 
 const Cards1 = styled.div`
-  border: 1px solid gray;
+  margin-top: 30px;
+  background-color: #eaf4d0;
   width: 800px;
-  height: 400px;
+  height: 420px;
+  border-radius: 5px;
 `;
 
 const Cards2 = styled.div`
-  border: 1px solid gray;
+  background-color: #f3f3f3;
   width: 800px;
-  height: 400px;
+  height: 420px;
+  margin-top: 30px;
+  border-radius: 5px;
 `;
 
 const Card1 = styled.div`

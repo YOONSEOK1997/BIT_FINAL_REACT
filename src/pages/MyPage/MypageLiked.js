@@ -19,7 +19,6 @@ const MypageLiked = () => {
         </Ment>
         <LikedClasses>
           {/* 하나의 카드 반복문 : (어쩌구) 값만 {div.머시기} 로 뽑아오세요*/}
-          {/* 하나의 카드 반복문 */}
           <Card>
             <div className="each_class1">
               <img
@@ -82,11 +81,9 @@ const Wrapper = styled.div`
   position: relative;
   padding-bottom: 20px;
   height: 2000px;
-  border: 1px solid gray;
 `;
 
 const MypageContent = styled.div`
-  border: 1px solid gray;
   margin-top: -230px;
   margin-left: 30px;
   width: 800px;
@@ -108,7 +105,7 @@ const Title = styled.div`
 
 const Ment = styled.div`
   font-size: 18px;
-  color: #dbdbdb;
+  color: #999999;
   font-family: Noto Sans KR;
   text-align: center;
   margin-top: 15px;
@@ -120,9 +117,9 @@ const Ment = styled.div`
 `;
 
 const LikedClasses = styled.div`
-  border: 1px solid gray;
   width: 800px;
   height: 1000px;
+  margin-top: 30px;
 `;
 
 const Card = styled.div`

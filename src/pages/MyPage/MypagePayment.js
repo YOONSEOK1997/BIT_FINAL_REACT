@@ -34,96 +34,104 @@ const MypagePayment = () => {
           결제내역 관련 문의사항은 <b style={{ color: '#03d85e' }}>오늘,한강</b>
           팀에 문의 부탁드립니다😉🗯️
         </Ment>
-        <OneReceipt>
-          {/* OneRecipt : 하나의 결제내역 */}
-          <PayStatus>
-            <PaidYes>결제완료</PaidYes>
-            <PaidDate>2022.07.25 | 08:17 </PaidDate>
-          </PayStatus>
-          <ClassTitle>
-            <div style={{ display: 'inline-block', marginLeft: '18px' }}>
-              [원데이]한강에서 수건돌리기하기
-            </div>
-            <div
-              style={{
-                display: 'inline-block',
-                fontSize: '16px',
-                float: 'right',
-                marginRight: '18px',
-              }}
-            >
-              이지호 튜터
-            </div>
-          </ClassTitle>
-          <ClassInfo>
-            <HowMuch>
-              <HMBtn>가격</HMBtn>
-              <div style={{ display: 'inline-block', marginLeft: '16px' }}>
-                150,000 원
+        <Receipts>
+          <OneReceipt>
+            {/* OneRecipt : 하나의 결제내역 */}
+            <PayStatus>
+              <PaidYes>결제완료</PaidYes>
+              <PaidDate>2022.07.25 | 08:17 </PaidDate>
+            </PayStatus>
+            <ClassTitle>
+              <div style={{ display: 'inline-block', marginLeft: '18px' }}>
+                [원데이]한강에서 수건돌리기하기
               </div>
-            </HowMuch>
-            <PayWith>
-              <PWBtn>결제 수단</PWBtn>
-              <div style={{ display: 'inline-block', marginLeft: '16px' }}>
-                네이버페이
+              <div
+                style={{
+                  display: 'inline-block',
+                  fontSize: '16px',
+                  float: 'right',
+                  marginRight: '18px',
+                }}
+              >
+                이지호 튜터
               </div>
-            </PayWith>
-            <TotPrice>
-              <TPBtn>총 금액</TPBtn>
-              <div style={{ display: 'inline-block', marginLeft: '10px' }}>
-                150,000원
-              </div>
-            </TotPrice>
-          </ClassInfo>
-        </OneReceipt>
+            </ClassTitle>
+            <ClassInfo>
+              <HowMuch>
+                <HMBtn>가격</HMBtn>
+                <div style={{ display: 'inline-block', marginLeft: '16px' }}>
+                  150,000 원
+                </div>
+              </HowMuch>
+              <PayWith>
+                <PWBtn>결제 수단</PWBtn>
+                <div style={{ display: 'inline-block', marginLeft: '16px' }}>
+                  네이버페이
+                </div>
+              </PayWith>
+              <TotPrice>
+                <TPBtn>총 금액</TPBtn>
+                <div style={{ display: 'inline-block', marginLeft: '10px' }}>
+                  150,000원
+                </div>
+              </TotPrice>
+            </ClassInfo>
+          </OneReceipt>
 
-        {data &&
-          data.map((row, idx) => (
-            <OneReceipt>
-              {/* OneRecipt : 하나의 결제내역 */}
-              <PayStatus>
-                <PaidYes>결제완료</PaidYes>
-                <PaidDate>
-                  {row.pay_classoption_day} | 주문번호 : {row.pay_order_num}{' '}
-                </PaidDate>
-              </PayStatus>
-              <ClassTitle>
-                <div style={{ display: 'inline-block', marginLeft: '18px' }}>
-                  {row.pay_class_name}
-                </div>
-                <div
-                  style={{
-                    display: 'inline-block',
-                    fontSize: '16px',
-                    float: 'right',
-                    marginRight: '18px',
-                  }}
-                >
-                  이지호 튜터
-                </div>
-              </ClassTitle>
-              <ClassInfo>
-                <HowMuch>
-                  <HMBtn>가격</HMBtn>
-                  <div style={{ display: 'inline-block', marginLeft: '16px' }}>
-                    {row.pay_price / row.pay_classoption_percnt} 원
+          {data &&
+            data.map((row, idx) => (
+              <OneReceipt>
+                {/* OneRecipt : 하나의 결제내역 */}
+                <PayStatus>
+                  <PaidYes>결제완료</PaidYes>
+                  <PaidDate>
+                    {row.pay_classoption_day} | 주문번호 : {row.pay_order_num}{' '}
+                  </PaidDate>
+                </PayStatus>
+                <ClassTitle>
+                  <div style={{ display: 'inline-block', marginLeft: '18px' }}>
+                    {row.pay_class_name}
                   </div>
-                </HowMuch>
-                <PayWith>
-                  <PWBtn>결제 수단</PWBtn>
-                  <div style={{ display: 'inline-block', marginLeft: '16px' }}>
-                    네이버페이
+                  <div
+                    style={{
+                      display: 'inline-block',
+                      fontSize: '16px',
+                      float: 'right',
+                      marginRight: '18px',
+                    }}
+                  >
+                    이지호 튜터
                   </div>
-                </PayWith>
-                <TotPrice>
-                  <TPBtn>총 금액</TPBtn>
-                  <div style={{ display: 'inline-block', marginLeft: '10px' }}>
-                    {row.pay_price}원
-                  </div>
-                </TotPrice>
-              </ClassInfo>
-            </OneReceipt>
-          ))}
+                </ClassTitle>
+                <ClassInfo>
+                  <HowMuch>
+                    <HMBtn>가격</HMBtn>
+                    <div
+                      style={{ display: 'inline-block', marginLeft: '16px' }}
+                    >
+                      {row.pay_price / row.pay_classoption_percnt} 원
+                    </div>
+                  </HowMuch>
+                  <PayWith>
+                    <PWBtn>결제 수단</PWBtn>
+                    <div
+                      style={{ display: 'inline-block', marginLeft: '16px' }}
+                    >
+                      네이버페이
+                    </div>
+                  </PayWith>
+                  <TotPrice>
+                    <TPBtn>총 금액</TPBtn>
+                    <div
+                      style={{ display: 'inline-block', marginLeft: '10px' }}
+                    >
+                      {row.pay_price}원
+                    </div>
+                  </TotPrice>
+                </ClassInfo>
+              </OneReceipt>
+            ))}
+        </Receipts>
       </MypageContent>
     </Wrapper>
   );
@@ -147,9 +155,12 @@ const MypageContent = styled.div`
   height: 1500px;
   float: right;
   display: inline-block;
-  background-color: #f3f3f3;
 `;
 
+const Receipts = styled.div`
+  background-color: #f3f3f3;
+  padding: 10px 5px 5px 10px;
+`;
 const OneReceipt = styled.div`
   width: 750px;
   height: 230px;
