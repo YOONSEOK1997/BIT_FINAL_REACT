@@ -74,6 +74,9 @@ const ReviewModal = props => {
 
     close();
   };
+
+  const reviewWriter = localStorage.getItem('username');
+
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? 'openModal modal' : 'modal'}>
@@ -97,12 +100,8 @@ const ReviewModal = props => {
                       작성자
                     </TableCell>
                     <TableCell align="left" style={{ width: '500px' }}>
-                      <TextareaAutosize
-                        onChange={e => {
-                          setClassreview_writer(e.target.value);
-                          console.log(classreview_writer);
-                        }}
-                      />
+                      <input type="text" placeholder="reviewWriter" />
+                      <TextareaAutosize reviewWriter />
                     </TableCell>
                   </TableRow>
                   <TableRow>

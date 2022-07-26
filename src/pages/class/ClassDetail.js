@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 // alert MUI
 import Button from '@mui/material/Button';
+import Rating from '@mui/material/Rating';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -25,6 +26,7 @@ import banner from './classImage/배너.png';
 const ClassDetail = () => {
   const { class_num } = useParams();
   const [data, setData] = useState('');
+  const [totalReview, setTotalReview] = useState('');
   const [options, setOptions] = useState([]);
   const percnt = useRef(1);
   const [class_price, setClass_price] = useState(0);
@@ -57,7 +59,8 @@ const ClassDetail = () => {
   let photoUrl = process.env.REACT_APP_SPRING_URL + 'save/';
   let likeUrl = process.env.REACT_APP_SPRING_URL + 'like/check';
   let likeUrl2 = process.env.REACT_APP_SPRING_URL + 'like/chk';
-
+  let reviewListUrl =
+    process.env.REACT_APP_SPRING_URL + 'review/alllist?class_num=' + class_num;
   //popup modal (ClassGuide, 클래스신청)
   // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
   const [modalOpen, setModalOpen] = useState(false);
@@ -94,6 +97,15 @@ const ClassDetail = () => {
     setModalOpen3(false);
   };
 
+  const ReviewList = () => {
+    axios
+      .get(reviewListUrl, {
+        class_num,
+      })
+      .then(res => {
+        setTotalReview(res.data);
+      });
+  };
   //스프링으로부터 num에 해당하는 data받기
   const onDataReceive = () => {
     axios.get(detailUrl).then(res => {
@@ -151,6 +163,7 @@ const ClassDetail = () => {
 
   //처음 랜더링시 위의 함수 호출
   useEffect(() => {
+    ReviewList();
     onDataReceive();
     onOptionReceive();
     chk();
@@ -478,10 +491,22 @@ const ClassDetail = () => {
         ) : (
           <div className="class_tabb1">
             <div className="class_review">
-              <div className="class_subtitle">실제 수강생 리뷰</div>
+              <div className="class_subtitle">Reviews</div>
 
               <div className="class_reviewtitle">
-                <div className="class_reviewcnt">★★★★★ 4.9 (180개)</div>
+                <div className="class_reviewcnt">
+                  총 {totalReview.length}개의 리뷰가 있습니다.
+                  <br />
+                  <div className="class_review_avg">
+                    <Rating
+                      name="half-rating-read"
+                      defaultValue={data.ratingAvg}
+                      precision={0.5}
+                      readOnly
+                    />
+                    &nbsp; &nbsp;평균 {data.ratingAvg}점
+                  </div>
+                </div>
 
                 <React.Fragment>
                   <button className="class_reviewbtn" onClick={openModal2}>

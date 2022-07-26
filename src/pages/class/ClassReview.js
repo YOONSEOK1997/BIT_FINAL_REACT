@@ -3,23 +3,20 @@ import axios from 'axios';
 import Rating from '@mui/material/Rating';
 import './ClassReview.css';
 import { textAlign } from '@mui/system';
-//import StarRatings from 'react-star-ratings';
+import StarRatings from 'react-star-ratings';
 
-const ClassReview = ({ class_num }) => {
+const ClassReview = ({ class_num, onRemove }) => {
   const [data, setData] = useState([]);
+  // const [ratingAvg, setRatingAvg] = useState('');
   const getReviews = () => {
     axios.get().then(res => {});
   };
 
-  useEffect(() => {
-    console.log('c1c' + class_num);
-    ReviewList();
-  }, [class_num]);
-
   let photoUrl = process.env.REACT_APP_SPRING_URL + 'save/';
   let reviewListUrl =
     process.env.REACT_APP_SPRING_URL + 'review/alllist?class_num=' + class_num;
-
+  let detailUrl =
+    process.env.REACT_APP_SPRING_URL + 'class/detail?class_num=' + class_num;
   const ReviewList = () => {
     axios
       .get(reviewListUrl, {
@@ -31,6 +28,19 @@ const ClassReview = ({ class_num }) => {
       });
   };
 
+  useEffect(() => {
+    // onAvgReceive();
+    ReviewList();
+  }, [class_num]);
+  // const onAvgReceive = () => {
+  //   axios.get(detailUrl).then(res => {
+  //     //res에 dto가 들어있음
+  //     //console.log(res.data.sangpum); 상품명 출력 확인
+  //     setData(res.data);
+  //     setRatingAvg(res.data.class_price);
+  //     console.log(res.data);
+  //   });
+  // };
   return (
     <div className="class_reviewbox">
       <table
@@ -62,6 +72,9 @@ const ClassReview = ({ class_num }) => {
             </th>
             <th width="80">
               <p>작성일</p>
+            </th>
+            <th width="30">
+              <p>삭제</p>
             </th>
           </tr>
         </thead>
@@ -107,6 +120,21 @@ const ClassReview = ({ class_num }) => {
                 <td style={{ textAlign: 'center' }}>
                   <p>{row.classreview_date}</p>
                 </td>
+                {/* <td>
+                  <button
+                    onClick={() => {
+                      if (
+                        window.confirm(
+                          `${id1 + 1}번째 리뷰를 삭제하시겠습니까?`
+                        )
+                      ) {
+                        onRemove(id);
+                      }
+                    }}
+                  >
+                    삭제
+                  </button>
+                </td> */}
               </tr>
             ))}
         </tbody>
