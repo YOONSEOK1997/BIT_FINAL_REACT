@@ -13,7 +13,7 @@ import styled from 'styled-components';
 import Weather from './Weather';
 import AuthService from '../../service/auth-service';
 import Tutorask from './Tutorask';
-import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -107,7 +107,7 @@ const Nav = () => {
         ) : (
           <LoginWrap>
             <LogoutBtn onClick={kakaoLog} style={{ marginLeft: '20px' }}>
-              <MeetingRoomIcon />
+              <LogoutIcon />
             </LogoutBtn>
             <ProfileImg
               src={getProfile()}
