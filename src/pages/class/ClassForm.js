@@ -170,6 +170,7 @@ const ClassForm = passData => {
         class_location,
         class_name,
         tutor_id: tutor_id,
+        tutor_name: localStorage.nickname,
         class_photo1: photos[0],
         class_photo2: photos[1],
         class_photo3: photos[2],
