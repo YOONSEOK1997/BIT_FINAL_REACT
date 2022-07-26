@@ -56,7 +56,7 @@ const logout = () => {
   localStorage.removeItem('nickname');
   localStorage.removeItem('profile');
   localStorage.removeItem('user_id');
-  window.location.reload();
+  localStorage.removeItem('authority');
 };
 
 //저장된 사용자 정보 가져오기(JWT 포함)

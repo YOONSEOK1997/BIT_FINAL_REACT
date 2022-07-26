@@ -10,7 +10,6 @@ import {
 } from '../../utils';
 import backgroundimg from '../../assets/premium-icon-magnifier-2311526.png';
 import styled from 'styled-components';
-import Weather from './Weather';
 import AuthService from '../../service/auth-service';
 import Tutorask from './Tutorask';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -45,15 +44,11 @@ const Nav = () => {
     AuthService.logout();
     if (!window.Kakao.Auth.getAccessToken()) {
       alert('✅ 로그아웃 되었습니다.');
-      return;
+      goToMain();
     }
     window.Kakao.Auth.logout(function () {
-      removeProfile();
-      removeNickName();
-      removeToken();
-      removeAuthority();
+      localStorage.clear();
       goToMain();
-      alert('logout ok\naccess token -> ' + window.Kakao.Auth.getAccessToken());
     });
   };
 
@@ -90,7 +85,6 @@ const Nav = () => {
           ''
         )}
       </div>
-      <Weather />
       <SearchArea>
         <form name="search" onSubmit={searchTerm}>
           <SearchInput
