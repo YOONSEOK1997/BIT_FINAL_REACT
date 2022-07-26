@@ -17,7 +17,7 @@ import { getValue } from '@testing-library/user-event/dist/utils';
 
 const Register = () => {
   const navi = useNavigate();
-
+  const favoriteBtn = useRef(null);
   //HOOK FORM
   const {
     register,
@@ -90,21 +90,29 @@ const Register = () => {
   const password = useRef();
   password.current = watch('password');
 
-  //-----Username 중복체크
+  //-----USERID(username) 중복확인
   const userName = getValues('username');
   const [btnOk, setBtnOk] = useState(false);
   const onIdJungbok = () => {
     //console.log(userName);
-    const url = 'http://localhost:9009/api/usernamecheck?username=' + userName;
-    axios.get(url).then(res => {
-      if (res.data === 0) {
-        setBtnOk(true);
-        alert('가입 가능한 아이디입니다.');
-      } else {
-        setBtnOk(false);
-        alert('이미 가입되어있는아이디 입니다.');
-      }
-    });
+    if (userName === '') {
+      alert('아이디를 입력해주세요!');
+      return;
+    } else {
+      const url =
+        'http://localhost:9009/api/usernamecheck?username=' + userName;
+      axios.get(url).then(res => {
+        if (res.data === 0) {
+          setBtnOk(true);
+          alert('가입 가능한 아이디입니다.');
+          favoriteBtn.current.style.color = '#03d85e';
+          favoriteBtn.current.style.fontWeight = 'bold';
+        } else {
+          setBtnOk(false);
+          alert('이미 가입되어있는아이디 입니다.');
+        }
+      });
+    }
   };
 
   return (
@@ -177,6 +185,7 @@ const Register = () => {
               className="jungbok-button"
               style={{ color: 'gray', marginLeft: '270px' }}
               startIcon={<CheckCircleOutlineIcon />}
+              ref={favoriteBtn}
             >
               중복확인
             </Button>
@@ -192,7 +201,7 @@ const Register = () => {
                 }
                 {...register('realname')}
               />
-              <label>USER NAME</label>
+              <label>NICK NAME</label>
             </div>
             {errors.realname && (
               <div className="regis-error">{errors.realname.message}</div>

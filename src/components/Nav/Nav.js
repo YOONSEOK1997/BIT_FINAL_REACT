@@ -14,6 +14,7 @@ import Weather from './Weather';
 import AuthService from '../../service/auth-service';
 import Tutorask from './Tutorask';
 import LogoutIcon from '@mui/icons-material/Logout';
+import LoginIcon from '@mui/icons-material/Login';
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -103,7 +104,9 @@ const Nav = () => {
       </SearchArea>
       <GnbRight>
         {!validtoken ? (
-          <LoginMenu to="/login">로그인</LoginMenu>
+          <LoginMenu to="/login">
+            <LoginIcon style={{ color: 'black' }} />
+          </LoginMenu>
         ) : (
           <LoginWrap>
             <LogoutBtn onClick={kakaoLog} style={{ marginLeft: '20px' }}>

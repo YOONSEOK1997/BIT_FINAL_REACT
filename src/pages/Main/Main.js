@@ -10,6 +10,7 @@ import { getProfile, getNickName, getToken } from '../../../src/utils';
 
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
+import Weather from './Weather';
 
 const Main = () => {
   const validtoken = getToken();
@@ -161,6 +162,7 @@ const CATEGORY_TITLES = [
 const TYPES = [
   { icon: <FaLocationArrow id="1" />, title: '오프라인' },
   { icon: <FaVideo id="2" />, title: 'VOD' },
+  { icon: <Weather id="4" /> },
 ];
 
 const TREND_LIST = [

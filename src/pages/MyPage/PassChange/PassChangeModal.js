@@ -9,6 +9,7 @@ import './passChangeModal.css';
 const PassChangeModal = props => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header1 } = props;
+  const navigate = useNavigate();
 
   //HOOK FORM
   const {
@@ -29,11 +30,11 @@ const PassChangeModal = props => {
     await new Promise(r => setTimeout(r, 1000));
     console.log(data, errors);
 
-    //회원가입 axios
     const username = localStorage.getItem('username');
     const pchupurl = 'http://localhost:9009/api/passchange';
     axios.post(pchupurl, data).then(res => {
-      console.log(data);
+      alert('비밀번호가 변경되었습니다.');
+      navigate('/');
     });
   };
 
