@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { setToken, setProfile, setNickname } from '../utils';
+import { useState } from 'react';
+import { setToken, setProfile, setNickname, setUser_id } from '../utils';
 
 const SPRING_URL = 'http://localhost:9009/';
 
@@ -27,16 +28,22 @@ const executeHelloService = () => {
   console.log('===executeHelloService===');
   return axios.get(SPRING_URL + '/hello');
 };
-
+const authority = 'authority';
 //USER정보 불러오기
 const getProfile = username => {
   return axios
     .get(SPRING_URL + 'api/getprofile?username=' + username)
     .then(response => {
       let photoUrl = 'http://localhost:9009/save/';
-
+      setUser_id(response.data.user_id);
       setNickname(response.data.realname);
       setProfile(photoUrl + response.data.profile);
+      const authURL =
+        'http://localhost:9009/api/getauth/?user_id=' + response.data.user_id;
+      axios.get(authURL).then(res => {
+        console.log(res.data);
+        localStorage.setItem(authority, res.data);
+      });
     });
 };
 
@@ -48,6 +55,7 @@ const logout = () => {
   localStorage.removeItem('token');
   localStorage.removeItem('nickname');
   localStorage.removeItem('profile');
+  localStorage.removeItem('user_id');
   window.location.reload();
 };
 
