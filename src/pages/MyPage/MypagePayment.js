@@ -72,6 +72,7 @@ const MypagePayment = () => {
                     <ReviewModal
                       open={modalOpen}
                       close={closeModal}
+                      class_num2={row.pay_class_num}
                       header="리뷰 작성"
                     />
                   </React.Fragment>

@@ -1,12 +1,53 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 import Sidebar from './Sidebar';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation } from 'swiper';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const TutorAdmin = () => {
+  const user_id = localStorage.username;
+  let class_photoUrl = 'http://localhost:9009/save/';
+  const navi = useNavigate();
+
+  //등록한클래스
+  let listurl =
+    process.env.REACT_APP_SPRING_URL + 'class/mylist?username=' + user_id;
+  const [data, setData] = useState([]);
+  const list = () => {
+    axios.get(listurl).then(res => {
+      setData(res.data);
+      console.log(data);
+    });
+  };
+
+  //나의 튜티들
+  let listurl2 =
+    process.env.REACT_APP_SPRING_URL + 'class/mytuty?username=' + user_id;
+  const [data2, setData2] = useState([]);
+  const list2 = () => {
+    axios.get(listurl2).then(res => {
+      setData2(res.data);
+      console.log(data);
+    });
+  };
+
+  useEffect(() => {
+    list();
+    list2();
+  }, []);
+
   return (
     <Wrapper>
       <div className="mypage_header"></div>
@@ -19,55 +60,80 @@ const TutorAdmin = () => {
         </Ment>
         <AdminContent>
           <Title2>🔥내가 진행중인 클래스</Title2>
-          <ClassCard>
-            {/* 하나의 카드 반복문 */}
-            <div className="each_class1">
-              <img
-                alt=""
-                src={'../class/classImage/002.png'}
-                className="listimg1"
-              />
+          <Swiper
+            style={{ height: '400px' }}
+            modules={[Pagination, Navigation]}
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            spaceBetween={20}
+            slidesPerView={3}
+            navigation
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={swiper => console.log(swiper)}
+          >
+            <ClassCard>
+              {/* 하나의 카드 반복문 */}
+              {data &&
+                data.map((data, index) => (
+                  <SwiperSlide>
+                    <div
+                      className="each_class"
+                      key={index}
+                      style={{ height: '330px' }}
+                    >
+                      <img
+                        alt=""
+                        src={class_photoUrl + data.class_photo1}
+                        className="listimg"
+                        onClick={() => {
+                          navi(`/class/detail/${data.class_num}`);
+                        }}
+                        style={{ marginBottom: '40px' }}
+                      />
 
-              <div className="class_location1">
-                <LocationOnIcon
-                  style={{
-                    fontSize: '20px',
-                    height: '20px',
-                  }}
-                />
-                (잠원) 한강공원
-              </div>
+                      <div
+                        className="class_location"
+                        style={{ color: '#7814DC' }}
+                      >
+                        <div style={{ display: 'inline-block', float: 'left' }}>
+                          <LocationOnIcon
+                            style={{ fontSize: '18px', height: '20px' }}
+                          />
+                        </div>
+                        <div className="class_location_name">
+                          <data>{data.class_location} 한강공원</data>
+                        </div>
+                      </div>
 
-              <div className="class_title2">
-                <div className="class_title_name1" style={{ float: 'right' }}>
-                  (어차저차어기여차 클래스)
-                </div>
-              </div>
+                      <div className="class_title1">
+                        <data
+                          className="class_title_name"
+                          style={{ float: 'right' }}
+                          onClick={() => {
+                            navi(`/class/detail/${data.class_num}`);
+                          }}
+                        >
+                          {data.class_name}
+                        </data>
+                      </div>
 
-              <div className="list_tutor_name1">
-                <div>(김정하) 튜터</div>
-              </div>
+                      <div className="list_tutor_name">
+                        <data>{data.tutor_id} 튜터</data>
+                      </div>
 
-              <div className="class_numbers1">
-                <div className="class_price1">(35,000) 원</div>
-                <div className="class_hour1">(총 (30) 시간)</div>
-              </div>
-
-              <div className="class_like1">
-                <FavoriteBorderIcon
-                  style={{
-                    fontSize: '20px',
-                    color: 'red',
-                    height: '20px',
-                    display: 'inline-block',
-                  }}
-                />
-                <div className="heart1" style={{ display: 'inline-block' }}>
-                  162
-                </div>
-              </div>
-            </div>
-          </ClassCard>
+                      <div className="class_numbers">
+                        <data className="class_price">
+                          {data.class_price}원
+                        </data>
+                        <data className="class_hour">
+                          (총 {data.class_hour}시간)
+                        </data>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+            </ClassCard>
+          </Swiper>
           <WhoisAttending>
             <Title3>🙌수강생 목록</Title3>
             <PeopleList>
@@ -79,15 +145,17 @@ const TutorAdmin = () => {
                 <UserId>아이디</UserId>
                 <Date>신청 날짜</Date>
               </OneLine>
-
-              <OneLine1>
-                {/* 하나의 반복문 : 한줄  */}
-                <Number1>1</Number1>
-                <ClassName1>[원데이] 비눗방울 불어제끼기</ClassName1>
-                <UserName1>한별</UserName1>
-                <UserId1>hanbyeol</UserId1>
-                <Date1>2022.07.25</Date1>
-              </OneLine1>
+              {data2 &&
+                data2.map((data2, index) => (
+                  <OneLine1>
+                    {/* 하나의 반복문 : 한줄  */}
+                    <Number1>{index + 1}</Number1>
+                    <ClassName1>{data2.class_name}</ClassName1>
+                    <UserName1>{data2.pay_user_name}</UserName1>
+                    <UserId1>{data2.pay_user_id}</UserId1>
+                    <Date1>{data2.pay_day}</Date1>
+                  </OneLine1>
+                ))}
             </PeopleList>
           </WhoisAttending>
         </AdminContent>
@@ -102,7 +170,6 @@ const Wrapper = styled.div`
   ${({ theme }) => theme.wrapper()}
   margin-top: 40px;
   position: relative;
-  padding-bottom: 20px;
   height: 2000px;
 `;
 
