@@ -18,6 +18,7 @@ import LoginIcon from '@mui/icons-material/Login';
 const Nav = () => {
   const navigate = useNavigate();
   const [term, setTerm] = useState('');
+  const [msg, setMsg] = useState('');
 
   const validtoken = getToken();
 
@@ -86,15 +87,19 @@ const Nav = () => {
         )}
       </div>
       <SearchArea>
-        <form name="search" onSubmit={searchTerm}>
-          <SearchInput
-            type="text"
-            placeholder="배우고 싶은 수업을 찾아 보세요."
-            value={term}
-            onChange={e => setTerm(e.target.value)}
-          />
-          <SearchGlass />
-        </form>
+        <SearchInput
+          type="text"
+          placeholder="배우고 싶은 수업을 찾아 보세요."
+          onChange={e => setMsg(e.target.value)}
+          onKeyUp={e => {
+            if (e.key === 'Enter' && msg !== '') {
+              navigate('/class/list3/' + msg);
+              setMsg('');
+            }
+          }}
+        />
+
+        <SearchGlass />
       </SearchArea>
       <GnbRight>
         {!validtoken ? (

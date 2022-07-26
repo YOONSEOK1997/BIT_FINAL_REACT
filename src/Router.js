@@ -44,6 +44,7 @@ import ChatRoom from './pages/chatting/ChatRoom';
 import Detailu from './pages/About/Detailu';
 import Detailz from './pages/About/Detailz';
 import Sidebar from './pages/MyPage/Sidebar';
+import ClassList3 from './pages/class/ClassList3';
 
 const Router = () => {
   return (
@@ -66,6 +67,7 @@ const Router = () => {
 
         {/* 이사간 필터 실험터 */}
         <Route path="/class/list2" element={<ClassList2 />} />
+        <Route path="/class/list3/:message" element={<ClassList3 />} />
 
         <Route path="/class/form" element={<ClassForm />} />
         <Route path="/class/detail/:class_num" element={<ClassDetail />} />
