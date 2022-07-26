@@ -41,11 +41,18 @@ const MypageLiked = () => {
         </Ment>
         <LikedClasses>
           {/* 하나의 카드 반복문 : (어쩌구) 값만 {div.머시기} 로 뽑아오세요*/}
-          <div className="listdiv">
+          <div
+            className="listdiv"
+            style={{ width: '1000px', marginLeft: '30px' }}
+          >
             {/* 하나의 카드 반복문 */}
             {data &&
               data.map((data, index) => (
-                <div className="each_class" key={index}>
+                <div
+                  className="each_class"
+                  key={index}
+                  style={{ height: '340px' }}
+                >
                   <img
                     alt=""
                     src={class_photoUrl + data.class_photo1}
@@ -86,12 +93,6 @@ const MypageLiked = () => {
                     <data className="class_price">{data.class_price}원</data>
                     <data className="class_hour">
                       (총 {data.class_hour}시간)
-                    </data>
-                  </div>
-
-                  <div className="class_like">
-                    <data className="heart" style={{ display: 'inline-block' }}>
-                      162
                     </data>
                   </div>
                 </div>
