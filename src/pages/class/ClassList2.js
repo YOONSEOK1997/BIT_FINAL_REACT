@@ -74,7 +74,7 @@ const ClassList = () => {
 
   //url 선언
   const SPRING_URL = process.env.REACT_APP_SPRING_URL;
-  let class_alllistUrl = 'http://localhost:9009/class/alllist';
+  let class_alllistUrl = 'http://localhost:9009/class/list';
   let class_alllistUrl2 =
     'http://localhost:9009/class/list2?username=' + localStorage.username;
   let class_photoUrl = 'http://localhost:9009/save/';
