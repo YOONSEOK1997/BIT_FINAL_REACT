@@ -1,0 +1,88 @@
+.h2 {
+  font-family: Noto Sans KR;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+div.banpo {
+  position: absolute;
+  top: 400px;
+  margin-top: 50px;
+  margin-left: 550px;
+}
+
+div.banpo :hover {
+  width: 70px;
+  height: 70px;
+}
+
+div.yeouido {
+  position: absolute;
+  top: 320px;
+  margin-left: 250px;
+}
+div.yeouido :hover {
+  width: 55px;
+  height: 55px;
+}
+
+div.echon {
+  position: absolute;
+  top: 330px;
+  margin-left: 470px;
+}
+
+div.echon :hover {
+  width: 70px;
+  height: 70px;
+}
+
+div.nanji {
+  position: absolute;
+  top: 120px;
+  margin-left: 220px;
+}
+
+div.nanji :hover {
+  width: 70px;
+  height: 70px;
+}
+
+div.ddukseom {
+  position: absolute;
+  top: 260px;
+  margin-left: 730px;
+}
+
+div.ddukseom :hover {
+  width: 70px;
+  height: 70px;
+}
+
+div.jamsil {
+  position: absolute;
+  top: 390px;
+  margin-left: 720px;
+}
+div.jamsil :hover {
+  width: 70px;
+  height: 70px;
+}
+
+.box {
+  height: 200px;
+  width: 200px;
+  background-color: rgb(0, 191, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.popover-basic1 {
+  border: solid 1px black;
+}
+
+#popover-basic2 {
+}
