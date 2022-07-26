@@ -24,7 +24,7 @@ const ClassList = () => {
   const { search } = useLocation();
   const filterDom = useRef();
   const navi = useNavigate();
-  const [likestate, setLikestate] = useState([]);
+  const likestate = useRef([]);
 
   //백엔드에서 받아올 리스트 데이터변수
   const [data, setData] = useState([]);
@@ -35,28 +35,36 @@ const ClassList = () => {
   const [clickedCategory, setClickedCategory] = useState();
 
   //체크됨 => url
-  const [clickedCheckList, setClickedCheckList] = useState([]);
+  const [clickedCheckList, setClickedCheckList] = useState([{}]);
 
   const [isContentsShowed, setIsContentsShowed] = useState(false);
 
   //url 선언
   const SPRING_URL = process.env.REACT_APP_SPRING_URL;
   let class_alllistUrl = 'http://localhost:9009/class/list';
+  let class_alllistUrl2 =
+    'http://localhost:9009/class/list2?username=' + localStorage.username;
   let class_photoUrl = 'http://localhost:9009/save/';
   let likeUrl = process.env.REACT_APP_SPRING_URL + 'like/check';
 
+  // //처음에 불러오는 url
+  // const list = () => {
+  //   axios.get(class_alllistUrl).then(res => {
+  //     setData(res.data);
+  //     console.log('datalength:' + res.data.length);
+  //     for (let i = 0; i < res.data.length; i++) {
+  //       likestate.current[i] = '';
+  //     }
+  //     console.log('찐' + likestate.current.length);
+  //   });
+  // };
   //처음에 불러오는 url
   const list = () => {
-    axios.get(class_alllistUrl).then(res => {
+    axios.get(class_alllistUrl2).then(res => {
       setData(res.data);
-      console.log('datalength:' + res.data.length);
-      for (let i = 0; i < res.data.length; i++) {
-        likestate.push(0);
-      }
-      console.log('찐' + likestate.length);
-      // getCardListData(res.data);
     });
   };
+
   //data.length만큼 배열추가
 
   const [like, setLike] = useState('🤍');
@@ -70,7 +78,9 @@ const ClassList = () => {
 
   // 필터된 정보 + cardList state에 저장
   const getCardListData = useCallback(async () => {
-    const res = await fetch(`http://localhost:9009/class/list/search${search}`);
+    const res = await fetch(
+      `http://localhost:9009/class/list2/search${search}`
+    );
     const data = await res.json();
 
     setCardList(data.result);
@@ -79,7 +89,7 @@ const ClassList = () => {
   useEffect(() => {
     list();
     getCardListData();
-  }, [getCardListData]);
+  }, [getCardListData, data]);
 
   //filter 체크한대로 url 만들어줌
   const makeQueryString = () => {
@@ -183,8 +193,8 @@ const ClassList = () => {
       <div className="listdiv">
         {/* 하나의 카드 반복문 */}
         {data &&
-          data.map((data, index) => (
-            <div className="each_class" key={index}>
+          data.map((data, idx) => (
+            <div className="each_class" key={idx}>
               <img
                 alt=""
                 src={class_photoUrl + data.class_photo1}
@@ -236,18 +246,21 @@ const ClassList = () => {
                     })
                     .then(res => {
                       console.log(res.data);
-                      likestate[index] = res.data;
+                      if (res.data === 1) likestate.current[idx] = '❤️';
+                      else likestate.current[idx] = '🤍';
+
+                      for (let i = 0; i < data.length; i++) {}
                       console.log(
-                        '인덱스' + index + '의 값:' + likestate[index]
+                        '인덱스' + idx + '의 값:' + likestate.current[idx]
                       );
                       console.log(likestate);
                     });
                 }}
               >
-                {likestate[index] < 1 ? '❤️' : '🤍'}
-                <data className="heart" style={{ display: 'inline-block' }}>
+                {data.like_user_name === null ? '🤍' : '❤️'}
+                {/* <data className="heart" style={{ display: 'inline-block' }}>
                   162
-                </data>
+                </data> */}
               </div>
             </div>
           ))}
