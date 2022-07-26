@@ -113,7 +113,6 @@ const ClassDetail = () => {
   };
 
   //like
-
   const likecheck = () => {
     axios
       .post(likeUrl, {
@@ -149,16 +148,6 @@ const ClassDetail = () => {
     console.log(changeoptions);
     setChange(true);
   };
-
-  // //찜
-  // const [like, setLike] = useState('🤍');
-  // const likeChange = e => {
-  //   if (like === '🤍') {
-  //     setLike('❤️');
-  //   } else {
-  //     setLike('🤍');
-  //   }
-  // };
 
   //처음 랜더링시 위의 함수 호출
   useEffect(() => {

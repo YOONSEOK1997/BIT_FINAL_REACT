@@ -24,16 +24,7 @@ const ClassList = () => {
   const { search } = useLocation();
   const filterDom = useRef();
   const navi = useNavigate();
-
-  //찜
-  const [like, setLike] = useState('🤍');
-  const likeChange = e => {
-    if (like === '🤍') {
-      setLike('❤️');
-    } else {
-      setLike('🤍');
-    }
-  };
+  const [likestate, setLikestate] = useState([]);
 
   //백엔드에서 받아올 리스트 데이터변수
   const [data, setData] = useState([]);
@@ -49,16 +40,32 @@ const ClassList = () => {
   const [isContentsShowed, setIsContentsShowed] = useState(false);
 
   //url 선언
+  const SPRING_URL = process.env.REACT_APP_SPRING_URL;
   let class_alllistUrl = 'http://localhost:9009/class/list';
   let class_photoUrl = 'http://localhost:9009/save/';
+  let likeUrl = process.env.REACT_APP_SPRING_URL + 'like/check';
 
   //처음에 불러오는 url
   const list = () => {
     axios.get(class_alllistUrl).then(res => {
       setData(res.data);
-      console.log(res.data);
-      getCardListData(res.data);
+      console.log('datalength:' + res.data.length);
+      for (let i = 0; i < res.data.length; i++) {
+        likestate.push(0);
+      }
+      console.log('찐' + likestate.length);
+      // getCardListData(res.data);
     });
+  };
+  //data.length만큼 배열추가
+
+  const [like, setLike] = useState('🤍');
+  const likeChange = e => {
+    if (like === '🤍') {
+      setLike('❤️');
+    } else {
+      setLike('🤍');
+    }
   };
 
   // 필터된 정보 + cardList state에 저장
@@ -219,7 +226,19 @@ const ClassList = () => {
                 <data className="class_hour">(총 {data.class_hour}시간)</data>
               </div>
 
-              <div className="class_like" onClick={likeChange}>
+              <div
+                className="class_like"
+                onClick={() => {
+                  axios
+                    .post(likeUrl, {
+                      like_class_num: data.class_num,
+                      like_user_name: localStorage.username,
+                    })
+                    .then(res => {
+                      console.log(res.data);
+                    });
+                }}
+              >
                 {like}
                 <data className="heart" style={{ display: 'inline-block' }}>
                   162
