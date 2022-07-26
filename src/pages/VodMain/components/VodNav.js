@@ -40,7 +40,7 @@ const VodNav = () => {
       <Wrapper>
         <Left>
           <LinkMain to="/">
-            <Logo src="/images/로고4.png" />
+            <Logo src="/images/vodlogo4.png" style={{ width: '80px' }} />
           </LinkMain>
           <PageMenu to="/">HOME</PageMenu>
           <PageMenu to="/vod">VOD</PageMenu>
@@ -115,6 +115,7 @@ const PageMenu = styled(Link)`
   margin-right: 20px;
   font-size: 16px;
   text-decoration: none;
+  font-weight: 700;
   cursor: pointer;
   // &:last-child {
   //   font-weight: bold;
