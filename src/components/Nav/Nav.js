@@ -6,12 +6,14 @@ import {
   removeProfile,
   removeNickName,
   removeToken,
+  removeAuthority,
 } from '../../utils';
 import backgroundimg from '../../assets/premium-icon-magnifier-2311526.png';
 import styled from 'styled-components';
 import Weather from './Weather';
 import AuthService from '../../service/auth-service';
 import Tutorask from './Tutorask';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -41,13 +43,14 @@ const Nav = () => {
   const kakaoLog = () => {
     AuthService.logout();
     if (!window.Kakao.Auth.getAccessToken()) {
-      alert('Not logged in.');
+      alert('✅ 로그아웃 되었습니다.');
       return;
     }
     window.Kakao.Auth.logout(function () {
       removeProfile();
       removeNickName();
       removeToken();
+      removeAuthority();
       goToMain();
       alert('logout ok\naccess token -> ' + window.Kakao.Auth.getAccessToken());
     });
@@ -103,7 +106,9 @@ const Nav = () => {
           <LoginMenu to="/login">로그인</LoginMenu>
         ) : (
           <LoginWrap>
-            <LogoutBtn onClick={kakaoLog}>로그아웃</LogoutBtn>
+            <LogoutBtn onClick={kakaoLog} style={{ marginLeft: '20px' }}>
+              <LogoutIcon />
+            </LogoutBtn>
             <ProfileImg
               src={getProfile()}
               alt="카카오프로필임시"

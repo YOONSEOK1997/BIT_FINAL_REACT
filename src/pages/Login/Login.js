@@ -75,6 +75,9 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const [data, setData] = useState('');
+  const getprofileurl = 'http://localhost:9009/api/getprofile';
+
   //일반 로그인
   const onSubmit = e => {
     e.preventDefault();
