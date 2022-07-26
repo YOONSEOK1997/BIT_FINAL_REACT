@@ -87,9 +87,27 @@ div.profileimg2 {
   border-radius: 160px;
   overflow: hidden;
 }
+div.profileimg3 {
+  position: absolute;
+  margin-top: -150px;
+  margin-left: 70px;
+  width: 150px;
+  height: 150px;
+  border-radius: 160px;
+  overflow: hidden;
+}
 
 img.user_profile {
   margin: auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 160px;
+  overflow: hidden;
+  background-color: #ffffff00;
+}
+img.user_profile1 {
+  margin: auto;
+  position: absolute;
   width: 150px;
   height: 150px;
   border-radius: 160px;
@@ -110,6 +128,9 @@ div.photo_icon2 {
   cursor: pointer;
   background-color: #03d85e;
 }
+.pass_ch_button:active {
+  transform: scale(0.98);
+}
 
 .sign_out_btn {
   border: none;
@@ -119,4 +140,34 @@ div.photo_icon2 {
   color: gray;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.profile_inputch {
+  border: none;
+}
+
+.profile_inputch_btn {
+  cursor: pointer;
+  border: none;
+}
+.profile_inputch_btn:focus {
+  outline: 0;
+}
+.profile_inputch_btn:active {
+  transform: scale(0.98);
+}
+
+.profile_inputch_btn2 {
+  cursor: pointer;
+  border: none;
+  position: absolute;
+  margin-left: 150px;
+  margin-top: 9px;
+  background-color: white;
+}
+.profile_inputch_btn2:focus {
+  outline: 0;
+}
+.profile_inputch_btn2:active {
+  transform: scale(0.97);
 }

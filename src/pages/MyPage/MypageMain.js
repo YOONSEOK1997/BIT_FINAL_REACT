@@ -17,6 +17,9 @@ import {
   removeNickName,
   removeToken,
   setUser_id,
+  setToken,
+  setProfile,
+  setNickname,
 } from '../../utils';
 
 const MypageMain = () => {
@@ -42,7 +45,7 @@ const MypageMain = () => {
   }, []);
 
   //---------프로필 사진 관련
-  const [profile, setProfile] = useState(); //img1
+  const [profilee, setProfilee] = useState(''); //img1
   const photoInput = useRef();
   const imgChange = () => {
     photoInput.current.click();
@@ -64,11 +67,24 @@ const MypageMain = () => {
       headers: { 'content-Type': 'multipart/form-data' },
     })
       .then(res => {
-        setProfile(res.data);
+        setProfilee(res.data);
+        let photoUrl = 'http://localhost:9009/save/';
+        const profilechangeURL = 'http://localhost:9009/api/instprf';
+        axios
+          .post(profilechangeURL, { username, profile: profilee })
+          .then(res => {
+            setProfile(photoUrl + profilee);
+            alert('프로필사진이 변경되었습니다.');
+            window.location.reload();
+          });
       })
       .catch(err => {
         alert(err);
       });
+  };
+
+  const profileChange = () => {
+    //user table에 이미지 변경
   };
 
   const [modal, setModal] = useState(false);
@@ -82,7 +98,7 @@ const MypageMain = () => {
   //회원 탈퇴하기
   const deleteurl = 'http://localhost:9009/api/deleteuser';
   const onDeleteUser = () => {
-    if (window.confirm('정말로 탈퇴하시겠습니까?')) {
+    if (window.confirm('정말로 떠나시겠어요?😢')) {
       axios.get(deleteurl + '?user_id=' + data.user_id).then(response => {
         alert('돌아와');
         localStorage.removeItem('user');
@@ -96,31 +112,50 @@ const MypageMain = () => {
     }
   };
 
+  //닉네임 변경하기
+  const nickChangeUrl = 'http://localhost:9009/api/nickchange';
+  const [nickname, setNickname] = useState('');
+  const ChangeNickname = e => {
+    axios.post(nickChangeUrl, { username, realname: nickname }).then(res => {
+      alert('닉네임이 변경되었습니다!');
+      window.location.reload();
+    });
+  };
+
   return (
     <Wrapper>
       <div className="mypage_header"></div>
       <Sidebar />
       <div className="mypage_profile">
-        <div className="profileimg2">
-          <img alt="" src={profile1} className="user_profile" />
-        </div>
-        <div className="photo_icon2">
-          <IconButton
-            color="primary"
-            aria-label="upload picture"
-            component="label"
-            style={{ color: '#03d85e' }}
-          >
-            <input
-              hidden
-              accept="image/*"
-              type="file"
-              multiple
-              onChange={imageUpload}
-            />
-            <PhotoCamera />
-          </IconButton>
-        </div>
+        {/* 프로필변경부분 */}
+        <form onSubmit={profileChange}>
+          <div className="profileimg2">
+            <img alt="" src={profile1} className="user_profile" />
+          </div>
+          <div className="profileimg3">
+            <img alt="" src={photoUrl + profilee} className="user_profile1" />
+          </div>
+          <button className="profile_inputch_btn2" type="submit">
+            ✔️
+          </button>
+          <div className="photo_icon2">
+            <IconButton
+              color="primary"
+              aria-label="upload picture"
+              component="label"
+              style={{ color: '#03d85e' }}
+            >
+              <input
+                hidden
+                accept="image/*"
+                type="file"
+                multiple
+                onChange={imageUpload}
+              />
+              <PhotoCamera />
+            </IconButton>
+          </div>
+        </form>
         <div className="profile_info">
           <div className="profile_lable_bottom">
             <span className="profile_label1">회원 아이디</span>
@@ -130,6 +165,24 @@ const MypageMain = () => {
             <span className="profile_label1">이메일</span>
             <span className="profile_label2">{data.email}</span>
           </div>
+          <form onSubmit={ChangeNickname}>
+            <div className="profile_lable_bottom">
+              <span className="profile_label1">닉네임</span>
+              <span className="profile_label2">
+                <input
+                  type="text"
+                  placeholder={data.realname}
+                  className="profile_inputch"
+                  onChange={e => {
+                    setNickname(e.target.value);
+                  }}
+                />
+                <button type="submit" className="profile_inputch_btn">
+                  변경✔️
+                </button>
+              </span>
+            </div>
+          </form>
           <div className="profile_lable_bottom">
             <span className="profile_label1">비밀번호</span>
             <span className="profile_label2">
