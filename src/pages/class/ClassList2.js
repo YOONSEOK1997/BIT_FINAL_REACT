@@ -27,8 +27,50 @@ const ClassList = () => {
   const navi = useNavigate();
   const likestate = useRef([]);
 
+  //카테고리
+  const [class_category, setclass_Category] = useState();
+
+  //위치
+  const [class_location, setclass_Location] = useState();
+
   //백엔드에서 받아올 리스트 데이터변수
   const [data, setData] = useState([]);
+
+  //필터링한거에 해당하는 데이터 (Category)
+  const [filterData1, setFilterData1] = useState([]);
+
+  //필터링한거에 해당하는 데이터 (Location)
+  const [filterData2, setFilterData2] = useState([]);
+
+  //필터 (Category)
+  useEffect(() => {
+    const newData = data.filter(
+      a =>
+        a.class_category === class_category &&
+        a.class_location === class_location
+    );
+    setFilterData1(newData);
+  }, [class_category, class_location]);
+
+  //필터 (Location)
+  useEffect(() => {
+    const newData1 = data.filter(
+      a =>
+        a.class_location === class_location &&
+        a.class_category === class_category
+    );
+    setFilterData2(newData1);
+  }, [class_location, class_category]);
+
+  //필터 기능 (Category)
+  const onChangeCategory = ({ currentTarget }) => {
+    setclass_Category(currentTarget.value);
+  };
+
+  //필터 기능 (Location)
+  const onChangeLocation = ({ currentTarget }) => {
+    setclass_Location(currentTarget.value);
+  };
 
   //url 선언
   const SPRING_URL = process.env.REACT_APP_SPRING_URL;
@@ -38,21 +80,17 @@ const ClassList = () => {
   let class_photoUrl = 'http://localhost:9009/save/';
   let likeUrl = process.env.REACT_APP_SPRING_URL + 'like/check';
 
-  // // //처음에 불러오는 url
-  // const list = () => {
-  //   axios.get(class_alllistUrl).then(res => {
-  //     setData(res.data);
-  //     console.log('datalength:' + res.data.length);
-  //     for (let i = 0; i < res.data.length; i++) {
-  //       likestate.current[i] = '';
-  //     }
-  //     console.log('찐' + likestate.current.length);
-  //   });
-  // };
   // //처음에 불러오는 url
   const list = () => {
-    axios.get(class_alllistUrl2).then(res => {
+    axios.get(class_alllistUrl).then(res => {
       setData(res.data);
+      console.log('datalength:' + res.data.length);
+      for (let i = 0; i < res.data.length; i++) {
+        likestate.current[i] = '';
+      }
+      console.log('찐' + likestate.current.length);
+      setFilterData1(res.data);
+      setFilterData2(res.data);
     });
   };
 
@@ -75,30 +113,40 @@ const ClassList = () => {
     <Wrapper>
       {/* 필터 부분 */}
       <div className="row">
-        <select className="select1" style={{ width: '150px' }}>
+        {/* 위치 */}
+        <select
+          className="select1"
+          style={{ width: '150px' }}
+          onChange={onChangeLocation}
+        >
           <option key="class_location" value="장소" disabled>
             장소
           </option>
-          <option key="반포 한강공원" value="반포 한강공원">
+          <option key="반포 한강공원" value="반포">
             반포 한강공원
           </option>
-          <option key="잠실 한강공원" value="잠실 한강공원">
+          <option key="잠실 한강공원" value="잠실">
             잠실 한강공원
           </option>
-          <option key="이촌 한강공원" value="이촌 한강공원">
+          <option key="이촌 한강공원" value="이촌">
             이촌 한강공원
           </option>
-          <option key="여의도 한강공원" value="여의도 한강공원">
+          <option key="여의도 한강공원" value="여의도">
             여의도 한강공원
           </option>
-          <option key="난지 한강공원" value="난지 한강공원">
+          <option key="난지 한강공원" value="난지">
             난지 한강공원
           </option>
-          <option key="뚝섬 한강공원" value="뚝섬 한강공원">
+          <option key="뚝섬 한강공원" value="뚝섬">
             뚝섬 한강공원
           </option>
         </select>
-        <select className="select1" style={{ width: '150px' }}>
+        {/* 장소 */}
+        <select
+          className="select1"
+          style={{ width: '150px' }}
+          onChange={onChangeCategory}
+        >
           -
           <option key="class_category" value="전체">
             전체
@@ -109,14 +157,14 @@ const ClassList = () => {
           <option key="스포츠" value="스포츠">
             스포츠
           </option>
-          <option key="댄스/뮤직" value="댄스/뮤직">
-            댄스/뮤직
+          <option key="댄스" value="댄스">
+            댄스
+          </option>
+          <option key="뮤직" value="뮤직">
+            뮤직
           </option>
           <option key="드로잉" value="드로잉">
             드로잉
-          </option>
-          <option key="펫" value="펫">
-            펫
           </option>
         </select>
       </div>
@@ -140,8 +188,8 @@ const ClassList = () => {
 
       <div className="listdiv">
         {/* 하나의 카드 반복문 */}
-        {data &&
-          data.map((data, idx) => (
+        {filterData1 &&
+          filterData1.map((data, idx) => (
             <div className="each_class" key={idx}>
               <img
                 alt=""
