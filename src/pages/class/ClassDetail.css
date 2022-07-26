@@ -59,7 +59,7 @@ body {
 }
 /* tutor */
 .tutor_info {
-  width: 410px;
+  width: 510px;
   height: 68px;
   margin: 10px 462px 20px 0;
   padding: 5px 164px 11px 0;
@@ -74,7 +74,7 @@ body {
 }
 
 .tutor_name {
-  width: 200px;
+  width: 250px;
   height: 32px;
   margin: 13px 0 7px 11px;
   font-family: Inter;

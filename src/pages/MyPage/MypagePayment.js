@@ -170,7 +170,7 @@ const OneReceipt = styled.div`
   margin-left: 20px;
   margin-top: 20px;
   background-color: white;
-  padding: 10px;
+  padding: 15px;
 `;
 
 const PaidYes = styled.div`

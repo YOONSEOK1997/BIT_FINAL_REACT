@@ -579,28 +579,28 @@ const ClassForm = passData => {
           />
           <span style={{ fontSize: '20px', marginLeft: '2px' }}>명</span>
           <br />
-          <div>
-            {options.map((row, idx) => (
-              <div className="class_planrow">
-                {row.classoption_day} &nbsp;&nbsp;{row.classoption_starttime}시
-                ~ {row.classoption_endtime}시 &nbsp;&nbsp;
-                {row.classoption_totalperson}
-                명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div
-                  onClick={() => onDelete(idx)}
-                  className="xbtn"
-                  style={{
-                    border: '0px soild gray',
-                    backgroundColor: 'white',
-                    float: 'right',
-                  }}
-                >
-                  {' '}
-                  ❌{' '}
-                </div>
+
+          {options.map((row, idx) => (
+            <div className="class_planrow">
+              {row.classoption_day} &nbsp;&nbsp;{row.classoption_starttime}시 ~{' '}
+              {row.classoption_endtime}시 &nbsp;&nbsp;
+              {row.classoption_totalperson}
+              명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <div
+                onClick={() => onDelete(idx)}
+                className="xbtn"
+                style={{
+                  border: '0px soild gray',
+                  backgroundColor: 'white',
+                  float: 'right',
+                }}
+              >
+                {' '}
+                ❌{' '}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+
           <div style={{ width: '760px', marginLeft: '50px' }}>
             <button className="btn2" onClick={optionsave}>
               + 일정추가

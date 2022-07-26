@@ -1,12 +1,34 @@
-import React from 'react';
 import Sidebar from './Sidebar';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 import MypageCard from './MypageCards.css';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 const MypageLiked = () => {
+  const [data, setData] = useState([]);
+  const navi = useNavigate();
+
+  //전역변수등록
+  const SPRING_URL = process.env.REACT_APP_SPRING_URL;
+  //url등록
+  let listUrl = SPRING_URL + 'like/list?username=' + localStorage.username;
+  let class_photoUrl = 'http://localhost:9009/save/';
+
+  const list = () => {
+    axios.get(listUrl, {}).then(res => {
+      setData(res.data);
+      console.log(res.data);
+    });
+  };
+
+  useEffect(() => {
+    list();
+  }, []);
+
   return (
     <Wrapper>
       <div className="mypage_header"></div>
@@ -19,54 +41,62 @@ const MypageLiked = () => {
         </Ment>
         <LikedClasses>
           {/* 하나의 카드 반복문 : (어쩌구) 값만 {div.머시기} 로 뽑아오세요*/}
-          <Card>
-            <div className="each_class1">
-              <img
-                alt=""
-                src={'../class/classImage/002.png'}
-                className="listimg1"
-              />
+          <div className="listdiv">
+            {/* 하나의 카드 반복문 */}
+            {data &&
+              data.map((data, index) => (
+                <div className="each_class" key={index}>
+                  <img
+                    alt=""
+                    src={class_photoUrl + data.class_photo1}
+                    className="listimg"
+                    onClick={() => {
+                      navi(`/class/detail/${data.class_num}`);
+                    }}
+                  />
 
-              <div className="class_location1">
-                <LocationOnIcon
-                  style={{
-                    fontSize: '20px',
-                    height: '20px',
-                  }}
-                />
-                (잠원) 한강공원
-              </div>
+                  <div className="class_location" style={{ color: '#7814DC' }}>
+                    <div style={{ display: 'inline-block', float: 'left' }}>
+                      <LocationOnIcon
+                        style={{ fontSize: '18px', height: '20px' }}
+                      />
+                    </div>
+                    <div className="class_location_name">
+                      <data>{data.class_location} 한강공원</data>
+                    </div>
+                  </div>
 
-              <div className="class_title2">
-                <div className="class_title_name1" style={{ float: 'right' }}>
-                  (어차저차어기여차 클래스)
+                  <div className="class_title1">
+                    <data
+                      className="class_title_name"
+                      style={{ float: 'right' }}
+                      onClick={() => {
+                        navi(`/class/detail/${data.class_num}`);
+                      }}
+                    >
+                      {data.class_name}
+                    </data>
+                  </div>
+
+                  <div className="list_tutor_name">
+                    <data>{data.tutor_id} 튜터</data>
+                  </div>
+
+                  <div className="class_numbers">
+                    <data className="class_price">{data.class_price}원</data>
+                    <data className="class_hour">
+                      (총 {data.class_hour}시간)
+                    </data>
+                  </div>
+
+                  <div className="class_like">
+                    <data className="heart" style={{ display: 'inline-block' }}>
+                      162
+                    </data>
+                  </div>
                 </div>
-              </div>
-
-              <div className="list_tutor_name1">
-                <div>(김정하) 튜터</div>
-              </div>
-
-              <div className="class_numbers1">
-                <div className="class_price1">(35,000) 원</div>
-                <div className="class_hour1">(총 (30) 시간)</div>
-              </div>
-
-              <div className="class_like1">
-                <FavoriteBorderIcon
-                  style={{
-                    fontSize: '20px',
-                    color: 'red',
-                    height: '20px',
-                    display: 'inline-block',
-                  }}
-                />
-                <div className="heart1" style={{ display: 'inline-block' }}>
-                  162
-                </div>
-              </div>
-            </div>
-          </Card>
+              ))}
+          </div>
         </LikedClasses>
       </MypageContent>
     </Wrapper>
