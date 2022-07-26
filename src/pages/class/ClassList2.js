@@ -38,15 +38,21 @@ const ClassList = () => {
   let class_photoUrl = 'http://localhost:9009/save/';
   let likeUrl = process.env.REACT_APP_SPRING_URL + 'like/check';
 
+  // // //처음에 불러오는 url
+  // const list = () => {
+  //   axios.get(class_alllistUrl).then(res => {
+  //     setData(res.data);
+  //     console.log('datalength:' + res.data.length);
+  //     for (let i = 0; i < res.data.length; i++) {
+  //       likestate.current[i] = '';
+  //     }
+  //     console.log('찐' + likestate.current.length);
+  //   });
+  // };
   // //처음에 불러오는 url
   const list = () => {
-    axios.get(class_alllistUrl).then(res => {
+    axios.get(class_alllistUrl2).then(res => {
       setData(res.data);
-      console.log('datalength:' + res.data.length);
-      for (let i = 0; i < res.data.length; i++) {
-        likestate.current[i] = '';
-      }
-      console.log('찐' + likestate.current.length);
     });
   };
 
