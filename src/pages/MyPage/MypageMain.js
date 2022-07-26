@@ -35,7 +35,6 @@ const MypageMain = () => {
   //USER DATA 불러오기
   const onProfileReceive = () => {
     axios.get(getprofileurl + '?username=' + username).then(response => {
-      console.log(response.data);
       setData(response.data);
     });
   };
@@ -73,7 +72,17 @@ const MypageMain = () => {
         axios
           .post(profilechangeURL, { username, profile: profilee })
           .then(res => {
-            setProfile(photoUrl + profilee);
+            localStorage.removeItem('profile');
+            //localStorage.setItem('profile', photoUrl + uploadFile);
+            //setProfile(photoUrl + profilee);
+            axios
+              .get(getprofileurl + '?username=' + username)
+              .then(response => {
+                localStorage.setItem(
+                  'profile',
+                  photoUrl + response.data.profile
+                );
+              });
             alert('프로필사진이 변경되었습니다.');
             window.location.reload();
           });
@@ -81,10 +90,6 @@ const MypageMain = () => {
       .catch(err => {
         alert(err);
       });
-  };
-
-  const profileChange = () => {
-    //user table에 이미지 변경
   };
 
   const [modal, setModal] = useState(false);
@@ -128,34 +133,29 @@ const MypageMain = () => {
       <Sidebar />
       <div className="mypage_profile">
         {/* 프로필변경부분 */}
-        <form onSubmit={profileChange}>
-          <div className="profileimg2">
-            <img alt="" src={profile1} className="user_profile" />
-          </div>
-          <div className="profileimg3">
-            <img alt="" src={photoUrl + profilee} className="user_profile1" />
-          </div>
-          <button className="profile_inputch_btn2" type="submit">
-            ✔️
-          </button>
-          <div className="photo_icon2">
-            <IconButton
-              color="primary"
-              aria-label="upload picture"
-              component="label"
-              style={{ color: '#03d85e' }}
-            >
-              <input
-                hidden
-                accept="image/*"
-                type="file"
-                multiple
-                onChange={imageUpload}
-              />
-              <PhotoCamera />
-            </IconButton>
-          </div>
-        </form>
+        <div className="profileimg2">
+          <img alt="" src={profile1} className="user_profile" />
+        </div>
+        <div className="profileimg3">
+          <img alt="" src={photoUrl + profilee} className="user_profile1" />
+        </div>
+        <div className="photo_icon2">
+          <IconButton
+            color="primary"
+            aria-label="upload picture"
+            component="label"
+            style={{ color: '#03d85e' }}
+          >
+            <input
+              hidden
+              accept="image/*"
+              type="file"
+              multiple
+              onChange={imageUpload}
+            />
+            <PhotoCamera />
+          </IconButton>
+        </div>
         <div className="profile_info">
           <div className="profile_lable_bottom">
             <span className="profile_label1">회원 아이디</span>
