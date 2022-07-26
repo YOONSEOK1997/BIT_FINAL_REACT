@@ -236,10 +236,15 @@ const ClassList = () => {
                     })
                     .then(res => {
                       console.log(res.data);
+                      likestate[index] = res.data;
+                      console.log(
+                        '인덱스' + index + '의 값:' + likestate[index]
+                      );
+                      console.log(likestate);
                     });
                 }}
               >
-                {like}
+                {likestate[index] < 1 ? '❤️' : '🤍'}
                 <data className="heart" style={{ display: 'inline-block' }}>
                   162
                 </data>
