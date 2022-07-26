@@ -10,6 +10,14 @@ import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import './MypageMain.css';
 import PassChangeModal from './PassChange/PassChangeModal';
+import {
+  getToken,
+  getProfile,
+  removeProfile,
+  removeNickName,
+  removeToken,
+  setUser_id,
+} from '../../utils';
 
 const MypageMain = () => {
   const navi = useNavigate();
@@ -21,6 +29,7 @@ const MypageMain = () => {
   const username = localStorage.getItem('username');
   const profile1 = localStorage.getItem('profile');
 
+  //USER DATA 불러오기
   const onProfileReceive = () => {
     axios.get(getprofileurl + '?username=' + username).then(response => {
       console.log(response.data);
@@ -70,6 +79,23 @@ const MypageMain = () => {
     setModal(false);
   };
 
+  //회원 탈퇴하기
+  const deleteurl = 'http://localhost:9009/api/deleteuser';
+  const onDeleteUser = () => {
+    if (window.confirm('정말로 탈퇴하시겠습니까?')) {
+      axios.get(deleteurl + '?user_id=' + data.user_id).then(response => {
+        alert('돌아와');
+        localStorage.removeItem('user');
+        localStorage.removeItem('username');
+        localStorage.removeItem('loginok');
+        removeProfile();
+        removeNickName();
+        removeToken();
+        navi('/');
+      });
+    }
+  };
+
   return (
     <Wrapper>
       <div className="mypage_header"></div>
@@ -97,27 +123,38 @@ const MypageMain = () => {
         </div>
         <div className="profile_info">
           <div className="profile_lable_bottom">
-            <span className="profile_label1">USER ID</span>
+            <span className="profile_label1">회원 아이디</span>
             <span className="profile_label2">{data.username}</span>
           </div>
           <div className="profile_lable_bottom">
-            <span className="profile_label1">E-MAIL</span>
+            <span className="profile_label1">이메일</span>
             <span className="profile_label2">{data.email}</span>
+          </div>
+          <div className="profile_lable_bottom">
+            <span className="profile_label1">비밀번호</span>
+            <span className="profile_label2">
+              <button onClick={openModal} className="pass_ch_button">
+                비밀번호 변경
+              </button>
+              <PassChangeModal
+                open={modal}
+                close={closeModal}
+                header="비밀번호 변경하기"
+              />
+            </span>
+            <input
+              type="hidden"
+              defaultValue={data.user_id}
+              onChange={e => {
+                setUser_id(e.target.value);
+              }}
+            />
           </div>
           <br />
         </div>
-        <div className="profile_buttons">
-          <button>
-            <a href="/register_re">수정</a>
-          </button>
-          <button onClick={openModal}>비밀번호 변경</button>
-          <PassChangeModal
-            open={modal}
-            close={closeModal}
-            header="비밀번호 변경하기"
-          />
-          <button>탈퇴</button>
-        </div>
+        <button className="sign_out_btn" onClick={onDeleteUser}>
+          회원 탈퇴하기
+        </button>
       </div>
       {/* mypage_profile 닫힘 */}
 
@@ -135,5 +172,4 @@ const Wrapper = styled.div`
   position: relative;
   padding-bottom: 20px;
   height: 1000px;
-  border: 1px solid gray;
 `;

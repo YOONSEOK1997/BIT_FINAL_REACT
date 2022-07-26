@@ -1,6 +1,11 @@
 const token = 'token';
 const keyProfile = 'profile';
 const keyNickName = 'nickname';
+const user_id = 'user_id';
+
+export const setUser_id = restoken => {
+  return localStorage.setItem(user_id, user_id);
+};
 
 export const setToken = restoken => {
   return localStorage.setItem(token, restoken);

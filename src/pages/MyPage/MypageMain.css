@@ -1,7 +1,6 @@
 .mypage_header {
   width: 1040px;
-  height: 50px;
-  background-image: url('../class/classImage/002.png');
+  height: 20px;
 }
 
 .mypage {
@@ -13,10 +12,9 @@
 
 .mypage_profile {
   margin-top: -230px;
-  margin-left: 30px;
+  margin-left: 450px;
   width: 800px;
-  height: 230px;
-  float: right;
+  height: 600px;
   display: inline-block;
 }
 
@@ -30,6 +28,7 @@
 
 .profile_buttons {
   border: 1px solid gray;
+  margin-top: 200px;
   height: 50px;
 }
 
@@ -44,7 +43,7 @@
 }
 
 .profile_label1 {
-  width: 80px;
+  width: 100px;
   height: 60px;
   /* div겹침 */
   clear: both;
@@ -74,8 +73,8 @@
 /*-- 프로필 --*/
 .profile_info {
   position: absolute;
-  left: 500px;
-  top: 130px;
+  left: 400px;
+  top: 300px;
   width: 500px;
   height: 200px;
 }
@@ -100,4 +99,24 @@ img.user_profile {
 
 div.photo_icon2 {
   margin-left: 120px;
+}
+
+.pass_ch_button {
+  color: white;
+  width: 150px;
+  height: 35px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  background-color: #03d85e;
+}
+
+.sign_out_btn {
+  border: none;
+  margin-top: 300px;
+  margin-left: 450px;
+  background-color: white;
+  color: gray;
+  text-decoration: underline;
+  cursor: pointer;
 }
