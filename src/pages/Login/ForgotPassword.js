@@ -32,14 +32,20 @@ const Login = () => {
   //이메일 데이터 전송하기
   const onSubmit = async data => {
     await new Promise(r => setTimeout(r, 1000));
-    console.log(data, errors);
 
+    const emailChkUrl =
+      'http://localhost:9009/api/emailcheck?email=' + data.email;
     const mailurl = 'http://localhost:9009/api/sendEmail';
-
-    //IF 이메일이 DB에 없으면 return 하기 '가입되지 않은 이메일입니다'
-    axios.post(mailurl, data).then(res => {
-      console.log(data);
-      alert('이메일을 전송하였습니다.');
+    axios.get(emailChkUrl).then(res => {
+      if (res.data === 0) {
+        alert('가입되지 않은 이메일입니다.');
+        return;
+      }
+      //IF 이메일이 DB에 없으면 return 하기 '가입되지 않은 이메일입니다'
+      axios.post(mailurl, data).then(res => {
+        alert('이메일을 전송하였습니다.');
+        goToMain();
+      });
     });
   };
 
@@ -49,8 +55,12 @@ const Login = () => {
         <div className="regis-form">
           <br />
           <form onSubmit={handleSubmit(onSubmit)}>
-            <img alt="" src={duckimg} style={{ width: '80px' }} />
-            <div>가입한 이메일을 입력해 주세요</div>
+            <img
+              alt=""
+              src={duckimg}
+              style={{ width: '80px', marginBottom: '30px' }}
+            />
+            <div className="regis_title1">가입한 이메일을 입력해 주세요~!</div>
             <div className="int-area">
               <input
                 type="text"

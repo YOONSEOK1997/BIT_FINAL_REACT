@@ -8,7 +8,7 @@ import './passChangeModal.css';
 
 const PassChangeModal = props => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-  const { open, close, header } = props;
+  const { open, close, header1 } = props;
 
   //HOOK FORM
   const {
@@ -41,11 +41,11 @@ const PassChangeModal = props => {
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? 'openModal modal' : 'modal'}>
       {open ? (
-        <section>
-          <header>
-            {header}
+        <section1>
+          <header1>
+            {header1}
             <button onClick={close}>&times;</button>
-          </header>
+          </header1>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="passchange_wrapper">
               <div className="passchange_box">
@@ -114,14 +114,18 @@ const PassChangeModal = props => {
               defaultValue={localStorage.getItem('username')}
               {...register('username')}
             />
-            <button type="submit" disabled={isSubmitting}>
-              변경하기
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="passchange_btn"
+            >
+              변경하기☑️
             </button>
           </form>
           <footer>
-            <button onClick={close}>닫기</button>
+            <button onClick={close}>닫기✖️</button>
           </footer>
-        </section>
+        </section1>
       ) : null}
     </div>
   );

@@ -192,7 +192,7 @@ const MypageMain = () => {
               <PassChangeModal
                 open={modal}
                 close={closeModal}
-                header="비밀번호 변경하기"
+                header1="비밀번호 변경하기"
               />
             </span>
             <input
