@@ -119,7 +119,7 @@ const ClassList = () => {
           style={{ width: '150px' }}
           onChange={onChangeLocation}
         >
-          <option key="class_location" value="장소" disabled>
+          <option key="class_location" value="장소">
             장소
           </option>
           <option key="반포 한강공원" value="반포">
@@ -169,7 +169,7 @@ const ClassList = () => {
         </select>
       </div>
 
-      <div className="ClassHeader">클래스입니다 헤더 이미지는 수정예정</div>
+      <div className="ClassHeader">오늘,한강과 함께</div>
 
       <div className="radiofilter" style={{ float: 'right' }}>
         <label>

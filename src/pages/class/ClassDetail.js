@@ -20,8 +20,8 @@ import like from './classImage/like.JPG';
 import cnt from './classImage/cnt.JPG';
 import location from './classImage/location.JPG';
 import time from './classImage/money.JPG';
-
 import banner from './classImage/배너.png';
+import chat from './classImage/chat2.png';
 
 const ClassDetail = () => {
   const { class_num } = useParams();
@@ -473,7 +473,12 @@ const ClassDetail = () => {
         ) : tab === 2 ? (
           <div
             className="class_tabb1"
-            style={{ clear: 'both', height: '800px', padding: '40px' }}
+            style={{
+              clear: 'both',
+              height: '1050px',
+              padding: '40px',
+              clear: 'both',
+            }}
           >
             <div className="chat">
               <div className="chatmsg">
@@ -500,6 +505,7 @@ const ClassDetail = () => {
                       팝업창입니다. 쉽게 만들 수 있어요. 같이 만들어봐요! */}
               </React.Fragment>
             </div>
+            <img src={chat} alt="" style={{ marginLeft: '170px' }} />
           </div>
         ) : (
           <div className="class_tabb1">
@@ -547,54 +553,6 @@ const ClassDetail = () => {
 
         <div>
           <img src={banner} alt="" width="1290px" />
-          <div className="tyu">
-            <button
-              type="button"
-              onClick={() => {
-                navi('/class/list');
-              }}
-            >
-              목록
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                navi('/class/form');
-              }}
-            >
-              상품추가
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                navi(`/class/updateform/`);
-              }}
-            >
-              수정
-            </button>
-            <button type="button" onClick={handleClickOpen}>
-              삭제
-            </button>
-            <Dialog
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="alert-dialog-title"
-              aria-describedby="alert-dialog-description"
-            >
-              <DialogTitle id="alert-dialog-title">상품 삭제</DialogTitle>
-              <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                  {data.sangpum}을 삭제하시겠습니까?
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={handleClose}>취소</Button>
-                <Button onClick={onDelete} autoFocus>
-                  확인
-                </Button>
-              </DialogActions>
-            </Dialog>
-          </div>
 
           <br />
           <br />
