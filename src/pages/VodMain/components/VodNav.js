@@ -9,6 +9,7 @@ import {
 } from '../../../utils';
 import { FiSearch } from 'react-icons/fi';
 import styled from 'styled-components';
+import AuthService from '../../../service/auth-service';
 
 const VodNav = () => {
   const validtoken = getToken();
@@ -32,6 +33,8 @@ const VodNav = () => {
     removeProfile();
     removeNickName();
     removeToken();
+    AuthService.logout();
+    alert('✅ 로그아웃 되었습니다.');
     goToMain();
   };
 
