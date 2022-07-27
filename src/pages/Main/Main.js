@@ -208,12 +208,12 @@ const CATEGORY_TITLES = [
 ];
 
 const TREND_LIST = [
-  { lectureId: 37, title: '김준영의 러닝 보강운동 클래스!' },
-  { lectureId: 43, title: '북한산 다람쥐 한별과 종주!' },
-  { lectureId: 44, title: '쉐르파 듀오 레이스리의 등산 입문!' },
-  { lectureId: 41, title: '정하공주와 함께 다리를 찢어보자!' },
-  { lectureId: 48, title: '어인 대한의 아가미 호흡법!' },
-  { lectureId: 12, title: '남궁민수의 민수와의 설국여행' },
+  { lectureId: 28, title: '김준영의 러닝 보강운동 클래스!' },
+  { lectureId: 31, title: '북한산 다람쥐 한별과 종주!' },
+  { lectureId: 33, title: '쉐르파 듀오 레이스리의 등산 입문!' },
+  { lectureId: 35, title: '정하공주와 함께 다리를 찢어보자!' },
+  { lectureId: 34, title: '어인 대한의 아가미 호흡법!' },
+  { lectureId: 39, title: '남궁민수의 민수와의 설국여행' },
 ];
 
 const Wrapper = styled.div`

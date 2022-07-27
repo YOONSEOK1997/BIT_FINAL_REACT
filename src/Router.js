@@ -63,11 +63,8 @@ const Router = () => {
         <Route path="/review" element={<Review />} />
 
         {/* Class */}
-        <Route path="/class/list/:currentPage" element={<ClassList />} />
-
-        {/* 이사간 필터 실험터 */}
-        <Route path="/class/list2" element={<ClassList2 />} />
-        <Route path="/class/list3/:message" element={<ClassList3 />} />
+        <Route path="/class/list" element={<ClassList2 />} />
+        <Route path="/class/list/:message" element={<ClassList3 />} />
 
         <Route path="/class/form" element={<ClassForm />} />
         <Route path="/class/detail/:class_num" element={<ClassDetail />} />

@@ -99,7 +99,7 @@ const Nav = () => {
           onChange={e => setMsg(e.target.value)}
           onKeyUp={e => {
             if (e.key === 'Enter' && msg !== '') {
-              navigate('/class/list3/' + msg);
+              navigate('/class/list/' + msg);
               setMsg('');
             }
           }}
