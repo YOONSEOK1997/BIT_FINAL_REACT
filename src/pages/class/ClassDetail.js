@@ -170,7 +170,7 @@ const ClassDetail = () => {
   }, [likestate2]);
   return (
     <div>
-      <div className="content_container" style={{ marginLeft: '150px' }}>
+      <div className="content_container" style={{ marginLeft: '240px' }}>
         <div className="class_top">
           <div className="class_title_div">
             <div
