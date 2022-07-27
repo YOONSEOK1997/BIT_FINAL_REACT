@@ -62,6 +62,7 @@ const ClassDetail = () => {
   let reviewListUrl =
     process.env.REACT_APP_SPRING_URL + 'review/alllist?class_num=' + class_num;
   const getprofileurl = 'http://localhost:9009/api/getprofile2';
+  const chkUrl = 'http://localhost:9009/pay/chk';
 
   //popup modal (ClassGuide, 클래스신청)
   // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
@@ -86,7 +87,15 @@ const ClassDetail = () => {
 
   const [modalOpen2, setModalOpen2] = useState(false);
   const openModal2 = () => {
-    setModalOpen2(true);
+    axios.get(chkUrl + '?pay_user_id=' + localStorage.username).then(res => {
+      console.log(res);
+      if (res.data === 0) {
+        alert('클래스에 참여중인 인원만 가능합니다');
+        return false;
+      } else if (res.data !== 0) {
+        setModalOpen2(true);
+      }
+    });
   };
   const closeModal2 = () => {
     setModalOpen2(false);
@@ -94,7 +103,15 @@ const ClassDetail = () => {
 
   const [modalOpen3, setModalOpen3] = useState(false);
   const openModal3 = () => {
-    setModalOpen3(true);
+    axios.get(chkUrl + '?pay_user_id=' + localStorage.username).then(res => {
+      console.log(res);
+      if (res.data === 0) {
+        alert('클래스에 참여중인 인원만 가능합니다');
+        return false;
+      } else if (res.data !== 0) {
+        setModalOpen3(true);
+      }
+    });
   };
   const closeModal3 = () => {
     setModalOpen3(false);
