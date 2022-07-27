@@ -523,7 +523,15 @@ const ClassDetail = () => {
                       precision={0.5}
                       readOnly
                     />
-                    &nbsp; &nbsp;평균 {data.ratingAvg}점
+                    <span
+                      style={{
+                        position: 'relative',
+                        bottom: '5px',
+                        marginLeft: '15px',
+                      }}
+                    >
+                      평균 {data.ratingAvg}점
+                    </span>
                   </div>
                 </div>
 
