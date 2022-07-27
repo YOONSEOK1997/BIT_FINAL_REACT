@@ -90,7 +90,7 @@ const ClassDetail = () => {
     axios.get(chkUrl + '?pay_user_id=' + localStorage.username).then(res => {
       console.log(res);
       if (res.data === 0) {
-        alert('클래스에 참여중인 인원만 가능합니다');
+        alert('클래스에 참여 후 가능합니다');
         return false;
       } else if (res.data !== 0) {
         setModalOpen2(true);
@@ -215,7 +215,7 @@ const ClassDetail = () => {
           </div>
           <div className="tutor_info">
             <div class="tutor_image" style={{ float: 'left' }}>
-              <img src={photoUrl + photo} />
+              <img className="tutor_image" src={photoUrl + photo} />
             </div>
             <span className="tutor_name">{data.tutor_id} 튜터</span>
           </div>
