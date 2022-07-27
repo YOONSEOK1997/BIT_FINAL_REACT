@@ -199,8 +199,8 @@ const ClassList = () => {
 
       <div className="listdiv">
         {/* 하나의 카드 반복문 */}
-        {data &&
-          data.map((data, idx) => (
+        {filterData1 &&
+          filterData1.map((data, idx) => (
             <div className="each_class" key={idx}>
               <img
                 alt=""
