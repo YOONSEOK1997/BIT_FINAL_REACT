@@ -92,7 +92,7 @@ const Payment = (effect, deps, props) => {
           pay_price: state.data.totpay,
         })
         .then(res => {
-          alert('insert 성공@');
+          alert('결제가 완료되었습니다~!');
         });
       console.log('1' + response.card_name);
       navi('/class/payment/after', { state: response });

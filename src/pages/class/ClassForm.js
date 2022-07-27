@@ -499,7 +499,7 @@ const ClassForm = passData => {
             className="label2"
             defaultValue="0"
             style={{ width: '490px' }}
-            step="10"
+            step="1000"
             onChange={moneyChange}
             value={class_price}
           />

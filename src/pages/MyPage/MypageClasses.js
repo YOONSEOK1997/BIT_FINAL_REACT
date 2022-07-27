@@ -5,7 +5,11 @@ import { theme } from '../../styles/theme';
 import MypageCard from './MypageCards.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper';
-
+import img1 from '../class/classImage/1.JPG';
+import img2 from '../class/classImage/2.JPG';
+import img3 from '../class/classImage/3.JPG';
+import img4 from '../class/classImage/4.JPG';
+import img5 from '../class/classImage/5.JPG';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -38,20 +42,16 @@ const MypageClasses = () => {
               {/* 하나의 카드 반복문 */}
               <Card1>
                 <div className="each_class1">
-                  <img
-                    alt=""
-                    src={'../class/classImage/002.png'}
-                    className="listimg1"
-                  />
+                  <img alt="" src={img1} className="listimg1" />
 
-                  <div className="class_location1">
+                  <div className="class_location1" style={{ color: '#7814DC' }}>
                     <LocationOnIcon
                       style={{
                         fontSize: '20px',
                         height: '20px',
                       }}
                     />
-                    (잠원) 한강공원
+                    잠실 한강공원
                   </div>
 
                   <div className="class_title2">
@@ -59,108 +59,38 @@ const MypageClasses = () => {
                       className="class_title_name1"
                       style={{ float: 'right' }}
                     >
-                      (어차저차어기여차 클래스)
+                      한강 철인 3종경기
                     </div>
                   </div>
 
                   <div className="list_tutor_name1">
-                    <div>(김정하) 튜터</div>
+                    <div style={{ width: '80px' }}>김준영 튜터</div>
                   </div>
 
-                  <div className="class_numbers1">
-                    <div className="class_price1">(35,000) 원</div>
-                    <div className="class_hour1">(총 (30) 시간)</div>
-                  </div>
-
-                  <div className="class_like1">
-                    <FavoriteBorderIcon
-                      style={{
-                        fontSize: '20px',
-                        color: 'red',
-                        height: '20px',
-                        display: 'inline-block',
-                      }}
-                    />
-                    <div className="heart1" style={{ display: 'inline-block' }}>
-                      162
-                    </div>
-                  </div>
-                </div>
-              </Card1>
-            </SwiperSlide>
-            {/* 여기부터는 반복문 돌리면 필요없음(SwiperSlide 포함해서 돌리기) */}
-            <SwiperSlide>
-              {' '}
-              <Card1>
-                <div className="each_class1">
-                  <img
-                    alt=""
-                    src={'../class/classImage/002.png'}
-                    className="listimg1"
-                  />
-
-                  <div className="class_location1">
-                    <LocationOnIcon
-                      style={{
-                        fontSize: '20px',
-                        height: '20px',
-                      }}
-                    />
-                    (잠원) 한강공원
-                  </div>
-
-                  <div className="class_title2">
-                    <div
-                      className="class_title_name1"
-                      style={{ float: 'right' }}
-                    >
-                      (어차저차어기여차 클래스)
-                    </div>
-                  </div>
-
-                  <div className="list_tutor_name1">
-                    <div>(김정하) 튜터</div>
-                  </div>
-
-                  <div className="class_numbers1">
-                    <div className="class_price1">(35,000) 원</div>
-                    <div className="class_hour1">(총 (30) 시간)</div>
-                  </div>
-
-                  <div className="class_like1">
-                    <FavoriteBorderIcon
-                      style={{
-                        fontSize: '20px',
-                        color: 'red',
-                        height: '20px',
-                        display: 'inline-block',
-                      }}
-                    />
-                    <div className="heart1" style={{ display: 'inline-block' }}>
-                      162
-                    </div>
+                  <div
+                    className="class_numbers1"
+                    style={{ lineHeight: '25px' }}
+                  >
+                    <div className="class_price1">55,000 원</div>
+                    <div className="class_hour1">총 3 시간</div>
                   </div>
                 </div>
               </Card1>
             </SwiperSlide>
             <SwiperSlide>
-              {' '}
+              {/* 하나의 카드 반복문 */}
               <Card1>
                 <div className="each_class1">
-                  <img
-                    alt=""
-                    src={'../class/classImage/002.png'}
-                    className="listimg1"
-                  />
+                  <img alt="" src={img2} className="listimg1" />
 
-                  <div className="class_location1">
+                  <div className="class_location1" style={{ color: '#7814DC' }}>
                     <LocationOnIcon
                       style={{
                         fontSize: '20px',
                         height: '20px',
                       }}
                     />
-                    (잠원) 한강공원
+                    이촌 한강공원
                   </div>
 
                   <div className="class_title2">
@@ -168,52 +98,38 @@ const MypageClasses = () => {
                       className="class_title_name1"
                       style={{ float: 'right' }}
                     >
-                      (어차저차어기여차 클래스)
+                      [이촌] 스케이트보드
                     </div>
                   </div>
 
                   <div className="list_tutor_name1">
-                    <div>(김정하) 튜터</div>
+                    <div style={{ width: '80px' }}>이경주 튜터</div>
                   </div>
 
-                  <div className="class_numbers1">
-                    <div className="class_price1">(35,000) 원</div>
-                    <div className="class_hour1">(총 (30) 시간)</div>
-                  </div>
-
-                  <div className="class_like1">
-                    <FavoriteBorderIcon
-                      style={{
-                        fontSize: '20px',
-                        color: 'red',
-                        height: '20px',
-                        display: 'inline-block',
-                      }}
-                    />
-                    <div className="heart1" style={{ display: 'inline-block' }}>
-                      162
-                    </div>
+                  <div
+                    className="class_numbers1"
+                    style={{ lineHeight: '25px' }}
+                  >
+                    <div className="class_price1">20,000 원</div>
+                    <div className="class_hour1">총 4 시간</div>
                   </div>
                 </div>
               </Card1>
             </SwiperSlide>
             <SwiperSlide>
+              {/* 하나의 카드 반복문 */}
               <Card1>
                 <div className="each_class1">
-                  <img
-                    alt=""
-                    src={'../class/classImage/002.png'}
-                    className="listimg1"
-                  />
+                  <img alt="" src={img3} className="listimg1" />
 
-                  <div className="class_location1">
+                  <div className="class_location1" style={{ color: '#7814DC' }}>
                     <LocationOnIcon
                       style={{
                         fontSize: '20px',
                         height: '20px',
                       }}
                     />
-                    (잠원) 한강공원
+                    반포 한강공원
                   </div>
 
                   <div className="class_title2">
@@ -221,31 +137,59 @@ const MypageClasses = () => {
                       className="class_title_name1"
                       style={{ float: 'right' }}
                     >
-                      (어차저차어기여차 클래스)
+                      노래 한 번 배우겠어?
                     </div>
                   </div>
 
                   <div className="list_tutor_name1">
-                    <div>(김정하) 튜터</div>
+                    <div style={{ width: '80px' }}>김정하 튜터</div>
                   </div>
 
-                  <div className="class_numbers1">
-                    <div className="class_price1">(35,000) 원</div>
-                    <div className="class_hour1">(총 (30) 시간)</div>
+                  <div
+                    className="class_numbers1"
+                    style={{ lineHeight: '25px' }}
+                  >
+                    <div className="class_price1">50,000 원</div>
+                    <div className="class_hour1">총 1 시간</div>
                   </div>
+                </div>
+              </Card1>
+            </SwiperSlide>
+            <SwiperSlide>
+              {/* 하나의 카드 반복문 */}
+              <Card1>
+                <div className="each_class1">
+                  <img alt="" src={img4} className="listimg1" />
 
-                  <div className="class_like1">
-                    <FavoriteBorderIcon
+                  <div className="class_location1" style={{ color: '#7814DC' }}>
+                    <LocationOnIcon
                       style={{
                         fontSize: '20px',
-                        color: 'red',
                         height: '20px',
-                        display: 'inline-block',
                       }}
                     />
-                    <div className="heart1" style={{ display: 'inline-block' }}>
-                      162
+                    뚝섬 한강공원
+                  </div>
+
+                  <div className="class_title2">
+                    <div
+                      className="class_title_name1"
+                      style={{ float: 'right' }}
+                    >
+                      [초급] 스킨스쿠버
                     </div>
+                  </div>
+
+                  <div className="list_tutor_name1">
+                    <div style={{ width: '80px' }}>홍대한 튜터</div>
+                  </div>
+
+                  <div
+                    className="class_numbers1"
+                    style={{ lineHeight: '25px' }}
+                  >
+                    <div className="class_price1">85,000 원</div>
+                    <div className="class_hour1">총 3 시간</div>
                   </div>
                 </div>
               </Card1>
@@ -271,11 +215,7 @@ const MypageClasses = () => {
               {/* 하나의 카드 반복문 */}
               <Card2>
                 <div className="each_class_end">
-                  <img
-                    alt=""
-                    src={'../class/classImage/002.png'}
-                    className="listimg1"
-                  />
+                  <img alt="" src={img5} className="listimg1" />
 
                   <div className="class_location1">
                     <LocationOnIcon
@@ -284,7 +224,7 @@ const MypageClasses = () => {
                         height: '20px',
                       }}
                     />
-                    (잠원) 한강공원
+                    반포 한강공원
                   </div>
 
                   <div className="class_title2">
@@ -292,31 +232,17 @@ const MypageClasses = () => {
                       className="class_title_name1"
                       style={{ float: 'right' }}
                     >
-                      (어차저차어기여차 클래스)
+                      노을보며 와인시음
                     </div>
                   </div>
 
                   <div className="list_tutor_name1">
-                    <div>(김정하) 튜터</div>
+                    <div>한별 튜터</div>
                   </div>
 
                   <div className="class_numbers1">
-                    <div className="class_price1">(35,000) 원</div>
-                    <div className="class_hour1">(총 (30) 시간)</div>
-                  </div>
-
-                  <div className="class_like1">
-                    <FavoriteBorderIcon
-                      style={{
-                        fontSize: '20px',
-                        color: 'red',
-                        height: '20px',
-                        display: 'inline-block',
-                      }}
-                    />
-                    <div className="heart1" style={{ display: 'inline-block' }}>
-                      162
-                    </div>
+                    <div className="class_price1">15,000 원</div>
+                    <div className="class_hour1">총 5 시간</div>
                   </div>
                 </div>
               </Card2>
