@@ -29,7 +29,7 @@ const ClassForm = passData => {
   let numUrl = process.env.REACT_APP_SPRING_URL + 'class/maxnum';
 
   //class table < optionnum
-  const tutor_id = localStorage.nickname;
+  const tutor_id = localStorage.username;
   const [class_category, setClass_category] = useState('스냅사진');
   const [class_location, setClass_location] = useState('반포');
   const [class_name, setClass_name] = useState('');
