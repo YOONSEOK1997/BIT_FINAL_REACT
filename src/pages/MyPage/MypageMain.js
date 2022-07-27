@@ -165,29 +165,31 @@ const MypageMain = () => {
             <span className="profile_label1">이메일</span>
             <span className="profile_label2">{data.email}</span>
           </div>
-          <form onSubmit={ChangeNickname}>
-            <div className="profile_lable_bottom">
-              <span className="profile_label1">닉네임</span>
-              <span className="profile_label2">
-                <input
-                  type="text"
-                  placeholder={data.realname}
-                  className="profile_inputch"
-                  onChange={e => {
-                    setNickname(e.target.value);
-                  }}
-                />
+          {/* <form onSubmit={ChangeNickname}> */}
+          <div className="profile_lable_bottom">
+            <span className="profile_label1">닉네임</span>
+            <span className="profile_label2">
+              <input
+                type="text"
+                placeholder={data.realname}
+                className="profile_inputch"
+                onChange={e => {
+                  setNickname(e.target.value);
+                }}
+              />
+              <div className="btnex">
                 <button type="submit" className="profile_inputch_btn">
-                  변경✔️
+                  <p>변경✔️</p>
                 </button>
-              </span>
-            </div>
-          </form>
+              </div>
+            </span>
+          </div>
+          {/* </form> */}
           <div className="profile_lable_bottom">
             <span className="profile_label1">비밀번호</span>
             <span className="profile_label2">
               <button onClick={openModal} className="pass_ch_button">
-                비밀번호 변경
+                <p>비밀번호 변경</p>
               </button>
               <PassChangeModal
                 open={modal}

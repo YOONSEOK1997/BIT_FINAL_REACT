@@ -119,6 +119,7 @@ const PassChangeModal = props => {
               type="submit"
               disabled={isSubmitting}
               className="passchange_btn"
+              //style={{ height: '20px' }}
             >
               변경하기☑️
             </button>
