@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
+import axios from 'axios';
 import mm1 from './imagesi/mm1.jpg';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import './Map.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
@@ -23,75 +24,125 @@ import k5 from './imagesi/k5.jpg';
 import k6 from './imagesi/k6.jpg';
 import { Transform } from '@mui/icons-material';
 
-const popover = (
-  <Popover id="popover-basic">
-    <Popover.Header as="h3">반포 클래스</Popover.Header>
-    <br />
-    <Popover.Body>
-      현재 클래스 수 10개 <br />총 참여자 수 5명
-    </Popover.Body>
-  </Popover>
-);
-const popover1 = (
-  <Popover id="popover-basic1">
-    <Popover.Header as="h3">여의도 클래스</Popover.Header>
-    <Popover.Body>
-      테니스: 10명 <br />
-      수영: 5명 <br />
-      댄스: 7명
-    </Popover.Body>
-  </Popover>
-);
-const popover2 = (
-  <Popover id="popover-basic2">
-    <Popover.Header as="h3">이촌 클래스</Popover.Header>
-    <br />
-    <Popover.Body>
-      복싱: 10명 <br />
-      멘탈힐링: 5명 <br />
-      스노우쿨링: 10명
-    </Popover.Body>
-  </Popover>
-);
-const popover3 = (
-  <Popover id="popover-basic3">
-    <Popover.Header as="h3">난지 클래스</Popover.Header>
-    <br />
-    <Popover.Body>
-      수영: 10명 <br />
-      멘탈힐링: 5명 <br />
-      농구: 10명
-    </Popover.Body>
-  </Popover>
-);
-const popover4 = (
-  <Popover id="popover-basic4">
-    <Popover.Header as="h3">뚝섬 클래스</Popover.Header>
-    <br />
-    <Popover.Body>
-      수영: 10명 <br />
-      멘탈힐링: 5명 <br />
-      스노우쿨링: 10명
-    </Popover.Body>
-  </Popover>
-);
-const popover5 = (
-  <Popover id="popover-basic5">
-    <Popover.Header as="h3">잠실 클래스</Popover.Header>
-    <br />
-    <Popover.Body>
-      수영: 10명 <br />
-      테니스: 5명 <br />
-      런닝: 10명
-    </Popover.Body>
-  </Popover>
-);
-const Example = () => (
-  <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-    <Button variant="success">Click me</Button>
-  </OverlayTrigger>
-);
 function Map() {
+  const [banpo, setBanpo] = useState('반포');
+  const [yeouido, setYeouido] = useState('여의도');
+  const [ddukseom, setDduckseom] = useState('뚝섬');
+  const [echon, setEchon] = useState('이촌');
+  const [nanji, setNanji] = useState('난지');
+  const [jamsil, setJamsil] = useState('잠실');
+  const [banposu, setBanposu] = useState('');
+  const [yeouidosu, setYeouidosu] = useState('');
+  const [echonsu, setEchonsu] = useState('');
+  const [nanjisu, setNanjisu] = useState('');
+  const [ddukseomsu, setDdukseomsu] = useState('');
+  const [jamsilsu, setJamsilsu] = useState('');
+
+  const onGetClassSu = loc => {
+    //반포
+    axios
+      .get(`http://localhost:9009/map/getClassSu?class_location=${loc}`)
+      .then(res => {
+        setBanposu(res.data);
+      });
+  };
+  //여의도
+  const onGetClassSu1 = loc => {
+    axios
+      .get(`http://localhost:9009/map/getClassSu?class_location=${loc}`)
+      .then(res => {
+        setYeouidosu(res.data);
+      });
+  };
+  //이촌
+  const onGetClassSu2 = loc => {
+    axios
+      .get(`http://localhost:9009/map/getClassSu?class_location=${loc}`)
+      .then(res => {
+        setEchonsu(res.data);
+      });
+  };
+  const onGetClassSu3 = loc => {
+    axios
+      .get(`http://localhost:9009/map/getClassSu?class_location=${loc}`)
+      .then(res => {
+        setNanjisu(res.data);
+      });
+  };
+  const onGetClassSu4 = loc => {
+    axios
+      .get(`http://localhost:9009/map/getClassSu?class_location=${loc}`)
+      .then(res => {
+        console.log(res.data);
+        setDdukseomsu(res.data);
+      });
+  };
+  const onGetClassSu5 = loc => {
+    axios
+      .get(`http://localhost:9009/map/getClassSu?class_location=${loc}`)
+      .then(res => {
+        setJamsilsu(res.data);
+      });
+  };
+
+  const popover = (
+    <Popover id="popover-basic">
+      <Popover.Header as="h3">반포 클래스</Popover.Header>
+      <br />
+      <Popover.Body>
+        현재 클래스 수 {banposu}개 <br />총 참여자 수 명
+      </Popover.Body>
+    </Popover>
+  );
+  const popover1 = (
+    <Popover id="popover-basic1">
+      <Popover.Header as="h3">여의도 클래스</Popover.Header>
+      <Popover.Body>
+        현재 클래스 수 {yeouidosu}개 <br />총 참여자 수 명
+      </Popover.Body>
+    </Popover>
+  );
+  const popover2 = (
+    <Popover id="popover-basic2">
+      <Popover.Header as="h3">이촌 클래스</Popover.Header>
+      <br />
+      <Popover.Body>
+        현재 클래스 수 {echonsu}개 <br />총 참여자 수 명
+      </Popover.Body>
+    </Popover>
+  );
+  const popover3 = (
+    <Popover id="popover-basic3">
+      <Popover.Header as="h3">난지 클래스</Popover.Header>
+      <br />
+      <Popover.Body>
+        현재 클래스 수 {nanjisu}개 <br />총 참여자 수 명
+      </Popover.Body>
+    </Popover>
+  );
+  const popover4 = (
+    <Popover id="popover-basic4">
+      <Popover.Header as="h3">뚝섬 클래스</Popover.Header>
+      <br />
+      <Popover.Body>
+        현재 클래스 수 {ddukseomsu}개 <br />총 참여자 수 명
+      </Popover.Body>
+    </Popover>
+  );
+  const popover5 = (
+    <Popover id="popover-basic5">
+      <Popover.Header as="h3">잠실 클래스</Popover.Header>
+      <br />
+      <Popover.Body>
+        현재 클래스 수 {jamsilsu}개 <br />총 참여자 수 명
+      </Popover.Body>
+    </Popover>
+  );
+  const Example = () => (
+    <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+      <Button variant="success">Click me</Button>
+    </OverlayTrigger>
+  );
   return (
     <Wrapper>
       <MapHeader>
@@ -118,7 +169,9 @@ function Map() {
               display: 'inline-block',
             }}
           />
-          <h2>반포</h2>
+          <button type="button" onClick={onGetClassSu(banpo)}>
+            반포
+          </button>
         </div>
       </OverlayTrigger>
       {/* 닫힘 */}
@@ -130,7 +183,9 @@ function Map() {
               color: 'orange',
             }}
           />
-          <h2>여의도</h2>
+          <button type="button" onClick={onGetClassSu1(yeouido)}>
+            여의도
+          </button>
         </div>
       </OverlayTrigger>
       <OverlayTrigger trigger="click" placement="right" overlay={popover2}>
@@ -141,7 +196,9 @@ function Map() {
               color: 'green',
             }}
           />
-          <h2>이촌</h2>
+          <button type="button" onClick={onGetClassSu2(echon)}>
+            이촌
+          </button>
         </div>
       </OverlayTrigger>
       <OverlayTrigger trigger="click" placement="right" overlay={popover3}>
@@ -152,7 +209,9 @@ function Map() {
               color: 'green',
             }}
           />
-          <h2>난지</h2>
+          <button type="button" onClick={onGetClassSu3(nanji)}>
+            난지
+          </button>
         </div>
       </OverlayTrigger>
       <OverlayTrigger trigger="click" placement="left" overlay={popover4}>
@@ -163,7 +222,9 @@ function Map() {
               color: 'green',
             }}
           />
-          <h2>뚝섬</h2>
+          <button type="button" onClick={onGetClassSu4(ddukseom)}>
+            뚝섬
+          </button>
         </div>
       </OverlayTrigger>
       <OverlayTrigger trigger="click" placement="right" overlay={popover5}>
@@ -174,7 +235,9 @@ function Map() {
               color: 'blue',
             }}
           />
-          <h2>잠실</h2>
+          <button type="button" onClick={onGetClassSu5(jamsil)}>
+            잠실
+          </button>
         </div>
       </OverlayTrigger>
       <br />

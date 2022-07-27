@@ -70,17 +70,6 @@ div.jamsil :hover {
   height: 70px;
 }
 
-.box {
-  height: 200px;
-  width: 200px;
-  background-color: rgb(0, 191, 255);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 30px;
-  cursor: pointer;
-}
-
 .popover-basic1 {
   border: solid 1px black;
 }
