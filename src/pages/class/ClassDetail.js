@@ -61,9 +61,12 @@ const ClassDetail = () => {
   let likeUrl2 = process.env.REACT_APP_SPRING_URL + 'like/chk';
   let reviewListUrl =
     process.env.REACT_APP_SPRING_URL + 'review/alllist?class_num=' + class_num;
+  const getprofileurl = 'http://localhost:9009/api/getprofile2';
+
   //popup modal (ClassGuide, 클래스신청)
   // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
   const [modalOpen, setModalOpen] = useState(false);
+  const [photo, setPhoto] = useState('');
   const openModal = () => {
     if (changeoptions.current == 0) {
       alert('일정을 선택해주세요옹~?');
@@ -114,6 +117,14 @@ const ClassDetail = () => {
       setData(res.data);
       setClass_price(res.data.class_price);
       console.log(res.data);
+      console.log(res.data.tutor_name);
+
+      axios
+        .get(getprofileurl + '?username=' + res.data.tutor_name)
+        .then(res2 => {
+          setPhoto(res2.data.profile);
+          console.log(res2.data.profile);
+        });
     });
   };
 
@@ -186,7 +197,9 @@ const ClassDetail = () => {
             <span className="class_title">{data.class_name}</span>
           </div>
           <div className="tutor_info">
-            <div class="tutor_image" style={{ float: 'left' }}></div>
+            <div class="tutor_image" style={{ float: 'left' }}>
+              <img src={photoUrl + photo} />
+            </div>
             <span className="tutor_name">{data.tutor_id} 튜터</span>
           </div>
           {/* 이거 map으로 돌릴 수 있을거같은데 일단 */}
