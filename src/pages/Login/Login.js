@@ -77,37 +77,43 @@ const Login = () => {
 
   const [data, setData] = useState('');
   const getprofileurl = 'http://localhost:9009/api/getprofile';
+  const loginchkurl = 'http://localhost:9009/api/loginchk';
+  const idCheckURL = 'http://localhost:9009/api/idchk?username=';
 
   //일반 로그인
   const onSubmit = e => {
     e.preventDefault();
 
-    const loginchkurl = 'http://localhost:9009/api/loginchk';
+    axios.get(idCheckURL + username).then(res => {
+      if (res.data === 0) {
+        alert('존재하지 않은 아이디 입니다.');
+      } else {
+        axios
+          .post(loginchkurl, { username, password, withCredentials: true })
+          .then(res => {
+            if (res.data === 0) {
+              alert('비밀번호가 맞지 않습니다.');
+            } else {
+              AuthService.login(username, password, {
+                withCredentials: true,
+              }).then(res => {
+                console.log(res);
+                localStorage.loginok = 'yes';
+                localStorage.username = username;
+                const jwttoken = res.token;
+                const profile = res.profile;
+                //window.location.reload(); //새로고침
 
-    axios
-      .post(loginchkurl, { username, password, withCredentials: true })
-      .then(res => {
-        if (res.data === 0) {
-          alert('아이디 또는 비밀번호가 맞지 않습니다.');
-        } else {
-          AuthService.login(username, password, { withCredentials: true }).then(
-            res => {
-              console.log(res);
-              localStorage.loginok = 'yes';
-              localStorage.username = username;
-              const jwttoken = res.token;
-              const profile = res.profile;
-              //window.location.reload(); //새로고침
-
-              //USER정보 불러오기
-              AuthService.getProfile(username).then(res => {
-                setToken(jwttoken);
-                goToMain();
+                //USER정보 불러오기
+                AuthService.getProfile(username).then(res => {
+                  setToken(jwttoken);
+                  goToMain();
+                });
               });
             }
-          );
-        }
-      });
+          });
+      }
+    });
   };
 
   return (
