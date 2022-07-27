@@ -147,10 +147,16 @@ const TutorAdmin = () => {
               </OneLine>
               {data2 &&
                 data2.map((data2, index) => (
-                  <OneLine1>
+                  <OneLine1 style={{ fontSize: '18px', height: '40px' }}>
                     {/* 하나의 반복문 : 한줄  */}
                     <Number1>{index + 1}</Number1>
-                    <ClassName1>{data2.class_name}</ClassName1>
+                    <ClassName1
+                      onClick={() => {
+                        navi(`/class/detail/${data2.class_num}`);
+                      }}
+                    >
+                      {data2.class_name}
+                    </ClassName1>
                     <UserName1>{data2.pay_user_name}</UserName1>
                     <UserId1>{data2.pay_user_id}</UserId1>
                     <Date1>{data2.pay_day}</Date1>

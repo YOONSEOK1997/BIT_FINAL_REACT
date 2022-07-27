@@ -471,22 +471,35 @@ const ClassDetail = () => {
             <br />
           </div>
         ) : tab === 2 ? (
-          <div className="class_tabb1">
-            <React.Fragment>
-              <button className="class_reviewbtn" onClick={openModal3}>
-                채팅방 입장
-              </button>
-              {/* //header 부분에 텍스트를 입력한다. */}
-              <ChatRoom
-                open={modalOpen3}
-                close={closeModal3}
-                header="채팅방"
-                data={data}
-                class_num={data.class_num}
-              />
-              {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달
+          <div
+            className="class_tabb1"
+            style={{ clear: 'both', height: '800px', padding: '40px' }}
+          >
+            <div className="chat">
+              <div className="chatmsg">
+                채팅방에 입장해서 튜터에게 궁금한 것을 물어보고
+                <br /> 해당 클래스를 수강하는 사람들과 자유롭게 소통해보세요! 😍
+              </div>
+              <React.Fragment>
+                <button
+                  className="class_reviewbtn2"
+                  onClick={openModal3}
+                  style={{ marginRight: '50px', marginTop: '20px' }}
+                >
+                  채팅방 입장 💬
+                </button>
+                {/* //header 부분에 텍스트를 입력한다. */}
+                <ChatRoom
+                  open={modalOpen3}
+                  close={closeModal3}
+                  header="채팅방"
+                  data={data}
+                  class_num={data.class_num}
+                />
+                {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달
                       팝업창입니다. 쉽게 만들 수 있어요. 같이 만들어봐요! */}
-            </React.Fragment>
+              </React.Fragment>
+            </div>
           </div>
         ) : (
           <div className="class_tabb1">
@@ -509,8 +522,12 @@ const ClassDetail = () => {
                 </div>
 
                 <React.Fragment>
-                  <button className="class_reviewbtn" onClick={openModal2}>
-                    리뷰 작성하기
+                  <button
+                    className="class_reviewbtn2"
+                    onClick={openModal2}
+                    style={{ lineHeight: '20px' }}
+                  >
+                    리뷰 작성하기✒️
                   </button>
                   {/* //header 부분에 텍스트를 입력한다. */}
                   <ReviewModal

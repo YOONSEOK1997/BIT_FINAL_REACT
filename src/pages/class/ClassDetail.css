@@ -485,10 +485,50 @@ div .class_plann {
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  line-height: normal;
+  line-height: 20px;
   letter-spacing: normal;
   float: right;
   background-color: #eaecec;
+}
+
+.class_reviewbtn2 {
+  width: 250px;
+  height: 58px;
+  border-radius: 10px;
+  border: solid 1px #f20e42;
+  font-size: 24px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 20px;
+  letter-spacing: normal;
+  float: right;
+  background-color: #ffffff;
+  color: #f20e42;
+}
+
+.chat {
+  background-color: #f1e4ff;
+  width: 1200px;
+  clear: both;
+  border-radius: 10px;
+  height: 180px;
+  padding: 40px;
+}
+.chatmsg {
+  margin-left: 50px;
+  width: 750px;
+  float: left;
+  font-size: 28px;
+  line-height: 50px;
+  color: #7814dc;
+  clear: both;
+}
+
+.class_reviewbtn2:hover {
+  box-shadow: 0 14px 15px rgba(0, 0, 0, 0.15), 0 7px 7px rgba(0, 0, 0, 0.12);
+  border-color: #7814dc;
+  color: #7814dc;
 }
 
 .class_reviewerinfo {
