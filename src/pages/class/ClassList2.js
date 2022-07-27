@@ -35,6 +35,7 @@ const ClassList = () => {
 
   //백엔드에서 받아올 리스트 데이터변수
   const [data, setData] = useState([]);
+  const [change, setChange] = useState('');
 
   //필터링한거에 해당하는 데이터 (Category)
   const [filterData1, setFilterData1] = useState([]);
@@ -80,15 +81,25 @@ const ClassList = () => {
   let class_photoUrl = 'http://localhost:9009/save/';
   let likeUrl = process.env.REACT_APP_SPRING_URL + 'like/check';
 
+  // // //처음에 불러오는 url
+  // const list = () => {
+  //   axios.get(class_alllistUrl).then(res => {
+  //     setData(res.data);
+  //     console.log('datalength:' + res.data.length);
+  //     for (let i = 0; i < res.data.length; i++) {
+  //       likestate.current[i] = '';
+  //     }
+  //     console.log('찐' + likestate.current.length);
+  //     setFilterData1(res.data);
+  //     setFilterData2(res.data);
+  //   });
+  // };
+
   // //처음에 불러오는 url
   const list = () => {
-    axios.get(class_alllistUrl).then(res => {
+    axios.get(class_alllistUrl2).then(res => {
       setData(res.data);
       console.log('datalength:' + res.data.length);
-      for (let i = 0; i < res.data.length; i++) {
-        likestate.current[i] = '';
-      }
-      console.log('찐' + likestate.current.length);
       setFilterData1(res.data);
       setFilterData2(res.data);
     });
@@ -107,7 +118,7 @@ const ClassList = () => {
 
   useEffect(() => {
     list();
-  }, []);
+  }, [change]);
 
   return (
     <Wrapper>
@@ -249,6 +260,7 @@ const ClassList = () => {
                       console.log(
                         '인덱스' + idx + '의 값:' + likestate.current[idx]
                       );
+                      setChange(res.data);
                       console.log(likestate);
                     });
                 }}
