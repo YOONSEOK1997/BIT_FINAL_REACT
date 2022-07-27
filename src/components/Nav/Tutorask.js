@@ -20,8 +20,11 @@ const Tutorask = props => {
 
   function ask() {
     for (let i = 0; i < set.length; i++) {
-      if (set[i] === '대기' || set[i] === '수락') {
+      if (set[i] === '대기') {
         alert('이미 신청중임^_^');
+        return;
+      } else if (set[i] === '수락') {
+        alert('이미 수락된 회원입니다');
         return;
       }
     }
