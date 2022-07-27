@@ -788,6 +788,6 @@ const Wrapper = styled.div`
   margin-top: 80px;
   position: relative;
   padding-bottom: 20px;
-  height: 3000px;
+  height: 3300px;
   margin-left: 470px;
 `;
