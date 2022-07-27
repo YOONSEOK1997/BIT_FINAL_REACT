@@ -72,10 +72,15 @@ const Nav = () => {
 
         <React.Fragment>
           {localStorage.loginok === 'yes' &&
-          localStorage.username !== 'admin' ? (
+          localStorage.username !== 'admin' &&
+          localStorage.authority !== '2' ? (
             <GnbTutor to="/" onClick={openModal2}>
               Tutor 신청
             </GnbTutor>
+          ) : localStorage.loginok === 'yes' &&
+            localStorage.authority === '2' &&
+            localStorage.username !== 'admin' ? (
+            <GnbTutor to="/class/form">Class 등록</GnbTutor>
           ) : (
             ''
           )}

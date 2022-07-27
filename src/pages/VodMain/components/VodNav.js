@@ -39,8 +39,12 @@ const VodNav = () => {
     <Container>
       <Wrapper>
         <Left>
-          <LinkMain to="/">
-            <Logo src="/images/vodlogo4.png" style={{ width: '80px' }} />
+          <LinkMain
+            onClick={() => {
+              navigate('/');
+            }}
+          >
+            <Logo src="/images/vodlogo4.png" to="/" style={{ width: '80px' }} />
           </LinkMain>
           <PageMenu to="/">HOME</PageMenu>
           <PageMenu to="/vod">VOD</PageMenu>
