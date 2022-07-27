@@ -158,8 +158,15 @@ const MypageMain = () => {
         </div>
         <div className="profile_info">
           <div className="profile_lable_bottom">
-            <span className="profile_label1">회원 아이디</span>
-            <span className="profile_label2">{data.username}</span>
+            <span className="profile_label1">회원 아이디 </span>
+            <span className="profile_label2">
+              {data.username}{' '}
+              {localStorage.authority === '2' ? (
+                <PaidYes style={{ marginLeft: '150px' }}>튜 터</PaidYes>
+              ) : (
+                ''
+              )}
+            </span>{' '}
           </div>
           <div className="profile_lable_bottom">
             <span className="profile_label1">이메일</span>
@@ -227,4 +234,16 @@ const Wrapper = styled.div`
   position: relative;
   padding-bottom: 20px;
   height: 1000px;
+`;
+
+const PaidYes = styled.div`
+  display: inline-block;
+  color: #f20e42;
+  border: 1px solid #f20e42;
+  width: 80px;
+  height: 30px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 27px;
+  font-weight: 600;
 `;

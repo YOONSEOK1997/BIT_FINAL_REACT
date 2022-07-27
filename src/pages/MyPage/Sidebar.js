@@ -9,7 +9,7 @@ function Sidebar() {
     { name: '결제 내역', path: '/mypage/payment' },
     { name: '찜한 클래스', path: '/mypage/liked' },
     { name: '수강중인 클래스', path: '/mypage/classes' },
-    { name: '튜터 페이지', path: '/mypage/tutor' },
+    // { name: '튜터 페이지', path: '/mypage/tutor' },
   ];
 
   const normalStyle = {
@@ -37,6 +37,17 @@ function Sidebar() {
             </NavLink>
           );
         })}
+        {localStorage.authority === '2' ? (
+          <NavLink
+            exact
+            style={({ isActive }) => (isActive ? activeStyle : normalStyle)}
+            to="/mypage/tutor"
+          >
+            <SidebarMenu>튜터 페이지</SidebarMenu>
+          </NavLink>
+        ) : (
+          ''
+        )}
       </Menu>
     </Side>
   );
@@ -58,4 +69,14 @@ const Menu = styled.div`
   width: 200px;
   display: flex;
   flex-direction: column;
+`;
+const SidebarMenu = styled.div`
+  font-size: 20px;
+  font-family: Noto Sans KR;
+  font-weight: 500;
+  width: 200px;
+  height: 30px;
+  text-align: center;
+  margin-top: 20px;
+  display: inline-block;
 `;
