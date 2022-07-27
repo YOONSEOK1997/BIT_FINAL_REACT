@@ -42,15 +42,21 @@ const Nav = () => {
   };
 
   const kakaoLog = () => {
-    AuthService.logout();
     if (!window.Kakao.Auth.getAccessToken()) {
+      AuthService.logout();
       alert('✅ 로그아웃 되었습니다.');
       goToMain();
+    } else {
+      window.Kakao.Auth.logout(function () {
+        // window.Kakao.init();
+        // window.Kakao.isInitialized();
+        AuthService.logout();
+        goToMain();
+        alert(
+          'logout ok\naccess token -> ' + window.Kakao.Auth.getAccessToken()
+        );
+      });
     }
-    window.Kakao.Auth.logout(function () {
-      localStorage.clear();
-      goToMain();
-    });
   };
 
   return (
