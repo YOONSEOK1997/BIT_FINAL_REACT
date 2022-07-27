@@ -26,12 +26,7 @@ const Main = () => {
 
   const goToCategoryList = e => {
     const { id } = e.target;
-    navigate(`/class/list2/?category_id=${id}`);
-  };
-
-  const goToTypeList = e => {
-    const id = e.target;
-    e.target === 1 ? navigate(`/class/list2?`) : navigate(`/vod`);
+    navigate(`/class/list/`);
   };
 
   const goToDetail = e => {
