@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
-import { FaVideo, FaLocationArrow, FaBook, FaHeart } from 'react-icons/fa';
+import {
+  FaVideo,
+  FaLocationArrow,
+  FaBook,
+  FaHeart,
+  FaMapMarkerAlt,
+} from 'react-icons/fa';
 
 import LectureSlide from './Components/LectureSlide';
 import MainSlider from './Components/MainSlider';
@@ -24,7 +30,7 @@ const Main = () => {
   };
 
   const goToTypeList = e => {
-    const { id } = e.target;
+    const id = e.target;
     e.target === 1 ? navigate(`/class/list2?`) : navigate(`/vod`);
   };
 
@@ -75,12 +81,54 @@ const Main = () => {
         </MenuContainer>
 
         <SubMenu>
-          {TYPES.map(({ icon, title }, idx) => (
-            <SubList id={idx + 1} key={idx} onClick={goToTypeList}>
-              {icon}
-              {title}
-            </SubList>
-          ))}
+          <ThreeSub>
+            {/* 오프라인 */}
+            <Sub
+              onClick={() => {
+                navi(`/class/list2`);
+              }}
+            >
+              <FaLocationArrow />
+              <SubSpan>오프라인</SubSpan>
+            </Sub>
+            {/* vod */}
+            <Sub
+              onClick={() => {
+                navi(`/class/vod`);
+              }}
+            >
+              <FaVideo />
+              <SubSpan>VOD</SubSpan>
+            </Sub>
+            {/* 지도  */}
+            <Sub
+              onClick={() => {
+                navi(`/map`);
+              }}
+            >
+              <FaMapMarkerAlt />
+              <SubSpan>Map</SubSpan>
+            </Sub>
+          </ThreeSub>
+          <WeatherSub>
+            <div
+              style={{
+                fontSize: '14px',
+                fontWeight: '500',
+                float: 'right',
+                backgroundColor: '#03d85e',
+                borderRadius: '8px',
+                width: '90px',
+                height: '30px',
+                lineHeight: '30px',
+                textAlign: 'center',
+                color: 'white',
+              }}
+            >
+              현재, 한강🌞
+            </div>
+            <Weather />
+          </WeatherSub>
         </SubMenu>
         <MainContainer>
           <LectureContainer>
@@ -159,12 +207,6 @@ const CATEGORY_TITLES = [
   '뚝섬 🍻',
 ];
 
-const TYPES = [
-  { icon: <FaLocationArrow id="1" />, title: '오프라인' },
-  { icon: <FaVideo id="2" />, title: 'VOD' },
-  { icon: <Weather id="4" /> },
-];
-
 const TREND_LIST = [
   { lectureId: 37, title: '김준영의 러닝 보강운동 클래스!' },
   { lectureId: 43, title: '북한산 다람쥐 한별과 종주!' },
@@ -227,11 +269,6 @@ const Contents = styled.ul`
   }
 `;
 
-const SubMenu = styled.ul`
-  display: flex;
-  justify-content: space-around;
-`;
-
 const SubList = styled.li`
   display: flex;
   flex-direction: column;
@@ -260,6 +297,7 @@ const LectureContainer = styled.div`
 
 const ProfileContainer = styled.div`
   margin-left: 120px;
+  margin-top: 10px;
 `;
 
 const Profile = styled.div`
@@ -340,4 +378,48 @@ const ProfileImg = styled.img`
   width: 36px;
   height: 36px;
   border-radius: 50%;
+`;
+
+const Sub = styled.div`
+  cursor: pointer;
+  svg {
+    margin-right: 8px;
+    margin-bottom: 15px;
+    font-size: ${theme.fontMedium};
+    color: ${theme.green};
+  }
+  margin-top: 25px;
+  margin-left: 150px;
+  display: inline-block;
+`;
+
+const SubSpan = styled.div`
+  font-family: Noto Sans KR;
+  font-weight: 700;
+`;
+
+const ThreeSub = styled.div`
+  width: 710px;
+  display: inline-block;
+  margin-top: 20px;
+  justify-content: space-around;
+`;
+
+const WeatherSub = styled.div`
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+  border: 1px #dbdbdb solid;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  width: 320px;
+  display: inline-block;
+  float: right;
+`;
+
+const SubMenu = styled.ul`
+  margin-bottom: 10px;
+  width: 1040px;
+  height: 140px;
+  display: inline-block;
 `;

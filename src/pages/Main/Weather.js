@@ -50,7 +50,7 @@ class Weather extends Component {
       return (
         <div className="App">
           <img src={imgSrc} />
-          <p>{this.state.temp}C</p>
+          <p>{this.state.temp}°C</p>
           <p>{this.state.desc}</p>
         </div>
       );
