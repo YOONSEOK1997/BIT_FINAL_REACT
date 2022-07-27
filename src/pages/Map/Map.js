@@ -145,107 +145,112 @@ function Map() {
     <Wrapper>
       <MapHeader>
         <MapTitle>오늘, 한강은 이곳에서 진행돼요!</MapTitle>
+        <Ment>
+          한강의 곳곳에서{' '}
+          <a href="/class/list" style={{ color: '#03d85e' }}>
+            다양한 클래스
+          </a>
+          에 참여해보세요😄
+        </Ment>
       </MapHeader>
-      {/* 이미지 */}
-      <img
-        src={mm1}
-        alt=""
-        style={{
-          width: '1035px',
-          height: '450px',
-          marginTop: '100px',
-          display: 'inline-block',
-        }}
-      />
-      {/* 아이콘+지역명 */}
-      <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-        <div className="banpo">
-          <LocationOnIcon
-            style={{
-              fontSize: '60px',
-              color: 'red',
-              display: 'inline-block',
-            }}
-          />
-          <button type="button" onClick={onGetClassSu(banpo)}>
-            반포
-          </button>
-        </div>
-      </OverlayTrigger>
-      {/* 닫힘 */}
-      <OverlayTrigger trigger="click" placement="left" overlay={popover1}>
-        <div className="yeouido">
-          <LocationOnIcon
-            style={{
-              fontSize: '60px',
-              color: 'orange',
-            }}
-          />
-          <button type="button" onClick={onGetClassSu1(yeouido)}>
-            여의도
-          </button>
-        </div>
-      </OverlayTrigger>
-      <OverlayTrigger trigger="click" placement="right" overlay={popover2}>
-        <div className="echon">
-          <LocationOnIcon
-            style={{
-              fontSize: '60px',
-              color: 'green',
-            }}
-          />
-          <button type="button" onClick={onGetClassSu2(echon)}>
-            이촌
-          </button>
-        </div>
-      </OverlayTrigger>
-      <OverlayTrigger trigger="click" placement="right" overlay={popover3}>
-        <div className="nanji">
-          <LocationOnIcon
-            style={{
-              fontSize: '60px',
-              color: 'green',
-            }}
-          />
-          <button type="button" onClick={onGetClassSu3(nanji)}>
-            난지
-          </button>
-        </div>
-      </OverlayTrigger>
-      <OverlayTrigger trigger="click" placement="left" overlay={popover4}>
-        <div className="ddukseom">
-          <LocationOnIcon
-            style={{
-              fontSize: '60px',
-              color: 'green',
-            }}
-          />
-          <button type="button" onClick={onGetClassSu4(ddukseom)}>
-            뚝섬
-          </button>
-        </div>
-      </OverlayTrigger>
-      <OverlayTrigger trigger="click" placement="right" overlay={popover5}>
-        <div className="jamsil">
-          <LocationOnIcon
-            style={{
-              fontSize: '60px',
-              color: 'blue',
-            }}
-          />
-          <button type="button" onClick={onGetClassSu5(jamsil)}>
-            잠실
-          </button>
-        </div>
-      </OverlayTrigger>
-      <br />
-      <br />
-      <br />
-      <Accordion defaultActiveKey="0" flush>
+      <EntireMap>
+        {/* 이미지 */}
+        <img
+          src={mm1}
+          alt=""
+          style={{
+            width: '1035px',
+            height: '450px',
+            display: 'inline-block',
+          }}
+        />
+        {/* 아이콘+지역명 */}
+        <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+          <div className="banpo">
+            <LocationOnIcon
+              style={{
+                fontSize: '60px',
+                color: '#f20e42',
+                display: 'inline-block',
+              }}
+            />
+            <button type="button" onClick={onGetClassSu(banpo)}>
+              반포
+            </button>
+          </div>
+        </OverlayTrigger>
+        {/* 닫힘 */}
+        <OverlayTrigger trigger="click" placement="left" overlay={popover1}>
+          <div className="yeouido">
+            <LocationOnIcon
+              style={{
+                fontSize: '60px',
+                color: '#03d85e',
+              }}
+            />
+            <button type="button" onClick={onGetClassSu1(yeouido)}>
+              여의도
+            </button>
+          </div>
+        </OverlayTrigger>
+        <OverlayTrigger trigger="click" placement="right" overlay={popover2}>
+          <div className="echon">
+            <LocationOnIcon
+              style={{
+                fontSize: '60px',
+                color: 'green',
+              }}
+            />
+            <button type="button" onClick={onGetClassSu2(echon)}>
+              이촌
+            </button>
+          </div>
+        </OverlayTrigger>
+        <OverlayTrigger trigger="click" placement="right" overlay={popover3}>
+          <div className="nanji">
+            <LocationOnIcon
+              style={{
+                fontSize: '60px',
+                color: '#ff400',
+              }}
+            />
+            <button type="button" onClick={onGetClassSu3(nanji)}>
+              난지
+            </button>
+          </div>
+        </OverlayTrigger>
+        <OverlayTrigger trigger="click" placement="left" overlay={popover4}>
+          <div className="ddukseom">
+            <LocationOnIcon
+              style={{
+                fontSize: '60px',
+                color: '#7814dc',
+              }}
+            />
+            <button type="button" onClick={onGetClassSu4(ddukseom)}>
+              뚝섬
+            </button>
+          </div>
+        </OverlayTrigger>
+        <OverlayTrigger trigger="click" placement="right" overlay={popover5}>
+          <div className="jamsil">
+            <LocationOnIcon
+              style={{
+                fontSize: '60px',
+                color: 'blue',
+              }}
+            />
+            <button type="button" onClick={onGetClassSu5(jamsil)}>
+              잠실
+            </button>
+          </div>
+        </OverlayTrigger>
+      </EntireMap>
+      <Accordion defaultActiveKey="0" flush style={{ marginTop: '100px' }}>
         <Accordion.Item eventKey="0">
           <Accordion.Header>
-            <span style={{ fontSize: '23px', fontWeight: '70px' }}>
-              여의도 MAP #1
+            <span style={{ fontSize: '23px', fontWeight: '600' }}>
+              여의도 MAP
             </span>
           </Accordion.Header>
           <Accordion.Body>
@@ -291,8 +296,8 @@ function Map() {
         </Accordion.Item>
         <Accordion.Item eventKey="1">
           <Accordion.Header>
-            <span style={{ fontSize: '23px', fontWeight: '70px' }}>
-              반포 MAP #1
+            <span style={{ fontSize: '23px', fontWeight: '600' }}>
+              반포 MAP
             </span>
           </Accordion.Header>
           <Accordion.Body>
@@ -349,8 +354,8 @@ function Map() {
         </Accordion.Item>
         <Accordion.Item eventKey="2">
           <Accordion.Header>
-            <span style={{ fontSize: '23px', fontWeight: '70px' }}>
-              이촌 MAP #1
+            <span style={{ fontSize: '23px', fontWeight: '600' }}>
+              이촌 MAP
             </span>
           </Accordion.Header>
           <Accordion.Body>
@@ -400,8 +405,8 @@ function Map() {
         </Accordion.Item>
         <Accordion.Item eventKey="3">
           <Accordion.Header>
-            <span style={{ fontSize: '23px', fontWeight: '70px' }}>
-              난지 MAP #1
+            <span style={{ fontSize: '23px', fontWeight: '600' }}>
+              난지 MAP
             </span>
           </Accordion.Header>
           <Accordion.Body>
@@ -476,8 +481,8 @@ function Map() {
         </Accordion.Item>
         <Accordion.Item eventKey="4">
           <Accordion.Header>
-            <span style={{ fontSize: '23px', fontWeight: '70px' }}>
-              뚝섬 MAP #1
+            <span style={{ fontSize: '23px', fontWeight: '600' }}>
+              뚝섬 MAP
             </span>
           </Accordion.Header>
           <Accordion.Body>
@@ -510,8 +515,8 @@ function Map() {
         </Accordion.Item>
         <Accordion.Item eventKey="5">
           <Accordion.Header>
-            <span style={{ fontSize: '23px', fontWeight: '70px' }}>
-              잠실 MAP #1
+            <span style={{ fontSize: '23px', fontWeight: '600' }}>
+              잠실 MAP
             </span>
           </Accordion.Header>
           <Accordion.Body>
@@ -562,13 +567,12 @@ const Wrapper = styled.div`
   position: relative;
   padding-bottom: 20px;
   height: 2000px;
-  border: 1px solid gray;
 `;
 
 const Acord_Body = styled.div`
   font-family: Noto Sans KR;
   font-size: 19px;
-  margin-left: 130px;
+  margin-left: 200px;
   textalign: 'center';
   margin: '0 auto';
 `;
@@ -576,44 +580,62 @@ const Acord_Body = styled.div`
 const Acord_Body1 = styled.div`
   font-family: Noto Sans KR;
   font-size: 19px;
-  margin-left: 130px;
+  margin-left: 00px;
 `;
 
 const Acord_Body2 = styled.div`
   font-family: Noto Sans KR;
   font-size: 19px;
-  margin-left: 130px;
+  margin-left: 150px;
 `;
 
 const Acord_Body3 = styled.div`
   font-family: Noto Sans KR;
   font-size: 19px;
-  margin-left: 130px;
+  margin-left: 150px;
 `;
 
 const Acord_Body4 = styled.div`
   font-family: Noto Sans KR;
   font-size: 19px;
-  margin-left: 130px;
+  margin-left: 150px;
 `;
 
 const Acord_Body5 = styled.div`
   font-family: Noto Sans KR;
   font-size: 19px;
-  margin-left: 130px;
+  margin-left: 150px;
 `;
 
 const MapHeader = styled.div`
   width: 1040px;
   height: 100px;
-  border: 1px solid gray;
 `;
 
 const MapTitle = styled.div`
-  width: 400px;
   font-size: 28px;
+  width: 400px;
   height: 50px;
+  margin-left: 300px;
   line-height: 50px;
-  border: 1px solid gray;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
+
+const Ment = styled.div`
+  font-size: 18px;
+  width: 500px;
+  margin-left: 250px;
+  color: #999999;
+  font-family: Noto Sans KR;
   text-align: center;
+  margin-top: 20px;
+  font-weight: 500;
+  border-bottom: 0.5px solid #999999;
+  padding-bottom: 20px;
+`;
+
+const EntireMap = styled.div`
+  margin-top: 50px;
 `;

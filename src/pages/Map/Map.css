@@ -6,7 +6,7 @@
 
 div.banpo {
   position: absolute;
-  top: 400px;
+  top: 430px;
   margin-top: 50px;
   margin-left: 550px;
   font-family: 'Jua';
@@ -19,7 +19,7 @@ div.banpo :hover {
 
 div.yeouido {
   position: absolute;
-  top: 320px;
+  top: 340px;
   margin-left: 250px;
 }
 div.yeouido :hover {
@@ -40,7 +40,7 @@ div.echon :hover {
 
 div.nanji {
   position: absolute;
-  top: 120px;
+  top: 220px;
   margin-left: 220px;
 }
 
@@ -51,7 +51,7 @@ div.nanji :hover {
 
 div.ddukseom {
   position: absolute;
-  top: 260px;
+  top: 290px;
   margin-left: 730px;
 }
 
@@ -62,7 +62,7 @@ div.ddukseom :hover {
 
 div.jamsil {
   position: absolute;
-  top: 390px;
+  top: 424px;
   margin-left: 720px;
 }
 div.jamsil :hover {
