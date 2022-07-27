@@ -119,7 +119,7 @@ const ClassList = () => {
           style={{ width: '150px' }}
           onChange={onChangeLocation}
         >
-          <option key="class_location" value="장소" disabled>
+          <option key="class_location" value="장소">
             장소
           </option>
           <option key="반포 한강공원" value="반포">
@@ -169,21 +169,9 @@ const ClassList = () => {
         </select>
       </div>
 
-      <div className="ClassHeader">클래스입니다 헤더 이미지는 수정예정</div>
+      <div className="ClassHeader">오늘,한강과 함께</div>
 
       <div className="radiofilter" style={{ float: 'right' }}>
-        {localStorage.authority === '2' ? (
-          <ClassFormButton
-            onClick={() => {
-              navi(`/class/form`);
-            }}
-          >
-            클래스 등록하기
-          </ClassFormButton>
-        ) : (
-          ''
-        )}
-
         <label>
           <input type="radio" className="radio1" name="theme" />
           ✨최신순
@@ -356,11 +344,5 @@ const Button = styled.button`
   border: 1px solid #dbdbdb;
   border-radius: 5px;
   color: #fff;
-  cursor: pointer;
-`;
-const ClassFormButton = styled.button`
-  font-size: 45px;
-  font-weight: ${theme.weightBold};
-  color: ${theme.green};
   cursor: pointer;
 `;
