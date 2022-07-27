@@ -568,7 +568,14 @@ const ClassForm = passData => {
             name="classoption_starttime"
             onChange={time1Change}
           />
-          <span style={{ fontSize: '20px', marginLeft: '2px', width: '50px' }}>
+          <span
+            style={{
+              fontSize: '20px',
+              marginLeft: '0px',
+              marginTop: '25px',
+              width: '30px',
+            }}
+          >
             시&nbsp;~&nbsp;
           </span>
 
@@ -576,7 +583,7 @@ const ClassForm = passData => {
             type="number"
             className="label2"
             defaultValue="24"
-            style={{ width: '60px' }}
+            style={{ width: '70px' }}
             onChange={time2Change}
             name="classoption_endtime"
           />
@@ -584,8 +591,9 @@ const ClassForm = passData => {
             style={{
               fontSize: '20px',
               marginLeft: '2px',
-              width: '50px',
+              width: '60px',
               padding: '5px',
+              marginTop: '20px',
             }}
           >
             시
@@ -594,7 +602,7 @@ const ClassForm = passData => {
             type="number"
             className="label2"
             defaultValue="1"
-            style={{ width: '60px' }}
+            style={{ width: '60px', marginLeft: '-25px' }}
             name="classoption_totalperson"
             onChange={perChange}
           />
@@ -604,6 +612,7 @@ const ClassForm = passData => {
               marginLeft: '2px',
               width: '50px',
               padding: '5px',
+              marginTop: '20px',
             }}
           >
             명

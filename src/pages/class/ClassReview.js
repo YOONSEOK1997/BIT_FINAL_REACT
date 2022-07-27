@@ -4,6 +4,7 @@ import Rating from '@mui/material/Rating';
 import './ClassReview.css';
 import { textAlign } from '@mui/system';
 import StarRatings from 'react-star-ratings';
+import { Numbers } from '@mui/icons-material';
 
 const ClassReview = ({ class_num, onDeleteReview }) => {
   const [data, setData] = useState([]);
@@ -95,12 +96,12 @@ const ClassReview = ({ class_num, onDeleteReview }) => {
               <tr
                 style={{
                   height: '80px',
-                  borderTop: '1px solid black',
+                  // borderTop: '1px solid black',
                   backgroundColor: 'background-color: rgba(255, 255, 255, 0.3)',
                 }}
               >
                 <td style={{ textAlign: 'center' }}>
-                  <p>{row.classreview_num}</p>
+                  {/* <p>{row.classreview_num}</p> */}
                 </td>
                 <td style={{ textAlign: 'center' }}>
                   <img
@@ -111,7 +112,9 @@ const ClassReview = ({ class_num, onDeleteReview }) => {
                   />
                 </td>
                 <td style={{ textAlign: 'center' }}>
-                  <p>{row.classreview_content}</p>
+                  <p style={{ position: 'relative', bottom: '35px' }}>
+                    {row.classreview_content}
+                  </p>
                 </td>
                 <td style={{ textAlign: 'center' }}>
                   <p>
@@ -126,10 +129,14 @@ const ClassReview = ({ class_num, onDeleteReview }) => {
                 </td>
 
                 <td style={{ textAlign: 'center' }}>
-                  <p>{row.classreview_writer}</p>
+                  <p style={{ position: 'relative', bottom: '35px' }}>
+                    {row.classreview_writer}
+                  </p>
                 </td>
                 <td style={{ textAlign: 'center' }}>
-                  <p>{row.classreview_date}</p>
+                  <p style={{ position: 'relative', bottom: '35px' }}>
+                    {row.classreview_date}
+                  </p>
                 </td>
                 <td>
                   {localStorage.loginok === 'yes' &&
