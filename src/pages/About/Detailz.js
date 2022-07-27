@@ -59,9 +59,8 @@ function Detailz() {
         <div>
           <CardGroup>
             <Card>
-              <Card.Img variant="top" src="holder.js/100px160" />
               <Card.Body>
-                <Card.Title>경주</Card.Title>
+                <Card.Title style={{ color: '#F20E42' }}>경주</Card.Title>
                 <Card.Text>
                   <img
                     src={b2}
@@ -70,6 +69,7 @@ function Detailz() {
                       width: '250px',
                       height: '250px',
                       marginTop: '20px',
+                      marginLeft: '30px',
                     }}
                   />
                 </Card.Text>
@@ -83,9 +83,8 @@ function Detailz() {
               </Card.Footer>
             </Card>
             <Card>
-              <Card.Img variant="top" src="holder.js/100px160" />
               <Card.Body>
-                <Card.Title>윤석</Card.Title>
+                <Card.Title style={{ color: '#F20E42' }}>윤석</Card.Title>
                 <Card.Text>
                   <img
                     src={b4}
@@ -94,6 +93,7 @@ function Detailz() {
                       width: '250px',
                       height: '250px',
                       marginTop: '20px',
+                      marginLeft: '30px',
                     }}
                   />
                 </Card.Text>
@@ -107,9 +107,8 @@ function Detailz() {
               </Card.Footer>
             </Card>
             <Card>
-              <Card.Img variant="top" src="holder.js/100px160" />
               <Card.Body>
-                <Card.Title>준영</Card.Title>
+                <Card.Title style={{ color: '#F20E42' }}>준영</Card.Title>
                 <Card.Text>
                   <img
                     src={b3}
@@ -118,6 +117,7 @@ function Detailz() {
                       width: '250px',
                       height: '250px',
                       marginTop: '20px',
+                      marginLeft: '30px',
                     }}
                   />
                 </Card.Text>
@@ -137,9 +137,8 @@ function Detailz() {
         <div>
           <CardGroup>
             <Card>
-              <Card.Img variant="top" src="holder.js/100px160" />
               <Card.Body>
-                <Card.Title>대한</Card.Title>
+                <Card.Title style={{ color: '#F20E42' }}>대한</Card.Title>
                 <Card.Text>
                   <img
                     src={b5}
@@ -148,6 +147,7 @@ function Detailz() {
                       width: '250px',
                       height: '250px',
                       marginTop: '20px',
+                      marginLeft: '30px',
                     }}
                   />
                 </Card.Text>
@@ -161,9 +161,8 @@ function Detailz() {
               </Card.Footer>
             </Card>
             <Card>
-              <Card.Img variant="top" src="holder.js/100px160" />
               <Card.Body>
-                <Card.Title>한별</Card.Title>
+                <Card.Title style={{ color: '#F20E42' }}>한별</Card.Title>
                 <Card.Text>
                   <img
                     src={b6}
@@ -172,6 +171,7 @@ function Detailz() {
                       width: '250px',
                       height: '250px',
                       marginTop: '20px',
+                      marginLeft: '30px',
                     }}
                   />
                 </Card.Text>
@@ -180,14 +180,13 @@ function Detailz() {
                 <small className="text-muted">
                   나이: ??세
                   <br />
-                  특기: 흡연 빼고는 완벽함
+                  특기: 아름다움
                 </small>
               </Card.Footer>
             </Card>
             <Card>
-              <Card.Img variant="top" src="holder.js/100px160" />
               <Card.Body>
-                <Card.Title>정하</Card.Title>
+                <Card.Title style={{ color: '#F20E42' }}>정하</Card.Title>
                 <Card.Text>
                   <img
                     src={b1}
@@ -196,6 +195,7 @@ function Detailz() {
                       width: '250px',
                       height: '250px',
                       marginTop: '20px',
+                      marginLeft: '30px',
                     }}
                   />
                 </Card.Text>
