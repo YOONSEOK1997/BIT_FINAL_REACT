@@ -85,7 +85,7 @@ const Main = () => {
             {/* 오프라인 */}
             <Sub
               onClick={() => {
-                navi(`/class/list2`);
+                navi(`/class/list`);
               }}
             >
               <FaLocationArrow />
@@ -94,7 +94,7 @@ const Main = () => {
             {/* vod */}
             <Sub
               onClick={() => {
-                navi(`/class/vod`);
+                navi(`/vod`);
               }}
             >
               <FaVideo />
