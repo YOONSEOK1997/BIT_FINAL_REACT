@@ -26,7 +26,7 @@ const ReviewModal = props => {
   const [classreview_rate, setClassreview_rate] = useState('');
   const [classreview_content, setClassreview_content] = useState('');
   const [classreview_photo, setClassreview_photo] = useState('');
-  const [classreview_writer, setClassreview_writer] = useState('');
+  const classreview_writer = localStorage.nickname;
 
   let url = process.env.REACT_APP_SPRING_URL + 'review/insert';
   let uploadUrl = process.env.REACT_APP_SPRING_URL + 'review/upload';
@@ -62,7 +62,8 @@ const ReviewModal = props => {
         classreview_writer,
       })
       .then(res => {
-        close();
+        console.log(classreview_writer);
+        window.location.reload();
       });
   };
 
@@ -70,12 +71,8 @@ const ReviewModal = props => {
     setClassreview_rate('');
     setClassreview_content('');
     setClassreview_photo('');
-    setClassreview_writer('');
-
     close();
   };
-
-  const reviewWriter = localStorage.getItem('username');
 
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
@@ -100,8 +97,7 @@ const ReviewModal = props => {
                       작성자
                     </TableCell>
                     <TableCell align="left" style={{ width: '500px' }}>
-                      <input type="text" placeholder="reviewWriter" />
-                      <TextareaAutosize reviewWriter />
+                      {classreview_writer}
                     </TableCell>
                   </TableRow>
                   <TableRow>

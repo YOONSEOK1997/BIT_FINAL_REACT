@@ -26,14 +26,16 @@ th b {
 th p {
   font-weight: bold;
   position: relative;
-  top: 10px;
+  top: 5px;
   color: white;
+  text-align: center;
 }
 
 td p {
   position: relative;
   bottom: 40px;
 }
+
 /* img.photo_small {
   line-height: 80px;
 } */

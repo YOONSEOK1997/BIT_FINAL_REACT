@@ -5,7 +5,7 @@ import './ClassReview.css';
 import { textAlign } from '@mui/system';
 import StarRatings from 'react-star-ratings';
 
-const ClassReview = ({ class_num, onRemove }) => {
+const ClassReview = ({ class_num, onDeleteReview }) => {
   const [data, setData] = useState([]);
   // const [ratingAvg, setRatingAvg] = useState('');
   const getReviews = () => {
@@ -28,6 +28,15 @@ const ClassReview = ({ class_num, onRemove }) => {
       });
   };
 
+  // const deleteUrl =
+  //   process.env.REACT_APP_SPRING_URL + 'review/delete?classreview_num=';
+  // const onDeleteReview = num => {
+  //   axios.get(deleteUrl + num).then(res => {
+  //     alert('삭제됬슴니돠아!');
+  //     window.location.reload();
+  //   });
+  // };
+
   useEffect(() => {
     // onAvgReceive();
     ReviewList();
@@ -41,6 +50,8 @@ const ClassReview = ({ class_num, onRemove }) => {
   //     console.log(res.data);
   //   });
   // };
+  const reviewWriter = localStorage.getItem('username');
+
   return (
     <div className="class_reviewbox">
       <table
@@ -48,10 +59,10 @@ const ClassReview = ({ class_num, onRemove }) => {
         id="review_table"
         style={{ width: '100%' }}
       >
-        <thead>
+        {/* <thead>
           <tr
             style={{
-              backgroundColor: '#55608f',
+              backgroundColor: -'#7814DC',
               borderBottom: '1px solid silver',
             }}
           >
@@ -77,7 +88,7 @@ const ClassReview = ({ class_num, onRemove }) => {
               <p>삭제</p>
             </th>
           </tr>
-        </thead>
+        </thead> */}
         <tbody>
           {data &&
             data.map(row => (
@@ -120,21 +131,49 @@ const ClassReview = ({ class_num, onRemove }) => {
                 <td style={{ textAlign: 'center' }}>
                   <p>{row.classreview_date}</p>
                 </td>
-                {/* <td>
-                  <button
-                    onClick={() => {
-                      if (
-                        window.confirm(
-                          `${id1 + 1}번째 리뷰를 삭제하시겠습니까?`
-                        )
-                      ) {
-                        onRemove(id);
-                      }
-                    }}
-                  >
-                    삭제
-                  </button>
-                </td> */}
+                <td>
+                  {localStorage.loginok === 'yes' &&
+                  localStorage.nickname === row.classreview_writer ? (
+                    <button
+                      style={{ border: 'none', backgroundColor: 'white' }}
+                      onClick={() => {
+                        if (window.confirm(`정말로 삭제하시겠습니까?`)) {
+                          const deleteUrl =
+                            process.env.REACT_APP_SPRING_URL +
+                            'review/delete?classreview_num=' +
+                            row.classreview_num;
+                          axios.get(deleteUrl).then(res => {
+                            alert('삭제됬슴니돠아!');
+                            window.location.reload();
+                          });
+                        }
+                      }}
+                    >
+                      ✖️
+                    </button>
+                  ) : localStorage.loginok === 'yes' &&
+                    localStorage.username === 'admin' ? (
+                    <button
+                      style={{ border: 'none', backgroundColor: 'white' }}
+                      onClick={() => {
+                        if (window.confirm(`정말로 삭제하시겠습니까?`)) {
+                          const deleteUrl =
+                            process.env.REACT_APP_SPRING_URL +
+                            'review/delete?classreview_num=' +
+                            row.classreview_num;
+                          axios.get(deleteUrl).then(res => {
+                            alert('삭제됬슴니돠아!');
+                            window.location.reload();
+                          });
+                        }
+                      }}
+                    >
+                      ✖️
+                    </button>
+                  ) : (
+                    ''
+                  )}
+                </td>
               </tr>
             ))}
         </tbody>
