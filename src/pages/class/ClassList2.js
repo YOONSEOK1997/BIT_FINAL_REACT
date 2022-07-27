@@ -182,22 +182,7 @@ const ClassList = () => {
 
       <div className="ClassHeader">오늘,한강과 함께</div>
 
-      <div className="radiofilter" style={{ float: 'right' }}>
-        <label>
-          <input type="radio" className="radio1" name="theme" />
-          ✨최신순
-        </label>
-        <label style={{ marginLeft: '8px' }}>
-          <input type="radio" className="radio1" name="theme" />
-          🔥인기순
-        </label>
-        <label style={{ marginLeft: '8px' }}>
-          <input type="radio" className="radio1" name="theme" />
-          ⭐평점순
-        </label>
-      </div>
-
-      <div className="listdiv">
+      <div className="listdiv" style={{ marginTop: '30px' }}>
         {/* 하나의 카드 반복문 */}
         {filterData1 &&
           filterData1.map((data, idx) => (
