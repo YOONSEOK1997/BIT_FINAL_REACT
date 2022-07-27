@@ -71,7 +71,7 @@ const ClassForm = passData => {
   //옵션 일정추가후 DB전송
   function uploadOptions() {
     axios.post(insertUrl2, options).then(res => {
-      alert('insert 성공');
+      alert('클래스가 등록되었습니다!');
       //navi("/login")
     });
   }
@@ -443,7 +443,7 @@ const ClassForm = passData => {
                 className="que"
                 style={{ fontSize: '35px', float: 'left' }}
               />
-              <span className="asd" style={{ top: '633px', left: '1350px' }}>
+              <span className="asd" style={{ top: '393px', left: '960px' }}>
                 Tip!
                 <br />
                 클래스의 주제를 연상시키는 제목을 작성해주세요.
