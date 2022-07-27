@@ -52,9 +52,7 @@ const Nav = () => {
         // window.Kakao.isInitialized();
         AuthService.logout();
         goToMain();
-        alert(
-          'logout ok\naccess token -> ' + window.Kakao.Auth.getAccessToken()
-        );
+        alert('✅ 로그아웃 되었습니다.');
       });
     }
   };
