@@ -3,24 +3,24 @@ import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 import Myslide2 from './Myslide2';
 import './Detailz.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
 
 import d6 from './images/d6.jpg';
 import d13 from './images/d13.jpg';
-import Modalj from './Modalj';
+import b1 from './images/b1.jpg';
+import b2 from './images/b2.jpg';
+import b3 from './images/b3.jpg';
+import b4 from './images/b4.jpg';
+import b5 from './images/b5.jpg';
+import b6 from './images/b6.jpg';
 
 const Wrapper = styled.div`
   ${({ theme }) => theme.wrapper()}
 `;
 
 function Detailz() {
-  const [modalOpen3, setModalOpen3] = useState(false);
-  const openModal3 = () => {
-    setModalOpen3(true);
-  };
-  const closeModal3 = () => {
-    setModalOpen3(false);
-  };
-
   return (
     <Wrapper>
       <br />
@@ -57,12 +57,158 @@ function Detailz() {
         <br />
         <br />
         <div>
-          <React.Fragment>
-            <button className="class_reviewbtn" onClick={openModal3}>
-              모달창 입장
-            </button>
-            <Modalj open={modalOpen3} close={closeModal3} />
-          </React.Fragment>{' '}
+          <CardGroup>
+            <Card>
+              <Card.Img variant="top" src="holder.js/100px160" />
+              <Card.Body>
+                <Card.Title>경주</Card.Title>
+                <Card.Text>
+                  <img
+                    src={b2}
+                    alt=""
+                    style={{
+                      width: '250px',
+                      height: '250px',
+                      marginTop: '20px',
+                    }}
+                  />
+                </Card.Text>
+              </Card.Body>
+              <Card.Footer>
+                <small className="text-muted">
+                  나이: 30세
+                  <br />
+                  특기: 강한 펀치
+                </small>
+              </Card.Footer>
+            </Card>
+            <Card>
+              <Card.Img variant="top" src="holder.js/100px160" />
+              <Card.Body>
+                <Card.Title>윤석</Card.Title>
+                <Card.Text>
+                  <img
+                    src={b4}
+                    alt=""
+                    style={{
+                      width: '250px',
+                      height: '250px',
+                      marginTop: '20px',
+                    }}
+                  />
+                </Card.Text>
+              </Card.Body>
+              <Card.Footer>
+                <small className="text-muted">
+                  나이: 26세
+                  <br />
+                  특기: 인성 보장
+                </small>
+              </Card.Footer>
+            </Card>
+            <Card>
+              <Card.Img variant="top" src="holder.js/100px160" />
+              <Card.Body>
+                <Card.Title>준영</Card.Title>
+                <Card.Text>
+                  <img
+                    src={b3}
+                    alt=""
+                    style={{
+                      width: '250px',
+                      height: '250px',
+                      marginTop: '20px',
+                    }}
+                  />
+                </Card.Text>
+              </Card.Body>
+              <Card.Footer>
+                <small className="text-muted">
+                  나이: 36세
+                  <br />
+                  특기: 완벽함
+                </small>
+              </Card.Footer>
+            </Card>
+          </CardGroup>
+        </div>
+        <br />
+        <br />
+        <div>
+          <CardGroup>
+            <Card>
+              <Card.Img variant="top" src="holder.js/100px160" />
+              <Card.Body>
+                <Card.Title>대한</Card.Title>
+                <Card.Text>
+                  <img
+                    src={b5}
+                    alt=""
+                    style={{
+                      width: '250px',
+                      height: '250px',
+                      marginTop: '20px',
+                    }}
+                  />
+                </Card.Text>
+              </Card.Body>
+              <Card.Footer>
+                <small className="text-muted">
+                  나이: 29세
+                  <br />
+                  특기: 토크 보장
+                </small>
+              </Card.Footer>
+            </Card>
+            <Card>
+              <Card.Img variant="top" src="holder.js/100px160" />
+              <Card.Body>
+                <Card.Title>한별</Card.Title>
+                <Card.Text>
+                  <img
+                    src={b6}
+                    alt=""
+                    style={{
+                      width: '250px',
+                      height: '250px',
+                      marginTop: '20px',
+                    }}
+                  />
+                </Card.Text>
+              </Card.Body>
+              <Card.Footer>
+                <small className="text-muted">
+                  나이: ??세
+                  <br />
+                  특기: 흡연 빼고는 완벽함
+                </small>
+              </Card.Footer>
+            </Card>
+            <Card>
+              <Card.Img variant="top" src="holder.js/100px160" />
+              <Card.Body>
+                <Card.Title>정하</Card.Title>
+                <Card.Text>
+                  <img
+                    src={b1}
+                    alt=""
+                    style={{
+                      width: '250px',
+                      height: '250px',
+                      marginTop: '20px',
+                    }}
+                  />
+                </Card.Text>
+              </Card.Body>
+              <Card.Footer>
+                <small className="text-muted">
+                  나이: 26세
+                  <br />
+                  특기: 인성 성격 보장
+                </small>
+              </Card.Footer>
+            </Card>
+          </CardGroup>
         </div>
       </div>
     </Wrapper>
