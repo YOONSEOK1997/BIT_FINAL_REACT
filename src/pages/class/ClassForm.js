@@ -737,7 +737,7 @@ const ClassForm = passData => {
         <br />
         <br />
         <br />
-        <br />\
+        <br />
       </Wrapper>
     </div>
   );
