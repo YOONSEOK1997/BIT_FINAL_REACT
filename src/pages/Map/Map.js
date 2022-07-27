@@ -37,7 +37,6 @@ function Map() {
   const [nanjisu, setNanjisu] = useState('');
   const [ddukseomsu, setDdukseomsu] = useState('');
   const [jamsilsu, setJamsilsu] = useState('');
-
   const onGetClassSu = loc => {
     //반포
     axios
@@ -73,7 +72,6 @@ function Map() {
     axios
       .get(`http://localhost:9009/map/getClassSu?class_location=${loc}`)
       .then(res => {
-        console.log(res.data);
         setDdukseomsu(res.data);
       });
   };
