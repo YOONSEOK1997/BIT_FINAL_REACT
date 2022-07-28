@@ -17,7 +17,8 @@ import { getProfile, getNickName, getToken } from '../../../src/utils';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 import Weather from './Weather';
-
+import MainClass from '../Main/Components/MainClass';
+import MainVod from '../Main/Components/MainVod';
 const Main = () => {
   const validtoken = getToken();
   const navigate = useNavigate();
@@ -127,12 +128,13 @@ const Main = () => {
         </SubMenu>
         <MainContainer>
           <LectureContainer>
-            <h3>지금! 뜨고 있는 전자책 클래스</h3>
-            <LectureSlide typesId="3" />
             <h3>당장 들어야 할 오프라인 클래스</h3>
-            <LectureSlide typesId="1" />
+            <MainClass />
             <h3>오늘,한강 VOD, 같이하면 더 쉬우니까</h3>
-            <LectureSlide typesId="2" />
+            <MainVod />
+            {/* <LectureSlide typesId="1" />
+
+            <LectureSlide typesId="2" /> */}
           </LectureContainer>
           <ProfileContainer>
             <Profile>
@@ -291,7 +293,7 @@ const LectureContainer = styled.div`
 `;
 
 const ProfileContainer = styled.div`
-  margin-left: 120px;
+  margin-left: 0px;
   margin-top: 10px;
 `;
 
