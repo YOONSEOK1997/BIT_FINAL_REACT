@@ -232,7 +232,7 @@ const ClassDetail = () => {
             <div class="tutor_image" style={{ float: 'left' }}>
               <img
                 className="tutor_image"
-                src={photoUrl + `${photo === null ? prof : photo}`}
+                src={photoUrl + `${photo === null ? 'profile.jpg' : photo}`}
               />
             </div>
             <span className="tutor_name">{data.tutor_id} 튜터</span>

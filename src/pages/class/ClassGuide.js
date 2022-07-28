@@ -5,7 +5,7 @@ import img1 from './classImage/guide1.JPG';
 import img2 from './classImage/guide2.JPG';
 const ClassGuide = () => {
   return (
-    <div style={{ clear: 'both', float: 'center' }}>
+    <div style={{ clear: 'both', float: 'center', height: '2100px' }}>
       <img
         alt=""
         src={river}

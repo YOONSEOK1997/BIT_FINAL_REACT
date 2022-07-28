@@ -162,7 +162,11 @@ const MypageMain = () => {
             <span className="profile_label2">
               {data.username}{' '}
               {localStorage.authority === '2' ? (
-                <PaidYes style={{ marginLeft: '150px' }}>튜 터</PaidYes>
+                <PaidYes
+                  style={{ position: 'absolute', left: '300px', top: '20px' }}
+                >
+                  튜 터
+                </PaidYes>
               ) : (
                 ''
               )}
