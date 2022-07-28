@@ -62,6 +62,7 @@ const ClassForm = passData => {
 
   function maxnum() {
     axios.post(numUrl).then(res => {
+      console.log(res.data);
       setClass_num(res.data + 1);
       console.log(class_num);
       //navi("/login")
