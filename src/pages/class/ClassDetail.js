@@ -22,6 +22,7 @@ import location from './classImage/location.JPG';
 import time from './classImage/money.JPG';
 import banner from './classImage/배너.png';
 import chat from './classImage/chat2.png';
+import prof from './기본프로필.jpg';
 
 const ClassDetail = () => {
   const { class_num } = useParams();
@@ -94,9 +95,7 @@ const ClassDetail = () => {
       })
       .then(res => {
         console.log(res.data);
-        if (data.tutor_id === localStorage.nickname) {
-          setModalOpen2(true);
-        } else if (res.data === '') {
+        if (res.data === '') {
           alert('클래스에 참여 후 가능합니다');
           return false;
         } else if (res.data !== '') {
@@ -110,22 +109,24 @@ const ClassDetail = () => {
 
   const [modalOpen3, setModalOpen3] = useState(false);
   const openModal3 = () => {
-    axios
-      .post(chkUrl, {
-        pay_user_id: localStorage.username,
-        pay_class_num: class_num,
-      })
-      .then(res => {
-        console.log(res.data);
-        if (data.tutor_id === localStorage.nickname) {
-          setModalOpen3(true);
-        } else if (res.data === '') {
-          alert('클래스에 참여중인 인원만 가능합니다');
-          return false;
-        } else if (res.data !== '') {
-          setModalOpen3(true);
-        }
-      });
+    if (data.tutor_id === localStorage.username) {
+      setModalOpen3(true);
+    } else {
+      axios
+        .post(chkUrl, {
+          pay_user_id: localStorage.username,
+          pay_class_num: class_num,
+        })
+        .then(res => {
+          console.log(res.data);
+          if (res.data === '') {
+            alert('클래스에 참여중인 인원만 가능합니다');
+            return false;
+          } else if (res.data !== '') {
+            setModalOpen3(true);
+          }
+        });
+    }
   };
   const closeModal3 = () => {
     setModalOpen3(false);
@@ -229,7 +230,10 @@ const ClassDetail = () => {
           </div>
           <div className="tutor_info">
             <div class="tutor_image" style={{ float: 'left' }}>
-              <img className="tutor_image" src={photoUrl + photo} />
+              <img
+                className="tutor_image"
+                src={photoUrl + `${photo === null ? prof : photo}`}
+              />
             </div>
             <span className="tutor_name">{data.tutor_id} 튜터</span>
           </div>
