@@ -87,15 +87,22 @@ const ClassDetail = () => {
 
   const [modalOpen2, setModalOpen2] = useState(false);
   const openModal2 = () => {
-    axios.get(chkUrl + '?pay_user_id=' + localStorage.username).then(res => {
-      console.log(res);
-      if (res.data === 0) {
-        alert('클래스에 참여 후 가능합니다');
-        return false;
-      } else if (res.data !== 0) {
-        setModalOpen2(true);
-      }
-    });
+    axios
+      .post(chkUrl, {
+        pay_user_id: localStorage.username,
+        pay_class_num: class_num,
+      })
+      .then(res => {
+        console.log(res.data);
+        if (data.tutor_id === localStorage.nickname) {
+          setModalOpen2(true);
+        } else if (res.data === '') {
+          alert('클래스에 참여 후 가능합니다');
+          return false;
+        } else if (res.data !== '') {
+          setModalOpen2(true);
+        }
+      });
   };
   const closeModal2 = () => {
     setModalOpen2(false);
@@ -103,15 +110,22 @@ const ClassDetail = () => {
 
   const [modalOpen3, setModalOpen3] = useState(false);
   const openModal3 = () => {
-    axios.get(chkUrl + '?pay_user_id=' + localStorage.username).then(res => {
-      console.log(res);
-      if (res.data === 0) {
-        alert('클래스에 참여중인 인원만 가능합니다');
-        return false;
-      } else if (res.data !== 0) {
-        setModalOpen3(true);
-      }
-    });
+    axios
+      .post(chkUrl, {
+        pay_user_id: localStorage.username,
+        pay_class_num: class_num,
+      })
+      .then(res => {
+        console.log(res.data);
+        if (data.tutor_id === localStorage.nickname) {
+          setModalOpen3(true);
+        } else if (res.data === '') {
+          alert('클래스에 참여중인 인원만 가능합니다');
+          return false;
+        } else if (res.data !== '') {
+          setModalOpen3(true);
+        }
+      });
   };
   const closeModal3 = () => {
     setModalOpen3(false);
