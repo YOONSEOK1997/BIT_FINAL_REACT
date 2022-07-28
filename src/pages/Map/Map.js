@@ -580,7 +580,7 @@ const Acord_Body = styled.div`
 const Acord_Body1 = styled.div`
   font-family: Noto Sans KR;
   font-size: 19px;
-  margin-left: 00px;
+  margin-left: 150px;
 `;
 
 const Acord_Body2 = styled.div`
