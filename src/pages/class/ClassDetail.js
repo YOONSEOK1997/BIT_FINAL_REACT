@@ -69,6 +69,7 @@ const ClassDetail = () => {
   // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
   const [modalOpen, setModalOpen] = useState(false);
   const [photo, setPhoto] = useState('');
+  const [change2, setChange2] = useState('');
   const openModal = () => {
     if (changeoptions.current == 0) {
       alert('일정을 선택해주세요옹~?');
@@ -200,8 +201,9 @@ const ClassDetail = () => {
 
   const handleChange = e => {
     changeoptions.current = options[e.target.value];
-    console.log(changeoptions);
+    console.log(changeoptions.current);
     setChange(true);
+    setChange2(e.target.value);
   };
 
   //처음 랜더링시 위의 함수 호출
@@ -210,7 +212,7 @@ const ClassDetail = () => {
     onDataReceive();
     onOptionReceive();
     chk();
-  }, [likestate2]);
+  }, [likestate2, change2]);
   return (
     <div>
       <div className="content_container" style={{ marginLeft: '240px' }}>
