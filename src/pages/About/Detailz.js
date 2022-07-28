@@ -60,7 +60,7 @@ function Detailz() {
           <CardGroup>
             <Card>
               <Card.Body>
-                <Card.Title style={{ color: '#F20E42' }}>경주</Card.Title>
+                <Card.Title style={{ color: '#324ea8' }}>경주</Card.Title>
                 <Card.Text>
                   <img
                     src={b2}
@@ -84,7 +84,7 @@ function Detailz() {
             </Card>
             <Card>
               <Card.Body>
-                <Card.Title style={{ color: '#F20E42' }}>윤석</Card.Title>
+                <Card.Title style={{ color: '#324ea8' }}>윤석</Card.Title>
                 <Card.Text>
                   <img
                     src={b4}
@@ -108,7 +108,7 @@ function Detailz() {
             </Card>
             <Card>
               <Card.Body>
-                <Card.Title style={{ color: '#F20E42' }}>준영</Card.Title>
+                <Card.Title style={{ color: '#324ea8' }}>준영</Card.Title>
                 <Card.Text>
                   <img
                     src={b3}
@@ -138,7 +138,7 @@ function Detailz() {
           <CardGroup>
             <Card>
               <Card.Body>
-                <Card.Title style={{ color: '#F20E42' }}>대한</Card.Title>
+                <Card.Title style={{ color: '#324ea8' }}>대한</Card.Title>
                 <Card.Text>
                   <img
                     src={b5}
@@ -162,7 +162,7 @@ function Detailz() {
             </Card>
             <Card>
               <Card.Body>
-                <Card.Title style={{ color: '#F20E42' }}>한별</Card.Title>
+                <Card.Title style={{ color: '#324ea8' }}>한별</Card.Title>
                 <Card.Text>
                   <img
                     src={b6}
@@ -186,7 +186,7 @@ function Detailz() {
             </Card>
             <Card>
               <Card.Body>
-                <Card.Title style={{ color: '#F20E42' }}>정하</Card.Title>
+                <Card.Title style={{ color: '#324ea8' }}>정하</Card.Title>
                 <Card.Text>
                   <img
                     src={b1}
