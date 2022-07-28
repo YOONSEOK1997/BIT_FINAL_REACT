@@ -43,7 +43,7 @@ div .imglist_ul {
   display: block;
   position: absolute;
   transition: all 0.2s;
-  background: rgb(203, 143, 194);
+  background: rgb(95, 126, 240);
   z-index: 2;
 }
 .a .screen2 span:nth-child(1) {
