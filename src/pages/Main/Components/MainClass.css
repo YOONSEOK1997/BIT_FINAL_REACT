@@ -43,7 +43,7 @@ div .imglist_ul {
   display: block;
   position: absolute;
   transition: all 0.2s;
-  background: rgb(120, 162, 183);
+  background: rgb(203, 143, 194);
   z-index: 2;
 }
 .a .screen2 span:nth-child(1) {
@@ -85,14 +85,21 @@ div .imglist_ul {
   transition-delay: 0.3s;
 }
 .a h3 {
-  margin: 20px 10px;
-  font-size: 20px;
+  margin: 20px 5px;
+  font-size: 14px;
   text-decoration: none;
+  text-align: center;
+}
+.a h1 {
+  font-size: 12px;
+  text-align: center;
+  font-weight: 400;
 }
 .a p {
   font-family: 'NanumSquare';
-  margin: 0 10px;
+  margin-top: 8px;
   font-size: 12px;
   line-height: 18px;
   text-decoration: none;
+  text-align: center;
 }
